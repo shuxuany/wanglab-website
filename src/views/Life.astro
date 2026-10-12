@@ -34,6 +34,10 @@ const albums = life.map((a: any) => {
   const cover = a.cover ? asset(a.cover) : stills[0]?.src;
   return { ...a, photos, cover, count, title: t(a.title, lang), tag: t(a.tag, lang), desc: t(a.desc, lang), date: showDate(a.date) };
 });
+// 第一个相册占 2×2；相册数凑不满最后一行时，让最后一个相册横向占两格，避免留空
+const n = albums.length;
+const wideOn3 = n > 1 && (n + 3) % 3 === 2;
+const wideOn2 = n > 1 && (n + 1) % 2 === 1;
 ---
 
 <Base lang={lang} title={u.life.title} description={t(site.pages?.life, lang)}>
@@ -45,7 +49,7 @@ const albums = life.map((a: any) => {
         albums.map((a, i) => {
           const [c1, c2] = TONES[i % TONES.length];
           return (
-            <article id={a.id} class:list={['album', { 'album-feature': i === 0, 'is-empty': !a.cover }]} data-reveal style={`--d:${Math.min(i, 5) * 70}ms`}>
+            <article id={a.id} class:list={['album', { 'album-feature': i === 0, 'is-empty': !a.cover, 'album-wide-3': wideOn3 && i === n - 1, 'album-wide-2': wideOn2 && i === n - 1 }]} data-reveal style={`--d:${Math.min(i, 5) * 70}ms`}>
               {a.cover ? (
                 <button class="album-cover" type="button" data-album={JSON.stringify(a.photos)} aria-label={`${u.life.view}: ${a.title}`}>
                   <img src={a.cover} alt={a.title} loading={i < 3 ? 'eager' : 'lazy'} />
