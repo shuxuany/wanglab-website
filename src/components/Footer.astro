@@ -1,0 +1,93 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { site, t, href, type Lang } from '../lib/site';
+import { ui, NAV_KEYS, navLabelKey } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href={href('', lang)}>
+          <Logo size={34} id="ft-logo" />
+          <span>{t(site.short_name, lang)}</span>
+        </a>
+        {t(site.name, lang) !== t(site.short_name, lang) && <p class="footer-name">{t(site.name, lang)}</p>}
+        <p class="footer-aff">{t(site.affiliation, lang)}</p>
+      </div>
+      <div>
+        <h2 class="footer-h">{u.footer.contact}</h2>
+        <ul class="footer-list">
+          {
+            site.contact?.email && (
+              <li>
+                <Icon name="mail" size={16} />
+                <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+              </li>
+            )
+          }
+          {
+            site.contact?.phone && (
+              <li>
+                <Icon name="phone" size={16} />
+                <span>{site.contact.phone}</span>
+              </li>
+            )
+          }
+          {
+            site.contact?.address && (
+              <li>
+                <Icon name="pin" size={16} />
+                <span>{t(site.contact.address, lang)}</span>
+              </li>
+            )
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">{u.footer.explore}</h2>
+        <ul class="footer-list">
+          {
+            NAV_KEYS.map((k) => (
+              <li>
+                <a href={href(k, lang)}>{u.nav[navLabelKey(k)]}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-h">{u.footer.links}</h2>
+        <ul class="footer-list">
+          {
+            (site.links ?? []).map((l: any) => (
+              <li>
+                <a href={l.url} target="_blank" rel="noopener">
+                  {t(l.label, lang)}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {t(site.name, lang)}</span>
+      {
+        site.icp && (
+          <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">
+            {site.icp}
+          </a>
+        )
+      }
+    </div>
+  </div>
+</footer>

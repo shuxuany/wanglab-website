@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Icon from '../components/Icon.astro';
+import { site, join, t, list, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const email = site.contact?.email ?? '';
+const colors = ['#0b5eb2', '#f57c40', '#1f8f5f'];
+---
+
+<Base lang={lang} title={u.nav.join} description={t(join.intro, lang)}>
+  <PageHero eyebrow="Join Us" title={u.join.title} desc={t(join.intro, lang)} lang={lang} />
+
+  <div class="container page-body">
+    <SectionHead title={u.join.positions} en="Open Positions" />
+    <div class="sub-grid sub-grid-3">
+      {
+        (join.positions ?? []).map((p: any, i: number) => (
+          <article class="sub-card sub-card-static" style={`--c:${colors[i % colors.length]};--d:${i * 100}ms`} data-reveal>
+            <span class="sub-icon">
+              <Icon name={p.icon ?? 'sparkles'} size={26} />
+            </span>
+            <span class="sub-body">
+              <h3 class="sub-title">{t(p.title, lang)}</h3>
+              <span class="sub-sum">{t(p.desc, lang)}</span>
+            </span>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="join-grid">
+      <section>
+        <SectionHead title={u.join.requirements} en="Requirements" />
+        <ul class="checklist" data-reveal>
+          {
+            list(join.requirements, lang).map((r) => (
+              <li>
+                <span class="check">
+                  <Icon name="check" size={14} />
+                </span>
+                {r}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+      <section>
+        <SectionHead title={u.join.apply} en="How to Apply" />
+        <ol class="steps" data-reveal>
+          {list(join.apply, lang).map((s) => <li>{s}</li>)}
+        </ol>
+        <div class="contact-card" data-reveal>
+          <p class="contact-label">{u.join.contact}</p>
+          <a class="contact-email" href={`mailto:${email}`}>{email}</a>
+          <div class="contact-row">
+            <a class="btn btn-orange btn-sm" href={`mailto:${email}`}>
+              <Icon name="mail" size={16} />
+              Email
+            </a>
+            <button class="copy-btn" type="button" data-copy={email} data-copied={u.join.copied}>
+              <Icon name="copy" size={15} />
+              <span data-copy-label>{u.join.copy}</span>
+            </button>
+          </div>
+          {
+            site.contact?.address && (
+              <p class="contact-address">
+                <Icon name="pin" size={16} />
+                {t(site.contact.address, lang)}
+              </p>
+            )
+          }
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>

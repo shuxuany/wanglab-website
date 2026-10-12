@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/space-grotesk';
+import '../styles/global.css';
+import '../styles/sections.css';
+import '../styles/polish.css';
+import '../styles/pages.css';
+import '../styles/refine.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, t, asset, switchLangHref, type Lang } from '../lib/site';
+
+interface Props {
+  lang: Lang;
+  title?: string;
+  description?: string;
+}
+const { lang, title, description } = Astro.props;
+const siteName = t(site.name, lang);
+const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | ${t(site.affiliation, lang)}`;
+const desc = description ?? t(site.intro, lang);
+const zhUrl = new URL(switchLangHref(Astro.url.pathname, 'zh'), Astro.site);
+const enUrl = new URL(switchLangHref(Astro.url.pathname, 'en'), Astro.site);
+---
+
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-CN' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={desc} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#050816" />
+    <link rel="icon" type="image/svg+xml" href={asset('favicon.svg')} />
+    <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <script is:inline>
+      // 脚本 3 秒内没能运行（例如被拦截）时取消隐藏效果，保证内容可见
+      document.documentElement.classList.add('js');
+      setTimeout(function () {
+        if (!window.__mainReady) document.documentElement.classList.remove('js');
+      }, 3000);
+    </script>
+  </head>
+  <body>
+    <Header lang={lang} />
+    <main>
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/main';
+    </script>
+  </body>
+</html>

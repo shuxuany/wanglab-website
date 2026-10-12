@@ -1,0 +1,37 @@
+---
+// 课题组标志：site.yaml 中设置了 logo 时使用图片，否则使用默认的「神经元」图形（成电蓝 + 橙色）
+import { site, asset } from '../lib/site';
+
+interface Props {
+  size?: number;
+  id?: string;
+}
+const { size = 32, id = 'logo' } = Astro.props;
+---
+
+{
+  site.logo ? (
+    <img class="logo" src={asset(site.logo)} alt="" width={size} height={size} />
+  ) : (
+    <svg class="logo" width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
+      <defs>
+        <linearGradient id={`${id}-g`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#2f86de" />
+          <stop offset="1" stop-color="#093b6d" />
+        </linearGradient>
+      </defs>
+      <rect width="64" height="64" rx="16" fill={`url(#${id}-g)`} />
+      <g stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".9">
+        <path d="M32 32 18 19M32 32l15-11M32 32l-14 14M32 32l16 12M32 32v-17" />
+      </g>
+      <g fill="#fff">
+        <circle cx="18" cy="19" r="3.4" />
+        <circle cx="47" cy="21" r="3.4" />
+        <circle cx="18" cy="46" r="3.4" />
+        <circle cx="48" cy="44" r="3.4" />
+        <circle cx="32" cy="15" r="2.6" />
+      </g>
+      <circle cx="32" cy="32" r="6.5" fill="#f57c40" />
+    </svg>
+  )
+}

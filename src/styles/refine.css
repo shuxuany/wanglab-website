@@ -1,0 +1,312 @@
+/* ==============================================================
+   版面收紧 + 配色细化（最后加载，覆盖前面的样式）
+   - 内容区放宽到 1320px，减少宽屏两侧留白
+   - 各区块上下间距收紧，首屏加浅蓝底衬托白色卡片
+   - 深蓝背景上的研究方向图标改为半透明描边风格，色彩更克制
+   ============================================================== */
+
+:root {
+  --page-tint: #edf3fa;
+  --page-tint-2: #f6f9fc;
+}
+
+/* ---------- 版心 ---------- */
+
+.container {
+  max-width: 1320px;
+  padding-inline: clamp(20px, 3vw, 40px);
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+
+/* ---------- 首屏：浅蓝底衬托白色轮播卡片 ---------- */
+
+.home-slider {
+  position: relative;
+  max-width: none;
+  padding-top: 22px;
+  padding-bottom: 6px;
+  background: linear-gradient(180deg, var(--page-tint) 0%, var(--page-tint-2) 55%, #fff 100%);
+}
+
+.home-slider > .slider {
+  max-width: calc(1320px - 2 * clamp(20px, 3vw, 40px));
+  margin-inline: auto;
+}
+
+@media (min-width: 900px) {
+  .slider {
+    height: clamp(430px, 37vw, 520px);
+  }
+}
+
+.slide-pi {
+  background:
+    radial-gradient(560px 360px at 100% 0%, rgba(11, 94, 178, 0.12), transparent 70%),
+    radial-gradient(420px 260px at 0% 100%, rgba(245, 124, 64, 0.09), transparent 70%),
+    radial-gradient(rgba(11, 94, 178, 0.07) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(180deg, #ffffff, #f1f6fb);
+}
+
+/* 宽屏：照片 | 简介 | 研究兴趣 三栏 */
+.slide-pi-aside {
+  display: none;
+}
+
+@media (min-width: 1180px) {
+  .slide-pi {
+    grid-template-columns: auto minmax(0, 1fr) 260px;
+    gap: 44px;
+    padding: 40px 56px 66px;
+  }
+
+  .slide-pi-bio {
+    max-width: none;
+  }
+
+  .slide-pi-interests {
+    display: none;
+  }
+
+  .slide-pi-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-self: center;
+    padding: 22px 22px 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 18px 40px -28px rgba(10, 35, 66, 0.45);
+    opacity: 0;
+    transform: translateX(16px);
+  }
+
+  .slide-pi.is-active .slide-pi-aside {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.8s var(--ease) 0.45s, transform 0.9s var(--ease) 0.45s;
+  }
+}
+
+.slide-pi-aside-title {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue-ink);
+}
+
+.slide-pi-aside-title small {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.slide-pi-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.slide-pi-tags li {
+  padding: 4px 11px;
+  border: 1px solid var(--blue-100);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--blue-deep);
+  background: var(--blue-50);
+}
+
+.slide-pi-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line-strong);
+  font-size: 13px;
+}
+
+.slide-pi-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.slide-pi-links a:hover {
+  color: var(--orange-deep);
+}
+
+/* ---------- 区块间距收紧 ---------- */
+
+.sec-head {
+  margin-bottom: 18px;
+}
+
+.sec-desc {
+  margin: -6px 0 20px;
+}
+
+.home-about {
+  gap: 40px;
+  padding-block: 40px 30px;
+}
+
+.about-lead {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.band-soft .home-grid {
+  gap: 40px;
+  padding-block: 40px 46px;
+}
+
+.band-soft {
+  background: linear-gradient(180deg, #edf3fa 0%, #f6f9fc 100%);
+}
+
+.band-soft .news-row {
+  margin-bottom: 12px;
+  padding: 14px;
+}
+
+.band-navy .home-section {
+  padding-block: 52px 58px;
+}
+
+.home-life {
+  padding-block: 46px 52px;
+}
+
+.venues {
+  padding-block: 26px 22px;
+}
+
+/* 子页面 */
+.page-title.has-photo .page-title-inner {
+  padding-block: 40px 44px;
+}
+
+.page-body {
+  padding-block: 34px 64px;
+}
+
+/* ---------- 研究方向：宽屏三列，图标改为半透明描边风格 ---------- */
+
+@media (min-width: 1100px) {
+  .band-navy .sub-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .band-navy .sub-card {
+    gap: 18px;
+    padding: 22px 22px 20px;
+  }
+
+  .band-navy .sub-icon {
+    width: 54px;
+    height: 54px;
+  }
+}
+
+.band-navy .sub-icon {
+  border: 1px solid color-mix(in srgb, var(--c) 55%, transparent);
+  color: color-mix(in srgb, var(--c) 45%, #fff);
+  background: color-mix(in srgb, var(--c) 22%, transparent);
+  box-shadow: none;
+}
+
+.band-navy .sub-card:hover .sub-icon {
+  color: #fff;
+  background: var(--c);
+  box-shadow: 0 10px 26px -8px color-mix(in srgb, var(--c) 85%, transparent);
+}
+
+.band-navy .sub-card {
+  border-color: rgba(255, 255, 255, 0.09);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
+}
+
+.band-navy .sub-sum {
+  margin: 8px 0 10px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 研究方向页、首页侧栏中的实心圆形图标也略微降低饱和度 */
+.sub-icon,
+.side-dir-icon {
+  background: color-mix(in srgb, var(--c) 88%, #0a2342);
+}
+
+/* ---------- 细节配色 ---------- */
+
+/* 滚动播报：与页脚同色系的深蓝，去掉偏亮的尾色 */
+.ticker {
+  background: linear-gradient(90deg, var(--navy-3) 0%, var(--navy) 45%, var(--navy-2) 100%);
+}
+
+/* 区块标题的英文副标题用暖灰，和橙色竖条呼应 */
+.sec-en {
+  color: #9aa5b5;
+}
+
+/* 新闻缩略图（论文类）用深蓝渐变，和数据卡一致 */
+.news-tile {
+  background: linear-gradient(140deg, #1c5fa8 0%, var(--navy-2) 45%, var(--navy) 100%);
+  background-size: 160% 160%;
+}
+
+/* ---------- 团队成员：版心放宽后卡片略放大，避免一行只占一半 ---------- */
+
+@media (min-width: 900px) {
+  .person-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px 24px;
+  }
+}
+
+/* ---------- 手机：卡片内边距收紧 ---------- */
+
+@media (max-width: 640px) {
+  .sub-card {
+    gap: 14px;
+    padding: 18px 16px 16px;
+  }
+
+  .sub-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .sub-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .band-navy .home-section {
+    padding-block: 40px 44px;
+  }
+
+  .home-about {
+    padding-block: 32px 24px;
+  }
+
+  .band-soft .home-grid {
+    padding-block: 32px 36px;
+  }
+}

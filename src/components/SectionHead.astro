@@ -1,0 +1,20 @@
+---
+// 区块标题：中文标题 + 英文小标题 + 一条会「画出来」的双横线（参考 USC MCL 的标题样式）
+interface Props {
+  title: string;
+  en?: string;
+  desc?: string;
+  id?: string;
+}
+const { title, en, desc, id } = Astro.props;
+---
+
+<div class="sec-head" data-reveal id={id}>
+  <h2 class="sec-title">
+    {title}
+    {en && <span class="sec-en">{en}</span>}
+  </h2>
+  <span class="sec-rule" aria-hidden="true"></span>
+  <slot name="action" />
+</div>
+{desc && <p class="sec-desc" data-reveal>{desc}</p>}

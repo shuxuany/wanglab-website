@@ -1,0 +1,723 @@
+# ==============================================================
+#  相关专利（国家发明专利）
+#  - 数据整理自国家知识产权局公开信息（2026-10 经 Google Patents 检索：发明人 王正宁，专利权人 电子科技大学）
+#  - 只列出已授权和仍在审查中的申请；已驳回、视为撤回的申请未列出
+#  - status：granted 已授权 / examining 实质审查中 / published 已公开
+#  - number：授权公告号（B）或申请公布号（A）；app_no：申请号（授权后专利号即 ZL + 申请号）
+#  - direction：对应 research.yaml 中的研究方向，可留空
+#  - 新增专利按同样格式添加即可，页面会自动按申请年份分组、统计数量
+# ==============================================================
+
+- title:
+    zh: "基于特征解耦与图神经网络的跨模态结构-功能连接映射方法"
+    en: "Cross-modal structure–function connectivity mapping method based on feature disentanglement and graph neural networks"
+  inventors:
+    zh: [高婧婧, 吴杰, 王正宁, 王家一, 许铭洋, 陈芳]
+    en: [Jingjing Gao, Jie Wu, Zhengning Wang, Jiayi Wang, Mingyang Xu, Fang Chen]
+  number: CN122510615A
+  app_no: "202610382779.0"
+  filed: 2026-03-26
+  published: 2026-08-04
+  status: examining
+  direction: brain
+
+- title:
+    zh: "一种基于自适应对齐与差异增强的缺陷检测方法"
+    en: "Defect detection method based on adaptive alignment and difference enhancement"
+  inventors:
+    zh: [王正宁, 李东升, 丁乐涵, 马浩然]
+    en: [Zhengning Wang, Dongsheng Li, Lehan Ding, Haoran Ma]
+  number: CN121861363A
+  app_no: "202512041848.X"
+  filed: 2025-12-31
+  published: 2026-04-14
+  status: examining
+  direction: perception
+
+- title:
+    zh: "一种基于自监督重构与多尺度特征融合的无对比缺陷检测方法"
+    en: "Reference-free defect detection method based on self-supervised reconstruction and multi-scale feature fusion"
+  inventors:
+    zh: [王正宁, 李东升, 丁乐涵, 马浩然]
+    en: [Zhengning Wang, Dongsheng Li, Lehan Ding, Haoran Ma]
+  number: CN121937772A
+  app_no: "202512041846.0"
+  filed: 2025-12-31
+  published: 2026-04-28
+  status: examining
+  direction: perception
+
+- title:
+    zh: "一种基于双阶段图神经网络的神经影像辅助处理方法及系统"
+    en: "Neuroimaging-assisted processing method and system based on a two-stage graph neural network"
+  inventors:
+    zh: [陈芳, 高婧婧, 王正宁, 许铭洋, 吴杰, 刘名琦]
+    en: [Fang Chen, Jingjing Gao, Zhengning Wang, Mingyang Xu, Jie Wu, Mingqi Liu]
+  number: CN121214166A
+  app_no: "202511415083.5"
+  filed: 2025-09-30
+  published: 2025-12-26
+  status: examining
+  direction: brain
+
+- title:
+    zh: "基于时空特征与多智能体强化学习的多机智能博弈方法"
+    en: "Multi-aircraft intelligent game method based on spatio-temporal features and multi-agent reinforcement learning"
+  inventors:
+    zh: [王正宁, 张毓丁, 匡育衡, 石镇瑜, 曲唐祺, 廖振宇]
+    en: [Zhengning Wang, Yuding Zhang, Yuheng Kuang, Zhenyu Shi, Tangqi Qu, Zhenyu Liao]
+  number: CN120523023A
+  app_no: "202510554280.9"
+  filed: 2025-04-29
+  published: 2025-08-22
+  status: examining
+  direction: agents
+
+- title:
+    zh: "基于可解释强化学习的空中对抗博弈方法"
+    en: "Air combat game method based on interpretable reinforcement learning"
+  inventors:
+    zh: [王正宁, 石镇瑜, 匡育衡, 张毓丁, 曲唐祺, 廖振宇]
+    en: [Zhengning Wang, Zhenyu Shi, Yuheng Kuang, Yuding Zhang, Tangqi Qu, Zhenyu Liao]
+  number: CN120523020A
+  app_no: "202510543364.2"
+  filed: 2025-04-28
+  published: 2025-08-22
+  status: examining
+  direction: agents
+
+- title:
+    zh: "基于双注意力时空图卷积的飞行器4D轨迹预测方法及系统"
+    en: "Aircraft 4D trajectory prediction method and system based on dual-attention spatio-temporal graph convolution"
+  inventors:
+    zh: [匡育衡, 王正宁, 印梦超, 王正, 张建平, 张毓丁, 石镇瑜]
+    en: [Yuheng Kuang, Zhengning Wang, Mengchao Yin, Zheng Wang, Jianping Zhang, Yuding Zhang, Zhenyu Shi]
+  number: CN119761580B
+  app_no: "202411888809.2"
+  filed: 2024-12-20
+  published: 2025-04-04
+  granted: 2025-10-10
+  status: granted
+  direction: agents
+
+- title:
+    zh: "一种阵元误差情况下的空时自适应处理方法和系统"
+    en: "Space–time adaptive processing method and system under array element errors"
+  inventors:
+    zh: [李明富, 李辉, 王正宁]
+    en: [Mingfu Li, Hui Li, Zhengning Wang]
+  number: CN118962629B
+  app_no: "202411443412.2"
+  filed: 2024-10-16
+  published: 2024-11-15
+  granted: 2024-12-17
+  status: granted
+
+- title:
+    zh: "基于图神经网络的多模态医学影像预测方法、设备、介质及产品"
+    en: "Graph-neural-network-based multimodal medical image prediction method, device, medium and product"
+  inventors:
+    zh: [王正宁, 刘佳昕, 高婧婧, 韩竞丹, 陈芳, 邹亿仙]
+    en: [Zhengning Wang, Jiaxin Liu, Jingjing Gao, Jingdan Han, Fang Chen, Yixian Zou]
+  number: CN118674701B
+  app_no: "202410776215.6"
+  filed: 2024-06-17
+  published: 2026-04-24
+  granted: 2026-04-24
+  status: granted
+  direction: brain
+
+- title:
+    zh: "一种匹配真实运动的事件相机数据集成方法及系统"
+    en: "Event camera data integration method and system matching real motion"
+  inventors:
+    zh: [刘帅成, 罗兴隆, 罗骜, 王正宁, 曾兵]
+    en: [Shuaicheng Liu, Xinglong Luo, Ao Luo, Zhengning Wang, Bing Zeng]
+  number: CN117876821B
+  app_no: "202410055528.2"
+  filed: 2024-01-15
+  published: 2026-06-19
+  granted: 2026-06-19
+  status: granted
+  direction: event
+
+- title:
+    zh: "基于事件相机计算光流的方法及系统、设备、介质"
+    en: "Method, system, device and medium for computing optical flow with event cameras"
+  inventors:
+    zh: [刘帅成, 罗兴隆, 罗骜, 王正宁, 曾兵]
+    en: [Shuaicheng Liu, Xinglong Luo, Ao Luo, Zhengning Wang, Bing Zeng]
+  number: CN117853534B
+  app_no: "202410037199.9"
+  filed: 2024-01-10
+  published: 2024-04-09
+  granted: 2026-05-19
+  status: granted
+  direction: event
+
+- title:
+    zh: "栅格化光流数据集合成的方法及系统、电子设备、介质"
+    en: "Method, system, device and medium for synthesizing rasterized optical flow datasets"
+  inventors:
+    zh: [刘帅成, 罗兴隆, 罗骜, 王正宁, 曾兵]
+    en: [Shuaicheng Liu, Xinglong Luo, Ao Luo, Zhengning Wang, Bing Zeng]
+  number: CN117830359A
+  app_no: "202410031717.6"
+  filed: 2024-01-09
+  published: 2024-04-05
+  status: examining
+  direction: event
+
+- title:
+    zh: "一种基于注意力机制的低照度图像去噪增强方法"
+    en: "Attention-based low-light image denoising and enhancement method"
+  inventors:
+    zh: [王正宁, 胥鹏, 丁桢炎, 匡育衡, 刘旭航, 何中国]
+    en: [Zhengning Wang, Peng Xu, Zhenyan Ding, Yuheng Kuang, Xuhang Liu, Zhongguo He]
+  number: CN116433516A
+  app_no: "202310325969.5"
+  filed: 2023-03-30
+  published: 2023-07-14
+  status: examining
+  direction: restore
+
+- title:
+    zh: "一种基于重建流场的压缩视频质量增强方法"
+    en: "Compressed video quality enhancement method based on reconstructed flow fields"
+  inventors:
+    zh: [王正宁, 刘旭航, 刘帅成, 徐宇航, 罗兴隆, 朱旭, 匡育衡]
+    en: [Zhengning Wang, Xuhang Liu, Shuaicheng Liu, Yuhang Xu, Xinglong Luo, Xu Zhu, Yuheng Kuang]
+  number: CN116012272B
+  app_no: "202310059698.3"
+  filed: 2023-01-19
+  published: 2025-05-13
+  granted: 2025-05-13
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种基于全局特征和引导信息的特征点检测与描述方法"
+    en: "Feature point detection and description method based on global features and guidance information"
+  inventors:
+    zh: [王正宁, 商勇彬, 曾珍妮, 罗兴隆, 冯妤婕]
+    en: [Zhengning Wang, Yongbin Shang, Zhenni Zeng, Xinglong Luo, Yujie Feng]
+  number: CN115482392B
+  app_no: "202211174221.1"
+  filed: 2022-09-26
+  published: 2022-12-16
+  granted: 2025-08-19
+  status: granted
+  direction: perception
+
+- title:
+    zh: "一种端到端旋转鲁棒的特征点检测与描述方法"
+    en: "End-to-end rotation-robust feature point detection and description method"
+  inventors:
+    zh: [王正宁, 商勇彬, 彭大伟, 刘旭航]
+    en: [Zhengning Wang, Yongbin Shang, Dawei Peng, Xuhang Liu]
+  number: CN115588106B
+  app_no: "202211173867.8"
+  filed: 2022-09-26
+  published: 2023-01-10
+  granted: 2026-03-27
+  status: granted
+  direction: perception
+
+- title:
+    zh: "一种基于推理的两阶段浓雾图像去雾方法"
+    en: "Inference-based two-stage dehazing method for dense-fog images"
+  inventors:
+    zh: [王正宁, 奚伟航, 刘晓宁, 丁桢炎]
+    en: [Zhengning Wang, Weihang Xi, Xiaoning Liu, Zhenyan Ding]
+  number: CN115187474B
+  app_no: "202210719935.X"
+  filed: 2022-06-23
+  published: 2022-10-14
+  granted: 2025-09-12
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种半参考的图像去雾算法评估方法"
+    en: "Semi-reference evaluation method for image dehazing algorithms"
+  inventors:
+    zh: [王正宁, 奚伟航, 刘晓宁, 丁桢炎]
+    en: [Zhengning Wang, Weihang Xi, Xiaoning Liu, Zhenyan Ding]
+  number: CN115187471B
+  app_no: "202210701142.5"
+  filed: 2022-06-20
+  published: 2022-10-14
+  granted: 2026-02-17
+  status: granted
+  direction: restore
+
+- title:
+    zh: "基于图神经网络和自注意力的磁共振影像辅助处理系统"
+    en: "MRI-assisted processing system based on graph neural networks and self-attention"
+  inventors:
+    zh: [高婧婧, 王正宁, 彭大伟, 吴岳潼, 商勇彬, 徐宇航]
+    en: [Jingjing Gao, Zhengning Wang, Dawei Peng, Yuetong Wu, Yongbin Shang, Yuhang Xu]
+  number: CN114743053B
+  app_no: "202210390708.7"
+  filed: 2022-04-14
+  published: 2023-04-25
+  granted: 2023-04-25
+  status: granted
+  direction: brain
+
+- title:
+    zh: "基于图神经网络和对比学习的磁共振影像辅助处理系统"
+    en: "MRI-assisted processing system based on graph neural networks and contrastive learning"
+  inventors:
+    zh: [王正宁, 高婧婧, 彭大伟, 吴岳潼, 徐宇航, 商勇彬]
+    en: [Zhengning Wang, Jingjing Gao, Dawei Peng, Yuetong Wu, Yuhang Xu, Yongbin Shang]
+  number: CN114757911B
+  app_no: "202210390815.X"
+  filed: 2022-04-14
+  published: 2023-04-07
+  granted: 2023-04-07
+  status: granted
+  direction: brain
+
+- title:
+    zh: "用于互联网金融风控的异常数据筛选方法"
+    en: "Anomalous data screening method for Internet financial risk control"
+  inventors:
+    zh: [李开恒, 岳钧, 王子凡, 赵文宇, 赵灿阳, 涂俊, 王正宁]
+    en: [Kaiheng Li, Jun Yue, Zifan Wang, Wenyu Zhao, Canyang Zhao, Jun Tu, Zhengning Wang]
+  number: CN114511399B
+  app_no: "202210138272.2"
+  filed: 2022-02-15
+  published: 2022-05-17
+  granted: 2023-12-15
+  status: granted
+
+- title:
+    zh: "一种端到端抗块效应低照度图像增强方法"
+    en: "End-to-end deblocking low-light image enhancement method"
+  inventors:
+    zh: [王正宁, 曾仪, 彭大伟, 曾浩, 刘怡君, 冯妤婕]
+    en: [Zhengning Wang, Yi Zeng, Dawei Peng, Hao Zeng, Yijun Liu, Yujie Feng]
+  number: CN112819707B
+  app_no: "202110056964.8"
+  filed: 2021-01-15
+  published: 2021-05-18
+  granted: 2022-05-03
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种基于多方向全变分的图像去噪方法"
+    en: "Image denoising method based on multi-directional total variation"
+  inventors:
+    zh: [朱树元, 尹诗颖, 王忠荣, 王正宁, 刘光辉]
+    en: [Shuyuan Zhu, Shiying Yin, Zhongrong Wang, Zhengning Wang, Guanghui Liu]
+  number: CN112508807B
+  app_no: "202011350640.7"
+  filed: 2020-11-26
+  published: 2021-03-16
+  granted: 2023-07-21
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种针对VVC帧内编码单元划分的快速决策方法"
+    en: "Fast decision method for VVC intra coding unit partitioning"
+  inventors:
+    zh: [朱树元, 刘何为, 曾兵, 刘光辉, 王正宁, 王忠荣]
+    en: [Shuyuan Zhu, Hewei Liu, Bing Zeng, Guanghui Liu, Zhengning Wang, Zhongrong Wang]
+  number: CN112104868B
+  app_no: "202011219665.3"
+  filed: 2020-11-05
+  published: 2021-02-05
+  granted: 2021-02-05
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种基于先验信息和卷积神经网络的视频去噪方法"
+    en: "Video denoising method based on prior information and convolutional neural networks"
+  inventors:
+    zh: [朱树元, 申屠敏健, 王忠荣, 曾辽原, 王正宁, 刘光辉]
+    en: [Shuyuan Zhu, Minjian Shentu, Zhongrong Wang, Liaoyuan Zeng, Zhengning Wang, Guanghui Liu]
+  number: CN112019704B
+  app_no: "202011100020.8"
+  filed: 2020-10-15
+  published: 2021-02-05
+  granted: 2021-02-05
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种抗块效应的图像视频增强方法"
+    en: "Deblocking enhancement method for images and videos"
+  inventors:
+    zh: [王正宁, 曾仪, 曾浩, 刘怡君, 彭大伟, 奚伟航]
+    en: [Zhengning Wang, Yi Zeng, Hao Zeng, Yijun Liu, Dawei Peng, Weihang Xi]
+  number: CN112215767B
+  app_no: "202011036966.2"
+  filed: 2020-09-28
+  published: 2021-01-12
+  granted: 2023-03-14
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种全局多阶段目标跟踪方法"
+    en: "Global multi-stage object tracking method"
+  inventors:
+    zh: [王正宁, 赵德明, 曾浩, 曾仪, 奚伟航, 刘怡君]
+    en: [Zhengning Wang, Deming Zhao, Hao Zeng, Yi Zeng, Weihang Xi, Yijun Liu]
+  number: CN112215079B
+  app_no: "202010972556.2"
+  filed: 2020-09-16
+  published: 2022-03-15
+  granted: 2022-03-15
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种利用时序信息的目标跟踪方法"
+    en: "Object tracking method exploiting temporal information"
+  inventors:
+    zh: [王正宁, 曾浩, 赵德明, 彭大伟, 曾仪, 刘怡君]
+    en: [Zhengning Wang, Hao Zeng, Deming Zhao, Dawei Peng, Yi Zeng, Yijun Liu]
+  number: CN112215080B
+  app_no: "202010974350.3"
+  filed: 2020-09-16
+  published: 2022-05-03
+  granted: 2022-05-03
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种基于编解码结构的目标跟踪方法"
+    en: "Object tracking method based on an encoder–decoder structure"
+  inventors:
+    zh: [王正宁, 曾浩, 潘力立, 赵德明, 曾仪, 刘怡君, 彭大伟]
+    en: [Zhengning Wang, Hao Zeng, Lili Pan, Deming Zhao, Yi Zeng, Yijun Liu, Dawei Peng]
+  number: CN111696136B
+  app_no: "202010518310.8"
+  filed: 2020-06-09
+  published: 2020-09-22
+  granted: 2023-06-16
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种基于多层特征混合与注意力机制的目标跟踪方法"
+    en: "Object tracking method based on multi-layer feature mixing and attention"
+  inventors:
+    zh: [王正宁, 曾浩, 潘力立, 何庆东, 刘怡君, 曾仪, 彭大伟]
+    en: [Zhengning Wang, Hao Zeng, Lili Pan, Qingdong He, Yijun Liu, Yi Zeng, Dawei Peng]
+  number: CN111696137B
+  app_no: "202010518472.1"
+  filed: 2020-06-09
+  published: 2022-08-02
+  granted: 2022-08-02
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "基于色彩空间转换的马赛克图像压缩方法"
+    en: "Mosaic image compression method based on color space conversion"
+  inventors:
+    zh: [朱树元, 贺康, 王忠荣, 刘光辉, 王正宁]
+    en: [Shuyuan Zhu, Kang He, Zhongrong Wang, Guanghui Liu, Zhengning Wang]
+  number: CN111654705B
+  app_no: "202010505297.2"
+  filed: 2020-06-05
+  published: 2022-11-11
+  granted: 2022-11-11
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种3D目标检测方法"
+    en: "3D object detection method"
+  inventors:
+    zh: [王正宁, 吕侠, 何庆东, 赵德明, 张翔, 蓝先迪]
+    en: [Zhengning Wang, Xia Lyu, Qingdong He, Deming Zhao, Xiang Zhang, Xiandi Lan]
+  number: CN111079685B
+  app_no: "201911354155.4"
+  filed: 2019-12-25
+  published: 2022-07-26
+  granted: 2022-07-26
+  status: granted
+  direction: perception
+
+- title:
+    zh: "一种基于数据融合的3D目标检测方法"
+    en: "3D object detection method based on data fusion"
+  inventors:
+    zh: [王正宁, 吕侠, 赵德明, 何庆东, 蓝先迪, 张翔]
+    en: [Zhengning Wang, Xia Lyu, Deming Zhao, Qingdong He, Xiandi Lan, Xiang Zhang]
+  number: CN111160214B
+  app_no: "201911354164.3"
+  filed: 2019-12-25
+  published: 2022-03-15
+  granted: 2022-03-15
+  status: granted
+  direction: perception
+
+- title:
+    zh: "一种基于时空约束的长时目标跟踪方法"
+    en: "Long-term object tracking method based on spatio-temporal constraints"
+  inventors:
+    zh: [王正宁, 赵德明, 何庆东, 蓝先迪, 曾浩, 刘怡君, 曾怡]
+    en: [Zhengning Wang, Deming Zhao, Qingdong He, Xiandi Lan, Hao Zeng, Yijun Liu, Yi Zeng]
+  number: CN110942471B
+  app_no: "201911057813.3"
+  filed: 2019-11-01
+  published: 2022-07-01
+  granted: 2022-07-01
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种面向航拍影像的目标跟踪方法"
+    en: "Object tracking method for aerial imagery"
+  inventors:
+    zh: [王正宁, 赵德明, 何庆东, 蓝先迪, 曾浩, 曾怡, 刘怡君]
+    en: [Zhengning Wang, Deming Zhao, Qingdong He, Xiandi Lan, Hao Zeng, Yi Zeng, Yijun Liu]
+  number: CN110796679B
+  app_no: "201911043274.8"
+  filed: 2019-10-30
+  published: 2023-04-07
+  granted: 2023-04-07
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种复杂环境交通信号灯候选区域提取及识别方法"
+    en: "Traffic light candidate region extraction and recognition method for complex environments"
+  inventors:
+    zh: [王正宁, 曾凡伟, 吕侠, 张翔, 何庆东, 赵德明, 陈远鹏]
+    en: [Zhengning Wang, Fanwei Zeng, Xia Lyu, Xiang Zhang, Qingdong He, Deming Zhao, Yuanpeng Chen]
+  number: CN109711379B
+  app_no: "201910002424.4"
+  filed: 2019-01-02
+  published: 2019-05-03
+  granted: 2022-03-15
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种3D的道路车辆跟踪方法"
+    en: "3D road vehicle tracking method"
+  inventors:
+    zh: [王正宁, 吕侠, 张翔, 周阳, 曾凡伟, 何庆东]
+    en: [Zhengning Wang, Xia Lyu, Xiang Zhang, Yang Zhou, Fanwei Zeng, Qingdong He]
+  number: CN109285180B
+  app_no: "201811007255.5"
+  filed: 2018-08-31
+  published: 2019-01-29
+  granted: 2021-09-24
+  status: granted
+  direction: perception
+
+- title:
+    zh: "一种道路车辆跟踪方法"
+    en: "Road vehicle tracking method"
+  inventors:
+    zh: [王正宁, 吕侠, 张翔, 周阳, 曾凡伟, 赵德明]
+    en: [Zhengning Wang, Xia Lyu, Xiang Zhang, Yang Zhou, Fanwei Zeng, Deming Zhao]
+  number: CN109344712B
+  app_no: "201811007277.1"
+  filed: 2018-08-31
+  published: 2021-09-24
+  granted: 2021-09-24
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种基于区域划分和渐变映射的异源图像配准优化方法"
+    en: "Heterogeneous image registration optimization method based on region partitioning and gradient mapping"
+  inventors:
+    zh: [王帅, 赵希, 胡佃敏, 段昶, 刘建磊, 王正宁, 胡修权]
+    en: [Shuai Wang, Xi Zhao, Dianmin Hu, Chang Duan, Jianlei Liu, Zhengning Wang, Xiuquan Hu]
+  number: CN108133493B
+  app_no: "201810023067.5"
+  filed: 2018-01-10
+  published: 2021-10-22
+  granted: 2021-10-22
+  status: granted
+
+- title:
+    zh: "一种面向识别的远距离人脸图像增强方法"
+    en: "Recognition-oriented enhancement method for long-distance face images"
+  inventors:
+    zh: [王正宁, 马姗姗, 段慧萍, 周阳]
+    en: [Zhengning Wang, Shanshan Ma, Huiping Duan, Yang Zhou]
+  number: CN107516083B
+  app_no: "201710757108.9"
+  filed: 2017-08-29
+  published: 2017-12-26
+  granted: 2020-06-16
+  status: granted
+  direction: restore
+
+- title:
+    zh: "多相机网络时空模型的候选目标提取方法"
+    en: "Candidate target extraction method based on a spatio-temporal model of multi-camera networks"
+  inventors:
+    zh: [王正宁, 周阳, 马姗姗, 吕侠, 冯龙飞]
+    en: [Zhengning Wang, Yang Zhou, Shanshan Ma, Xia Lyu, Longfei Feng]
+  number: CN107705327B
+  app_no: "201710757729.7"
+  filed: 2017-08-29
+  published: 2020-08-11
+  granted: 2020-08-11
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种违章变道检测方法"
+    en: "Illegal lane-change detection method"
+  inventors:
+    zh: [王正宁, 周阳, 马姗姗, 潘力立, 吕侠]
+    en: [Zhengning Wang, Yang Zhou, Shanshan Ma, Lili Pan, Xia Lyu]
+  number: CN107563310B
+  app_no: "201710702929.2"
+  filed: 2017-08-16
+  published: 2020-06-16
+  granted: 2020-06-16
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种光场图像压缩方法"
+    en: "Light field image compression method"
+  inventors:
+    zh: [王正宁, 柏祁林, 蒋妍, 韩明燕]
+    en: [Zhengning Wang, Qilin Bai, Yan Jiang, Mingyan Han]
+  number: CN106375766B
+  app_no: "201610809326.8"
+  filed: 2016-09-08
+  published: 2018-12-18
+  granted: 2018-12-18
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种多特征权值自适应的阴影消除方法"
+    en: "Shadow removal method with adaptive multi-feature weighting"
+  inventors:
+    zh: [王正宁, 柏祁林, 韩明燕, 周阳, 马姗姗]
+    en: [Zhengning Wang, Qilin Bai, Mingyan Han, Yang Zhou, Shanshan Ma]
+  number: CN106373096B
+  app_no: "201610763677.X"
+  filed: 2016-08-30
+  published: 2017-02-01
+  granted: 2019-03-05
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种基于相关高斯过程回归的面部年龄估计方法"
+    en: "Facial age estimation method based on correlated Gaussian process regression"
+  inventors:
+    zh: [潘力立, 王正宁, 郑亚莉]
+    en: [Lili Pan, Zhengning Wang, Yali Zheng]
+  number: CN105426872B
+  app_no: "201510955985.8"
+  filed: 2015-12-17
+  published: 2016-03-23
+  granted: 2019-06-21
+  status: granted
+  direction: multimodal
+
+- title:
+    zh: "一种基于图像特征点的最优投影柱面半径确定方法"
+    en: "Method for determining the optimal cylindrical projection radius from image feature points"
+  inventors:
+    zh: [倪霄龙, 蒋妍, 朱永芸, 谢海平, 王正宁]
+    en: [Xiaolong Ni, Yan Jiang, Yongyun Zhu, Haiping Xie, Zhengning Wang]
+  number: CN105069750B
+  app_no: "201510488022.1"
+  filed: 2015-08-11
+  published: 2015-11-18
+  granted: 2019-02-22
+  status: granted
+
+- title:
+    zh: "一种基于亮度自适应配准的图像拼接方法"
+    en: "Image stitching method based on brightness-adaptive registration"
+  inventors:
+    zh: [王正宁, 倪霄龙, 蒋妍, 朱永芸]
+    en: [Zhengning Wang, Xiaolong Ni, Yan Jiang, Yongyun Zhu]
+  number: CN105046643B
+  app_no: "201510390927.5"
+  filed: 2015-07-06
+  published: 2017-12-15
+  granted: 2017-12-15
+  status: granted
+
+- title:
+    zh: "一种基于边缘检测的视频去隔行方法"
+    en: "Video deinterlacing method based on edge detection"
+  inventors:
+    zh: [王正宁, 刘光辉, 王忠荣, 吴庆波, 曾辽原, 李宏亮]
+    en: [Zhengning Wang, Guanghui Liu, Zhongrong Wang, Qingbo Wu, Liaoyuan Zeng, Hongliang Li]
+  number: CN103024331B
+  app_no: "2012105740605"
+  filed: 2012-12-26
+  published: 2013-04-03
+  granted: 2015-04-15
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种基于边缘和运动检测的视频去隔行方法"
+    en: "Video deinterlacing method based on edge and motion detection"
+  inventors:
+    zh: [王正宁, 许林峰, 熊健, 伍博, 刘光辉, 李宏亮]
+    en: [Zhengning Wang, Linfeng Xu, Jian Xiong, Bo Wu, Guanghui Liu, Hongliang Li]
+  number: CN103024332B
+  app_no: "2012105741133"
+  filed: 2012-12-26
+  published: 2013-04-03
+  granted: 2015-05-27
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种用于TDS-OFDM系统的信道估计方法"
+    en: "Channel estimation method for TDS-OFDM systems"
+  inventors:
+    zh: [刘光辉, 焦晋科, 曾辽原, 王正宁]
+    en: [Guanghui Liu, Jinke Jiao, Liaoyuan Zeng, Zhengning Wang]
+  number: CN102957641B
+  app_no: "2012105138644"
+  filed: 2012-12-05
+  published: 2013-03-06
+  granted: 2015-04-15
+  status: granted
+
+- title:
+    zh: "一种基于暗通道信息的图像去雾方法"
+    en: "Image dehazing method based on dark channel information"
+  inventors:
+    zh: [王正宁, 许林峰, 曾辽原, 刘光辉, 李宏亮, 黄敏]
+    en: [Zhengning Wang, Linfeng Xu, Liaoyuan Zeng, Guanghui Liu, Hongliang Li, Min Huang]
+  number: CN102968772B
+  app_no: "201210511068.7"
+  filed: 2012-12-04
+  published: 2016-01-13
+  granted: 2016-01-13
+  status: granted
+  direction: restore
+
+- title:
+    zh: "一种基于纹理的自适应图像去雾方法"
+    en: "Texture-based adaptive image dehazing method"
+  inventors:
+    zh: [王正宁, 曾辽原, 许林峰, 李宏亮, 刘光辉, 韩子奇]
+    en: [Zhengning Wang, Liaoyuan Zeng, Linfeng Xu, Hongliang Li, Guanghui Liu, Ziqi Han]
+  number: CN102982513B
+  app_no: "201210512540.9"
+  filed: 2012-12-04
+  published: 2015-08-19
+  granted: 2015-08-19
+  status: granted
+  direction: restore

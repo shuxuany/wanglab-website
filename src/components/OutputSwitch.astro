@@ -1,0 +1,31 @@
+---
+// 科研成果的两个子页面切换：学术论文 / 相关专利
+import Icon from './Icon.astro';
+import { publications, patents, href, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+  active: 'papers' | 'patents';
+}
+const { lang, active } = Astro.props;
+const u = ui[lang];
+const items = [
+  { id: 'papers', label: u.outputs.papers, icon: 'doc', count: publications.length, href: href('publications', lang) },
+  { id: 'patents', label: u.outputs.patents, icon: 'award', count: patents.length, href: href('publications/patents', lang) },
+];
+---
+
+<nav class="output-switch" aria-label={u.nav.publications} data-reveal>
+  {
+    items.map((it) => (
+      <a class:list={['output-tab', { 'is-active': it.id === active }]} href={it.href} aria-current={it.id === active ? 'page' : undefined}>
+        <span class="output-icon">
+          <Icon name={it.icon} size={20} />
+        </span>
+        <span class="output-label">{it.label}</span>
+        <span class="output-count">{it.count}</span>
+      </a>
+    ))
+  }
+</nav>

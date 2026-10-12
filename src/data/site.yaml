@@ -1,0 +1,110 @@
+# ==============================================================
+#  课题组基本信息
+#  - 带 zh / en 的字段分别填写中文和英文
+#  - 只写一个字符串时，中英文页面显示同样的内容
+#  - 保存后本地预览会自动刷新
+# ==============================================================
+
+name:
+  zh: 王正宁课题组
+  en: Zhengning Wang Lab
+
+# 导航栏左上角显示的简称
+short_name:
+  zh: 王正宁课题组
+  en: Wang Lab · UESTC
+
+# 课题组 Logo（可选）：图片放到 public/images/ 下，填写如 images/logo.svg；留空使用默认图标
+logo: ""
+
+affiliation:
+  zh: 电子科技大学 · 信息与通信工程学院
+  en: School of Information and Communication Engineering, UESTC
+
+# 顶部深蓝条右侧显示的学校名称（链接到学校官网）
+university:
+  name: { zh: 电子科技大学, en: University of Electronic Science and Technology of China }
+  short: UESTC
+  url: https://www.uestc.edu.cn
+  # 学校标志（显示在页面右上角）；文件不存在时显示文字版校名
+  logo: images/uestc-logo.png
+
+# 刊头大标题下方的英文名
+lab_en: Zhengning Wang Lab
+
+# 刊头背景照片（校园风景，横幅比例最佳，如 1900×384）；文件不存在时显示浅色渐变
+masthead_image: images/campus.jpg
+
+# 首页轮播图中的照片（可选，例如课题组合影、学术活动照片）
+# 照片放在 public/images/slides/ 下，显示在第一张「导师介绍」之后、各方向代表性论文之前
+slides: []
+#  - image: images/slides/group-2026.jpg
+#    caption: { zh: 2026 届毕业生合影, en: Class of 2026 }
+#    link: ""
+
+tagline:
+  zh: 让机器看懂世界，用智能理解大脑
+  en: Teaching machines to see — and using AI to understand the brain
+
+# 首页第二屏的介绍（滚动时逐字点亮）
+intro:
+  zh: 我们是电子科技大学信息与通信工程学院王正宁教授领导的研究团队，从事多媒体通信、图像处理、计算机视觉与人工智能研究。从事件相机到三维点云，从低照度图像到人脑影像，我们让算法在真实世界中看得清、看得懂，并持续学习与进化。
+  en: We are the research group led by Prof. Zhengning Wang at the School of Information and Communication Engineering, UESTC, working on multimedia communication, image processing, computer vision and artificial intelligence. From event cameras to 3D point clouds, from low-light images to human brain scans, we build algorithms that see clearly, understand deeply, and keep learning in the real world.
+
+# 首页数据栏（value 为数字，suffix 为后缀）
+stats:
+  - value: 76
+    suffix: ""
+    label: { zh: 收录论文, en: Publications }
+  - value: 30
+    suffix: "+"
+    label: { zh: 国家发明专利, en: Patents }
+  - value: 8
+    suffix: ""
+    label: { zh: 主持科研项目, en: Funded projects }
+  - value: 6
+    suffix: ""
+    label: { zh: 研究方向, en: Research areas }
+
+# 首页滚动展示的期刊与会议
+venues: [IEEE TPAMI, CVPR, ICCV, AAAI, ACM MM, Medical Image Analysis, IEEE TIP, IEEE TITS, IEEE TMM, Pattern Recognition, Schizophrenia Bulletin, Cerebral Cortex, IEEE TCSVT, ICASSP, IEEE TVLSI, CICC]
+
+contact:
+  email: zhengning.wang@uestc.edu.cn
+  phone: ""
+  address:
+    zh: 四川省成都市高新区（西区）西源大道 2006 号 电子科技大学清水河校区 信息与通信工程学院科研楼 KC322，611731
+    en: Room KC322, Research Building, School of Information and Communication Engineering, Qingshuihe Campus, UESTC, 2006 Xiyuan Ave, Chengdu 611731, China
+
+# 各页面顶部的说明文字
+pages:
+  research:
+    zh: 课题组围绕以下六个方向开展研究，覆盖医学影像分析、视觉感知、图像复原与智能决策。
+    en: Our research spans six directions — from medical image analysis and visual perception to image restoration and intelligent decision-making.
+  people:
+    zh: 一群对人工智能充满热情的人，在这里相遇、合作、成长。
+    en: A group of people passionate about AI who meet, collaborate and grow together here.
+  publications:
+    zh: 课题组发表的学术论文。加粗为课题组成员，* 为通讯作者，# 为共同第一作者。
+    en: "Papers published by the group. Group members in bold, * corresponding author, # equal contribution."
+  patents:
+    zh: 课题组获得授权和正在审查中的国家发明专利。加粗为课题组成员。
+    en: Chinese invention patents granted to or filed by the group. Group members in bold.
+  news:
+    zh: 课题组的最新进展、获奖与活动。
+    en: Latest updates, awards and events from the group.
+  life:
+    zh: 科研之外，我们也一起学习、交流、出游与庆祝。
+    en: Beyond research, we learn, travel and celebrate together.
+
+# 页脚的外部链接（可增删）
+links:
+  - label: { zh: 电子科技大学, en: UESTC }
+    url: https://www.uestc.edu.cn
+  - label: { zh: 信息与通信工程学院, en: School of ICE }
+    url: https://www.sice.uestc.edu.cn
+  - label: { zh: 王正宁教师主页, en: Faculty profile }
+    url: https://faculty.uestc.edu.cn/wangzhengning/zh_CN/index.htm
+
+# 网站备案号（以后放到国内服务器时填写，留空不显示）
+icp: ""

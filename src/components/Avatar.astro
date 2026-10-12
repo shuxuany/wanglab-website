@@ -1,0 +1,23 @@
+---
+import { t, asset, initials, avatarColors, type Lang, type Text } from '../lib/site';
+
+interface Props {
+  name: Text;
+  photo?: string;
+  lang: Lang;
+  size?: number;
+}
+const { name, photo, lang, size = 64 } = Astro.props;
+const label = t(name, lang);
+const [c1, c2] = avatarColors(t(name, 'en') || label);
+---
+
+<span class="avatar" style={`--size:${size}px;--c1:${c1};--c2:${c2}`}>
+  {
+    photo ? (
+      <img src={asset(photo)} alt={label} loading="lazy" width={size} height={size} />
+    ) : (
+      <span aria-hidden="true">{initials(name, lang)}</span>
+    )
+  }
+</span>

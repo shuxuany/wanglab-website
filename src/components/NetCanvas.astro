@@ -1,0 +1,14 @@
+---
+// 页面标题带的动态神经网络背景（theme="light" 用于浅色背景）
+interface Props {
+  density?: number;
+  theme?: 'light' | 'dark';
+}
+const { density = 1, theme = 'dark' } = Astro.props;
+---
+
+<canvas class="net-canvas" data-net data-density={density} data-theme={theme} aria-hidden="true"></canvas>
+
+<script>
+  import '../scripts/network';
+</script>

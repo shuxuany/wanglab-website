@@ -1,0 +1,682 @@
+# ==============================================================
+#  论文成果（网页会自动按年份倒序排列）
+#  数据来源：OpenAlex 学术数据库（2026-10 检索），已人工剔除重名误归属与重复的预印本条目。
+#  可能有遗漏（如中文期刊、最新录用论文），请补充或修改。
+#
+#  - authors：作者列表；通讯作者在名字后加 *，共同第一作者加 #
+#             与 members.yaml 中英文名或 aliases 一致的作者会自动加粗
+#  - short：期刊/会议简称，显示为醒目标签
+#  - direction：对应 research.yaml 中的 id（brain / event / restore / perception / agents / multimodal），
+#               留空表示不归入任何方向（仍会显示在论文页）
+#  - featured: true 的论文显示在首页「代表性成果」（建议每个方向 1 篇）
+#  - badge：可选标签，如 封面文章 / Oral / Best Paper
+#  - figure：论文核心结构图，放在 public/images/papers/ 下，显示在首页轮播图中；figure_caption 为图注
+#  - slide：是否出现在首页轮播图中（不填时与 featured 相同）
+#  - doi / pdf / code：都可以留空；填了 pdf 时，首页轮播的「阅读论文」按钮会直接打开 PDF
+#    注意：pdf 只能填可以合法公开的版本（arXiv、开放获取、作者录用稿），
+#    Elsevier / IEEE 等出版社的正式版 PDF 不允许放在公开网站上
+# ==============================================================
+
+- title: "HySTAR: Anchored Hypergraphs for Stable Credit Assignment in Cooperative Multi-Agent Reinforcement Learning"
+  authors: ["Xinglong Luo", "Yuding Zhang", "Yuheng Kuang", "Shuxuan Yuan", "Zhenni Zeng", "Weiqiang Zhu", "Zhenhai Ji", "Zhengning Wang"]
+  venue: "arXiv preprint"
+  short: "arXiv"
+  year: 2026
+  doi: "10.48550/arxiv.2609.31531"
+  direction: agents
+  badge: { zh: 预印本, en: Preprint }
+
+- title: "Bandwidth-Constrained Aerial Edge Perception for Ground Traversability Mapping over Digital Links"
+  authors: ["Ziheng Liu", "Yao Li", "Yong Qiang JIA", "Fanqiang Lin", "Zhengning Wang", "shaoqin Yuan"]
+  venue: "Electronics"
+  year: 2026
+  volume: "15(17), 3893"
+  doi: "10.3390/electronics15173893"
+  direction: perception
+
+- title: "Enhanced multimodal MRI classification of schizophrenia through cross-attention graph neural networks"
+  authors: ["Jiahui Gao", "Jie Wu", "Maomin Qian", "Zhengning Wang", "Yanling Li", "Na Luo", "Xin Dai", "Weiyang Shi", "Peng Li", "Jun Chen", "Yunchun Chen", "Huaning Wang", "Wenming Liu", "Zhigang Li", "Yongfeng Yang", "Hua Guo", "Ping Wan", "Luxian Lv", "Lin Lu", "Jun Yan", "Yuqing Song", "Huiling Wang", "Hongxing Zhang", "Yuhui Du", "Yuqi Cheng", "Jian Xu", "Xiufeng Xu", "Dai Zhang", "Tianzi Jiang"]
+  venue: "Medical Image Analysis"
+  short: "MedIA"
+  year: 2026
+  volume: "113, 104218"
+  doi: "10.1016/j.media.2026.104218"
+  direction: brain
+  featured: true
+  slide: false
+
+- title: "DMAligner: Enhancing Image Alignment via Diffusion Model Based View Synthesis"
+  authors: ["Xinglong Luo", "Ao Luo", "Zhengning Wang", "Yueqi Yang", "Chaoyu Feng", "Lei Lei", "Bing Zeng", "Shuaicheng Liu"]
+  venue: "arXiv preprint"
+  short: "arXiv"
+  year: 2026
+  doi: "10.48550/arxiv.2602.23022"
+  direction: event
+  badge: { zh: 预印本, en: Preprint }
+
+- title: "R²MoE: Redundancy-Removal Mixture of Experts for Lifelong Concept Learning"
+  authors: ["Xiaohan Guo", "Yusong Cai", "Zejia Liu", "Zhengning Wang", "Lili Pan", "Hongliang Li"]
+  venue: "IEEE Transactions on Multimedia"
+  short: "IEEE TMM"
+  year: 2026
+  doi: "10.1109/tmm.2026.3724696"
+  direction: multimodal
+
+- title: "Learning Efficient Meshflow and Optical Flow From Event Cameras"
+  authors: ["Xinglong Luo", "Ao Luo", "Kunming Luo", "Zhengning Wang", "Ping Tan", "Bing Zeng", "Shuaicheng Liu"]
+  venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence"
+  short: "IEEE TPAMI"
+  year: 2025
+  volume: "48(2), 1355–1372"
+  doi: "10.1109/tpami.2025.3615144"
+  pdf: https://arxiv.org/pdf/2510.04111
+  direction: event
+  featured: true
+  figure: images/papers/eemflow-arch.png
+  figure_caption:
+    zh: EEMFlow 网络结构（论文 Fig. 6，来源：arXiv:2510.04111）
+    en: "EEMFlow network architecture (Fig. 6, from arXiv:2510.04111)"
+
+- title: "MTDA-STGCN: Modern Temporal and Dual-Attention-Based Spatiotemporal Graph Convolutional Network for 4D Trajectory Prediction"
+  authors: ["Yuheng Kuang", "Shuxuan Yuan", "Xiang Zou", "Jianping Zhang", "Zhenyu Shi", "Yuding Zhang", "Fanman Meng", "Zhengning Wang"]
+  venue: "IEEE Transactions on Intelligent Transportation Systems"
+  short: "IEEE TITS"
+  year: 2025
+  volume: "26(12), 21809–21823"
+  doi: "10.1109/tits.2025.3605670"
+  direction: agents
+  featured: true
+  figure: images/papers/mtdastgcn-arch.png
+  figure_caption:
+    zh: MTDA-STGCN 模型整体框架（论文 Fig. 2）
+    en: "Overall framework of MTDA-STGCN (Fig. 2)"
+
+- title: "LPUDC: A Laplacian pyramid neural network for restoring images from under-display cameras"
+  authors: ["Zichao Ding", "Zhixiang Fang", "Zhengning Wang", "Lehan Ding", "Zhenni Zeng", "Xinglong Luo", "Shaoqin Yuan", "Haoran Ma", "Binquan Len"]
+  venue: "Neurocomputing"
+  short: "Neurocomputing"
+  year: 2025
+  volume: "655, 131442"
+  doi: "10.1016/j.neucom.2025.131442"
+  direction: restore
+
+- title: "NS-RSVQA: Neuro-Symbolic Method for Explainable Remote Sensing Visual Question Answer"
+  authors: ["Zhenni Zeng", "Fanman Meng", "Runtong Zhang", "Chunjin Yang", "Xiwei Zhang", "Yuheng Kuang", "Zhengning Wang", "Yongjie Li"]
+  venue: "IEEE International Geoscience and Remote Sensing Symposium (IGARSS)"
+  short: "IGARSS"
+  year: 2025
+  doi: "10.1109/igarss55030.2025.11243610"
+  direction: multimodal
+
+- title: "Investigating the relationship between brain age and Alzheimer's disease: A deep learning approach with multimodal MRI"
+  authors: ["Zhengning Wang", "Jiaxin Liu", "Fang Chen", "Will Ke Wang", "Yuhang Xu", "Fengmei Lu", "Yanling Li", "Jingjing Gao"]
+  venue: "Biomedical Signal Processing and Control"
+  short: "BSPC"
+  year: 2025
+  volume: "109, 107926"
+  doi: "10.1016/j.bspc.2025.107926"
+  direction: brain
+
+- title: "An Energy-Efficient Block-Based Nonmaximum Suppression Engine for High-Parallel Postprocessing of Visual Object Detection"
+  authors: ["Yuchuan Gong", "Haojie Wei", "Hongtao Guo", "Jiahao Zheng", "Qingyuan Hou", "Zherong Liu", "Teng Zhang", "Jingxiao Zheng", "Ye Liu", "Liang Zhou", "Zhengning Wang", "Jun Zhou"]
+  venue: "IEEE Transactions on Very Large Scale Integration (VLSI) Systems"
+  short: "IEEE TVLSI"
+  year: 2025
+  volume: "33(7), 2064–2068"
+  doi: "10.1109/tvlsi.2025.3559389"
+  direction: perception
+
+- title: "A High Accuracy and Ultra-Low Energy Environmental Sound Recognition Processor with Progressive Spectrogram Processing and Adaptive Weight Clustering Based Online Learning"
+  authors: ["Lujie Peng", "Xiben Jiao", "Zhiyi Chen", "Junyu Yang", "Rui Hong", "Longke Yan", "Long Yu", "Xiao Chen", "Xiaoyu Miao", "Zheng Wang", "Zhengning Wang", "Liang Zhou", "Liang Chang", "Shanshan Liu", "Tae Hyoung Kim", "Jun Zhou"]
+  venue: "IEEE Custom Integrated Circuits Conference (CICC)"
+  short: "CICC"
+  year: 2025
+  doi: "10.1109/cicc63670.2025.10983875"
+  direction: perception
+
+- title: "Causal perception inspired representation learning for trustworthy image quality assessment"
+  authors: ["Lei Wang", "Qingbo Wu", "Desen Yuan", "Fanman Meng", "Zhengning Wang", "King Ngi Ngan"]
+  venue: "Displays"
+  short: "Displays"
+  year: 2025
+  volume: "88, 103046"
+  doi: "10.1016/j.displa.2025.103046"
+  direction: restore
+
+- title: "Graph Neural Networks and Multimodal DTI Features for Schizophrenia Classification: Insights from Brain Network Analysis and Gene Expression"
+  authors: ["Jingjing Gao", "Heping Tang", "Zhengning Wang", "Yanling Li", "Na Luo", "Ming Xing Song", "Sangma Xie", "Weiyang Shi", "Hao Yan", "Lin Lü", "Jun Yan", "Peng Li", "Yuqing Song", "Jun Chen", "Yunchun Chen", "Huaning Wang", "Wenming Liu", "Zhigang Li", "Hua Guo", "Ping Wan", "Luxian Lv", "Yongfeng Yang", "Huiling Wang", "Hongxing Zhang", "Huawang Wu", "Yuping Ning", "Dai Zhang", "Tianzi Jiang"]
+  venue: "Neuroscience Bulletin"
+  short: "Neurosci. Bull."
+  year: 2025
+  volume: "41(6), 933–950"
+  doi: "10.1007/s12264-025-01385-5"
+  direction: brain
+
+- title: "Fine-scale striatal parcellation using diffusion MRI tractography and graph neural networks"
+  authors: ["Jiahui Gao", "Mingqi Liu", "Maomin Qian", "Heping Tang", "Junyi Wang", "Liang Ma", "Yanling Li", "Xin Dai", "Zhengning Wang", "Fengmei Lu", "Fan Zhang"]
+  venue: "Medical Image Analysis"
+  short: "MedIA"
+  year: 2025
+  volume: "101, 103482"
+  doi: "10.1016/j.media.2025.103482"
+  direction: brain
+
+- title: "Scoring structure regularized gradient boosting network for blind image quality assessment"
+  authors: ["Lei Wang", "Qingbo Wu", "Fanman Meng", "Zhengning Wang", "Chenhao Wu", "Haoran Wei", "King Ngi Ngan"]
+  venue: "Displays"
+  short: "Displays"
+  year: 2025
+  volume: "87, 102955"
+  doi: "10.1016/j.displa.2024.102955"
+  direction: restore
+
+- title: "Efficient Meshflow and Optical Flow Estimation from Event Cameras"
+  authors: ["Xinglong Luo", "Ao Luo", "Zhengning Wang", "Chunyu Lin", "Bing Zeng", "Shuaicheng Liu"]
+  venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+  short: "CVPR"
+  year: 2024
+  doi: "10.1109/cvpr52733.2024.01816"
+  direction: event
+
+- title: "Reconstruction flow recurrent network for compressed video quality enhancement"
+  authors: ["Zhengning Wang", "X. Y. Liu", "Chuan Wang", "Ting Jiang", "Tianjiao Zeng", "Zhenni Zeng", "Guoqing Wang", "Shuaicheng Liu"]
+  venue: "Pattern Recognition"
+  short: "Pattern Recognition"
+  year: 2024
+  volume: "155, 110638"
+  doi: "10.1016/j.patcog.2024.110638"
+  direction: restore
+  featured: true
+  figure: images/papers/rfrn-arch.png
+  figure_caption:
+    zh: 重建流循环网络整体结构（论文 Fig. 2）
+    en: "Overview of the reconstruction-flow recurrent network (Fig. 2)"
+
+- title: "Exploring Schizophrenia Classification Through Multimodal MRI and Deep Graph Neural Networks: Unveiling Brain Region-Specific Weight Discrepancies and Their Association With Cell-Type Specific Transcriptomic Features"
+  authors: ["Jingjing Gao", "Maomin Qian", "Zhengning Wang", "Yanling Li", "Na Luo", "Sangma Xie", "Weiyang Shi", "Peng Li", "Jun Chen", "Yunchun Chen", "Huaning Wang", "Wenming Liu", "Zhigang Li", "Yongfeng Yang", "Hua Guo", "Ping Wan", "Luxian Lv", "Lin Lü", "Jun Yan", "Yuqing Song", "Huiling Wang", "Hongxing Zhang", "Huawang Wu", "Yuping Ning", "Yuhui Du", "Yuqi Cheng", "Jian Xu", "Xiufeng Xu", "Dai Zhang", "Tianzai Jiang"]
+  venue: "Schizophrenia Bulletin"
+  short: "Schizophr. Bull."
+  year: 2024
+  volume: "51(1), 217–235"
+  doi: "10.1093/schbul/sbae069"
+  direction: brain
+
+- title: "Multiple Latent Space Mapping for Compressed Dark Image Enhancement"
+  authors: ["Yi Zeng", "Zhengning Wang", "Yuxuan Liu", "Tianjiao Zeng", "Xuhang Liu", "Xinglong Luo", "Shuaicheng Liu", "Shuyuan Zhu", "Bing Zeng"]
+  venue: "arXiv preprint"
+  short: "arXiv"
+  year: 2024
+  doi: "10.48550/arxiv.2403.07622"
+  direction: restore
+  badge: { zh: 预印本, en: Preprint }
+
+- title: "Comprehensive exploration of multi-modal and multi-branch imaging markers for autism diagnosis and interpretation: insights from an advanced deep learning model"
+  authors: ["Jingjing Gao", "Yuhang Xu", "Yanling Li", "Fengmei Lu", "Zhengning Wang"]
+  venue: "Cerebral Cortex"
+  short: "Cerebral Cortex"
+  year: 2024
+  volume: "34(2)"
+  doi: "10.1093/cercor/bhad521"
+  direction: brain
+  slide: true
+  figure: images/papers/asd-arch.jpg
+  figure_caption:
+    zh: 双分支图神经网络与扰动模型、神经-转录组联合分析框架
+    en: Dual-branch GNN with a perturbation model and neuro-transcriptomic analysis
+
+- title: "Learning Optical Flow from Event Camera with Rendered Dataset"
+  authors: ["Xinglong Luo", "Kunming Luo", "Ao Luo", "Zhengning Wang", "Ping Tan", "Shuaicheng Liu"]
+  venue: "IEEE/CVF International Conference on Computer Vision (ICCV)"
+  short: "ICCV"
+  year: 2023
+  doi: "10.1109/iccv51070.2023.00903"
+  direction: event
+
+- title: "Optimal Design of UAVs Leader-Following Consensus Formation Control Based on Riccati Equation"
+  authors: ["Xu Zhu", "Jiangtao Huang", "Sheng Zhang", "Zhengning Wang"]
+  venue: "Chinese Control Conference (CCC)"
+  year: 2023
+  doi: "10.23919/ccc58697.2023.10240020"
+  direction: agents
+
+- title: "Brain age prediction using the graph neural network based on resting-state functional MRI in Alzheimer's disease"
+  authors: ["Jingjing Gao", "Jiaxin Liu", "Yuhang Xu", "Dawei Peng", "Zhengning Wang"]
+  venue: "Frontiers in Neuroscience"
+  short: "Front. Neurosci."
+  year: 2023
+  volume: "17, 1222751"
+  doi: "10.3389/fnins.2023.1222751"
+  direction: brain
+
+- title: "Brain functional activity-based classification of autism spectrum disorder using an attention-based graph neural network combined with gene expression"
+  authors: ["Zhengning Wang", "Yuhang Xu", "Dawei Peng", "Jingjing Gao", "Fengmei Lu"]
+  venue: "Cerebral Cortex"
+  short: "Cerebral Cortex"
+  year: 2022
+  volume: "33(10), 6407–6419"
+  doi: "10.1093/cercor/bhac513"
+  direction: brain
+
+- title: "Stereo RGB and Deeper LIDAR-Based Network for 3D Object Detection in Autonomous Driving"
+  authors: ["Qingdong He", "Zhengning Wang", "Hao Zeng", "Yi Zeng", "Yijun Liu", "Shuaicheng Liu", "Bing Zeng"]
+  venue: "IEEE Transactions on Intelligent Transportation Systems"
+  short: "IEEE TITS"
+  year: 2022
+  volume: "24(1), 152–162"
+  doi: "10.1109/tits.2022.3215766"
+  direction: perception
+
+- title: "SVGA-Net: Sparse Voxel-Graph Attention Network for 3D Object Detection from Point Clouds"
+  authors: ["Qingdong He", "Zhengning Wang", "Hao Zeng", "Yi Zeng", "Yijun Liu"]
+  venue: "AAAI Conference on Artificial Intelligence (AAAI)"
+  short: "AAAI"
+  year: 2022
+  volume: "36(1), 870–878"
+  doi: "10.1609/aaai.v36i1.19969"
+  pdf: https://ojs.aaai.org/index.php/AAAI/article/download/19969/19728
+  direction: perception
+  featured: true
+  figure: images/papers/svganet-arch.png
+  figure_caption:
+    zh: SVGA-Net 网络结构（论文 Fig. 1，来源：arXiv:2006.04043）
+    en: "SVGA-Net architecture (Fig. 1, from arXiv:2006.04043)"
+
+- title: "Classification of major depressive disorder using an attention-guided unified deep convolutional neural network and individual structural covariance network"
+  authors: ["Jingjing Gao", "Mingren Chen", "Die Xiao", "Yue Li", "Shunli Zhu", "Yanling Li", "Xin Dai", "Fengmei Lu", "Zhengning Wang", "Shi-Min Cai", "Jiaojian Wang"]
+  venue: "Cerebral Cortex"
+  short: "Cerebral Cortex"
+  year: 2022
+  volume: "33(6), 2415–2425"
+  doi: "10.1093/cercor/bhac217"
+  direction: brain
+  slide: false
+  figure: images/papers/mdd-arch.jpg
+  figure_caption:
+    zh: 注意力引导的统一深度卷积网络与个体结构协变网络
+    en: Attention-guided unified deep CNN with individual structural covariance networks
+
+- title: "Autistic Spectrum Disorder Detection and Structural Biomarker Identification Using Self-Attention Model and Individual-Level Morphological Covariance Brain Networks"
+  authors: ["Zhengning Wang", "Dawei Peng", "Yongbin Shang", "Jingjing Gao"]
+  venue: "Frontiers in Neuroscience"
+  short: "Front. Neurosci."
+  year: 2021
+  volume: "15, 756868"
+  doi: "10.3389/fnins.2021.756868"
+  direction: brain
+
+- title: "DeepOIS: Gyroscope-Guided Deep Optical Image Stabilizer Compensation"
+  authors: ["Shuaicheng Liu", "Haipeng Li", "Zhengning Wang", "Jue Wang", "Shuyuan Zhu", "Bing Zeng"]
+  venue: "IEEE Transactions on Circuits and Systems for Video Technology"
+  short: "IEEE TCSVT"
+  year: 2021
+  volume: "32(5), 2856–2867"
+  doi: "10.1109/tcsvt.2021.3103281"
+  direction: event
+
+- title: "Simultaneous Extraction of Multi-Scale Structural Features and the Sequential Information With an End-To-End mCNN-HMM Combined Model for Fiber Distributed Acoustic Sensor"
+  authors: ["Huijuan Wu", "Siqi Yang", "Xinyu Liu", "Chenrui Xu", "Hao Lu", "Chaoqun Wang", "Ke Qin", "Zhengning Wang", "Yunjiang Rao", "Abdulafeez Olawale Olaribigbe"]
+  venue: "Journal of Lightwave Technology"
+  short: "JLT"
+  year: 2021
+  volume: "39(20), 6606–6616"
+  doi: "10.1109/jlt.2021.3102265"
+  direction: perception
+
+- title: "PD-GAN: Perceptual-Details GAN for Extremely Noisy Low Light Image Enhancement"
+  authors: ["Yijun Liu", "Zhengning Wang", "Yi Zeng", "Hao Zeng", "Deming Zhao"]
+  venue: "IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)"
+  short: "ICASSP"
+  year: 2021
+  doi: "10.1109/icassp39728.2021.9413433"
+  direction: restore
+
+- title: "Structure-preserving extremely low light image enhancement with fractional order differential mask guidance"
+  authors: ["Yijun Liu", "Zhengning Wang", "Ruixu Geng", "Hao Zeng", "Yi Zeng"]
+  venue: "ACM International Conference on Multimedia in Asia (MMAsia)"
+  year: 2021
+  doi: "10.1145/3444685.3446319"
+  direction: restore
+
+- title: "A Detection and Tracking Combined Network for Long-Term Tracking"
+  authors: ["Hao Zeng", "Zhengning Wang", "Deming Zhao", "Yijun Liu", "Yi Zeng"]
+  venue: "Lecture Notes in Computer Science"
+  year: 2021
+  doi: "10.1007/978-3-030-87361-5_47"
+  direction: perception
+
+- title: "OAENet: Oriented attention ensemble for accurate facial expression recognition"
+  authors: ["Zhengning Wang", "Fanwei Zeng", "Shuaicheng Liu", "Bing Zeng"]
+  venue: "Pattern Recognition"
+  short: "Pattern Recognition"
+  year: 2020
+  volume: "112, 107694"
+  doi: "10.1016/j.patcog.2020.107694"
+  direction: multimodal
+  featured: true
+  figure: images/papers/oaenet-arch.png
+  figure_caption:
+    zh: OAENet 网络流程：维持分支 + 注意力分支（论文 Fig. 1）
+    en: "OAENet pipeline: maintenance branch + attention branch (Fig. 1)"
+
+- title: "A Light-Weighted Network for Facial Landmark Detection via Combined Heatmap and Coordinate Regression"
+  authors: ["Zhengning Wang", "Longfei Feng", "Fanwei Zeng", "Guang Wei Hu", "Xiang Zhang", "Xia Fu Lv", "Fengjun Zhang"]
+  venue: "IEEE International Conference on Multimedia and Expo (ICME)"
+  short: "ICME"
+  year: 2019
+  volume: "238, 314–319"
+  doi: "10.1109/icme.2019.00062"
+  direction: multimodal
+
+- title: "Robust Heart Rate Monitoring for Quasi-Periodic Motions by Wrist-Type PPG Signals"
+  authors: ["Wenwen He", "Yalan Ye", "Li Lu", "Yunfei Cheng", "Yunxia Li", "Zhengning Wang"]
+  venue: "IEEE Journal of Biomedical and Health Informatics"
+  short: "IEEE JBHI"
+  year: 2019
+  volume: "24(3), 636–648"
+  doi: "10.1109/jbhi.2019.2912708"
+  direction: brain
+
+- title: "Fractional-Order Retinex for Adaptive Contrast Enhancement of Under-Exposed Traffic Images"
+  authors: ["Yi-Fei Pu", "Ni Zhang", "Zhengning Wang", "Jian Wang", "Yi Zhang", "Yan Wang", "Jiliu Zhou"]
+  venue: "IEEE Intelligent Transportation Systems Magazine"
+  short: "IEEE ITS Mag."
+  year: 2019
+  volume: "13(1), 149–159"
+  doi: "10.1109/mits.2018.2889706"
+  direction: restore
+
+- title: "A Fractional-Order Variational Framework for Retinex: Fractional-Order Partial Differential Equation-Based Formulation for Multi-Scale Nonlocal Contrast Enhancement with Texture Preserving"
+  authors: ["Yi-Fei Pu", "Patrick Siarry", "Amitava Chatterjee", "Zhengning Wang", "Yi Zhang", "Yiguang Liu", "Jiliu Zhou", "Yan Wang"]
+  venue: "IEEE Transactions on Image Processing"
+  short: "IEEE TIP"
+  year: 2017
+  volume: "27(3), 1214–1229"
+  doi: "10.1109/tip.2017.2779601"
+  direction: restore
+
+- title: "Fast single image dehazing based on color cube constraint"
+  authors: ["Elisee A Kponou", "Zhengning Wang", "Ping Wei", "Min Hua Wu"]
+  venue: "IEEE International Conference on Communication Technology (ICCT)"
+  year: 2017
+  doi: "10.1109/icct.2017.8359905"
+  direction: restore
+
+- title: "Efficient real-time single image dehazing based on color cube constraint"
+  authors: ["Elisee A Kponou", "Zhengning Wang", "Ping Wei"]
+  venue: "IEEE International Conference on Signal and Image Processing (ICSIP)"
+  year: 2017
+  volume: "33, 106–110"
+  doi: "10.1109/siprocess.2017.8124515"
+  direction: restore
+
+- title: "Long-Distance/Environment Face Image Enhancement Method for Recognition"
+  authors: ["Zhengning Wang", "Shanshan Ma", "Mingyan Han", "Guang Hu", "Shuaicheng Liu"]
+  venue: "Lecture Notes in Computer Science"
+  year: 2017
+  doi: "10.1007/978-3-319-71607-7_44"
+  direction: multimodal
+
+- title: "Uncertain Region Identification for Stereoscopic Foreground Cutout"
+  authors: ["Taotao Yang", "Shuaicheng Liu", "Chao Sun", "Zhengning Wang", "Bing Zeng"]
+  venue: "Lecture Notes in Computer Science"
+  year: 2017
+  doi: "10.1007/978-3-319-71598-8_35"
+  direction: 
+
+- title: "Automatic Reflection Removal using Gradient Intensity and Motion Cues"
+  authors: ["Chao Sun", "Shuaicheng Liu", "Taotao Yang", "Bing Zeng", "Zhengning Wang", "Guanghui Liu"]
+  venue: "ACM International Conference on Multimedia (ACM MM)"
+  short: "ACM MM"
+  year: 2016
+  doi: "10.1145/2964284.2967264"
+  direction: event
+
+- title: "Visible-light and near-infrared face recognition at a distance"
+  authors: ["Chun-Ting Huang", "Zhengning Wang", "C.-C. Jay Kuo"]
+  venue: "Journal of Visual Communication and Image Representation"
+  year: 2016
+  volume: "41, 140–153"
+  doi: "10.1016/j.jvcir.2016.09.012"
+  direction: multimodal
+
+- title: "Cylinder radius determination of cylindrical panoramic image mosaic"
+  authors: ["Xiaolong Ni", "Zhengning Wang", "Yan Jiang"]
+  venue: "IEEE International Conference on Software Engineering and Service Science (ICSESS)"
+  year: 2015
+  volume: "97 2, 1007–1009"
+  doi: "10.1109/icsess.2015.7339224"
+  direction: 
+
+- title: "TAEF: A cross-distance/environment face recognition method"
+  authors: ["Chun-Ting Huang", "Zhengning Wang", "C.-C. Jay Kuo"]
+  venue: "IEEE Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)"
+  short: "CVPRW"
+  year: 2015
+  volume: "33, 1–8"
+  doi: "10.1109/cvprw.2015.7301313"
+  direction: multimodal
+
+- title: "A faithful restoration of haze images using an optimized transmission map"
+  authors: ["Elisee A Kponou", "Zhengning Wang", "Ping Wei", "Yan Jiang", "Xiaolong Ni", "Mamadou Hady Bah"]
+  venue: "International Congress on Image and Signal Processing (CISP)"
+  year: 2014
+  volume: "33, 184–189"
+  doi: "10.1109/cisp.2014.7003774"
+  direction: restore
+
+- title: "Adaptive Interpolation for Pilot-Aided Channel Estimator in OFDM System"
+  authors: ["Guanghui Liu", "Liaoyuan Zeng", "Hongliang Li", "Linfeng Xu", "Zhengning Wang"]
+  venue: "IEEE Transactions on Broadcasting"
+  short: "IEEE TBC"
+  year: 2014
+  volume: "60(3), 486–498"
+  doi: "10.1109/tbc.2014.2328271"
+  direction: 
+
+- title: "Design and implementation of parallelized MSR video enhancement based on CUDA"
+  authors: ["Zhengning Wang", "Elisee A Kponou", "Weidong Liu", "Liping Li"]
+  venue: "WIT Transactions on Information and Communication Technologies"
+  year: 2014
+  volume: "1, 1433–1442"
+  doi: "10.2495/icct131602"
+  direction: restore
+
+- title: "Automated co-superpixel generation via graph matching"
+  authors: ["Yurui Xie", "Lingfeng Xu", "Zhengning Wang"]
+  venue: "Signal Image and Video Processing"
+  year: 2013
+  volume: "8(4), 753–763"
+  doi: "10.1007/s11760-013-0589-0"
+  direction: multimodal
+
+- title: "A Segmentation-Based Chroma Intra Prediction Coding Scheme for H.264/AVC"
+  authors: ["Qingbo Wu", "Jian Xiong", "Bing Luo", "Zhengning Wang"]
+  venue: "Circuits Systems and Signal Processing"
+  year: 2013
+  volume: "33(3), 939–957"
+  doi: "10.1007/s00034-013-9675-3"
+  direction: 
+
+- title: "Adaptive complex interpolator for channel estimation in pilot-aided OFDM system"
+  authors: ["Guanghui Liu", "Liaoyuan Zeng", "Hongliang Li", "Linfeng Xu", "Zhengning Wang"]
+  venue: "Journal of Communications and Networks"
+  year: 2013
+  volume: "15(5), 496–503"
+  doi: "10.1109/jcn.2013.000089"
+  direction: 
+
+- title: "Saliency-based superpixels"
+  authors: ["Linfeng Xu", "Liaoyuan Zeng", "Zhengning Wang"]
+  venue: "Signal Image and Video Processing"
+  year: 2013
+  volume: "8(1), 181–190"
+  doi: "10.1007/s11760-013-0520-8"
+  direction: multimodal
+
+- title: "Saliency detection using a central stimuli sensitivity based model"
+  authors: ["Linfeng Xu", "Hongliang Li", "Liaoyuan Zeng", "Zhengning Wang", "Guanghui Liu"]
+  venue: "IEEE International Symposium on Circuits and Systems (ISCAS)"
+  year: 2013
+  volume: "19, 945–949"
+  doi: "10.1109/iscas.2013.6572004"
+  direction: multimodal
+
+- title: "A unified framework for spatiotemporal salient region detection"
+  authors: ["Bo Wu", "Linfeng Xu", "Liaoyuan Zeng", "Zhengning Wang", "Yan Wang"]
+  venue: "EURASIP Journal on Image and Video Processing"
+  year: 2013
+  volume: "2013(1)"
+  doi: "10.1186/1687-5281-2013-16"
+  direction: multimodal
+
+- title: "Learning a Saliency Map for Fixation Prediction"
+  authors: ["Linfeng Xu", "Liaoyuan Zeng", "Zhengning Wang"]
+  venue: "IEICE Transactions on Information and Systems"
+  year: 2013
+  volume: "E96.D(10), 2294–2297"
+  doi: "10.1587/transinf.e96.d.2294"
+  direction: multimodal
+
+- title: "Improved Intra Prediction Coding Scheme Based on Minimum Distance Prediction for H.264/AVC"
+  authors: ["Qingbo Wu", "Linfeng Xu", "Zhengning Wang"]
+  venue: "IEICE Transactions on Information and Systems"
+  year: 2013
+  volume: "E96.D(4), 980–983"
+  doi: "10.1587/transinf.e96.d.980"
+  direction: 
+
+- title: "Complex Coefficient Interpolation Based Channel Estimation for OFDM in Single-Frequency Networks"
+  authors: ["Guanghui Liu", "Liaoyuan Zeng", "Hongliang Li", "Zhengning Wang"]
+  venue: "IEEE International Conference on Computer and Information Technology (CIT)"
+  year: 2012
+  doi: "10.1109/cit.2012.138"
+  direction: 
+
+- title: "Low-Complexity Iterative Equalization for Symbol-Reconstruction-Based OFDM Receivers Over Doubly Selective Channels"
+  authors: ["Guanghui Liu", "Sergey Zhidkov", "Hongliang Li", "Liaoyuan Zeng", "Zhengning Wang"]
+  venue: "IEEE Transactions on Broadcasting"
+  short: "IEEE TBC"
+  year: 2012
+  volume: "58(3), 390–400"
+  doi: "10.1109/tbc.2012.2200793"
+  direction: 
+
+- title: "Saliency detection from joint embedding of spatial and color cues"
+  authors: ["Linfeng Xu", "Hongliang Li", "Zhengning Wang"]
+  venue: "IEEE International Symposium on Circuits and Systems (ISCAS)"
+  year: 2012
+  volume: "19, 2673–2676"
+  doi: "10.1109/iscas.2012.6271857"
+  direction: multimodal
+
+- title: "Multi-sensor data fusion based on environment database for airport surface surveillance"
+  authors: ["Yu Lu", "Changzhong Liu", "Zhengning Wang", "Zili Xu"]
+  venue: "International Conference on Electronics and Optoelectronics (ICEOE)"
+  year: 2011
+  doi: "10.1109/iceoe.2011.6013061"
+  direction: agents
+
+- title: "TOA association based on an improved fuzzy clustering method in MLAT for A-SMGCS"
+  authors: ["Yu Lu", "Changzhong Liu", "Zhengning Wang", "Zili Xu"]
+  venue: "International Conference on Fuzzy Systems and Knowledge Discovery (FSKD)"
+  year: 2011
+  volume: "1, 554–558"
+  doi: "10.1109/fskd.2011.6019471"
+  direction: agents
+
+- title: "Co-Channel Analog Television Interference in the TDS-OFDM-Based DTTB System: Consequences and Solutions"
+  authors: ["Guanghui Liu", "Hongliang Li", "Mingzhen Wang", "Zhengning Wang", "Wei Chen"]
+  venue: "IEEE Transactions on Broadcasting"
+  short: "IEEE TBC"
+  year: 2011
+  volume: "57(2), 270–276"
+  doi: "10.1109/tbc.2011.2113750"
+  direction: 
+
+- title: "Simplex particle swarm optimization for block matching algorithm"
+  authors: ["Ping Zhang", "Ping Wei", "Hongyang Yu", "Zhengning Wang"]
+  venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
+  year: 2010
+  volume: "4, 1–4"
+  doi: "10.1109/ispacs.2010.5704780"
+  direction: 
+
+- title: "Simple equalization of OFDM signal over doubly selective channels"
+  authors: ["Guanghui Liu", "Tailiang Ju", "Zhengning Wang", "Wei Chen", "Linfeng Xu"]
+  venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
+  year: 2010
+  doi: "10.1109/ispacs.2010.5704697"
+  direction: 
+
+- title: "A novel airport surface surveillance based on multi-video fusion"
+  authors: ["Yu Lu", "Changzhong Liu", "Zhengning Wang", "Honggang Wu"]
+  venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
+  year: 2010
+  doi: "10.1109/ispacs.2010.5704728"
+  direction: agents
+
+- title: "Rejection of co-channel interference in the TDS-OFDM-based DTTB system"
+  authors: ["Guanghui Liu", "Zhengning Wang", "Tailiang Ju", "Mingzhen Wang"]
+  venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
+  year: 2010
+  doi: "10.1109/ispacs.2010.5704696"
+  direction: 
+
+- title: "Feature-matching-based specific object segmentation"
+  authors: ["Xipeng Cui", "Zhengning Wang", "Tiantang Chen"]
+  venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
+  year: 2010
+  volume: "3, 1–4"
+  doi: "10.1109/ispacs.2010.5704620"
+  direction: multimodal
+
+- title: "Implicit Surface Reconstruction with Radial Basis Functions"
+  authors: ["Jun Yang", "Zhengning Wang", "Changqian Zhu", "Qiang Peng"]
+  venue: "Communications in Computer and Information Science"
+  year: 2008
+  doi: "10.1007/978-3-540-89682-1_1"
+  direction: 
+
+- title: "An Efficient Algorithm for Motion Estimation with Multiple Reference Frames in H.264/AVC"
+  authors: ["Zhengning Wang", "Jun Yang", "Qiang Peng", "Changqian Zhu"]
+  venue: "International Conference on Image and Graphics (ICIG)"
+  year: 2007
+  volume: "6, 259–262"
+  doi: "10.1109/icig.2007.30"
+  direction: 
+
+- title: "A Fast Transform Domain Based Algorithm for H.264/AVC Intra Prediction"
+  authors: ["Zhengning Wang", "Jun Yang", "Qiang Peng", "Zheng Ma", "Changqian Zhu"]
+  venue: "IEEE International Conference on Multimedia and Expo (ICME)"
+  short: "ICME"
+  year: 2007
+  volume: "15, 1563–1566"
+  doi: "10.1109/icme.2007.4284962"
+  direction: 
+
+- title: "Implicit Surface Reconstruction from Scattered Point Data with Noise"
+  authors: ["Jun Yang", "Zhengning Wang", "Changqian Zhu", "Qiang Peng"]
+  venue: "Lecture Notes in Computer Science"
+  year: 2007
+  doi: "10.1007/978-3-540-72586-2_8"
+  direction: 
+
+- title: "Residual Texture Based Fast Block-Size Selection for Inter-Frame Coding in H.264/AVC"
+  authors: ["Zhengning Wang", "Qiang Peng", "Yong Gang Zeng"]
+  venue: "International Conference on Parallel and Distributed Computing, Applications and Technologies (PDCAT)"
+  year: 2005
+  doi: "10.1109/pdcat.2005.207"
+  direction: 
+
+- title: "Motion-estimation based fast block-size selection for inter-frame coding in H.264/AVC"
+  authors: ["Zhengning Wang"]
+  venue: "计算机工程 (Computer Engineering)"
+  year: 2005
+  direction: 
+
+- title: "Implementation and analysis of fast search algorithms for block motion estimation in H.264 test model"
+  authors: ["Zhengning Wang"]
+  venue: "计算机工程 (Computer Engineering)"
+  year: 2004
+  direction: 
+

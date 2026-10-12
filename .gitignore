@@ -1,0 +1,12 @@
+node_modules/
+dist/
+release/
+.astro/
+# 论文全文（受版权保护，不随网站发布）
+文献下载/
+# 内部资料（收集表、待确认事项），不公开
+*.docx
+# 本机开发工具配置
+.claude/
+.DS_Store
+Thumbs.db

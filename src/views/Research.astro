@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import DirectionArt from '../components/DirectionArt.astro';
+import Icon from '../components/Icon.astro';
+import { site, research, publications, t, list, asset, href, paragraphs, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const other: Lang = lang === 'zh' ? 'en' : 'zh';
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<Base lang={lang} title={u.nav.research} description={t(site.pages?.research, lang)}>
+  <PageHero eyebrow="Research" title={u.research.title} desc={t(site.pages?.research, lang)} lang={lang} />
+
+  <nav class="dir-nav" aria-label={u.research.title}>
+    <div class="container dir-nav-inner">
+      {
+        research.map((r, i) => (
+          <a href={`#${r.id}`} style={`--c:${r.color}`}>
+            <i />
+            {pad(i + 1)} {t(r.short, lang)}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <div class="container page-body">
+    {
+      research.map((r, i) => {
+        const all = publications.filter((p) => p.direction === r.id);
+        return (
+          <article class="dir-block" id={r.id} style={`--c:${r.color}`} data-reveal>
+            <header class="dir-head">
+              <span class="sub-icon sub-icon-lg">
+                <Icon name={r.icon} size={30} />
+              </span>
+              <div>
+                <span class="sub-num">{pad(i + 1)}</span>
+                <h2 class="dir-title">{t(r.title, lang)}</h2>
+                <p class="sub-en">{t(r.title, other)}</p>
+              </div>
+            </header>
+            <div class="dir-content">
+              <div class="dir-text">
+                <p class="dir-lead">{t(r.summary, lang)}</p>
+                <div class="prose">
+                  {paragraphs(t(r.description, lang)).map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+                <div class="tags">
+                  {list(r.keywords, lang).map((k) => (
+                    <span class="tag">{k}</span>
+                  ))}
+                </div>
+              </div>
+              <div class="dir-visual">
+                {r.image ? <img src={asset(r.image)} alt={t(r.title, lang)} loading="lazy" /> : <DirectionArt art={r.art} color={r.color} uid={`r${i}`} />}
+              </div>
+            </div>
+            {all.length > 0 && (
+              <div class="related">
+                <h3>{u.research.related}</h3>
+                <ul>
+                  {all.slice(0, 5).map((p) => (
+                    <li>
+                      {p.short && <span class="cite-venue">{p.short}</span>}
+                      {p.doi ? (
+                        <a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">
+                          {p.title}
+                        </a>
+                      ) : (
+                        <span>{p.title}</span>
+                      )}
+                      <span class="related-year">{p.year}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a class="sec-more" href={`${href('publications', lang)}?direction=${r.id}`}>
+                  {u.pubs.inDirection(all.length)}
+                  <Icon name="arrow" size={15} />
+                </a>
+              </div>
+            )}
+          </article>
+        );
+      })
+    }
+  </div>
+</Base>

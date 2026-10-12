@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import NetCanvas from '../components/NetCanvas.astro';
+import Icon from '../components/Icon.astro';
+import { href } from '../lib/site';
+import { ui } from '../lib/i18n';
+---
+
+<Base lang="zh" title={ui.zh.notFound.title}>
+  <section class="page-title not-found">
+    <NetCanvas density={0.6} theme="light" />
+    <div class="container page-title-inner">
+      <p class="nf-code">404</p>
+      <h1>{ui.zh.notFound.title} · {ui.en.notFound.title}</h1>
+      <p class="page-title-desc">{ui.zh.notFound.desc}<br />{ui.en.notFound.desc}</p>
+      <a class="btn btn-primary" href={href('', 'zh')}>{ui.zh.common.backHome}<Icon name="arrow" /></a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,88 @@
+# ==============================================================
+#  团队成员
+#  - PI 简介、教育与工作经历、研究兴趣由课题组提供（2026-10）
+#  - 硕士生目前仍是占位示例，请替换为真实成员
+#  - photo：照片放在 public/images/members/ 下，填写如 images/members/wangzhengning.jpg
+#           建议使用正方形照片（至少 400×400）；留空则显示姓名头像
+#  - aliases：该成员在论文作者列表中的其他写法，论文页会自动加粗
+# ==============================================================
+
+pi:
+  name: { zh: 王正宁, en: Zhengning Wang }
+  aliases: [Zheng-Ning Wang, Wang Zhengning]
+  title:
+    zh: 教授 · 博士生导师
+    en: Professor & Doctoral Supervisor
+  photo: images/members/wangzhengning.jpg
+  email: zhengning.wang@uestc.edu.cn
+  links:
+    - label: { zh: 学校主页, en: Faculty page }
+      url: https://faculty.uestc.edu.cn/wangzhengning/zh_CN/index.htm
+    - label: DBLP
+      url: https://dblp.org/pid/09/1064.html
+  # 研究兴趣（显示为标签，也显示在首页轮播第一张）
+  interests:
+    zh: [计算机视觉, 机器学习, 图像处理, 视频压缩与传输, 智能交通, 空管技术]
+    en: [Computer vision, Machine learning, Image processing, Video compression and transmission, Intelligent transportation, Air traffic control technology]
+  bio:
+    zh: |
+      王正宁，男，博士，教授。毕业于西南交通大学，现任职于电子科技大学从事图像处理、计算机视觉、人工智能等领域的科研工作。于2014-2015在国家留基委公派赴美国南加州大学访问，与信号与图像处理领域全球著名教授C.C. Jay Kuo开展研究合作。近些年在国内外高级期刊和会议上累计发表学术论文60余篇，国家发明专利30余项。
+
+      作为项目负责人先后承担了国家自然科学基金面上项目2项，中国博士后科学基金1项，四川省重点研发计划项目4项，四川省重大科技专项1项。作为主要科研人员参加了国家科技支撑计划重大项目“中国民航协同空管技术综合应用示范”课题——“机场III级综合交通监视与引导系统”、国家自然科学基金民航联合基金重点项目“机场跑道异物监测系统基础理论与关键技术研究”、国家自然科学基金国际合作重点项目“电子内镜和无线胶囊内镜图像处理关键技术研究”，国家自然科学基金青年基金项目“针对视觉映射的鲁棒混合回归模型研究”、中国民航总局民航科技专项基金项目“基于增强现实的机场场面监视系统关键技术研究”，以及一些企业产学研合作项目。同时，还是Frontiers in NeuroScience、IEEE TIP、IEEE TMM、中国图形图象学报等期刊的审稿专家，ICASSIP和ISPACS等国际会议的审稿专家，ISPACS2010、VCIP2016国际会议Local Chair，ICME2014国际学术会议组委会成员，ISCAS 2015 国际会议论文评审专家，ICASSIP 2014、VCIP2016国际会议论文评审专家。
+    en: |
+      Zhengning Wang, Ph.D., is a Professor at the University of Electronic Science and Technology of China (UESTC), working on image processing, computer vision and artificial intelligence. He graduated from Southwest Jiaotong University. From 2014 to 2015 he was a visiting scholar at the University of Southern California, sponsored by the China Scholarship Council, where he collaborated with Prof. C.-C. Jay Kuo, a world-renowned scholar in signal and image processing. In recent years he has published more than 60 papers in leading journals and conferences and holds more than 30 Chinese invention patents.
+
+      As principal investigator, he has led two NSFC General Program projects, one China Postdoctoral Science Foundation project, four Sichuan Key R&D Program projects and one Sichuan Major Science and Technology project. As a key researcher, he has taken part in the subproject "Level-III Airport Integrated Traffic Surveillance and Guidance System" of the National Key Technology R&D Program project "Comprehensive Application Demonstration of China Civil Aviation Collaborative Air Traffic Management Technology"; the NSFC–CAAC Joint Fund key project "Fundamental Theory and Key Technologies of Airport Runway Foreign Object Debris Detection Systems"; the NSFC International Cooperation key project "Key Technologies of Image Processing for Electronic Endoscopy and Wireless Capsule Endoscopy"; the NSFC Young Scientists Fund project "Robust Mixture Regression Models for Visual Mapping"; the CAAC Civil Aviation Science and Technology project "Key Technologies of Augmented-Reality-Based Airport Surface Surveillance Systems"; and several industry–academia collaborations. He reviews for Frontiers in Neuroscience, IEEE TIP, IEEE TMM and the Journal of Image and Graphics, and for international conferences including ICASSIP and ISPACS. He was Local Chair of ISPACS 2010 and VCIP 2016, a member of the ICME 2014 organizing committee, and a paper reviewer for ISCAS 2015, ICASSIP 2014 and VCIP 2016.
+  education:
+    - when: { zh: 2004/3 – 2007/7, en: Mar 2004 – Jul 2007 }
+      what: { zh: 西南交通大学，计算机应用技术，博士, en: "Ph.D., Computer Application Technology, Southwest Jiaotong University" }
+    - when: { zh: 1996/9 – 2000/7, en: Sep 1996 – Jul 2000 }
+      what: { zh: 西南交通大学，计算科学与技术, en: "Computing Science and Technology, Southwest Jiaotong University" }
+  experience:
+    - when: { zh: 2008/9 – 至今, en: Sep 2008 – Present }
+      what: { zh: 电子科技大学电子工程学院, en: "School of Electronic Engineering, UESTC" }
+    - when: { zh: 2014/10 – 2015/10, en: Oct 2014 – Oct 2015 }
+      what: { zh: 美国南加州大学，访问学者, en: "Visiting Scholar, University of Southern California" }
+    - when: { zh: 2009/5 – 2011/8, en: May 2009 – Aug 2011 }
+      what: { zh: 中国民用航空总局第二研究所，博士后, en: "Postdoctoral Fellow, Second Research Institute of the Civil Aviation Administration of China" }
+    - when: { zh: 2007/8 – 2008/9, en: Aug 2007 – Sep 2008 }
+      what: { zh: 西南技术物理研究所, en: Southwest Institute of Technical Physics }
+    - when: { zh: 2000/8 – 2002/8, en: Aug 2000 – Aug 2002 }
+      what: { zh: 烟台东方电子信息产业股份有限公司, en: "Yantai Dongfang Electronics Information Industry Co., Ltd." }
+
+groups:
+  - role: { zh: 博士研究生, en: Ph.D. Students }
+    members:
+      # 研究方向根据各自第一作者论文总结（2026-10）；入学年份待补充（填 since: 2023 这样的年份即可）
+      - name: { zh: 匡育衡, en: Yuheng Kuang }
+        topic: { zh: 航迹预测, en: Trajectory Prediction }
+        photo: images/members/kuangyuheng.jpg
+      - name: { zh: 曾珍妮, en: Zhenni Zeng }
+        topic: { zh: 视觉问答, en: Visual Question Answering }
+        photo: images/members/zengzhenni.jpg
+      - name: { zh: 罗兴隆, en: Xinglong Luo }
+        topic: { zh: 事件光流, en: Event-based Optical Flow }
+        photo: images/members/luoxinglong.jpg
+      - name: { zh: 袁澍翾, en: Shuxuan Yuan }
+        topic: { zh: 智能交通, en: Intelligent Transportation }
+        photo: images/members/yuanshuxuan.jpg
+
+  - role: { zh: 硕士研究生, en: Master's Students }
+    members:
+      - name: { zh: 姓名 D, en: Name D }
+        since: 2024
+        topic: { zh: 图像复原, en: Image Restoration }
+        photo: ""
+      - name: { zh: 姓名 E, en: Name E }
+        since: 2025
+        topic: { zh: 三维感知, en: 3D Perception }
+        photo: ""
+      - name: { zh: 姓名 F, en: Name F }
+        since: 2025
+        topic: { zh: 持续学习, en: Lifelong Learning }
+        photo: ""
+
+alumni:
+  - name: { zh: 姓名 G, en: Name G }
+    degree: { zh: 20XX 届博士, en: Ph.D. 20XX }
+    now: { zh: 去向单位, en: Current position }

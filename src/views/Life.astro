@@ -1,0 +1,159 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site, life, t, asset, formatDate, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+// 占位卡片的配色（成电蓝系，少量暖橙）
+const TONES: [string, string][] = [
+  ['#0e3a72', '#0a2342'],
+  ['#0b5eb2', '#0e3a72'],
+  ['#2f86de', '#0b5eb2'],
+  ['#f2733a', '#c95420'],
+  ['#1c6cc0', '#071a33'],
+];
+const showDate = (d: unknown) => {
+  const s = d == null ? '' : String(d).trim();
+  return /^\d{4}$/.test(s) ? s : s ? formatDate(s, lang) : '';
+};
+const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
+const albums = life.map((a: any) => {
+  const photos = ((a.photos ?? []) as any[])
+    .filter((p) => p?.src)
+    .map((p) => ({ src: asset(p.src), caption: t(p.caption, lang) || t(a.title, lang), video: isVideo(p.src) }));
+  const stills = photos.filter((p) => !p.video);
+  const videos = photos.length - stills.length;
+  const count = [stills.length && u.life.photos(stills.length), videos && u.life.videos(videos)].filter(Boolean).join(' · ');
+  // 封面：cover 字段，否则第一张照片
+  const cover = a.cover ? asset(a.cover) : stills[0]?.src;
+  return { ...a, photos, cover, count, title: t(a.title, lang), tag: t(a.tag, lang), desc: t(a.desc, lang), date: showDate(a.date) };
+});
+---
+
+<Base lang={lang} title={u.life.title} description={t(site.pages?.life, lang)}>
+  <PageHero eyebrow="Lab Life" title={u.life.title} desc={t(site.pages?.life, lang)} lang={lang} />
+
+  <div class="container page-body">
+    <div class="life-grid">
+      {
+        albums.map((a, i) => {
+          const [c1, c2] = TONES[i % TONES.length];
+          return (
+            <article id={a.id} class:list={['album', { 'album-feature': i === 0, 'is-empty': !a.cover }]} data-reveal style={`--d:${Math.min(i, 5) * 70}ms`}>
+              {a.cover ? (
+                <button class="album-cover" type="button" data-album={JSON.stringify(a.photos)} aria-label={`${u.life.view}: ${a.title}`}>
+                  <img src={a.cover} alt={a.title} loading={i < 3 ? 'eager' : 'lazy'} />
+                  <span class="album-count">
+                    <Icon name="image" size={14} />
+                    {a.count}
+                  </span>
+                  <span class="album-zoom" aria-hidden="true">
+                    <Icon name="arrow-up-right" size={18} />
+                  </span>
+                </button>
+              ) : (
+                <div class="album-cover album-placeholder" style={`--c1:${c1};--c2:${c2}`}>
+                  <span class="album-ph-icon">
+                    <Icon name={a.icon ?? 'camera'} size={34} />
+                  </span>
+                  <span class="album-ph-text">{u.life.placeholder}</span>
+                </div>
+              )}
+              <div class="album-body">
+                <div class="album-meta">
+                  {a.tag && <span class="album-tag">{a.tag}</span>}
+                  {a.date && <time>{a.date}</time>}
+                </div>
+                <h2 class="album-title">{a.title}</h2>
+                {a.desc && <p class="album-desc">{a.desc}</p>}
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+
+  <dialog class="lightbox" data-lightbox data-lenis-prevent aria-label={u.life.title}>
+    <button class="lb-btn lb-close" type="button" data-lb-close aria-label={u.life.close}><Icon name="close" size={22} /></button>
+    <button class="lb-btn lb-nav lb-prev" type="button" data-lb-prev aria-label={u.a11y.prev}><Icon name="chevron-left" size={26} /></button>
+    <figure class="lb-figure">
+      <img data-lb-img alt="" />
+      <video data-lb-video controls playsinline preload="metadata" hidden></video>
+      <figcaption>
+        <span data-lb-caption></span>
+        <span class="lb-counter" data-lb-counter></span>
+      </figcaption>
+    </figure>
+    <button class="lb-btn lb-nav lb-next" type="button" data-lb-next aria-label={u.a11y.next}><Icon name="chevron-right" size={26} /></button>
+  </dialog>
+</Base>
+
+<script>
+  // 相册大图浏览：点击封面打开，左右键 / 按钮 / 滑动切换，Esc 或点击空白处关闭
+  type Photo = { src: string; caption: string; video?: boolean };
+  const box = document.querySelector<HTMLDialogElement>('[data-lightbox]');
+  if (box) {
+    const img = box.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const video = box.querySelector<HTMLVideoElement>('[data-lb-video]')!;
+    const caption = box.querySelector<HTMLElement>('[data-lb-caption]')!;
+    const counter = box.querySelector<HTMLElement>('[data-lb-counter]')!;
+    const navs = box.querySelectorAll<HTMLElement>('.lb-nav');
+    let photos: Photo[] = [];
+    let index = 0;
+
+    const show = (i: number) => {
+      index = (i + photos.length) % photos.length;
+      const p = photos[index];
+      video.pause();
+      img.hidden = !!p.video;
+      video.hidden = !p.video;
+      if (p.video) {
+        video.src = p.src;
+      } else {
+        video.removeAttribute('src');
+        video.load();
+        img.src = p.src;
+        img.alt = p.caption;
+      }
+      caption.textContent = p.caption;
+      counter.textContent = photos.length > 1 ? `${index + 1} / ${photos.length}` : '';
+      (p.video ? video : img).animate([{ opacity: 0, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: 'cubic-bezier(.22,.8,.22,1)' });
+    };
+
+    document.querySelectorAll<HTMLElement>('[data-album]').forEach((el) =>
+      el.addEventListener('click', () => {
+        photos = JSON.parse(el.dataset.album ?? '[]');
+        if (!photos.length) return;
+        navs.forEach((n) => (n.hidden = photos.length < 2));
+        box.showModal();
+        show(0);
+      }),
+    );
+
+    box.querySelector('[data-lb-close]')!.addEventListener('click', () => box.close());
+    box.addEventListener('close', () => video.pause());
+    box.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(index - 1));
+    box.querySelector('[data-lb-next]')!.addEventListener('click', () => show(index + 1));
+    box.addEventListener('click', (e) => {
+      if (e.target === box) box.close();
+    });
+    box.addEventListener('keydown', (e) => {
+      if (photos.length < 2) return;
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+    let startX = 0;
+    box.addEventListener('pointerdown', (e) => (startX = e.target === video ? NaN : e.clientX));
+    box.addEventListener('pointerup', (e) => {
+      const dx = e.clientX - startX;
+      if (photos.length > 1 && Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    });
+  }
+</script>

@@ -1,0 +1,125 @@
+---
+// 页头：刊头（校园照片渐变背景 + 课题组标志 + 学校标志）+ 吸顶导航栏（下拉菜单、滑动指示条、搜索、语言切换）
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { site, research, t, href, asset, pageKey, switchLangHref, type Lang } from '../lib/site';
+import { ui, NAV_KEYS, navLabelKey, type NavKey } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const current = pageKey(Astro.url.pathname).split('/')[0];
+const other: Lang = lang === 'zh' ? 'en' : 'zh';
+const uni = site.university ?? {};
+// 图片文件放好后才使用，否则退回文字版校名 / 纯色渐变
+const inPublic = (p?: string) => !!p && existsSync(join(process.cwd(), 'public', p));
+const uniLogo = inPublic(uni.logo) ? asset(uni.logo) : '';
+const mastImg = inPublic(site.masthead_image) ? asset(site.masthead_image) : '';
+
+// 下拉菜单
+const subs: Partial<Record<NavKey, { label: string; href: string; color?: string; sep?: boolean }[]>> = {
+  research: research.map((r) => ({ label: t(r.short, lang), href: `${href('research', lang)}#${r.id}`, color: r.color })),
+  people: u.sub.people.map(([id, label]) => ({ label, href: `${href('people', lang)}#${id}` })),
+  publications: [
+    ...u.sub.pubs.map(([id, label]) => ({ label, href: `${href('publications', lang)}?type=${id}` })),
+    { label: u.sub.patents, href: href('publications/patents', lang), sep: true },
+  ],
+};
+---
+
+<div class:list={['masthead', { 'has-photo': mastImg }]} style={mastImg ? `--mast-img:url('${mastImg}')` : undefined}>
+  <div class="container masthead-inner">
+    <a class="wordmark" href={href('', lang)}>
+      <Logo size={64} id="wm-logo" />
+      <span class="wordmark-text">
+        {
+          lang === 'zh' ? (
+            <>
+              <span class="wm-main">{t(site.name, 'zh')}</span>
+              <span class="wm-sub">
+                <b>{uni.short}</b> {site.lab_en}
+              </span>
+            </>
+          ) : (
+            <>
+              <span class="wm-main wm-main-en">
+                <b>{uni.short}</b> {site.lab_en}
+              </span>
+              <span class="wm-sub">{t(site.affiliation, 'en')}</span>
+            </>
+          )
+        }
+      </span>
+    </a>
+    {
+      uniLogo ? (
+        <a class="uni-logo" href={uni.url} target="_blank" rel="noopener">
+          <img src={uniLogo} alt={t(uni.name, lang)} />
+        </a>
+      ) : (
+        <a class="uni-text" href={uni.url} target="_blank" rel="noopener">
+          <span class="uni-text-zh">{t(uni.name, 'zh')}</span>
+          <span class="uni-text-en">{t(uni.name, 'en')}</span>
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<nav class="navbar" data-navbar aria-label={u.a11y.mainNav}>
+  <div class="container navbar-inner">
+    {
+      uniLogo && (
+        <a class="navbar-uni" href={uni.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+          <img src={uniLogo} alt="" />
+        </a>
+      )
+    }
+    <a class="navbar-brand" href={href('', lang)} tabindex="-1" aria-hidden="true">
+      <Logo size={28} id="nb-logo" />
+      <span>{t(site.short_name, lang)}</span>
+    </a>
+    <ul class="nav" id="site-nav" data-nav>
+      {
+        NAV_KEYS.map((k) => {
+          const items = subs[k];
+          return (
+            <li class:list={['nav-item', { 'has-sub': items }]}>
+              <a href={href(k, lang)} class:list={['nav-link', { active: current === k }]} aria-current={current === k ? 'page' : undefined}>
+                {u.nav[navLabelKey(k)]}
+                {items && <Icon name="chevron" size={14} class="nav-caret" />}
+              </a>
+              {items && (
+                <ul class="subnav">
+                  {items.map((s) => (
+                    <li class:list={{ 'subnav-sep': s.sep }}>
+                      <a href={s.href} style={s.color ? `--c:${s.color}` : undefined}>
+                        {s.color && <i />}
+                        {s.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })
+      }
+      <li class="nav-indicator" role="presentation" aria-hidden="true"></li>
+    </ul>
+    <form class="site-search" action={href('publications', lang)} method="get" role="search">
+      <input type="search" name="q" placeholder={u.searchPh} aria-label={u.searchPh} />
+      <button type="submit" aria-label={u.searchPh}><Icon name="search" size={15} /></button>
+    </form>
+    <a class="lang-switch" href={switchLangHref(Astro.url.pathname, other)} hreflang={other === 'zh' ? 'zh-CN' : 'en'} aria-label={u.a11y.switchLang}>
+      {u.langLabel}
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label={u.a11y.menu}>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>

@@ -1,0 +1,49 @@
+# ==============================================================
+#  加入我们（招生信息）
+#  以下为根据研究方向拟写的草稿，请按学院当年招生政策修改。
+#  - intro 同时显示在首页底部的招生卡片中
+#  - positions 的 icon 可选：sparkles / graduation / book / users / flask / brain
+# ==============================================================
+
+intro:
+  zh: 课题组长期招收对人工智能、计算机视觉和医学影像分析充满热情的博士、硕士研究生和本科生。你将参与前沿课题，有机会在顶级期刊和会议发表成果，并与国内外高校、医院和企业开展合作。
+  en: We welcome Ph.D., Master's and undergraduate students who are passionate about AI, computer vision and medical image analysis. You will work on frontier problems, publish at top venues, and collaborate with universities, hospitals and companies at home and abroad.
+
+positions:
+  - icon: graduation
+    title: { zh: 博士研究生, en: Ph.D. Students }
+    desc:
+      zh: 面向信息与通信工程、电子信息等专业招收博士研究生，欢迎在计算机视觉、医学影像或多智能体方向有研究基础的同学联系。
+      en: Ph.D. positions in Information & Communication Engineering and Electronic Information. Prior research in vision, medical imaging or multi-agent systems is a plus.
+  - icon: sparkles
+    title: { zh: 硕士研究生, en: Master's Students }
+    desc:
+      zh: 每年招收学术型与专业型硕士研究生，欢迎推免生和统考生提前联系，了解课题方向与组内培养方式。
+      en: Academic and professional Master's positions every year. Recommended and exam-admitted applicants are welcome to reach out early.
+  - icon: book
+    title: { zh: 本科生科研, en: Undergraduate Research }
+    desc:
+      zh: 欢迎本科生进组参与科研训练、大创项目、毕业设计和学科竞赛，表现优秀者可优先推荐读研。
+      en: Undergraduates can join for research training, innovation projects, theses and competitions; strong performers get priority for graduate admission.
+
+requirements:
+  zh:
+    - 对人工智能研究有热情，具备良好的自驱力和好奇心
+    - 扎实的数学基础（线性代数、概率统计、最优化）
+    - 熟悉 Python，有 PyTorch 等深度学习框架使用经验者优先
+    - 良好的英文文献阅读与写作能力，乐于沟通和团队合作
+  en:
+    - Genuine passion for AI research, curiosity and self-motivation
+    - Solid math foundations (linear algebra, probability, optimization)
+    - Fluency in Python; experience with PyTorch or similar is a plus
+    - Good English reading and writing, and a collaborative spirit
+
+apply:
+  zh:
+    - 准备个人简历，附成绩单、获奖情况和科研/项目经历
+    - 发送至课题组邮箱，邮件标题注明「申请类型 + 姓名 + 学校」
+    - 我们会尽快回复合适的申请者，并安排线上或线下交流
+  en:
+    - Prepare a CV with transcripts, awards and research or project experience
+    - "Email it to the group with the subject line: position + name + university"
+    - We will reply to suitable applicants and arrange a conversation

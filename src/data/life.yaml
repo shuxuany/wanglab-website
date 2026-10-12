@@ -1,0 +1,135 @@
+# ==============================================================
+#  团队生活（相册）
+#  - 每个相册一张卡片，按这里的顺序显示；第一个相册显示为大图；首页「团队生活」展示前 5 个相册
+#  - id：相册的英文短名，用于链接，例如新闻中的 page: life#2026-graduation
+#  - photos：照片 / 视频放在 public/images/life/相册文件夹/ 下，按顺序填写；点击卡片可全屏浏览整组
+#           支持 .jpg / .png 照片和 .mp4 视频；caption 可选，不填时显示相册名称
+#           照片建议长边 1600 像素左右、单张不超过 500 KB（太大的照片会拖慢网页）
+#  - cover：卡片封面（可选，建议用缩小版图片）；不填时用第一张照片
+#  - photos 留空时显示「照片待补充」的占位卡片，icon 为占位图标（chat / mic / graduation / mountain / star / users / camera）
+#  - date：可以写 2026-06-22、2026-06 或 2026；留空不显示
+# ==============================================================
+
+- id: 2026-teachers-day
+  title: { zh: 2026 教师节合影, en: Teachers' Day 2026 }
+  tag: { zh: 节日, en: Festival }
+  date: 2026-09
+  desc:
+    zh: 教师节，课题组同学与王老师在「桃李春风」书法前合影留念。
+    en: The whole group with Prof. Wang in front of the calligraphy “Taoli Chunfeng” on Teachers' Day.
+  cover: images/life/2026-teachers-day/cover.jpg
+  photos:
+    - src: images/life/2026-teachers-day/01.jpg
+
+- id: 2026-mid-autumn
+  title: { zh: 2026 教师节 · 中秋团队聚餐, en: Teachers' Day & Mid-Autumn Dinner 2026 }
+  tag: { zh: 节日, en: Festival }
+  date: 2026-09
+  desc:
+    zh: 在绿树掩映的小院里围坐一桌，举杯共庆双节。
+    en: Celebrating Teachers' Day and the Mid-Autumn Festival around the table in a garden courtyard.
+  cover: images/life/2026-mid-autumn/cover.jpg
+  photos:
+    - src: images/life/2026-mid-autumn/01.jpg
+    - src: images/life/2026-mid-autumn/02.jpg
+    - src: images/life/2026-mid-autumn/03.jpg
+    - src: images/life/2026-mid-autumn/04.jpg
+    - src: images/life/2026-mid-autumn/05.jpg
+    - src: images/life/2026-mid-autumn/06.jpg
+    - src: images/life/2026-mid-autumn/07.jpg
+    - src: images/life/2026-mid-autumn/08.jpg
+
+- id: 2026-graduation
+  title: { zh: 2026 毕业季, en: Graduation 2026 }
+  tag: { zh: 毕业季, en: Graduation }
+  date: 2026-06-22
+  desc:
+    zh: 穿上学位服，与导师和同门在校园各处留下毕业纪念。
+    en: Graduation photos with our advisor and labmates around campus.
+  cover: images/life/2026-graduation/cover.jpg
+  photos:
+    - src: images/life/2026-graduation/01.jpg
+      caption: { zh: I ❤ SICE · 信息与通信工程学院, en: I ❤ SICE · School of Information and Communication Engineering }
+    - src: images/life/2026-graduation/02.jpg
+    - src: images/life/2026-graduation/03.jpg
+    - src: images/life/2026-graduation/04.jpg
+    - src: images/life/2026-graduation/05.jpg
+    - src: images/life/2026-graduation/06.jpg
+
+- id: 2026-annual
+  title: { zh: 2026 年会 · 薪火相传 龙马精神, en: Annual Gathering 2026 }
+  tag: { zh: 年会, en: Annual Party }
+  date: 2026
+  desc:
+    zh: 辞旧迎新，薪火相传，龙马精神。
+    en: Seeing out the old year and welcoming the Year of the Horse together.
+  cover: images/life/2026-annual/cover.jpg
+  photos:
+    - src: images/life/2026-annual/01.jpg
+    - src: images/life/2026-annual/02.jpg
+    - src: images/life/2026-annual/03.jpg
+    - src: images/life/2026-annual/04.mp4
+
+- id: 2025-dinner
+  title: { zh: 2025 团队聚餐, en: Team Dinner 2025 }
+  tag: { zh: 聚餐, en: Dinner }
+  date: 2025-11-01
+  desc:
+    zh: 烤肉聚餐，科研之余的轻松时光。
+    en: A barbecue dinner — time to relax together.
+  cover: images/life/2025-dinner/cover.jpg
+  photos:
+    - src: images/life/2025-dinner/01.jpg
+    - src: images/life/2025-dinner/02.jpg
+    - src: images/life/2025-dinner/03.jpg
+    - src: images/life/2025-dinner/04.jpg
+    - src: images/life/2025-dinner/05.mp4
+
+- id: 2025-teachers-day
+  title: { zh: 2025 教师节, en: Teachers' Day 2025 }
+  tag: { zh: 节日, en: Festival }
+  date: 2025-09-10
+  desc:
+    zh: 蛋糕、鲜花和一幅贴满合影的中国地图，为王老师庆祝教师节。
+    en: Cake, flowers and a map of China covered with our photos for Prof. Wang on Teachers' Day.
+  cover: images/life/2025-teachers-day/cover.jpg
+  photos:
+    - src: images/life/2025-teachers-day/01.jpg
+    - src: images/life/2025-teachers-day/02.jpg
+    - src: images/life/2025-teachers-day/03.jpg
+    - src: images/life/2025-teachers-day/04.jpg
+    - src: images/life/2025-teachers-day/05.jpg
+
+- id: 2024-annual
+  title: { zh: 2024 年会, en: Annual Gathering 2024 }
+  tag: { zh: 年会, en: Annual Party }
+  date: 2024
+  desc:
+    zh: 年会合影，人手一个新年红包。
+    en: Group photo at the annual gathering — red envelopes for everyone.
+  cover: images/life/2024-annual/cover.jpg
+  photos:
+    - src: images/life/2024-annual/01.jpg
+
+- id: group-meeting
+  title: { zh: 组会, en: Group Meetings }
+  tag: { zh: 学术交流, en: Academic }
+  date: ""
+  desc:
+    zh: 组会上轮流汇报研究进展、分享前沿方法，例如 PPO 算法及其变体。
+    en: Taking turns to report progress and share new methods — here, PPO and its variants.
+  cover: images/life/group-meeting/cover.jpg
+  photos:
+    - src: images/life/group-meeting/01.jpg
+    - src: images/life/group-meeting/02.jpg
+
+- id: campus
+  title: { zh: 我们的校园, en: Our Campus }
+  tag: { zh: 校园, en: Campus }
+  date: ""
+  desc:
+    zh: 电子科技大学清水河校区。课题组位于信息与通信工程学院科研楼 KC322。
+    en: Qingshuihe Campus of UESTC. The lab is in Room KC322 of the School of Information and Communication Engineering research building.
+  photos:
+    - src: images/campus.jpg
+      caption: { zh: 电子科技大学清水河校区, en: Qingshuihe Campus, UESTC }

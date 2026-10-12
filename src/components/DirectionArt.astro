@@ -1,0 +1,244 @@
+---
+// 研究方向的动态插画（纯 SVG + CSS 动画，没有真实配图时使用）
+// art: brain / flow / restore / cloud3d / trajectory / experts
+interface Props {
+  art: string;
+  color: string;
+  uid: string;
+}
+const { art, color, uid } = Astro.props;
+
+// 固定种子的随机数，保证每次构建结果一致
+function rng(seed: number) {
+  return () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const r = rng([...art].reduce((s, c) => s + c.charCodeAt(0), 7));
+const f = (n: number) => n.toFixed(1);
+
+// brain：脑网络图
+const bNodes: { x: number; y: number; s: number }[] = [];
+while (bNodes.length < 34) {
+  const a = r() * Math.PI * 2;
+  const d = Math.sqrt(r());
+  const x = 200 + Math.cos(a) * d * 150;
+  const y = 132 + Math.sin(a) * d * 92;
+  if (bNodes.every((n) => Math.hypot(n.x - x, n.y - y) > 26)) bNodes.push({ x, y, s: 2 + r() * 3.5 });
+}
+const bEdges: [number, number][] = [];
+bNodes.forEach((n, i) => {
+  bNodes
+    .map((m, j) => ({ j, d: Math.hypot(m.x - n.x, m.y - n.y) }))
+    .filter((o) => o.j !== i)
+    .sort((a, b) => a.d - b.d)
+    .slice(0, 2)
+    .forEach((o) => {
+      if (!bEdges.some(([a, b]) => (a === o.j && b === i) || (a === i && b === o.j))) bEdges.push([i, o.j]);
+    });
+});
+
+// flow：涡旋流线 + 事件点
+const streams: string[] = [];
+for (let k = 0; k < 16; k++) {
+  let x = -10 + (k % 4) * 30;
+  let y = 20 + Math.floor(k / 4) * 62 + r() * 20;
+  let d = `M${f(x)} ${f(y)}`;
+  for (let s = 0; s < 70; s++) {
+    const dx = x - 230;
+    const dy = y - 130;
+    const dist = Math.hypot(dx, dy) + 30;
+    const vx = 1.6 + (-dy / dist) * 2.2;
+    const vy = 0.15 + (dx / dist) * 2.2;
+    x += vx * 3.2;
+    y += vy * 3.2;
+    d += ` L${f(x)} ${f(y)}`;
+  }
+  streams.push(d);
+}
+const events = Array.from({ length: 70 }, () => ({ x: r() * 400, y: r() * 260, p: r() > 0.5, d: r() * 3 }));
+
+// restore：噪声像素 → 清晰像素
+const cells: { x: number; y: number; noisy: number; clean: number }[] = [];
+for (let gx = 0; gx < 20; gx++) {
+  for (let gy = 0; gy < 13; gy++) {
+    const base = 0.25 + 0.55 * Math.sin(gx / 3.2 + 0.6) * Math.cos(gy / 2.6 - 0.4) ** 2;
+    cells.push({ x: gx * 20, y: gy * 20, clean: Math.max(0.05, base), noisy: Math.min(0.95, Math.max(0.02, base + (r() - 0.5) * 0.9)) });
+  }
+}
+
+// cloud3d：点云 + 三维框
+const proj = (x: number, y: number, z: number) => [200 + (x - z) * 0.92, 150 + (x + z) * 0.42 - y] as const;
+const cloud = Array.from({ length: 160 }, () => {
+  const x = (r() - 0.5) * 120;
+  const z = (r() - 0.5) * 60;
+  const y = Math.max(0, 40 - (x * x) / 400 - (z * z) / 200) * r();
+  const [px, py] = proj(x, y, z);
+  return { x: px, y: py, s: 0.8 + r() * 1.4 };
+});
+const boxCorners = [
+  [-70, 0, -38], [70, 0, -38], [70, 0, 38], [-70, 0, 38],
+  [-70, 52, -38], [70, 52, -38], [70, 52, 38], [-70, 52, 38],
+].map(([x, y, z]) => proj(x, y, z));
+const boxEdges = [[0, 1], [1, 2], [2, 3], [3, 0], [4, 5], [5, 6], [6, 7], [7, 4], [0, 4], [1, 5], [2, 6], [3, 7]];
+const ground = Array.from({ length: 9 }, (_, i) => {
+  const t = -160 + i * 40;
+  const a = proj(t, 0, -160);
+  const b = proj(t, 0, 160);
+  const c = proj(-160, 0, t);
+  const d = proj(160, 0, t);
+  return [a, b, c, d];
+});
+
+// trajectory：航迹
+const flights = [
+  'M-10 220 C 90 160, 160 60, 410 40',
+  'M-10 170 C 120 190, 230 80, 410 110',
+  'M30 270 C 120 150, 260 200, 410 170',
+  'M-10 90 C 120 40, 250 140, 410 230',
+];
+
+// experts：混合专家模型
+const experts = [40, 95, 150, 205];
+---
+
+<svg class="dir-art" viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style={`--c:${color}`}>
+  <defs>
+    <radialGradient id={`${uid}-glow`}>
+      <stop offset="0" stop-color={color} stop-opacity=".45"></stop>
+      <stop offset="1" stop-color={color} stop-opacity="0"></stop>
+    </radialGradient>
+    <pattern id={`${uid}-grid`} width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="#fff" stroke-opacity=".05"></path>
+    </pattern>
+    {
+      art === 'restore' && (
+        <clipPath id={`${uid}-clip`}>
+          <rect class="scan" x="0" y="0" width="400" height="260" />
+        </clipPath>
+      )
+    }
+  </defs>
+  <rect width="400" height="260" fill="#07254a"></rect>
+  <rect width="400" height="260" fill={`url(#${uid}-grid)`}></rect>
+  <ellipse cx="200" cy="130" rx="210" ry="150" fill={`url(#${uid}-glow)`}></ellipse>
+
+  {
+    art === 'brain' && (
+      <g>
+        {bEdges.map(([a, b]) => (
+          <line x1={f(bNodes[a].x)} y1={f(bNodes[a].y)} x2={f(bNodes[b].x)} y2={f(bNodes[b].y)} stroke={color} stroke-opacity=".38" />
+        ))}
+        {bNodes.map((n, i) => (
+          <circle
+            class:list={[{ twinkle: i % 4 === 0 }]}
+            cx={f(n.x)}
+            cy={f(n.y)}
+            r={f(n.s)}
+            fill={i % 4 === 0 ? '#fff' : color}
+            style={`animation-delay:${(i * 0.37) % 3}s`}
+          />
+        ))}
+      </g>
+    )
+  }
+
+  {
+    art === 'flow' && (
+      <g>
+        {streams.map((d, i) => (
+          <path class="wave" d={d} fill="none" stroke={color} stroke-opacity={0.25 + (i % 4) * 0.15} stroke-width="1.4" style={`animation-duration:${4 + (i % 5)}s`} />
+        ))}
+        {events.map((e) => (
+          <rect class="twinkle" x={f(e.x)} y={f(e.y)} width="2.4" height="2.4" fill={e.p ? color : '#ff6bd6'} style={`animation-delay:${f(e.d)}s`} />
+        ))}
+      </g>
+    )
+  }
+
+  {
+    art === 'restore' && (
+      <g>
+        {cells.map((c) => (
+          <rect x={c.x + 1} y={c.y + 1} width="18" height="18" rx="2" fill={color} fill-opacity={c.noisy.toFixed(2)} />
+        ))}
+        <g clip-path={`url(#${uid}-clip)`}>
+          <rect width="400" height="260" fill="#07254a" />
+          {cells.map((c) => (
+            <rect x={c.x + 1} y={c.y + 1} width="18" height="18" rx="2" fill={color} fill-opacity={c.clean.toFixed(2)} />
+          ))}
+        </g>
+        <line class="scan" x1="400" y1="0" x2="400" y2="260" stroke="#fff" stroke-width="2" />
+      </g>
+    )
+  }
+
+  {
+    art === 'cloud3d' && (
+      <g>
+        {ground.map(([a, b, c, d]) => (
+          <g stroke={color} stroke-opacity=".12">
+            <line x1={f(a[0])} y1={f(a[1])} x2={f(b[0])} y2={f(b[1])} />
+            <line x1={f(c[0])} y1={f(c[1])} x2={f(d[0])} y2={f(d[1])} />
+          </g>
+        ))}
+        <g class="orbit" style="animation-duration:6s">
+          <circle cx="200" cy="150" r="190" fill="none" />
+          <path d="M200 150 L390 150 A190 190 0 0 0 364.5 55 Z" fill={color} fill-opacity=".12" />
+        </g>
+        {cloud.map((p, i) => (
+          <circle class:list={[{ twinkle: i % 9 === 0 }]} cx={f(p.x)} cy={f(p.y)} r={f(p.s)} fill={i % 9 === 0 ? '#fff' : color} />
+        ))}
+        {boxEdges.map(([a, b]) => (
+          <line x1={f(boxCorners[a][0])} y1={f(boxCorners[a][1])} x2={f(boxCorners[b][0])} y2={f(boxCorners[b][1])} stroke="#fff" stroke-opacity=".85" stroke-width="1.4" />
+        ))}
+      </g>
+    )
+  }
+
+  {
+    art === 'trajectory' && (
+      <g>
+        {flights.map((d, i) => (
+          <g>
+            <path d={d} fill="none" stroke={color} stroke-opacity=".22" stroke-width="1.2" />
+            <path class="wave" d={d} fill="none" stroke={color} stroke-opacity=".75" stroke-width="1.6" style={`animation-duration:${5 + i}s`} />
+            <circle r="4" fill="#fff">
+              <animateMotion dur={`${7 + i * 1.5}s`} repeatCount="indefinite" path={d} />
+            </circle>
+          </g>
+        ))}
+        {[[40, 215], [70, 120], [330, 60], [360, 190]].map(([x, y]) => (
+          <g>
+            <circle class="twinkle" cx={x} cy={y} r="10" fill={color} fill-opacity=".25" />
+            <circle cx={x} cy={y} r="3.5" fill={color} />
+          </g>
+        ))}
+      </g>
+    )
+  }
+
+  {
+    art === 'experts' && (
+      <g>
+        {experts.map((y) => (
+          <g>
+            <path class="wave" d={`M70 130 C 120 130, 120 ${y + 15}, 175 ${y + 15}`} fill="none" stroke={color} stroke-opacity=".6" />
+            <path class="wave" d={`M245 ${y + 15} C 300 ${y + 15}, 300 130, 340 130`} fill="none" stroke={color} stroke-opacity=".6" />
+          </g>
+        ))}
+        {experts.map((y, i) => (
+          <rect class="expert" x="175" y={y} width="70" height="30" rx="8" fill={color} fill-opacity=".2" stroke={color} style={`animation-delay:${i * 0.9}s`} />
+        ))}
+        <circle cx="62" cy="130" r="14" fill={color} fill-opacity=".25" stroke={color} />
+        <circle cx="62" cy="130" r="5" fill="#fff" />
+        <circle cx="348" cy="130" r="14" fill={color} fill-opacity=".25" stroke={color} />
+        <circle class="twinkle" cx="348" cy="130" r="5" fill="#fff" />
+      </g>
+    )
+  }
+</svg>

@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PubItem from '../components/PubItem.astro';
+import OutputSwitch from '../components/OutputSwitch.astro';
+import Icon from '../components/Icon.astro';
+import { site, research, publications, pubType, t, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
+const countOf = (type: string) => publications.filter((p) => type === 'all' || pubType(p) === type).length;
+const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string, string][])];
+---
+
+<Base lang={lang} title={u.nav.publications} description={t(site.pages?.publications, lang)}>
+  <PageHero eyebrow="Research Output" title={u.pubs.title} desc={t(site.pages?.publications, lang)} lang={lang} />
+
+  <div class="container page-body" data-pubs>
+    <OutputSwitch lang={lang} active="papers" />
+    <div class="pub-controls" data-reveal>
+      <div class="tabs" role="tablist" data-tabs>
+        {
+          tabs.map(([id, label]) => (
+            <button class:list={['tab', { 'is-active': id === 'all' }]} type="button" role="tab" aria-selected={id === 'all' ? 'true' : 'false'} data-type-tab={id}>
+              {label}
+              <span class="tab-count">{countOf(id)}</span>
+            </button>
+          ))
+        }
+        <span class="tab-indicator" aria-hidden="true"></span>
+      </div>
+      <div class="pub-filters">
+        <label class="search">
+          <Icon name="search" />
+          <input type="search" placeholder={u.pubs.search} aria-label={u.pubs.search} data-pub-search />
+        </label>
+        <select class="select" data-pub-year aria-label={u.pubs.allYears}>
+          <option value="all">{u.pubs.allYears}</option>
+          {years.map((y) => <option value={y}>{y}</option>)}
+        </select>
+      </div>
+      <div class="chips" role="group" aria-label={u.nav.research}>
+        <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{u.pubs.allDirections}</button>
+        {
+          research.map((r) => (
+            <button class="chip" type="button" data-dir-chip={r.id} aria-pressed="false" style={`--c:${r.color}`}>
+              <i />
+              {t(r.short, lang)}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="pub-count" data-pub-count data-template={u.pubs.count}>{u.pubs.count.replace('{n}', String(publications.length))}</p>
+
+    <div class="pub-results">
+      {
+        years.map((y) => (
+          <section class="year-group" data-year-group>
+            <h2 class="year-label">{y}</h2>
+            <ol class="cite-list">
+              {publications
+                .filter((p) => p.year === y)
+                .map((p) => (
+                  <PubItem pub={p} lang={lang} />
+                ))}
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+    <p class="pub-empty" data-pub-empty hidden>{u.pubs.empty}</p>
+  </div>
+</Base>
+
+<script>
+  import '../scripts/pub-filter';
+</script>

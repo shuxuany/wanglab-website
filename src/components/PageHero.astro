@@ -1,0 +1,41 @@
+---
+// 子页面的标题带：校园照片 + 深蓝渐变 + 淡淡的动态神经网络 + 面包屑（没有照片时为浅色渐变）
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import NetCanvas from './NetCanvas.astro';
+import { site, asset, href, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  desc?: string;
+  lang?: Lang;
+  /** 上一级页面（面包屑中间一级），例如 科研成果 */
+  parent?: { label: string; href: string };
+}
+const { eyebrow, title, desc, lang = 'zh', parent } = Astro.props;
+const u = ui[lang];
+const photo = site.masthead_image && existsSync(join(process.cwd(), 'public', site.masthead_image)) ? asset(site.masthead_image) : '';
+---
+
+<section class:list={['page-title', { 'has-photo': photo }]} style={photo ? `--pt-img:url('${photo}')` : undefined}>
+  <NetCanvas density={0.45} theme={photo ? 'dark' : 'light'} />
+  <div class="container page-title-inner">
+    <nav class="crumbs" aria-label={u.a11y.breadcrumb}>
+      <a href={href('', lang)}>{u.nav.home}</a>
+      <span aria-hidden="true">/</span>
+      {
+        parent && (
+          <>
+            <a href={parent.href}>{parent.label}</a>
+            <span aria-hidden="true">/</span>
+          </>
+        )
+      }
+      <span aria-current="page">{title}</span>
+    </nav>
+    <h1><span class="pt-en">{eyebrow}</span>{title}</h1>
+    {desc && <p class="page-title-desc">{desc}</p>}
+  </div>
+</section>

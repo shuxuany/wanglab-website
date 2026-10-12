@@ -1,0 +1,53 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, news, t, asset, formatDate, dateParts, newsLink, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+---
+
+<Base lang={lang} title={u.nav.news} description={t(site.pages?.news, lang)}>
+  <PageHero eyebrow="News" title={u.news.title} desc={t(site.pages?.news, lang)} lang={lang} />
+
+  <div class="container page-body page-narrow">
+    <ul class="news-list news-list-full">
+      {
+        news.map((n, i) => {
+          const d = dateParts(n.date);
+          const { url: link, external } = newsLink(n, lang);
+          return (
+            <li class="news-row" data-reveal style={`--d:${Math.min(i, 5) * 60}ms`}>
+              <a class="news-thumb" href={link} tabindex="-1" aria-hidden="true" target={external ? '_blank' : undefined} rel="noopener">
+                {n.image ? (
+                  <img src={asset(n.image)} alt="" loading="lazy" />
+                ) : (
+                  <span class="news-tile">
+                    <b>{n.tag ?? `${d.m}/${d.d}`}</b>
+                    <small>{d.y}</small>
+                  </span>
+                )}
+              </a>
+              <div class="news-body">
+                <a class="news-title" href={link} target={external ? '_blank' : undefined} rel="noopener">
+                  {t(n.title, lang)}
+                </a>
+                <span class="news-meta">
+                  {n.kind === 'life' && <span class="news-kind">{u.nav.life}</span>}
+                  <time class="news-date" datetime={n.date}>
+                    {formatDate(n.date, lang)}
+                  </time>
+                </span>
+                {n.body && <p class="news-excerpt">{t(n.body, lang)}</p>}
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</Base>

@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import OutputSwitch from '../components/OutputSwitch.astro';
+import PatentItem from '../components/PatentItem.astro';
+import Icon from '../components/Icon.astro';
+import { site, research, patents, t, href, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const pu = u.patents;
+const yearOf = (d: string) => d.slice(0, 4);
+const years = [...new Set(patents.map((p) => yearOf(p.filed)))].sort((a, b) => b.localeCompare(a));
+const granted = patents.filter((p) => p.status === 'granted').length;
+const pending = patents.length - granted;
+const tabs: [string, string, number][] = [
+  ['all', pu.all, patents.length],
+  ['granted', pu.granted, granted],
+  ['pending', pu.pending, pending],
+];
+// 只显示有专利的研究方向
+const dirs = research.filter((r) => patents.some((p) => p.direction === r.id));
+const stats = [
+  { value: granted, label: pu.statGranted },
+  { value: pending, label: pu.statPending },
+  { value: years.at(-1) ?? '', label: pu.statSince, plain: true },
+];
+---
+
+<Base lang={lang} title={pu.title} description={t(site.pages?.patents, lang)}>
+  <PageHero eyebrow="Patents" title={pu.title} desc={t(site.pages?.patents, lang)} lang={lang} parent={{ label: u.nav.publications, href: href('publications', lang) }} />
+
+  <div class="container page-body" data-pubs>
+    <OutputSwitch lang={lang} active="patents" />
+
+    <dl class="pat-stats">
+      {
+        stats.map((s, i) => (
+          <div class="pat-stat" data-reveal style={`--d:${i * 90}ms`}>
+            <dd data-count={s.plain ? undefined : s.value}>{s.value}</dd>
+            <dt>{s.label}</dt>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="pub-controls" data-reveal>
+      <div class="tabs" role="tablist" data-tabs>
+        {
+          tabs.map(([id, label, n]) => (
+            <button class:list={['tab', { 'is-active': id === 'all' }]} type="button" role="tab" aria-selected={id === 'all' ? 'true' : 'false'} data-type-tab={id}>
+              {label}
+              <span class="tab-count">{n}</span>
+            </button>
+          ))
+        }
+        <span class="tab-indicator" aria-hidden="true"></span>
+      </div>
+      <div class="pub-filters">
+        <label class="search">
+          <Icon name="search" />
+          <input type="search" placeholder={pu.search} aria-label={pu.search} data-pub-search />
+        </label>
+        <select class="select" data-pub-year aria-label={u.pubs.allYears}>
+          <option value="all">{u.pubs.allYears}</option>
+          {years.map((y) => <option value={y}>{y}</option>)}
+        </select>
+      </div>
+      <div class="chips" role="group" aria-label={u.nav.research}>
+        <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{u.pubs.allDirections}</button>
+        {
+          dirs.map((r) => (
+            <button class="chip" type="button" data-dir-chip={r.id} aria-pressed="false" style={`--c:${r.color}`}>
+              <i />
+              {t(r.short, lang)}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="pub-count" data-pub-count data-template={pu.count}>{pu.count.replace('{n}', String(patents.length))}</p>
+
+    <div class="pub-results">
+      {
+        years.map((y) => (
+          <section class="year-group" data-year-group>
+            <h2 class="year-label">{y}</h2>
+            <ol class="cite-list">
+              {patents
+                .filter((p) => yearOf(p.filed) === y)
+                .map((p) => (
+                  <PatentItem patent={p} lang={lang} />
+                ))}
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+    <p class="pub-empty" data-pub-empty hidden>{pu.empty}</p>
+    <p class="pat-source">{pu.source}</p>
+  </div>
+</Base>
+
+<script>
+  import '../scripts/pub-filter';
+</script>

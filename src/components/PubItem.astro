@@ -1,0 +1,80 @@
+---
+// 论文条目（学术引用格式）：作者, "标题," 期刊, 卷期页码, 年份.
+import { t, asset, displayAuthors, directionColor, directionById, pubType, type Lang, type Publication } from '../lib/site';
+
+interface Props {
+  pub: Publication;
+  lang: Lang;
+  reveal?: boolean;
+  delay?: number;
+  showDirection?: boolean;
+}
+const { pub, lang, reveal = false, delay = 0, showDirection = true } = Astro.props;
+
+const authors = displayAuthors(pub.authors);
+const doiUrl = pub.doi ? (/^https?:/.test(pub.doi) ? pub.doi : `https://doi.org/${pub.doi}`) : '';
+const titleHref = pub.url || doiUrl || asset(pub.pdf);
+const dir = directionById(pub.direction);
+const type = pubType(pub);
+const search = [pub.title, ...(pub.authors ?? []), pub.venue, pub.short, pub.year].join(' ').toLowerCase();
+---
+
+<li
+  class="cite"
+  style={`--c:${directionColor(pub.direction)};${reveal ? `--d:${delay}ms` : ''}`}
+  data-pub
+  data-year={pub.year}
+  data-type={type}
+  data-direction={pub.direction ?? ''}
+  data-search={search}
+  data-reveal={reveal ? '' : undefined}
+>
+  <div class="cite-tags">
+    {pub.short && <span class="cite-venue">{pub.short}</span>}
+    {showDirection && dir && <span class="cite-dir"><i></i>{t(dir.short, lang)}</span>}
+    {pub.badge && <span class="cite-badge">{t(pub.badge, lang)}</span>}
+  </div>
+  <p class="cite-text">
+    <span class="cite-authors">
+      {
+        authors.map((a, i) =>
+          a === '…' ? (
+            <span class="pub-ellipsis">{i < authors.length - 1 ? '…, ' : lang === 'zh' ? '等' : 'et al.'}</span>
+          ) : (
+            <>
+              <span class:list={[{ 'is-member': a.member }]}>
+                {a.name}
+                {a.equal && <sup>#</sup>}
+                {a.corr && <sup>*</sup>}
+              </span>
+              {i < authors.length - 1 && ', '}
+            </>
+          ),
+        )
+      }
+    </span>
+    , “{titleHref ? <a class="cite-title" href={titleHref} target="_blank" rel="noopener">{pub.title}</a> : <span class="cite-title">{pub.title}</span>},”{' '}
+    <em>{pub.venue}</em>{pub.volume && <>, {pub.volume}</>}, {pub.year}.
+  </p>
+  {
+    (doiUrl || pub.pdf || pub.code) && (
+      <p class="cite-links">
+        {doiUrl && (
+          <a href={doiUrl} target="_blank" rel="noopener">
+            [DOI]
+          </a>
+        )}
+        {pub.pdf && (
+          <a href={asset(pub.pdf)} target="_blank" rel="noopener">
+            [PDF]
+          </a>
+        )}
+        {pub.code && (
+          <a href={pub.code} target="_blank" rel="noopener">
+            [Code]
+          </a>
+        )}
+      </p>
+    )
+  }
+</li>

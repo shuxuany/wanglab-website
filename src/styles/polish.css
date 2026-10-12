@@ -1,0 +1,411 @@
+/* ==============================================================
+   视觉升级层：深海军蓝打底 + 成电蓝渐变 + 暖橙渐变点缀
+   页面节奏：白 → 浅蓝灰 → 深蓝 → 白 → 深蓝，避免整页单调
+   （颜色变量集中在下方 :root，想调整整体色调改这里即可）
+   ============================================================== */
+
+:root {
+  --navy: #0a2342;
+  --navy-2: #0e3a72;
+  --navy-3: #071a33;
+  --sky: #49b0ff;
+  --grad-brand: linear-gradient(120deg, #0b5eb2 0%, #2f86de 55%, #49b0ff 100%);
+  --grad-warm: linear-gradient(120deg, #f2733a 0%, #ffa35e 100%);
+  --text: #16213a;
+  --shadow-card: 0 1px 2px rgba(10, 35, 66, 0.05), 0 14px 34px -20px rgba(10, 35, 66, 0.32);
+}
+
+/* ---------- 按钮与导航：渐变 ---------- */
+
+.btn-primary,
+.btn-primary:hover {
+  background-image: var(--grad-brand);
+  background-size: 180% 100%;
+}
+
+.btn-primary {
+  box-shadow: 0 10px 24px -12px rgba(11, 94, 178, 0.7);
+}
+
+.btn-primary:hover {
+  background-position: 100% 0;
+  transform: translateY(-1px);
+}
+
+.btn-orange,
+.btn-orange:hover {
+  background-image: var(--grad-warm);
+  background-size: 180% 100%;
+}
+
+.btn-orange:hover {
+  background-position: 100% 0;
+}
+
+.nav-indicator {
+  background: var(--grad-brand);
+}
+
+/* 区块标题前加一道暖色竖条 */
+.sec-title::before {
+  content: '';
+  align-self: center;
+  width: 5px;
+  height: 22px;
+  margin-right: 2px;
+  border-radius: 3px;
+  background: var(--grad-warm);
+}
+
+/* ---------- 滚动新闻播报 ---------- */
+
+.ticker {
+  position: relative;
+  color: #fff;
+  background: linear-gradient(90deg, var(--navy) 0%, var(--navy-2) 60%, #0b5eb2 100%);
+}
+
+.ticker-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 46px;
+}
+
+.ticker-label {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--grad-warm);
+  box-shadow: 0 6px 16px -8px rgba(245, 124, 64, 0.9);
+}
+
+.ticker-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.ticker-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #fff;
+  animation: ticker-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ticker-ping {
+  75%,
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+.ticker-viewport {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+
+.ticker-viewport ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ticker-viewport li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.ticker-viewport li::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin: 0 30px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.ticker-viewport time {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ffb684;
+}
+
+.ticker-viewport a {
+  color: rgba(255, 255, 255, 0.92);
+  transition: color 0.2s;
+}
+
+.ticker-viewport a:hover {
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.ticker:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.ticker-more {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  transition: color 0.2s;
+}
+
+.ticker-more:hover {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .ticker-more {
+    display: none;
+  }
+
+  .ticker-label {
+    padding: 3px 10px 3px 8px;
+    font-size: 12px;
+  }
+}
+
+/* 滚动条通用：速度由脚本按内容长度计算 */
+.marquee-track {
+  animation-duration: var(--dur, 50s);
+}
+
+.marquee-reverse .marquee-track {
+  animation-direction: reverse;
+}
+
+/* ---------- 轮播外框 ---------- */
+
+.home-slider {
+  padding-top: 30px;
+}
+
+.slider {
+  box-shadow: 0 40px 70px -42px rgba(10, 35, 66, 0.7), 0 0 0 1px rgba(10, 35, 66, 0.06);
+}
+
+/* ---------- 关于：深蓝渐变数据卡 ---------- */
+
+.about-stat {
+  background: linear-gradient(140deg, var(--navy-2) 0%, var(--navy) 100%);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease);
+}
+
+.about-stat:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 44px -24px rgba(10, 35, 66, 0.7);
+}
+
+.about-stat::after {
+  width: 96px;
+  height: 96px;
+  background: radial-gradient(circle, rgba(73, 176, 255, 0.35), transparent 70%);
+}
+
+.about-stat dd {
+  background: linear-gradient(90deg, #ffffff, #a9d6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-stat:nth-child(2) dd {
+  background: var(--grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.about-stat dt {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ---------- 浅蓝灰背景带：新闻 + 侧栏 ---------- */
+
+.band-soft {
+  position: relative;
+  isolation: isolate;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, #f1f6fc 0%, #f8fafd 100%);
+}
+
+.band-soft::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(rgba(11, 94, 178, 0.1) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(180deg, #000, transparent 70%);
+  mask-image: linear-gradient(180deg, #000, transparent 70%);
+  pointer-events: none;
+}
+
+.band-soft .home-grid {
+  padding-block: 56px 64px;
+}
+
+.band-soft .news-row {
+  margin-bottom: 14px;
+  padding: 16px;
+  border: 0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.band-soft .news-row:first-child {
+  padding-top: 16px;
+}
+
+.band-soft .news-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 44px -26px rgba(10, 35, 66, 0.55);
+}
+
+.side-card {
+  border-color: rgba(10, 35, 66, 0.06);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- 深蓝背景带：研究方向 ---------- */
+
+.band-navy {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(900px 420px at 88% 0%, rgba(73, 176, 255, 0.22), transparent 62%),
+    radial-gradient(700px 380px at 0% 100%, rgba(245, 124, 64, 0.14), transparent 60%),
+    linear-gradient(160deg, var(--navy-2) 0%, var(--navy) 55%, var(--navy-3) 100%);
+}
+
+.band-navy .home-section {
+  position: relative;
+  padding-block: 72px 84px;
+}
+
+.band-navy .sec-title {
+  color: #fff;
+}
+
+.band-navy .sec-en {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.band-navy .sec-rule {
+  border-top-color: rgba(255, 255, 255, 0.22);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.band-navy .sec-desc {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.band-navy .sec-more,
+.band-navy .sub-more {
+  color: #8ec8ff;
+}
+
+.band-navy .sub-card {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.band-navy .sub-card:hover {
+  border-color: color-mix(in srgb, var(--c) 70%, #fff);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 26px 54px -28px color-mix(in srgb, var(--c) 90%, transparent);
+}
+
+.band-navy .sub-icon {
+  box-shadow:
+    0 0 0 6px color-mix(in srgb, var(--c) 22%, transparent),
+    0 12px 30px -6px color-mix(in srgb, var(--c) 80%, transparent);
+}
+
+.band-navy .sub-num {
+  color: color-mix(in srgb, var(--c) 50%, #fff);
+}
+
+.band-navy .sub-title {
+  color: #fff;
+}
+
+.band-navy .sub-en {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.band-navy .sub-sum {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.site-footer {
+  background: var(--navy-3);
+}
+
+/* ---------- 子页面标题带：校园照片 + 深蓝渐变 ---------- */
+
+.page-title.has-photo {
+  border-bottom: 0;
+  color: #fff;
+  background:
+    linear-gradient(100deg, rgba(7, 26, 51, 0.95) 0%, rgba(10, 35, 66, 0.86) 42%, rgba(11, 94, 178, 0.45) 100%),
+    var(--pt-img) center 55% / cover no-repeat;
+}
+
+.page-title.has-photo .page-title-inner {
+  padding-block: 52px 58px;
+}
+
+.page-title.has-photo h1 {
+  color: #fff;
+}
+
+.page-title.has-photo .crumbs {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.page-title.has-photo .crumbs a:hover {
+  color: #fff;
+}
+
+.page-title.has-photo .page-title-desc {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.page-title.has-photo .pt-en {
+  color: #ffab73;
+}
