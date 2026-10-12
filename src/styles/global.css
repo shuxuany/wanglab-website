@@ -956,8 +956,10 @@ main {
   }
 
   .navbar.nav-open .nav {
-    max-height: calc(100svh - var(--nav-h));
+    max-height: var(--menu-max, calc(100svh - var(--nav-h)));
     padding-block: 8px 16px;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav-link,

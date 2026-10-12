@@ -55,7 +55,7 @@ groups:
     members:
       # 研究方向根据各自第一作者论文总结（2026-10）；入学年份待补充（填 since: 2023 这样的年份即可）
       - name: { zh: 匡育衡, en: Yuheng Kuang }
-        topic: { zh: 航迹预测, en: Trajectory Prediction }
+        topic: { zh: 可解释人工智能, en: Explainable AI }
         photo: images/members/kuangyuheng.jpg
       - name: { zh: 曾珍妮, en: Zhenni Zeng }
         topic: { zh: 视觉问答, en: Visual Question Answering }

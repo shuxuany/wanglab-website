@@ -83,7 +83,7 @@ const subs: Partial<Record<NavKey, { label: string; href: string; color?: string
       <Logo size={28} id="nb-logo" />
       <span>{t(site.short_name, lang)}</span>
     </a>
-    <ul class="nav" id="site-nav" data-nav>
+    <ul class="nav" id="site-nav" data-nav data-lenis-prevent>
       {
         NAV_KEYS.map((k) => {
           const items = subs[k];

@@ -63,6 +63,11 @@ if (indicator) {
 // ---------- 移动端菜单 ----------
 const toggle = navbar?.querySelector<HTMLButtonElement>('.menu-toggle');
 function setMenu(open: boolean) {
+  // 菜单高度按导航栏当前在屏幕上的位置计算（未吸顶时导航栏下方空间更小），超出部分在菜单内滚动
+  if (open && navbar) {
+    const room = window.innerHeight - navbar.getBoundingClientRect().bottom;
+    navbar.style.setProperty('--menu-max', `${Math.max(220, Math.round(room))}px`);
+  }
   navbar?.classList.toggle('nav-open', open);
   toggle?.setAttribute('aria-expanded', String(open));
   document.body.classList.toggle('nav-locked', open);
