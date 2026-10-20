@@ -1,0 +1,119 @@
+# ==============================================================
+#  学术交流
+#  数据整理自课题组提供的资料（参加国内外重要学术活动情况、社会任职、活动照片，2026-10），
+#  以及 2026-10-20 检索到的公开报道和微信公众号文章。
+#  - reports：媒体报道与公众号宣传。微信文章的永久链接需在微信里「复制链接」获得；
+#             暂时用搜狗微信搜索该文章标题的链接代替（点开即可找到原文），拿到永久链接后替换 url 即可
+#  - talks：特邀报告；conferences：在国际会议上宣读论文；visits：访问与考察；service：学术与社会服务；outreach：科普
+#  - image：活动照片（放在 assets/originals/images/exchange/ 后运行 npm run watermark）
+# ==============================================================
+
+reports:
+  - date: 2026-04-01
+    title: { zh: 参与巴中低空智能管理示范项目研讨，就 AI 大模型落地与空管系统融合提出建议, en: "Advises on a low-altitude intelligent management demonstration project in Bazhong" }
+    desc:
+      zh: 在“低空智能起降平台及协同空域管理关键技术研究及应用”项目研讨中，王正宁教授与民航二所专家一起，就 AI 大模型技术落地、通用系统打造以及与民航空管系统融合等方面提出指导意见。
+      en: At a review of the project on intelligent low-altitude take-off and landing platforms and collaborative airspace management, Prof. Wang and CAAC Second Research Institute experts advised on deploying large AI models, building general-purpose systems and integrating them with civil air traffic management.
+    source: { zh: 纵横股份 公众号（成都市无人机产业协会等转载）, en: "JOUAV WeChat account (reposted by the Chengdu UAV Industry Association and others)" }
+    url: https://weixin.sogou.com/weixin?type=2&query=%E7%BA%B5%E6%A8%AA%E8%82%A1%E4%BB%BD%E6%90%BA%E6%89%8B%E8%A5%BF%E5%8D%97%E4%BA%A4%E5%A4%A7%E7%AD%89%E9%AB%98%E6%A0%A1%E6%89%93%E9%80%A0%E5%B7%B4%E4%B8%AD%E4%BD%8E%E7%A9%BA%E6%99%BA%E8%83%BD%E7%AE%A1%E7%90%86%E7%A4%BA%E8%8C%83%E6%96%B0%E9%AB%98%E5%9C%B0
+    kind: wechat
+  - date: 2023-03-21
+    title: { zh: 青羊航空新城校企地合作签约：与航空企业签订合作协议, en: "Signs a cooperation agreement at the Qingyang Aviation New City school–enterprise–government signing" }
+    desc:
+      zh: 在青羊航空新城举行的校企地合作签约中，成都飞航智云科技有限公司与王正宁教授签订合作协议，推动航空领域的产学研合作与人才培养。
+      en: At the school–enterprise–government signing in Qingyang Aviation New City, Chengdu Feihang Zhiyun Technology Co., Ltd. signed a cooperation agreement with Prof. Wang to advance aviation industry–academia collaboration and talent training.
+    source: { zh: 四川国际创新设计产业园、青羊人才 公众号, en: "Sichuan International Innovation Design Industrial Park and Qingyang Talent WeChat accounts" }
+    url: https://weixin.sogou.com/weixin?type=2&query=%E9%9D%92%E7%BE%8A%E8%88%AA%E7%A9%BA%E6%96%B0%E5%9F%8E%E4%B8%8E%E7%94%B5%E5%AD%90%E7%A7%91%E5%A4%A7%E7%AD%BE%E8%AE%A2%E5%90%88%E4%BD%9C%E6%84%8F%E5%90%91%E5%8D%8F%E8%AE%AE
+    kind: wechat
+  - date: 2020-11-17
+    title: { zh: CCF-CV 走进高校系列报告会（第 95 期）特邀报告预告, en: "Invited speaker announced for CCF-CV Series Lectures No. 95" }
+    desc:
+      zh: 中国计算机学会计算机视觉专委会发布报告会预告：2020 年 11 月 28 日在济南大学举行，主题为“计算机视觉前沿技术及应用”，王正宁作特邀报告《基于稀疏体素图注意力网络的三维目标检测方法》。
+      en: "The CCF Technical Committee on Computer Vision announced the lecture series at the University of Jinan on 28 November 2020 (theme: frontier technologies and applications of computer vision), with an invited talk by Zhengning Wang on 3D object detection with sparse voxel-graph attention networks."
+    source: { zh: CCF 计算机视觉专委会 公众号, en: CCF Computer Vision Committee WeChat account }
+    url: https://weixin.sogou.com/weixin?type=2&query=CCF-CV%E8%B5%B0%E8%BF%9B%E9%AB%98%E6%A0%A1%E7%B3%BB%E5%88%97%E6%8A%A5%E5%91%8A%E4%BC%9A%20%E7%AC%AC%E4%B9%9D%E5%8D%81%E4%BA%94%E6%9C%9F%20%E6%B5%8E%E5%8D%97%E5%A4%A7%E5%AD%A6
+    kind: wechat
+  - date: 2018-12-21
+    title: { zh: 民航科学技术奖获奖项目公示：机场全景增强监视系统获二等奖, en: "Airport panoramic enhanced surveillance system wins a Civil Aviation Science and Technology Award" }
+    desc:
+      zh: 中国航空运输协会公示 2017 年度民航科学技术奖获奖项目，“机场全景增强监视系统”获二等奖，王正宁为主要完成人之一。
+      en: The China Air Transport Association announced the 2017 Civil Aviation Science and Technology Awards; the airport panoramic enhanced surveillance system won a Second Prize, with Zhengning Wang among its main contributors.
+    source: { zh: 中国航协 公众号, en: China Air Transport Association WeChat account }
+    url: https://weixin.sogou.com/weixin?type=2&query=2017%E5%B9%B4%E5%BA%A6%E4%B8%AD%E5%9B%BD%E8%88%AA%E7%A9%BA%E8%BF%90%E8%BE%93%E5%8D%8F%E4%BC%9A%E6%B0%91%E8%88%AA%E7%A7%91%E5%AD%A6%E6%8A%80%E6%9C%AF%E5%A5%96%E8%8E%B7%E5%A5%96%E9%A1%B9%E7%9B%AE%E5%85%AC%E7%A4%BA
+    kind: wechat
+  - date: ""
+    title: { zh: 成都市航空航天产业联盟专家智库：王正宁, en: "Chengdu Aerospace Industry Alliance expert profile: Zhengning Wang" }
+    desc:
+      zh: 联盟官网专家智库介绍其在机场场面全景监视、跑道异物检测和无人机探测等方面的研究与成果转化。
+      en: The alliance's expert directory profiles his work on airport panoramic surveillance, runway debris detection and UAV detection, and how it has been put into use.
+    source: { zh: 成都市航空航天产业联盟官网, en: Chengdu Aerospace Industry Alliance website }
+    url: https://cdaia.org.cn/2546/25777/1170231
+    kind: web
+
+talks:
+  - date: 2020-11-28
+    title: { zh: 基于稀疏体素图注意力网络的三维目标检测方法, en: 3D object detection with sparse voxel-graph attention networks }
+    event: { zh: CCF-CV 走进高校系列报告会（第 95 期），济南大学, en: "CCF-CV Series Lectures No. 95, University of Jinan" }
+    kind: { zh: 特邀报告, en: Invited talk }
+  - date: 2020-09
+    title: { zh: 分会场受邀报告, en: Invited session talk }
+    event: { zh: 2020 年中国多媒体大会（荣誉讲者）, en: "2020 China Multimedia Conference (Honored Speaker)" }
+    kind: { zh: 特邀报告, en: Invited talk }
+  - date: 2019
+    title: { zh: 身边的计算机视觉, en: Computer vision around us }
+    event: { zh: 成都七中育才学校汇源校区科技活动月, en: "Science month, Chengdu No. 7 Yucai School (Huiyuan campus)" }
+    kind: { zh: 科普讲座, en: Outreach lecture }
+    image: images/exchange/yucai-2019.jpg
+
+# 在国际会议上宣读论文、担任会议职务（按年份倒序）
+conferences:
+  - { year: 2024, name: CVPR, full: IEEE/CVF Conference on Computer Vision and Pattern Recognition }
+  - { year: 2023, name: ICCV, full: IEEE/CVF International Conference on Computer Vision }
+  - { year: 2022, name: AAAI, full: AAAI Conference on Artificial Intelligence }
+  - { year: 2021, name: ICASSP, full: IEEE International Conference on Acoustics, Speech and Signal Processing }
+  - { year: 2021, name: ICIG, full: International Conference on Image and Graphics }
+  - { year: 2020, name: MMAsia, full: ACM International Conference on Multimedia in Asia }
+  - { year: 2019, name: ICME, full: IEEE International Conference on Multimedia and Expo }
+  - { year: 2017, name: ICCT, full: IEEE International Conference on Communication Technology }
+  - { year: 2017, name: ICSIP, full: IEEE International Conference on Signal and Image Processing }
+  - { year: 2017, name: ICIG, full: International Conference on Image and Graphics }
+  - { year: 2016, name: ACM MM, full: ACM International Conference on Multimedia }
+  - { year: 2016, name: VCIP, full: IEEE International Conference on Visual Communications and Image Processing, role: { zh: Local Chair, en: Local Chair } }
+  - { year: 2015, name: CVPR Workshops, full: IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops }
+  - { year: 2015, name: ICSESS, full: IEEE International Conference on Software Engineering and Service Science }
+  - { year: 2014, name: ICME, full: IEEE International Conference on Multimedia and Expo, role: { zh: 组委会成员, en: Organizing committee } }
+  - { year: 2014, name: CISP, full: International Congress on Image and Signal Processing }
+  - { year: 2013, name: ISCAS, full: IEEE International Symposium on Circuits and Systems }
+  - { year: 2013, name: ICCT, full: IEEE International Conference on Communication Technology }
+  - { year: 2012, name: ISCAS, full: IEEE International Symposium on Circuits and Systems }
+  - { year: 2010, name: ISPACS, full: International Symposium on Intelligent Signal Processing and Communication Systems, role: { zh: Local Chair, en: Local Chair } }
+  - { year: 2010, name: ICCP, full: International Conference on Computational Problem-Solving }
+
+visits:
+  - date: { zh: 2014/10 – 2015/10, en: Oct 2014 – Oct 2015 }
+    title: { zh: 美国南加州大学访问学者, en: Visiting scholar, University of Southern California }
+    desc:
+      zh: 由国家留学基金委公派，与信号与图像处理领域著名学者 C.-C. Jay Kuo 教授开展远距离人脸识别等方向的合作研究，合作成果发表于 CVPR Workshops 和 JVCI。
+      en: Sponsored by the China Scholarship Council, collaborated with Prof. C.-C. Jay Kuo on long-distance face recognition, with results published at CVPR Workshops and in JVCI.
+  - date: { zh: 2017/10 – 2017/11, en: Oct – Nov 2017 }
+    title: { zh: 德国弗劳恩霍夫协会云计算与大数据培训考察, en: Fraunhofer cloud computing and big data program, Germany }
+    desc:
+      zh: 在德国多地参加弗劳恩霍夫协会云计算与大数据联盟组织的培训与考察，交流大数据与云计算领域的研究与产业化经验。
+      en: Took part in a training and study program run by the Fraunhofer Cloud Computing and Big Data alliances at several locations in Germany, exchanging research and industrialization experience.
+
+service:
+  - title: { zh: 成都市航空航天产业联盟首批智库专家, en: Inaugural think-tank expert, Chengdu Aerospace Industry Alliance }
+    desc:
+      zh: 受聘为联盟首批智库专家，后任副秘书长，负责科技成果对接、产业调研、政策建言与科普宣讲，走访对接成都市航空航天领域企业 80 余家。
+      en: Appointed to the alliance's first group of think-tank experts and later Deputy Secretary-General, responsible for matching research results with industry, industry surveys, policy advice and outreach; visited more than 80 aerospace companies in Chengdu.
+    image: images/exchange/cdaia-experts.jpg
+  - title: { zh: 参与四川省科技路线图与重点研发指南编写, en: Drafting Sichuan's technology roadmap and key R&D guidelines }
+    desc:
+      zh: 作为四川省科技厅“十三五”“十四五”高新技术领域指南编制专家，参与全省科技路线图与重点研发计划指南的研讨和编写。
+      en: As a drafting expert for the province's high-tech guidelines in the 13th and 14th Five-Year Plans, took part in drafting Sichuan's technology roadmap and key R&D program guidelines.
+    image: images/exchange/sctd-guideline.jpg
+  - title: { zh: 走进中小学开展人工智能科普, en: AI outreach in primary and secondary schools }
+    desc:
+      zh: 在成都市中小学举办人工智能与计算机视觉科普讲座，介绍计算机视觉在日常生活和工业生产中的应用，激发青少年对科技的兴趣。
+      en: Gives popular-science lectures on AI and computer vision in Chengdu schools, showing how computer vision is used in daily life and other fields to spark young people's interest in technology.
+    image: images/exchange/ai-lecture.jpg

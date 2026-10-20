@@ -2,21 +2,11 @@
 #  新闻动态
 #  - date 格式：YYYY-MM-DD，也可以只写到月份 YYYY-MM（网页自动按时间倒序排列，首页显示最新 6 条）
 #  - body、link 可选；link 可以是公众号文章等外部链接
-#  - page 可选：站内页面，例如 life#2026-graduation 表示「团队生活」页面中的某个相册
-#  - kind: life 表示团队活动，首页会显示「团队生活」标签
-#  - image 可选：缩略图，可直接用团队生活相册里的照片（建议选和相册封面不同的一张）；没有图片时显示 tag 文字（如期刊简称）
-#  - 论文类条目根据近期发表的论文自动生成（日期为 OpenAlex 记录的发表日期）；
-#    团队活动条目来自团队生活相册，请继续补充获奖、学术会议等真实动态
+#  - 只放学术相关的动态（论文、获奖、学术会议、项目等）；聚餐、节日等团队活动请放到 life.yaml（团队生活）
+#  - page 可选：站内页面，例如 publications 表示「科研成果」页面
+#  - image 可选：缩略图；没有图片时显示 tag 文字（如期刊简称）
+#  - 论文类条目根据近期发表的论文自动生成（日期为 OpenAlex 记录的发表日期），请继续补充获奖、学术会议等真实动态
 # ==============================================================
-
-- date: 2026-09
-  kind: life
-  title:
-    zh: "教师节 · 中秋双节：课题组合影留念，小院聚餐共庆佳节"
-    en: "Teachers' Day & Mid-Autumn Festival: group photo and a garden dinner together"
-  tag: "团队生活"
-  image: images/life/2026-mid-autumn/04.jpg
-  page: life#2026-teachers-day
 
 - date: 2026-07-18
   title:
@@ -25,30 +15,12 @@
   tag: "MedIA"
   link: "https://doi.org/10.1016/j.media.2026.104218"
 
-- date: 2026-06-22
-  kind: life
-  title:
-    zh: "2026 届毕业纪念：毕业生与导师、同门在校园各处留下合影"
-    en: "Class of 2026: graduation photos with our advisor and labmates around campus"
-  tag: "团队生活"
-  image: images/life/2026-graduation/02.jpg
-  page: life#2026-graduation
-
 - date: 2026-01-01
   title:
     zh: "论文发表于 IEEE TMM：R²MoE: Redundancy-Removal Mixture of Experts for Lifelong Concept Learning"
     en: "Paper published in IEEE TMM: R²MoE: Redundancy-Removal Mixture of Experts for Lifelong Concept Learning"
   tag: "IEEE TMM"
   link: "https://doi.org/10.1109/tmm.2026.3724696"
-
-- date: 2025-11-01
-  kind: life
-  title:
-    zh: "团队聚餐：烤肉聚会，科研之余的轻松时光"
-    en: "Team dinner: a barbecue night out together"
-  tag: "团队生活"
-  image: images/life/2025-dinner/03.jpg
-  page: life#2025-dinner
 
 - date: 2025-09-26
   title:
@@ -64,15 +36,6 @@
   tag: "IEEE TITS"
   link: "https://doi.org/10.1109/tits.2025.3605670"
 
-- date: 2025-09-10
-  kind: life
-  title:
-    zh: "2025 教师节：同学们为王老师送上蛋糕、鲜花和一幅贴满合影的中国地图"
-    en: "Teachers' Day 2025: cake, flowers and a photo map of China for Prof. Wang"
-  tag: "团队生活"
-  image: images/life/2025-teachers-day/04.jpg
-  page: life#2025-teachers-day
-
 - date: 2025-09-01
   title:
     zh: "论文发表于 Neurocomputing：LPUDC: A Laplacian pyramid neural network for restoring images from under-display cameras"
@@ -86,4 +49,3 @@
     en: "Paper published in IGARSS: NS-RSVQA: Neuro-Symbolic Method for Explainable Remote Sensing Visual Question Answer"
   tag: "IGARSS"
   link: "https://doi.org/10.1109/igarss55030.2025.11243610"
-

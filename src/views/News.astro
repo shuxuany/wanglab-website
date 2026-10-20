@@ -27,7 +27,7 @@ const u = ui[lang];
                   <img src={asset(n.image)} alt="" loading="lazy" />
                 ) : (
                   <span class="news-tile">
-                    <b>{n.tag ?? `${d.m}/${d.d}`}</b>
+                    <b class:list={{ 'is-long': String(n.tag ?? '').length > 10 }}>{n.tag ?? `${d.m}/${d.d}`}</b>
                     <small>{d.y}</small>
                   </span>
                 )}

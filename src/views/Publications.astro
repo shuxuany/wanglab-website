@@ -47,7 +47,7 @@ const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string
       <div class="chips" role="group" aria-label={u.nav.research}>
         <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{u.pubs.allDirections}</button>
         {
-          research.map((r) => (
+          research.filter((r) => publications.some((p) => p.direction === r.id)).map((r) => (
             <button class="chip" type="button" data-dir-chip={r.id} aria-pressed="false" style={`--c:${r.color}`}>
               <i />
               {t(r.short, lang)}

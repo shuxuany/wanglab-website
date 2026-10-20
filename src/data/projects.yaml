@@ -1,0 +1,352 @@
+# ==============================================================
+#  科研项目与成果应用
+#  数据整理自课题组提供的《研究成果详表》和个人简历（2026-10）。
+#  - 涉密或名称已脱敏（含 xxx / ****）的项目，以及委托方为军工单位的项目，按惯例不在公开网站列出
+#  - 不公开经费金额和企业委托方名称；横向项目只写项目名称与类型
+#  - role：lead 主持 / key 主研（参与）
+#  - level：national 国家级 / provincial 省部级 / municipal 市厅级 / university 校级 / industry 横向（企业委托）
+#  - start / end：YYYY-MM；end 晚于当前日期时自动显示为「在研」
+# ==============================================================
+
+applications:
+  - title: { zh: 机场全景增强监视系统, en: Airport panoramic enhanced surveillance system }
+    icon: eye
+    desc:
+      zh: 国内首套机场场面全景增强监视系统，融合视频、雷达与 ADS-B 数据，实现低能见度条件下的场面全景监视与航班标牌叠加。已部署于成都双流、重庆江北、昆明长水、广州白云、桂林两江等多个机场，列入民航局机场新技术名录，获民航科学技术奖二等奖。
+      en: China's first panoramic enhanced surveillance system for airport surfaces. It fuses video, radar and ADS-B data to give a panoramic view of the airfield with flight labels, even in low visibility. Deployed at airports including Chengdu Shuangliu, Chongqing Jiangbei, Kunming Changshui, Guangzhou Baiyun and Guilin Liangjiang, listed in the CAAC catalogue of new airport technologies, and awarded a Second Prize of the Civil Aviation Science and Technology Award.
+  - title: { zh: 跑道异物检测, en: Runway foreign object debris detection }
+    icon: scan
+    desc:
+      zh: 依托国家自然科学基金民航联合基金重点项目开展跑道异物监测的基础理论与关键技术研究，相关技术已应用于北京大兴、成都天府、兰州中川等机场。
+      en: Building on an NSFC–CAAC Joint Fund key project on the theory and key technologies of runway foreign object debris monitoring; the technology is in use at Beijing Daxing, Chengdu Tianfu and Lanzhou Zhongchuan airports.
+  - title: { zh: 国产化机载娱乐系统, en: Domestic in-flight entertainment system }
+    icon: layers
+    desc:
+      zh: 参与国产民机航电系统及设备国产化配套研制，相关机载娱乐系统已应用于 C919 大型客机，推动客舱核心系统和信息系统国产化。
+      en: Contributed to the localization of avionics systems and equipment for domestic civil aircraft; the resulting in-flight entertainment system is used on the C919 airliner, helping localize core cabin and information systems.
+  - title: { zh: 工业视觉检测算法, en: Industrial visual inspection algorithms }
+    icon: code
+    desc:
+      zh: 面向半导体、汽车等制造场景研发高精度缺陷检测与质量控制算法，已在相关制造企业落地应用，显著提升检测效率和产品质量。
+      en: High-precision defect detection and quality control algorithms for semiconductor, automotive and other manufacturing, deployed in production and markedly improving inspection efficiency and product quality.
+
+projects:
+  # ---------------- 主持
+  - title: { zh: 远距离人脸识别中低质图像增强关键理论研究, en: Key theories of low-quality image enhancement for long-distance face recognition }
+    type: { zh: 国家自然科学基金面上项目, en: NSFC General Program }
+    level: national
+    number: "61872068"
+    start: 2018-08
+    end: 2022-12
+    role: lead
+  - title: { zh: 机场雾天环境下场景成像退化模型及增强方法研究, en: Imaging degradation models and enhancement methods for airport scenes in fog }
+    type: { zh: 国家自然科学基金面上项目, en: NSFC General Program }
+    level: national
+    number: "61179060"
+    start: 2012-01
+    end: 2014-12
+    role: lead
+  - title: { zh: 空基平台大场景高效视觉分析系统关键技术研究, en: Key technologies of efficient large-scene visual analysis for airborne platforms }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2021YFG0366
+    start: 2021-04
+    end: 2023-03
+    role: lead
+  - title: { zh: 低空域无人机探测与防范关键技术研究, en: Key technologies of low-altitude UAV detection and prevention }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2018GZ0071
+    start: 2018-01
+    end: 2019-12
+    role: lead
+    note: { zh: 基于图像的无人机探测距离由 500 米提升到 1000 米，通过四川省科技厅验收, en: "Extended image-based UAV detection range from 500 m to 1,000 m; accepted by the Sichuan Department of Science and Technology" }
+  - title: { zh: 基于增强现实技术的远程塔台系统关键技术研究, en: Key technologies of augmented-reality remote tower systems }
+    type: { zh: 中国民用航空局科技项目, en: CAAC science and technology project }
+    level: provincial
+    start: 2012-01
+    end: 2014-12
+    role: lead
+  - title: { zh: 远程虚拟塔台关键技术研究, en: Key technologies of remote virtual towers }
+    type: { zh: 中国博士后科学基金, en: China Postdoctoral Science Foundation }
+    level: national
+    start: 2009-12
+    end: 2011-04
+    role: lead
+  - title: { zh: 远距离人脸识别关键技术研究, en: Key technologies of long-distance face recognition }
+    type: { zh: 中央高校基本科研业务费, en: Fundamental Research Funds for the Central Universities }
+    level: university
+    number: ZYGX2018J013
+    start: 2018-01
+    end: 2019-12
+    role: lead
+  - title: { zh: 雾天场景成像退化模型及增强方法研究, en: Imaging degradation models and enhancement for foggy scenes }
+    type: { zh: 中央高校基本科研业务费, en: Fundamental Research Funds for the Central Universities }
+    level: university
+    number: ZYGX2012J019
+    start: 2012-12
+    end: 2014-12
+    role: lead
+  - title: { zh: ISFOM 算法 IP 开发, en: ISFOM algorithm IP development }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2025-09
+    end: 2025-12
+    role: lead
+  - title: { zh: 面向智能辅助系统研发的数据库管理技术, en: Database management technology for intelligent assistance systems }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2024-07
+    end: 2025-06
+    role: lead
+  - title: { zh: 面向无人飞行器的多智能体避碰算法研究, en: Multi-agent collision avoidance algorithms for unmanned aerial vehicles }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2024-01
+    end: 2024-12
+    role: lead
+  - title: { zh: 工业用视觉检测算法开发, en: Visual inspection algorithms for industry }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2023-08
+    end: 2024-03
+    role: lead
+  - title: { zh: 人机协同智能体算法迁移方法与性能研究, en: Transfer methods and performance of human–machine collaborative agent algorithms }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2023-02
+    end: 2023-06
+    role: lead
+  - title: { zh: 一种基于边缘检测的视频去隔行方法等 2 项专利转让, en: Transfer of two patents including an edge-detection-based video deinterlacing method }
+    type: { zh: 成果转化, en: Technology transfer }
+    level: industry
+    start: 2021-04
+    end: 2021-06
+    role: lead
+  - title: { zh: 计算机视觉算法开发, en: Computer vision algorithm development }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2016-08
+    end: 2016-11
+    role: lead
+  - title: { zh: 低延时图像编解码系统, en: Low-latency image codec system }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2014-01
+    end: 2015-12
+    role: lead
+  - title: { zh: 机场雾天实时增强监视系统关键技术研究及实现, en: Real-time enhanced surveillance for airports in fog }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2012-07
+    end: 2013-03
+    role: lead
+
+  # ---------------- 主研（参与）
+  - title: { zh: 民航飞行员全生命周期心理风险因素指标体系与测评方法, en: Indicator system and assessment of psychological risk factors across the careers of civil aviation pilots }
+    type: { zh: 国家自然科学基金联合基金项目, en: NSFC Joint Fund }
+    level: national
+    number: U2333211
+    start: 2024-01
+    end: 2027-12
+    role: key
+  - title: { zh: 电子内镜和无线胶囊内镜图像处理关键技术研究, en: Key image processing technologies for electronic and wireless capsule endoscopy }
+    type: { zh: 国家自然科学基金国际（地区）合作与交流项目, en: NSFC International (Regional) Cooperation and Exchange Program }
+    level: national
+    number: "61720106004"
+    start: 2018-01
+    end: 2022-12
+    role: key
+  - title: { zh: 针对视觉映射的鲁棒混合回归模型研究, en: Robust mixture regression models for visual mapping }
+    type: { zh: 国家自然科学基金青年科学基金项目, en: NSFC Young Scientists Fund }
+    level: national
+    number: "61301270"
+    start: 2013-10
+    end: 2016-12
+    role: key
+  - title: { zh: 复杂场景视觉注意对象分割方法研究, en: Visual-attention-based object segmentation in complex scenes }
+    type: { zh: 国家自然科学基金面上项目, en: NSFC General Program }
+    level: national
+    number: "61271289"
+    start: 2012-10
+    end: 2016-12
+    role: key
+  - title: { zh: 机场跑道异物监测系统基础理论与关键技术研究, en: Fundamental theory and key technologies of airport runway foreign object debris monitoring }
+    type: { zh: 国家自然科学基金民航联合基金重点项目, en: NSFC–CAAC Joint Fund Key Program }
+    level: national
+    number: "61139003"
+    start: 2012-01
+    end: 2015-12
+    role: key
+  - title: { zh: 中国民航协同空管技术综合应用示范, en: Comprehensive application demonstration of collaborative air traffic management for Chinese civil aviation }
+    type: { zh: 国家科技支撑计划, en: National Key Technology R&D Program }
+    level: national
+    number: 2011BAH24B06
+    start: 2011-01
+    end: 2014-12
+    role: key
+    note: { zh: 课题：机场 III 级综合交通监视与引导系统, en: "Subproject: Level-III airport integrated traffic surveillance and guidance system" }
+  - title: { zh: 超低散斑激光显示光学屏技术研究, en: Ultra-low-speckle optical screens for laser displays }
+    type: { zh: 四川省重大科技专项, en: Sichuan Major Science and Technology Project }
+    level: provincial
+    number: 23ZDZX0030
+    start: 2025-08
+    end: 2027-12
+    role: key
+  - title: { zh: 城市低空交通管控关键技术研发及应用, en: Key technologies and applications of urban low-altitude traffic management }
+    type: { zh: 四川省重大科技专项, en: Sichuan Major Science and Technology Project }
+    level: provincial
+    number: 2024ZDZX0044
+    start: 2024-11
+    end: 2027-10
+    role: key
+    note: { zh: 合作单位负责人, en: Lead of a partner institution }
+  - title: { zh: 基于卫星互联网的海量船舶行为协同监测与智能分析关键技术研究, en: Satellite-internet-based collaborative monitoring and intelligent analysis of large-scale vessel behavior }
+    type: { zh: 四川省区域创新合作项目, en: Sichuan Regional Innovation Cooperation Program }
+    level: provincial
+    number: 2024YFHZ0095
+    start: 2024-01
+    end: 2025-12
+    role: key
+  - title: { zh: 城市低空物流无人机运行空管服务关键技术研究与应用, en: Air traffic services for urban low-altitude logistics drones }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2023YFG0054
+    start: 2023-01
+    end: 2024-12
+    role: key
+    note: { zh: 合作单位负责人, en: Lead of a partner institution }
+  - title: { zh: 基于 Micro-LED 的新一代投影显示关键技术及系统研发, en: Next-generation Micro-LED projection display technologies and systems }
+    type: { zh: 中央引导地方科技发展专项, en: Central Government Guided Local Science and Technology Development Program }
+    level: provincial
+    number: 2022ZYDF066
+    start: 2023-09
+    end: 2024-08
+    role: key
+    note: { zh: 合作单位负责人, en: Lead of a partner institution }
+  - title: { zh: 空天地一体化无人机组网碳量捕捉与时空分布感知平台, en: Integrated space–air–ground drone network platform for sensing carbon distribution }
+    type: { zh: 四川省科技成果转移转化项目, en: Sichuan Technology Transfer Program }
+    level: provincial
+    number: 2022ZHCG0085
+    start: 2022-01
+    end: 2023-12
+    role: key
+  - title: { zh: Micro-LED 高亮投影显示关键技术研发与产业化, en: High-brightness Micro-LED projection display technology and industrialization }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2022YFG0011
+    start: 2022-01
+    end: 2023-12
+    role: key
+  - title: { zh: 航空涡扇发动机反推装置研制, en: Development of thrust reversers for aero turbofan engines }
+    type: { zh: 四川省重大科技专项, en: Sichuan Major Science and Technology Project }
+    level: provincial
+    number: 2021ZDZX0002
+    start: 2021-07
+    end: 2026-06
+    role: key
+  - title: { zh: 面向医学影像的多病症人工智能诊断应用平台, en: AI diagnosis platform for multiple diseases from medical images }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2021YFG0126
+    start: 2021-04
+    end: 2023-03
+    role: key
+  - title: { zh: 高精度 G8.5 灰阶掩膜版研发, en: High-precision G8.5 gray-tone photomasks }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2021YFG0002
+    start: 2021-04
+    end: 2023-03
+    role: key
+  - title: { zh: 120Hz 高像素密度 AMOLED 显示技术及产品开发, en: 120 Hz high-pixel-density AMOLED display technology and products }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2021YFG0001
+    start: 2021-04
+    end: 2023-03
+    role: key
+  - title: { zh: 高压超大倍率特种电源总成关键技术研究与样机研制, en: High-voltage ultra-high-rate special power supply assemblies }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2020YFG0371
+    start: 2020-01
+    end: 2021-12
+    role: key
+  - title: { zh: 区域机场联合管制和监视关键技术研究, en: Joint control and surveillance for regional airports }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2020YFG0037
+    start: 2020-01
+    end: 2021-12
+    role: key
+  - title: { zh: 面向无人机的实时影像智能分析系统关键技术研究, en: Real-time intelligent image analysis for UAVs }
+    type: { zh: 四川省重点研发计划, en: Sichuan Key R&D Program }
+    level: provincial
+    number: 2019YFG0426
+    start: 2019-01
+    end: 2020-12
+    role: key
+  - title: { zh: 国产民机航电系统及设备国产化配套, en: Localization of avionics systems and equipment for domestic civil aircraft }
+    type: { zh: 四川省重大科技专项, en: Sichuan Major Science and Technology Project }
+    level: provincial
+    number: 2018GZDZX0021
+    start: 2018-09
+    end: 2020-09
+    role: key
+  - title: { zh: 智能视觉信息处理四川省青年科技创新研究团队, en: Sichuan Youth Innovation Team for Intelligent Visual Information Processing }
+    type: { zh: 四川省科技创新团队, en: Sichuan Science and Technology Innovation Team }
+    level: provincial
+    number: 2014TD0006
+    start: 2014-08
+    end: 2016-12
+    role: key
+  - title: { zh: 基于人工智能的半导体生产管理及良率提升系统产业化, en: Industrialization of an AI system for semiconductor production management and yield improvement }
+    type: { zh: 成都市科技成果转化项目, en: Chengdu Technology Transfer Program }
+    level: municipal
+    number: 2024ZYD0208
+    start: 2024-01
+    end: 2024-12
+    role: key
+  - title: { zh: 手机透视畸变校正技术合作项目, en: Perspective distortion correction for smartphone cameras }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2024-08
+    end: 2025-08
+    role: key
+  - title: { zh: Bayer Downscaler & Remosaic 算法研究开发, en: Bayer downscaler and remosaic algorithms }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2023-11
+    end: 2024-11
+    role: key
+  - title: { zh: 图像稳像算法技术合作项目, en: Image stabilization algorithms }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2016-12
+    end: 2017-07
+    role: key
+  - title: { zh: 大压缩比 PRS 滤波器设计技术合作项目, en: High-compression-ratio PRS filter design }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2016-11
+    end: 2017-12
+    role: key
+  - title: { zh: 无人机应急巡检海量影像输电线缺陷智能辨识技术开发, en: Intelligent defect recognition in large-scale drone inspection images of power lines }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2015-01
+    end: 2016-12
+    role: key
+  - title: { zh: 下一代视觉信号压缩处理关键技术研究, en: Key technologies of next-generation visual signal compression }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2014-01
+    end: 2016-12
+    role: key
+  - title: { zh: 智能车载终端及相关技术研究, en: Intelligent in-vehicle terminals and related technologies }
+    type: { zh: 企业委托（技术开发）, en: Industry-sponsored R&D }
+    level: industry
+    start: 2012-09
+    end: 2014-09
+    role: key

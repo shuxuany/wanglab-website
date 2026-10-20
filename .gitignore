@@ -10,3 +10,6 @@ release/
 .claude/
 .DS_Store
 Thumbs.db
+
+# 未加水印的原图（仓库公开，不提交；请自行备份）
+assets/originals/

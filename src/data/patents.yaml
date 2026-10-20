@@ -1,6 +1,6 @@
 # ==============================================================
 #  相关专利（国家发明专利）
-#  - 数据整理自国家知识产权局公开信息（2026-10 经 Google Patents 检索：发明人 王正宁，专利权人 电子科技大学）
+#  - 数据整理自国家知识产权局公开信息（2026-10 经 Google Patents 检索，发明人 王正宁），并按课题组 2026-08-19 的团队专利清单补充核对
 #  - 只列出已授权和仍在审查中的申请；已驳回、视为撤回的申请未列出
 #  - status：granted 已授权 / examining 实质审查中 / published 已公开
 #  - number：授权公告号（B）或申请公布号（A）；app_no：申请号（授权后专利号即 ZL + 申请号）
@@ -19,7 +19,7 @@
   filed: 2026-03-26
   published: 2026-08-04
   status: examining
-  direction: brain
+  direction: medical
 
 - title:
     zh: "一种基于自适应对齐与差异增强的缺陷检测方法"
@@ -32,7 +32,7 @@
   filed: 2025-12-31
   published: 2026-04-14
   status: examining
-  direction: perception
+  direction: inspection
 
 - title:
     zh: "一种基于自监督重构与多尺度特征融合的无对比缺陷检测方法"
@@ -45,7 +45,7 @@
   filed: 2025-12-31
   published: 2026-04-28
   status: examining
-  direction: perception
+  direction: inspection
 
 - title:
     zh: "一种基于双阶段图神经网络的神经影像辅助处理方法及系统"
@@ -58,7 +58,7 @@
   filed: 2025-09-30
   published: 2025-12-26
   status: examining
-  direction: brain
+  direction: medical
 
 - title:
     zh: "基于时空特征与多智能体强化学习的多机智能博弈方法"
@@ -71,7 +71,7 @@
   filed: 2025-04-29
   published: 2025-08-22
   status: examining
-  direction: agents
+  direction: rl
 
 - title:
     zh: "基于可解释强化学习的空中对抗博弈方法"
@@ -84,7 +84,7 @@
   filed: 2025-04-28
   published: 2025-08-22
   status: examining
-  direction: agents
+  direction: rl
 
 - title:
     zh: "基于双注意力时空图卷积的飞行器4D轨迹预测方法及系统"
@@ -98,7 +98,7 @@
   published: 2025-04-04
   granted: 2025-10-10
   status: granted
-  direction: agents
+  direction: 
 
 - title:
     zh: "一种阵元误差情况下的空时自适应处理方法和系统"
@@ -125,7 +125,7 @@
   published: 2026-04-24
   granted: 2026-04-24
   status: granted
-  direction: brain
+  direction: medical
 
 - title:
     zh: "一种匹配真实运动的事件相机数据集成方法及系统"
@@ -139,7 +139,7 @@
   published: 2026-06-19
   granted: 2026-06-19
   status: granted
-  direction: event
+  direction: 
 
 - title:
     zh: "基于事件相机计算光流的方法及系统、设备、介质"
@@ -153,7 +153,7 @@
   published: 2024-04-09
   granted: 2026-05-19
   status: granted
-  direction: event
+  direction: 
 
 - title:
     zh: "栅格化光流数据集合成的方法及系统、电子设备、介质"
@@ -166,7 +166,7 @@
   filed: 2024-01-09
   published: 2024-04-05
   status: examining
-  direction: event
+  direction: 
 
 - title:
     zh: "一种基于注意力机制的低照度图像去噪增强方法"
@@ -207,7 +207,7 @@
   published: 2022-12-16
   granted: 2025-08-19
   status: granted
-  direction: perception
+  direction: inspection
 
 - title:
     zh: "一种端到端旋转鲁棒的特征点检测与描述方法"
@@ -221,7 +221,7 @@
   published: 2023-01-10
   granted: 2026-03-27
   status: granted
-  direction: perception
+  direction: inspection
 
 - title:
     zh: "一种基于推理的两阶段浓雾图像去雾方法"
@@ -263,7 +263,7 @@
   published: 2023-04-25
   granted: 2023-04-25
   status: granted
-  direction: brain
+  direction: medical
 
 - title:
     zh: "基于图神经网络和对比学习的磁共振影像辅助处理系统"
@@ -277,7 +277,7 @@
   published: 2023-04-07
   granted: 2023-04-07
   status: granted
-  direction: brain
+  direction: medical
 
 - title:
     zh: "用于互联网金融风控的异常数据筛选方法"
@@ -332,7 +332,7 @@
   published: 2021-02-05
   granted: 2021-02-05
   status: granted
-  direction: restore
+  direction: 
 
 - title:
     zh: "一种基于先验信息和卷积神经网络的视频去噪方法"
@@ -374,7 +374,7 @@
   published: 2022-03-15
   granted: 2022-03-15
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种利用时序信息的目标跟踪方法"
@@ -388,7 +388,7 @@
   published: 2022-05-03
   granted: 2022-05-03
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种基于编解码结构的目标跟踪方法"
@@ -402,7 +402,7 @@
   published: 2020-09-22
   granted: 2023-06-16
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种基于多层特征混合与注意力机制的目标跟踪方法"
@@ -416,7 +416,7 @@
   published: 2022-08-02
   granted: 2022-08-02
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "基于色彩空间转换的马赛克图像压缩方法"
@@ -430,7 +430,7 @@
   published: 2022-11-11
   granted: 2022-11-11
   status: granted
-  direction: restore
+  direction: 
 
 - title:
     zh: "一种3D目标检测方法"
@@ -444,7 +444,7 @@
   published: 2022-07-26
   granted: 2022-07-26
   status: granted
-  direction: perception
+  direction: embodied
 
 - title:
     zh: "一种基于数据融合的3D目标检测方法"
@@ -458,7 +458,7 @@
   published: 2022-03-15
   granted: 2022-03-15
   status: granted
-  direction: perception
+  direction: embodied
 
 - title:
     zh: "一种基于时空约束的长时目标跟踪方法"
@@ -472,7 +472,7 @@
   published: 2022-07-01
   granted: 2022-07-01
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种面向航拍影像的目标跟踪方法"
@@ -486,7 +486,7 @@
   published: 2023-04-07
   granted: 2023-04-07
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种复杂环境交通信号灯候选区域提取及识别方法"
@@ -500,7 +500,7 @@
   published: 2019-05-03
   granted: 2022-03-15
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种3D的道路车辆跟踪方法"
@@ -514,7 +514,7 @@
   published: 2019-01-29
   granted: 2021-09-24
   status: granted
-  direction: perception
+  direction: embodied
 
 - title:
     zh: "一种道路车辆跟踪方法"
@@ -528,7 +528,7 @@
   published: 2021-09-24
   granted: 2021-09-24
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种基于区域划分和渐变映射的异源图像配准优化方法"
@@ -542,6 +542,7 @@
   published: 2021-10-22
   granted: 2021-10-22
   status: granted
+  direction: inspection
 
 - title:
     zh: "一种面向识别的远距离人脸图像增强方法"
@@ -569,7 +570,7 @@
   published: 2020-08-11
   granted: 2020-08-11
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种违章变道检测方法"
@@ -583,7 +584,7 @@
   published: 2020-06-16
   granted: 2020-06-16
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种光场图像压缩方法"
@@ -597,7 +598,7 @@
   published: 2018-12-18
   granted: 2018-12-18
   status: granted
-  direction: restore
+  direction: 
 
 - title:
     zh: "一种多特征权值自适应的阴影消除方法"
@@ -611,7 +612,7 @@
   published: 2017-02-01
   granted: 2019-03-05
   status: granted
-  direction: multimodal
+  direction: restore
 
 - title:
     zh: "一种基于相关高斯过程回归的面部年龄估计方法"
@@ -625,7 +626,7 @@
   published: 2016-03-23
   granted: 2019-06-21
   status: granted
-  direction: multimodal
+  direction: 
 
 - title:
     zh: "一种基于图像特征点的最优投影柱面半径确定方法"
@@ -652,6 +653,7 @@
   published: 2017-12-15
   granted: 2017-12-15
   status: granted
+  direction: inspection
 
 - title:
     zh: "一种基于边缘检测的视频去隔行方法"
@@ -721,3 +723,57 @@
   granted: 2015-08-19
   status: granted
   direction: restore
+
+# ---------- 2026-10-20 按课题组提供的团队专利清单补充（王正宁为非第一发明人，专利权人不是本单位，此前检索未覆盖） ----------
+
+- title:
+    zh: "一种分布式无人机集群编队控制方法"
+    en: "Distributed formation control method for UAV swarms"
+  inventors:
+    zh: [黄江涛, 王正宁, 朱许, 章胜, 张博涵, 匡玉衡]
+    en: [Jiangtao Huang, Zhengning Wang, Xu Zhu, Sheng Zhang, Bohan Zhang, Yuheng Kuang]
+  number: CN116909319B
+  app_no: "202311184451.0"
+  filed: 2023-09-14
+  granted: 2023-12-08
+  status: granted
+  direction: embodied
+
+- title:
+    zh: "一种大数据信息采集方法及系统"
+    en: "Big data information collection method and system"
+  inventors:
+    zh: [岳钧, 李开恒, 王正宁, 周钊聿, 周乐瑶, 肖炜, 张雪]
+    en: [Jun Yue, Kaiheng Li, Zhengning Wang, Zhaoyu Zhou, Leyao Zhou, Wei Xiao, Xue Zhang]
+  number: CN116151521B
+  app_no: "202310347981.6"
+  filed: 2023-04-04
+  granted: 2023-07-04
+  status: granted
+  direction: software
+
+- title:
+    zh: "基于集成学习的互联网金融风控预测方法"
+    en: "Ensemble-learning-based risk control prediction method for Internet finance"
+  inventors:
+    zh: [岳钧, 李开恒, 王正宁, 周钊聿, 周乐瑶]
+    en: [Jun Yue, Kaiheng Li, Zhengning Wang, Zhaoyu Zhou, Leyao Zhou]
+  number: CN114580782B
+  app_no: "202210287645.2"
+  filed: 2022-03-22
+  granted: 2024-04-30
+  status: granted
+  direction: 
+
+- title:
+    zh: "一种多级软硬件交叉互控可调过流保护系统及方法"
+    en: "Multi-level adjustable overcurrent protection system and method with cross-control between hardware and software"
+  inventors:
+    zh: [曾雪刚, 王正宁, 钟其水, 曾彦, 孙艳]
+    en: [Xuegang Zeng, Zhengning Wang, Qishui Zhong, Yan Zeng, Yan Sun]
+  number: CN113629658B
+  app_no: "202110810635.8"
+  filed: 2021-07-19
+  granted: 2024-06-14
+  status: granted
+  direction: 

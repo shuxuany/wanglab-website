@@ -1,6 +1,6 @@
 # 王正宁课题组网站
 
-电子科技大学信息与通信工程学院王正宁课题组的中英双语网站，用 [Astro](https://astro.build) 生成纯静态网页，可以放到 GitHub Pages、自己的服务器或学校服务器上。
+王正宁课题组的中英双语网站，用 [Astro](https://astro.build) 生成纯静态网页，可以放到 GitHub Pages 或自己的服务器上。
 
 ## 发布到 GitHub Pages
 
@@ -47,12 +47,15 @@ npm run dev
 
 | 文件 | 内容 |
 |---|---|
-| `site.yaml` | 课题组名称、简介、首页数据、联系方式、页脚链接 |
+| `site.yaml` | 课题组名称、简介、首页数据、联系方式、页脚链接、图片水印文字 |
 | `research.yaml` | 六个研究方向 |
-| `members.yaml` | 导师与学生信息 |
-| `publications.yaml` | 论文列表（首页轮播的结构图也在这里设置） |
+| `members.yaml` | 导师与学生信息（首页顶部的导师详细介绍也取自这里） |
+| `publications.yaml` | 论文列表 |
 | `patents.yaml` | 相关专利 |
-| `news.yaml` | 新闻动态（首页显示最新 6 条，可链接到团队生活相册） |
+| `projects.yaml` | 科研项目与成果应用（科研成果 → 科研项目） |
+| `awards.yaml` | 获奖证书与荣誉（证书照片放在 `assets/originals/images/awards/`） |
+| `exchange.yaml` | 学术交流：媒体报道与公众号、学术报告、国际会议、访问考察、学术与社会服务 |
+| `news.yaml` | 新闻动态，只放学术相关内容（首页显示最新 6 条） |
 | `life.yaml` | 团队生活相册（首页展示前 5 个） |
 | `join.yaml` | 招生信息 |
 
@@ -61,10 +64,12 @@ npm run dev
 | 文件夹 | 内容 |
 |---|---|
 | `public/images/members/` | 成员照片 |
-| `public/images/papers/` | 论文结构图（首页轮播） |
-| `public/images/life/` | 团队生活照片和视频，每个相册一个文件夹 |
+| `public/images/papers/` | 论文结构图 |
+| `public/images/life/` | 团队生活照片，每个相册一个文件夹 |
 | `public/images/news/` | 新闻缩略图 |
-| `public/images/` | 校徽 `uestc-logo.png`、校园照片 `campus.jpg` |
+| `public/images/` | 刊头背景照片 `campus.jpg` |
+
+图片水印：`public/images/` 下的照片都带浅色「AI Lab」平铺水印，由 `npm run watermark` 从 `assets/originals/`（未加水印的原图，不提交到 Git）生成。新增或替换照片时，把原图放进 `assets/originals/` 的对应位置再运行该命令；要换水印文字，改 `site.yaml` 里的 `watermark.text` 后重新运行。
 
 其他：
 

@@ -1,22 +1,25 @@
 ---
-// 科研成果的两个子页面切换：学术论文 / 相关专利
+// 科研成果的子页面切换：学术论文 / 相关专利 / 科研项目 / 获奖证书 / 学术交流
 import Icon from './Icon.astro';
-import { publications, patents, href, type Lang } from '../lib/site';
+import { publications, patents, projects, awards, exchangeCount, href, type Lang } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
   lang: Lang;
-  active: 'papers' | 'patents';
+  active: 'papers' | 'patents' | 'projects' | 'awards' | 'exchange';
 }
 const { lang, active } = Astro.props;
 const u = ui[lang];
 const items = [
   { id: 'papers', label: u.outputs.papers, icon: 'doc', count: publications.length, href: href('publications', lang) },
   { id: 'patents', label: u.outputs.patents, icon: 'award', count: patents.length, href: href('publications/patents', lang) },
+  { id: 'projects', label: u.outputs.projects, icon: 'flask', count: projects.length, href: href('publications/projects', lang) },
+  { id: 'awards', label: u.outputs.awards, icon: 'star', count: awards.length, href: href('publications/awards', lang) },
+  { id: 'exchange', label: u.outputs.exchange, icon: 'chat', count: exchangeCount, href: href('publications/exchange', lang) },
 ];
 ---
 
-<nav class="output-switch" aria-label={u.nav.publications} data-reveal>
+<nav class="output-switch output-switch-5" aria-label={u.nav.publications} data-reveal>
   {
     items.map((it) => (
       <a class:list={['output-tab', { 'is-active': it.id === active }]} href={it.href} aria-current={it.id === active ? 'page' : undefined}>

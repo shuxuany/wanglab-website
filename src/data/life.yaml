@@ -2,8 +2,8 @@
 #  团队生活（相册）
 #  - 每个相册一张卡片，按这里的顺序显示；第一个相册显示为大图；首页「团队生活」展示前 5 个相册
 #  - id：相册的英文短名，用于链接，例如新闻中的 page: life#2026-graduation
-#  - photos：照片 / 视频放在 public/images/life/相册文件夹/ 下，按顺序填写；点击卡片可全屏浏览整组
-#           支持 .jpg / .png 照片和 .mp4 视频；caption 可选，不填时显示相册名称
+#  - photos：照片放在 public/images/life/相册文件夹/ 下，按顺序填写；点击卡片可全屏浏览整组
+#           支持 .jpg / .png 照片（2026-10-20 起不放视频）；caption 可选，不填时显示相册名称
 #           照片建议长边 1600 像素左右、单张不超过 500 KB（太大的照片会拖慢网页）
 #  - 照片全部来自课题组提供的「团队生活」文件夹，每张只保存一份；卡片封面就是相册的第一张照片
 #  - cover：可选，想用其他照片做封面时填写；不填时用第一张照片
@@ -42,12 +42,12 @@
   title: { zh: 2026 毕业季, en: Graduation 2026 }
   tag: { zh: 毕业季, en: Graduation }
   date: 2026-06-22
+  cover: images/life/2026-graduation/02.jpg
   desc:
     zh: 穿上学位服，与导师和同门在校园各处留下毕业纪念。
     en: Graduation photos with our advisor and labmates around campus.
   photos:
     - src: images/life/2026-graduation/01.jpg
-      caption: { zh: I ❤ SICE · 信息与通信工程学院, en: I ❤ SICE · School of Information and Communication Engineering }
     - src: images/life/2026-graduation/02.jpg
     - src: images/life/2026-graduation/03.jpg
     - src: images/life/2026-graduation/04.jpg
@@ -65,7 +65,6 @@
     - src: images/life/2026-annual/01.jpg
     - src: images/life/2026-annual/02.jpg
     - src: images/life/2026-annual/03.jpg
-    - src: images/life/2026-annual/04.mp4
 
 - id: 2025-dinner
   title: { zh: 2025 团队聚餐, en: Team Dinner 2025 }
@@ -79,7 +78,6 @@
     - src: images/life/2025-dinner/02.jpg
     - src: images/life/2025-dinner/03.jpg
     - src: images/life/2025-dinner/04.jpg
-    - src: images/life/2025-dinner/05.mp4
 
 - id: 2025-teachers-day
   title: { zh: 2025 教师节, en: Teachers' Day 2025 }

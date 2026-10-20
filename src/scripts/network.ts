@@ -3,7 +3,7 @@ type Node = { x: number; y: number; vx: number; vy: number; r: number; c: string
 type Pulse = { a: Node; b: Node; t: number; speed: number };
 
 const DARK = ['56,225,255', '96,140,255', '170,122,255', '190,215,255'];
-// 浅色标题带上用成电蓝系
+// 浅色标题带上用主题蓝系
 const LIGHT = ['11,94,178', '47,134,222', '9,59,109', '120,165,215'];
 // 背景网络动效很轻微，始终播放（不受系统「减少动画」设置影响）
 const reduceMotion = false;

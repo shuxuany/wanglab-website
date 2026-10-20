@@ -1,0 +1,85 @@
+---
+// 获奖证书：科技奖励 / 人才与学术荣誉 / 教学育人；有证书照片的可点击放大
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import OutputSwitch from '../components/OutputSwitch.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Icon from '../components/Icon.astro';
+import { site, awards, t, asset, href, formatDate, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const au = u.awards;
+const CATS = ['award', 'honor', 'teaching'] as const;
+const groups = CATS.map((c) => ({ id: c, items: awards.filter((a) => a.category === c) })).filter((g) => g.items.length);
+---
+
+<Base lang={lang} title={au.title} description={t(site.pages?.awards, lang)}>
+  <PageHero eyebrow="Awards" title={au.title} desc={t(site.pages?.awards, lang)} lang={lang} parent={{ label: u.nav.publications, href: href('publications', lang) }} />
+
+  <div class="container page-body">
+    <OutputSwitch lang={lang} active="awards" />
+
+    {
+      groups.map((g) => (
+        <section class="award-section">
+          <SectionHead title={au.cats[g.id]} en={au.catsEn[g.id]} />
+          <ul class:list={['award-grid', { 'has-certs': g.items.some((a) => a.image) }]}>
+            {g.items.map((a, i) => (
+              <li class:list={['award-card', { 'has-image': a.image }]} data-reveal style={`--d:${(i % 3) * 80}ms`}>
+                {!a.image && g.items.some((x) => x.image) && (
+                  <div class="award-cert award-cert-empty" aria-hidden="true">
+                    <Icon name="award" size={44} />
+                  </div>
+                )}
+                {a.image && (
+                  <button class="award-cert" type="button" data-zoom={asset(a.image)} data-caption={t(a.title, lang)} aria-label={`${au.view}: ${t(a.title, lang)}`}>
+                    <img src={asset(a.image)} alt={t(a.title, lang)} loading="lazy" />
+                    <span class="award-zoom">
+                      <Icon name="search" size={15} />
+                      {au.view}
+                    </span>
+                  </button>
+                )}
+                <div class="award-body">
+                  <span class="award-date">{formatDate(a.date, lang)}</span>
+                  <h3 class="award-title">
+                    <Icon name={g.id === 'teaching' ? 'book' : g.id === 'honor' ? 'star' : 'award'} size={18} />
+                    {t(a.title, lang)}
+                  </h3>
+                  {a.project && (
+                    <p class="award-meta">
+                      <b>{au.project}</b>
+                      {t(a.project, lang)}
+                    </p>
+                  )}
+                  <p class="award-meta">
+                    <b>{au.issuer}</b>
+                    {t(a.issuer, lang)}
+                    {a.note && <span class="award-note">（{t(a.note, lang)}）</span>}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <dialog class="lightbox lightbox-single" data-zoom-box data-lenis-prevent>
+    <button class="lb-btn lb-close" type="button" data-zoom-close aria-label={au.close}><Icon name="close" size={22} /></button>
+    <figure class="lb-figure">
+      <img alt="" />
+      <figcaption><span data-zoom-caption></span></figcaption>
+    </figure>
+  </dialog>
+</Base>
+
+<script>
+  import '../scripts/zoom';
+</script>

@@ -1,68 +1,122 @@
 # ==============================================================
 #  研究方向（按显示顺序排列）
-#  根据课题组近年发表的论文归纳整理，请 PI 确认或修改名称与描述。
+#  2026-10-20 按 PI 要求更换为以下六个方向；描述文字为草稿，请 PI 确认或修改。
 #
-#  - id：英文短名，用作网页锚点，也用于 publications.yaml 中的 direction 字段
+#  - id：英文短名，用作网页锚点，也用于 publications.yaml / patents.yaml 中的 direction 字段
 #  - short：导航下拉菜单、论文筛选按钮上显示的短标题
-#  - color：该方向的主题色（神经元、卡片高光都会使用）
+#  - color：该方向的主题色（卡片高光、论文标签都会使用）
 #  - art：研究方向页的动态插画样式：brain / flow / restore / cloud3d / trajectory / experts
-#  - icon：研究方向卡片上的圆形图标：brain / eye / image / cube / route / layers
-#  - image：可选，放真实配图后会替换动态插画，例如 images/research/brain.jpg
+#  - icon：研究方向卡片上的圆形图标：route / scan / code / brain / image / robot（完整列表见 components/Icon.astro）
+#  - image：可选，放真实配图后会替换动态插画，例如 images/research/rl.jpg
 #  - description 中空一行即分段
 # ==============================================================
 
-- id: brain
+- id: rl
+  color: "#e07a2f"
+  art: trajectory
+  icon: route
+  title:
+    zh: 强化学习
+    en: Reinforcement Learning
+  short:
+    zh: 强化学习
+    en: Reinforcement Learning
+  summary:
+    zh: 研究单智能体与多智能体强化学习中的信用分配、训练稳定性与样本效率，以及可解释的智能决策方法，面向无人系统协同等复杂决策场景。
+    en: Credit assignment, training stability and sample efficiency in single- and multi-agent reinforcement learning, and explainable decision-making for complex tasks such as cooperative unmanned systems.
+  description:
+    zh: |
+      强化学习让智能体在与环境的交互中通过试错学会决策。当多个智能体共同完成任务时，团队往往只得到一个整体回报，如何把功劳合理地分给每个个体（信用分配），直接决定了协作能否稳定地学出来。我们提出基于锚定超图的多智能体信用分配方法 HySTAR，用超图刻画智能体之间的高阶协作关系，提升协同训练的稳定性。
+
+      我们还研究结合时空特征的多机协同决策和可解释强化学习，让策略不仅有效，而且能说明"为什么这样做"；并探索与世界模型结合的强化学习，让智能体先在"想象"中预演和规划，减少与真实环境的交互次数。相关方法已申请国家发明专利。
+    en: |
+      Reinforcement learning lets an agent learn to make decisions by trial and error. When several agents work as a team they often receive a single shared reward, and how that credit is divided among individuals decides whether cooperation can be learned stably. We proposed HySTAR, which uses anchored hypergraphs to model higher-order relations among agents and stabilize credit assignment in cooperative multi-agent reinforcement learning.
+
+      We also study multi-agent decision-making with spatiotemporal features and explainable reinforcement learning, so that policies are effective and can explain why they act as they do. We are exploring reinforcement learning with world models, in which agents rehearse and plan in imagination to reduce interaction with the real environment. Related methods are covered by Chinese patent applications.
+  keywords:
+    zh: [多智能体强化学习, 信用分配, 可解释强化学习, 世界模型, 协同决策]
+    en: [Multi-agent RL, Credit assignment, Explainable RL, World models, Cooperative decision-making]
+  image: ""
+
+- id: inspection
+  color: "#0e8fb5"
+  art: flow
+  icon: scan
+  title:
+    zh: 工业视觉检测
+    en: Industrial Visual Inspection
+  short:
+    zh: 视觉检测
+    en: Visual Inspection
+  summary:
+    zh: 面向工业产品与生产过程的质量检测，研究缺陷样本稀缺条件下的表面缺陷检测与定位，以及特征点检测、图像配准等高精度视觉测量技术。
+    en: Quality inspection of industrial products and processes — detecting and locating surface defects when defect samples are scarce, plus keypoint detection, image registration and other precise visual measurement techniques.
+  description:
+    zh: |
+      在工业产线上，缺陷样本少、种类多、形态各异，人工目检效率低、标准难统一。我们研究基于自监督重构与多尺度特征融合的无对比缺陷检测，以及基于自适应对齐与差异增强的缺陷检测：模型主要从正常样本中学习"合格品应有的样子"，再通过与待检图像的对齐和比较找出异常区域，降低对缺陷标注的依赖。
+
+      检测之外，我们还研究旋转鲁棒的特征点检测与描述、异源图像配准和图像拼接，为高精度定位、尺寸测量和大视场检测提供基础。相关方法已获得或申请多项国家发明专利。
+    en: |
+      On production lines, defect samples are rare, varied and irregular, and manual inspection is slow and hard to standardize. We study contrast-free defect detection based on self-supervised reconstruction and multi-scale feature fusion, and defect detection based on adaptive alignment and difference enhancement. The models learn what a good product should look like mainly from normal samples, then align and compare it with the inspected image to find anomalies, reducing the need for defect labels.
+
+      Beyond detection, we work on rotation-robust keypoint detection and description, multi-source image registration and image stitching, which underpin precise localization, dimensional measurement and wide-field inspection. Several of these methods are granted or pending Chinese patents.
+  keywords:
+    zh: [表面缺陷检测, 无监督异常检测, 特征点检测, 图像配准, 视觉测量]
+    en: [Surface defect detection, Unsupervised anomaly detection, Keypoint detection, Image registration, Visual measurement]
+  image: ""
+
+- id: software
+  color: "#8250c4"
+  art: experts
+  icon: code
+  title:
+    zh: 工业 AI 软件
+    en: Industrial AI Software
+  short:
+    zh: 工业 AI 软件
+    en: Industrial AI Software
+  summary:
+    zh: 把视觉检测、预测与决策算法做成能在工业现场稳定运行的软件系统，研究模型轻量化与推理加速、边缘部署、软硬件协同和数据工具链等工程化关键技术。
+    en: Turning inspection, prediction and decision algorithms into software that runs reliably in industrial settings — model compression and fast inference, edge deployment, hardware–software co-design and data toolchains.
+  description:
+    zh: |
+      论文中的精度只是算法落地的第一步。工业现场对实时性、稳定性和可维护性要求很高，硬件算力有限，数据还会随产线和工况不断变化。我们关注 AI 模型从实验室走向现场的全过程：模型压缩、量化与推理加速，面向边缘设备和嵌入式平台的部署，以及数据采集、标注、训练和版本管理的一体化工具链。
+
+      在软硬件协同方面，我们与芯片设计团队合作，研究面向目标检测后处理的高并行非极大值抑制引擎和超低功耗环境声音识别处理器，探索高能效的端侧推理。我们也与企业开展产学研合作，推动视觉检测与智能分析算法在实际场景中落地。
+    en: |
+      Accuracy in a paper is only the first step toward deployment. Industrial sites demand real-time, stable and maintainable systems on limited hardware, and the data keep shifting with production lines and operating conditions. We work on the whole path from lab to site: model compression, quantization and inference acceleration, deployment on edge and embedded platforms, and integrated toolchains for data collection, labelling, training and versioning.
+
+      On hardware–software co-design, we work with chip designers on a high-parallel non-maximum suppression engine for detection post-processing and an ultra-low-energy environmental sound recognition processor, aiming at energy-efficient on-device inference. We also collaborate with companies to bring visual inspection and intelligent analysis algorithms into real applications.
+  keywords:
+    zh: [模型压缩与加速, 边缘部署, 软硬件协同, AI 工具链, 产学研应用]
+    en: [Model compression & acceleration, Edge deployment, Hardware–software co-design, AI toolchains, Industry collaboration]
+  image: ""
+
+- id: medical
   color: "#c2417a"
   art: brain
   icon: brain
   title:
-    zh: 脑影像与医学智能
-    en: Brain Imaging & Medical AI
+    zh: 医学影像处理
+    en: Medical Image Processing
   short:
-    zh: 脑影像智能
-    en: Brain Imaging AI
+    zh: 医学影像
+    en: Medical Imaging
   summary:
-    zh: 用图神经网络和多模态 MRI 刻画个体脑网络，辅助精神疾病与神经退行性疾病的诊断，并寻找可解释的影像标志物。
-    en: Graph neural networks and multimodal MRI that model individual brain networks, support diagnosis of psychiatric and neurodegenerative disorders, and reveal interpretable imaging biomarkers.
+    zh: 基于多模态 MRI 与图神经网络刻画个体脑网络，辅助精神疾病与神经退行性疾病的诊断并寻找可解释的影像标志物，也研究内镜图像与生理信号的智能分析。
+    en: Modelling individual brain networks from multimodal MRI with graph neural networks to support diagnosis of psychiatric and neurodegenerative disorders and reveal interpretable imaging biomarkers, plus intelligent analysis of endoscopic images and physiological signals.
   description:
     zh: |
       精神分裂症、孤独症、抑郁症和阿尔茨海默病等疾病长期缺乏客观的影像诊断依据。我们把大脑建模为由脑区和连接构成的图，基于结构 MRI、静息态功能 MRI 和弥散张量成像构建个体化脑网络，用图神经网络、注意力机制和交叉注意力融合多模态特征，实现疾病分类、脑龄预测和纹状体精细分区。
 
-      除了诊断精度，我们也关注模型的可解释性：把模型学到的脑区权重与基因表达、细胞类型转录组特征关联起来，寻找具有生物学意义的影像标志物。相关成果发表于 Medical Image Analysis、Schizophrenia Bulletin、Cerebral Cortex 和 Neuroscience Bulletin 等期刊。
+      除了诊断精度，我们也关注模型的可解释性：把模型学到的脑区权重与基因表达、细胞类型转录组特征关联起来，寻找具有生物学意义的影像标志物。此外，我们参与过电子内镜与无线胶囊内镜图像处理的研究，并研究基于腕式 PPG 信号的鲁棒心率监测。相关成果发表于 Medical Image Analysis、Schizophrenia Bulletin、Cerebral Cortex 和 IEEE JBHI 等期刊。
     en: |
       Disorders such as schizophrenia, autism, depression and Alzheimer's disease still lack objective imaging-based diagnosis. We model the brain as a graph of regions and connections, build individual brain networks from structural MRI, resting-state fMRI and diffusion imaging, and fuse multimodal features with graph neural networks and cross-attention for disease classification, brain-age prediction and fine-scale striatal parcellation.
 
-      Beyond accuracy, we care about interpretability: we relate the regional weights learned by our models to gene expression and cell-type-specific transcriptomic features to find biologically meaningful imaging markers. This work appears in Medical Image Analysis, Schizophrenia Bulletin, Cerebral Cortex and Neuroscience Bulletin.
+      Beyond accuracy, we care about interpretability: we relate the regional weights learned by our models to gene expression and cell-type-specific transcriptomic features to find biologically meaningful imaging markers. We have also worked on image processing for electronic and wireless capsule endoscopy, and on robust heart-rate monitoring from wrist-worn PPG signals. This work appears in Medical Image Analysis, Schizophrenia Bulletin, Cerebral Cortex and IEEE JBHI.
   keywords:
-    zh: [图神经网络, 多模态 MRI, 脑网络分析, 脑龄预测, 精神疾病辅助诊断]
-    en: [Graph neural networks, Multimodal MRI, Brain networks, Brain age, Psychiatric diagnosis]
-  image: ""
-
-- id: event
-  color: "#0e8fb5"
-  art: flow
-  icon: eye
-  title:
-    zh: 事件视觉与运动估计
-    en: Event-based Vision & Motion Estimation
-  short:
-    zh: 事件视觉
-    en: Event Vision
-  summary:
-    zh: 研究事件相机这类仿生视觉传感器的视觉计算，以及光流、网格流、图像对齐与视频稳像等运动估计问题。
-    en: Visual computing with bio-inspired event cameras, and motion estimation problems such as optical flow, meshflow, image alignment and video stabilization.
-  description:
-    zh: |
-      事件相机模仿生物视网膜，只记录亮度变化，具有微秒级的时间分辨率和很高的动态范围，适合高速运动和极端光照场景。我们构建了基于渲染的事件光流数据集，并提出了从事件数据中高效估计网格流（Meshflow）与稠密光流的方法。
-
-      在传统相机上，我们研究陀螺仪引导的光学防抖补偿、基于扩散模型视角合成的图像对齐，以及利用运动线索的反射去除。相关成果发表于 ICCV 2023、CVPR 2024、IEEE TPAMI、IEEE TCSVT 和 ACM MM。
-    en: |
-      Event cameras mimic the biological retina: they record only brightness changes, with microsecond temporal resolution and very high dynamic range, making them ideal for fast motion and extreme lighting. We built a rendered dataset for event-based optical flow and proposed efficient methods for estimating meshflow and dense optical flow from events.
-
-      With conventional cameras, we study gyroscope-guided optical image stabilization, image alignment via diffusion-based view synthesis, and reflection removal using motion cues. This work appears at ICCV 2023, CVPR 2024, IEEE TPAMI, IEEE TCSVT and ACM MM.
-  keywords:
-    zh: [事件相机, 光流估计, 网格流, 图像对齐, 视频稳像]
-    en: [Event cameras, Optical flow, Meshflow, Image alignment, Stabilization]
+    zh: [多模态 MRI, 图神经网络, 脑网络分析, 精神疾病辅助诊断, 可解释影像标志物]
+    en: [Multimodal MRI, Graph neural networks, Brain networks, Psychiatric diagnosis, Interpretable biomarkers]
   image: ""
 
 - id: restore
@@ -70,105 +124,51 @@
   art: restore
   icon: image
   title:
-    zh: 图像视频复原与质量评价
-    en: Image & Video Restoration and Quality
+    zh: 图像增强与恢复
+    en: Image Enhancement & Restoration
   short:
-    zh: 图像复原
+    zh: 图像增强与恢复
     en: Image Restoration
   summary:
-    zh: 面向低照度、雾霾、压缩失真和屏下成像等退化场景，研究图像与视频的增强复原，以及可信的无参考质量评价。
-    en: Enhancing and restoring images and video degraded by low light, haze, compression and under-display optics, and assessing their quality without references.
+    zh: 面向低照度、雾霾、压缩失真、反光和屏下成像等退化场景，研究图像与视频的增强与恢复，以及可信的无参考质量评价。
+    en: Enhancing and restoring images and video degraded by low light, haze, compression, reflections and under-display optics, and assessing their quality without references.
   description:
     zh: |
-      真实世界获取的图像和视频常常受到噪声、低照度、雾霾、压缩伪影和屏下摄像头衍射的影响。我们提出了面向极低照度的感知细节生成对抗网络、分数阶 Retinex 变分框架、用于压缩视频增强的重建流循环网络、暗光压缩图像的多隐空间映射增强，以及用于屏下摄像头复原的拉普拉斯金字塔网络。
+      真实世界获取的图像和视频常常受到噪声、低照度、雾霾、压缩伪影、玻璃反光和屏下摄像头衍射的影响。我们提出了面向极低照度的感知细节生成对抗网络、分数阶 Retinex 变分框架、用于压缩视频增强的重建流循环网络、暗光压缩图像的多隐空间映射增强、基于颜色立方体约束的快速去雾，以及用于屏下摄像头复原的拉普拉斯金字塔网络。
 
-      判断复原结果"好不好"同样重要。我们研究结构正则化的梯度提升网络和因果感知启发的表征学习，用于可信的盲图像质量评价。相关成果发表于 IEEE TIP、Pattern Recognition、Neurocomputing、Displays 和 ICASSP。
+      判断恢复结果"好不好"同样重要。我们研究结构正则化的梯度提升网络和因果感知启发的表征学习，用于可信的盲图像质量评价。相关成果发表于 IEEE TIP、Pattern Recognition、Neurocomputing、Displays 和 ICASSP。
     en: |
-      Real-world images and video suffer from noise, low light, haze, compression artifacts and diffraction from under-display cameras. We proposed a perceptual-details GAN for extremely low-light enhancement, a fractional-order variational Retinex framework, a reconstruction-flow recurrent network for compressed video, multi-latent-space mapping for compressed dark images, and a Laplacian pyramid network for under-display camera restoration.
+      Real-world images and video suffer from noise, low light, haze, compression artifacts, reflections and diffraction from under-display cameras. We proposed a perceptual-details GAN for extremely low-light enhancement, a fractional-order variational Retinex framework, a reconstruction-flow recurrent network for compressed video, multi-latent-space mapping for compressed dark images, fast dehazing with a color-cube constraint, and a Laplacian pyramid network for under-display camera restoration.
 
       Judging whether a restored image is actually good matters just as much. We develop structure-regularized gradient boosting and causal-perception-inspired representation learning for trustworthy blind image quality assessment. This work appears in IEEE TIP, Pattern Recognition, Neurocomputing, Displays and ICASSP.
   keywords:
-    zh: [低照度增强, 压缩视频增强, 屏下成像复原, 图像去雾, 图像质量评价]
-    en: [Low-light enhancement, Compressed video, Under-display cameras, Dehazing, Quality assessment]
+    zh: [低照度增强, 图像去雾, 压缩视频增强, 屏下成像恢复, 图像质量评价]
+    en: [Low-light enhancement, Dehazing, Compressed video, Under-display cameras, Quality assessment]
   image: ""
 
-- id: perception
+- id: embodied
   color: "#1f8f5f"
   art: cloud3d
-  icon: cube
+  icon: robot
   title:
-    zh: 三维感知与边缘智能
-    en: 3D Perception & Edge Intelligence
+    zh: 具身智能
+    en: Embodied Intelligence
   short:
-    zh: 三维感知
-    en: 3D Perception
+    zh: 具身智能
+    en: Embodied AI
   summary:
-    zh: 研究点云与多传感器融合的三维目标检测与跟踪，并与集成电路团队合作，探索面向终端设备的高能效 AI 处理器。
-    en: 3D object detection and tracking from point clouds and fused sensors, and — with chip-design collaborators — energy-efficient AI processors for edge devices.
+    zh: 让智能体在真实物理世界中感知、理解并行动：研究点云与多传感器融合的三维感知、空地协同的环境建图，以及连接感知与决策的世界模型。
+    en: Agents that perceive, understand and act in the physical world — 3D perception from point clouds and fused sensors, air–ground collaborative mapping, and world models that connect perception with decision-making.
   description:
     zh: |
-      自动驾驶和无人系统需要准确理解三维环境。我们提出了稀疏体素-图注意力网络 SVGA-Net，直接从点云中检测三维目标；融合双目 RGB 与激光雷达，提升自动驾驶场景下的检测精度；并研究检测与跟踪结合的长时目标跟踪，以及带宽受限条件下的空中边缘感知。
+      具身智能强调智能体通过与环境的交互来学习，感知、预测与行动需要形成闭环。在感知端，我们提出了稀疏体素-图注意力网络 SVGA-Net，直接从点云中检测三维目标，并融合双目 RGB 与激光雷达提升自动驾驶场景下的检测精度；还研究带宽受限条件下的空中边缘感知，为地面平台生成可通行性地图。
 
-      为了让模型在终端上实时运行，我们与芯片设计团队合作，研究面向高并行目标检测后处理的非极大值抑制引擎和超低功耗环境声音识别处理器。相关成果发表于 AAAI、IEEE TITS、IEEE TVLSI 和 CICC。
+      在决策端，我们研究无人机编队的一致性控制，并探索基于自监督视觉表征的世界模型：让智能体在表征空间中预测"执行某个动作后环境会如何变化"，再据此规划行动，打通从感知到控制的链路。相关成果发表于 AAAI 和 IEEE TITS 等。
     en: |
-      Autonomous vehicles and unmanned systems need an accurate understanding of the 3D world. We proposed SVGA-Net, a sparse voxel-graph attention network for 3D detection from point clouds, fused stereo RGB with LiDAR for autonomous driving, and studied long-term tracking that combines detection and tracking as well as aerial edge perception under bandwidth limits.
+      Embodied intelligence emphasizes learning through interaction with the environment, closing the loop between perception, prediction and action. On the perception side, we proposed SVGA-Net, a sparse voxel-graph attention network for 3D detection from point clouds, fused stereo RGB with LiDAR for autonomous driving, and studied bandwidth-constrained aerial edge perception that builds traversability maps for ground platforms.
 
-      To run models in real time on devices, we work with chip designers on a high-parallel non-maximum suppression engine for detection post-processing and an ultra-low-energy environmental sound recognition processor. This work appears at AAAI, IEEE TITS, IEEE TVLSI and CICC.
+      On the decision side, we study consensus formation control for UAV teams and explore world models built on self-supervised visual representations, which predict in representation space how the environment will change after an action and plan accordingly, linking perception to control. This work appears at AAAI and in IEEE TITS.
   keywords:
-    zh: [点云三维检测, 多传感器融合, 自动驾驶, 目标跟踪, 高能效 AI 芯片]
-    en: [Point-cloud detection, Sensor fusion, Autonomous driving, Tracking, Efficient AI hardware]
-  image: ""
-
-- id: agents
-  color: "#e07a2f"
-  art: trajectory
-  icon: route
-  title:
-    zh: 时空预测与多智能体决策
-    en: Spatiotemporal Prediction & Multi-Agent Decision
-  short:
-    zh: 多智能体
-    en: Multi-Agent
-  summary:
-    zh: 依托民航与智能交通应用，研究飞行器 4D 航迹预测、机场场面多源监视，以及多智能体强化学习中的协同决策。
-    en: Grounded in civil aviation and intelligent transportation — 4D flight trajectory prediction, multi-source airport surveillance and cooperative multi-agent reinforcement learning.
-  description:
-    zh: |
-      空中交通管理要求提前、准确地预测每架航空器在空间和时间上的位置。我们提出基于现代时间卷积和双重注意力的时空图卷积网络 MTDA-STGCN，用于 4D 航迹预测；早期参与国家科技支撑计划课题"机场 III 级综合交通监视与引导系统"，研究机场场面多传感器数据融合与多点定位监视。
-
-      当多个智能体共同完成任务时，需要合理分配每个个体的贡献。我们研究基于锚定超图的多智能体强化学习信用分配方法，以及无人机编队的一致性控制。相关成果发表于 IEEE TITS 等期刊和会议。
-    en: |
-      Air traffic management requires predicting where every aircraft will be in space and time. We proposed MTDA-STGCN, a spatiotemporal graph convolutional network with modern temporal convolution and dual attention for 4D trajectory prediction. Earlier, as part of a national key technology project on level-III airport surface surveillance and guidance, we studied multi-sensor fusion and multilateration for airport surveillance.
-
-      When many agents work together, each one's contribution must be assigned fairly. We study anchored-hypergraph credit assignment for cooperative multi-agent reinforcement learning and consensus formation control for UAV swarms. This work appears in IEEE TITS and related venues.
-  keywords:
-    zh: [4D 航迹预测, 时空图卷积, 多智能体强化学习, 无人机编队, 场面监视]
-    en: [4D trajectory prediction, Spatiotemporal GCN, Multi-agent RL, UAV formation, Airport surveillance]
-  image: ""
-
-- id: multimodal
-  color: "#8250c4"
-  art: experts
-  icon: layers
-  title:
-    zh: 视觉理解与持续学习
-    en: Visual Understanding & Lifelong Learning
-  short:
-    zh: 持续学习
-    en: Lifelong Learning
-  summary:
-    zh: 研究表情识别、显著性检测和神经符号视觉问答等视觉理解任务，以及基于混合专家模型的持续概念学习。
-    en: Visual understanding — facial expression recognition, saliency and neuro-symbolic visual question answering — and lifelong concept learning with mixtures of experts.
-  description:
-    zh: |
-      让机器"看懂"图像，不仅要识别，还要理解与推理。我们提出了面向精确表情识别的定向注意力集成网络 OAENet、轻量化的人脸关键点检测网络、远距离人脸识别方法，以及可解释的神经符号遥感视觉问答方法 NS-RSVQA。
-
-      现实世界中的知识在不断增长，模型需要持续学习新概念而不遗忘旧知识。我们提出了去冗余的混合专家模型 R²MoE，用于终身概念学习。相关成果发表于 IEEE TMM、Pattern Recognition、IGARSS 和 ICME。
-    en: |
-      Making machines truly see means recognizing, understanding and reasoning. We proposed OAENet, an oriented attention ensemble for accurate facial expression recognition, a lightweight facial landmark detector, face recognition at a distance, and NS-RSVQA, an explainable neuro-symbolic method for remote sensing visual question answering.
-
-      Knowledge keeps growing, so models must learn new concepts without forgetting old ones. We proposed R²MoE, a redundancy-removal mixture of experts for lifelong concept learning. This work appears in IEEE TMM, Pattern Recognition, IGARSS and ICME.
-  keywords:
-    zh: [表情识别, 神经符号推理, 视觉问答, 混合专家模型, 持续学习]
-    en: [Expression recognition, Neuro-symbolic reasoning, Visual QA, Mixture of experts, Lifelong learning]
+    zh: [三维目标检测, 多传感器融合, 空地协同感知, 世界模型, 无人系统控制]
+    en: [3D object detection, Sensor fusion, Air–ground perception, World models, Unmanned system control]
   image: ""

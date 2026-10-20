@@ -1,0 +1,162 @@
+---
+// 科研项目：成果应用 + 项目列表（按开始年份分组，可按主持/主研、项目级别、关键词、年份筛选）
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import OutputSwitch from '../components/OutputSwitch.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Icon from '../components/Icon.astro';
+import { site, projects, applications, t, href, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const pu = u.projects;
+const yearOf = (d: string) => d.slice(0, 4);
+const years = [...new Set(projects.map((p) => yearOf(p.start)))].sort((a, b) => b.localeCompare(a));
+const LEVELS = ['national', 'provincial', 'municipal', 'university', 'industry'] as const;
+const levels = LEVELS.filter((l) => projects.some((p) => p.level === l));
+const lead = projects.filter((p) => p.role === 'lead').length;
+const tabs: [string, string, number][] = [
+  ['all', pu.all, projects.length],
+  ['lead', pu.lead, lead],
+  ['key', pu.key, projects.length - lead],
+];
+const stats = [
+  { value: lead, label: pu.statLead },
+  { value: projects.filter((p) => p.level === 'national').length, label: pu.statNational },
+  { value: projects.filter((p) => p.ongoing).length, label: pu.statOngoing },
+];
+const ym = (d: string) => (lang === 'zh' ? d.replace('-', '.') : d);
+---
+
+<Base lang={lang} title={pu.title} description={t(site.pages?.projects, lang)}>
+  <PageHero eyebrow="Projects" title={pu.title} desc={t(site.pages?.projects, lang)} lang={lang} parent={{ label: u.nav.publications, href: href('publications', lang) }} />
+
+  <div class="container page-body" data-pubs>
+    <OutputSwitch lang={lang} active="projects" />
+
+    <dl class="pat-stats">
+      {
+        stats.map((s, i) => (
+          <div class="pat-stat" data-reveal style={`--d:${i * 90}ms`}>
+            <dd data-count={s.value}>{s.value}</dd>
+            <dt>{s.label}</dt>
+          </div>
+        ))
+      }
+    </dl>
+
+    <SectionHead title={pu.apps} en={pu.appsEn} />
+    <div class="app-grid">
+      {
+        applications.map((a, i) => (
+          <article class="app-card" data-reveal style={`--d:${(i % 2) * 90}ms`}>
+            <span class="app-icon">
+              <Icon name={a.icon ?? 'sparkles'} size={22} />
+            </span>
+            <div>
+              <h3>{t(a.title, lang)}</h3>
+              <p>{t(a.desc, lang)}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <SectionHead title={pu.list} en={pu.listEn} />
+    <div class="pub-controls" data-reveal>
+      <div class="tabs" role="tablist" data-tabs>
+        {
+          tabs.map(([id, label, n]) => (
+            <button class:list={['tab', { 'is-active': id === 'all' }]} type="button" role="tab" aria-selected={id === 'all' ? 'true' : 'false'} data-type-tab={id}>
+              {label}
+              <span class="tab-count">{n}</span>
+            </button>
+          ))
+        }
+        <span class="tab-indicator" aria-hidden="true"></span>
+      </div>
+      <div class="pub-filters">
+        <label class="search">
+          <Icon name="search" />
+          <input type="search" placeholder={lang === 'zh' ? '搜索项目名称、类型或编号' : 'Search title, program or number'} aria-label="search" data-pub-search />
+        </label>
+        <select class="select" data-pub-year aria-label={u.pubs.allYears}>
+          <option value="all">{u.pubs.allYears}</option>
+          {years.map((y) => <option value={y}>{y}</option>)}
+        </select>
+      </div>
+      <div class="chips" role="group">
+        <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{pu.all}</button>
+        {
+          levels.map((l) => (
+            <button class="chip" type="button" data-dir-chip={l} aria-pressed="false">
+              {pu.levels[l]}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="pub-count" data-pub-count data-template={pu.count}>{pu.count.replace('{n}', String(projects.length))}</p>
+
+    <div class="pub-results">
+      {
+        years.map((y) => (
+          <section class="year-group" data-year-group>
+            <h2 class="year-label">{y}</h2>
+            <ol class="cite-list">
+              {projects
+                .filter((p) => yearOf(p.start) === y)
+                .map((p) => (
+                  <li
+                    class:list={['cite', 'project', `is-${p.level}`]}
+                    data-pub
+                    data-year={y}
+                    data-type={p.role}
+                    data-direction={p.level}
+                    data-search={[t(p.title, 'zh'), t(p.title, 'en'), t(p.type, 'zh'), t(p.type, 'en'), p.number ?? ''].join(' ').toLowerCase()}
+                  >
+                    <div class="cite-tags">
+                      <span class:list={['proj-role', `is-${p.role}`]}>{p.role === 'lead' ? pu.lead : pu.key}</span>
+                      <span class="proj-level">{pu.levels[p.level as (typeof LEVELS)[number]]}</span>
+                      <span class:list={['pat-status', p.ongoing ? 'is-examining' : 'is-granted']}>{p.ongoing ? pu.ongoing : pu.done}</span>
+                    </div>
+                    <p class="pat-title">{t(p.title, lang)}</p>
+                    <dl class="pat-meta">
+                      <div>
+                        <dt>{lang === 'zh' ? '项目类型' : 'Program'}</dt>
+                        <dd>{t(p.type, lang)}</dd>
+                      </div>
+                      {p.number && (
+                        <div>
+                          <dt>{pu.number}</dt>
+                          <dd>{p.number}</dd>
+                        </div>
+                      )}
+                      <div>
+                        <dt>{lang === 'zh' ? '起止时间' : 'Period'}</dt>
+                        <dd>
+                          {ym(p.start)} – {ym(p.end)}
+                        </dd>
+                      </div>
+                    </dl>
+                    {p.note && <p class="proj-note">{t(p.note, lang)}</p>}
+                  </li>
+                ))}
+            </ol>
+          </section>
+        ))
+      }
+    </div>
+    <p class="pub-empty" data-pub-empty hidden>{pu.empty}</p>
+    <p class="pat-source">{pu.note}</p>
+  </div>
+</Base>
+
+<script>
+  import '../scripts/pub-filter';
+</script>

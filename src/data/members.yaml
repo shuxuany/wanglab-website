@@ -1,6 +1,6 @@
 # ==============================================================
 #  团队成员
-#  - PI 简介、教育与工作经历、研究兴趣由课题组提供（2026-10）
+#  - PI 简介、教育与工作经历、研究兴趣、学术兼职由课题组提供（2026-10，2026-10-20 按个人简历更新）
 #  - 硕士生目前仍是占位示例，请替换为真实成员
 #  - photo：照片放在 public/images/members/ 下，填写如 images/members/wangzhengning.jpg
 #           建议使用正方形照片（至少 400×400）；留空则显示姓名头像
@@ -16,39 +16,72 @@ pi:
   photo: images/members/wangzhengning.jpg
   email: zhengning.wang@uestc.edu.cn
   links:
-    - label: { zh: 学校主页, en: Faculty page }
-      url: https://faculty.uestc.edu.cn/wangzhengning/zh_CN/index.htm
     - label: DBLP
       url: https://dblp.org/pid/09/1064.html
-  # 研究兴趣（显示为标签，也显示在首页轮播第一张）
+    - label: { zh: 航空航天产业联盟专家介绍, en: Expert profile (Chengdu Aerospace Industry Alliance) }
+      url: https://cdaia.org.cn/2546/25777/1170231
+  # 研究兴趣（显示为标签，首页导师介绍和团队成员页都会显示）
   interests:
-    zh: [计算机视觉, 机器学习, 图像处理, 视频压缩与传输, 智能交通, 空管技术]
-    en: [Computer vision, Machine learning, Image processing, Video compression and transmission, Intelligent transportation, Air traffic control technology]
+    zh: [人工智能, 机器学习, 具身智能, 计算机视觉, 图像处理, 多媒体通信, 智能交通与空管技术]
+    en: [Artificial intelligence, Machine learning, Embodied intelligence, Computer vision, Image processing, Multimedia communication, Intelligent transportation & ATM]
+  # 简介：2026-10-20 根据课题组提供的个人简历（2025-09 版）、研究成果详表和成都市航空航天产业联盟专家介绍整理
   bio:
     zh: |
-      王正宁，男，博士，教授。毕业于西南交通大学，现任职于电子科技大学从事图像处理、计算机视觉、人工智能等领域的科研工作。于2014-2015在国家留基委公派赴美国南加州大学访问，与信号与图像处理领域全球著名教授C.C. Jay Kuo开展研究合作。近些年在国内外高级期刊和会议上累计发表学术论文60余篇，国家发明专利30余项。
+      王正宁，博士，教授、博士生导师，天府绛溪实验室电磁空间前沿研究中心副主任，成都市航空航天产业联盟副秘书长。2007 年于西南交通大学获计算机应用技术博士学位（硕博连读），2009–2011 年在中国民用航空总局第二研究所从事博士后研究，2014–2015 年由国家留学基金委公派赴美国南加州大学访问，与信号与图像处理领域著名学者 C.-C. Jay Kuo 教授开展合作研究；2013–2014 年曾挂职南京经济技术开发区科技人才局副局长。长期从事人工智能、机器学习、具身智能、图像处理与多媒体通信等领域的科研与教学。
 
-      作为项目负责人先后承担了国家自然科学基金面上项目2项，中国博士后科学基金1项，四川省重点研发计划项目4项，四川省重大科技专项1项。作为主要科研人员参加了国家科技支撑计划重大项目“中国民航协同空管技术综合应用示范”课题——“机场III级综合交通监视与引导系统”、国家自然科学基金民航联合基金重点项目“机场跑道异物监测系统基础理论与关键技术研究”、国家自然科学基金国际合作重点项目“电子内镜和无线胶囊内镜图像处理关键技术研究”，国家自然科学基金青年基金项目“针对视觉映射的鲁棒混合回归模型研究”、中国民航总局民航科技专项基金项目“基于增强现实的机场场面监视系统关键技术研究”，以及一些企业产学研合作项目。同时，还是Frontiers in NeuroScience、IEEE TIP、IEEE TMM、中国图形图象学报等期刊的审稿专家，ICASSIP和ISPACS等国际会议的审稿专家，ISPACS2010、VCIP2016国际会议Local Chair，ICME2014国际学术会议组委会成员，ISCAS 2015 国际会议论文评审专家，ICASSIP 2014、VCIP2016国际会议论文评审专家。
+      在 IEEE TITS、IEEE TCSVT、Pattern Recognition、Medical Image Analysis、Cerebral Cortex 等期刊和 CVPR、ICCV、AAAI、ACM MM 等会议发表学术论文 80 余篇，获授权国家发明专利 40 余项（其中第一发明人 30 项），登记软件著作权 3 项。作为项目负责人主持国家自然科学基金面上项目 2 项、省部级科技研发计划项目 5 项，以及中国博士后科学基金项目等；作为主要研究人员参与国家科技支撑计划项目课题“机场 III 级综合交通监视与引导系统”、国家自然科学基金民航联合基金重点项目“机场跑道异物监测系统基础理论与关键技术研究”、国家自然科学基金国际（地区）合作与交流项目“电子内镜和无线胶囊内镜图像处理关键技术研究”，以及四川省重大科技专项、重点研发计划等省部级项目十余项。
+
+      注重科研成果的转化应用。作为主要完成人之一研制的机场全景增强监视系统是国内首套机场场面全景增强监视系统，融合视频、雷达与 ADS-B 数据，已部署于成都双流、重庆江北、昆明长水、广州白云等多个机场，并列入民航局机场新技术名录；跑道异物检测相关技术应用于北京大兴、成都天府、兰州中川等机场；参与的国产化机载娱乐系统应用于 C919 大型客机；工业视觉检测算法已应用于半导体、汽车等制造领域。获民航科学技术奖二等奖、中国交通运输协会科技进步奖三等奖、2025 年航空灵巧手菁英赛“智臻至善奖”等，入选四川省海外高层次留学人才。
+
+      担任 APSIPA Transactions on Signal and Information Processing 编委、Frontiers in Neuroscience 客座编辑，中国计算机学会多媒体技术专业委员会委员、中国自动化学会分数阶系统与控制专业委员会委员，IEEE TIP、TMM、TCSVT 及 CVPR、ICCV、ACM MM 等期刊和会议审稿人，ISPACS 2010、VCIP 2016 国际会议 Local Chair，ICME 2014 组委会成员，2020 年中国多媒体大会荣誉讲者。同时担任四川省科技厅航空与燃机重大科技专项专家委员会专家、“十三五”“十四五”高新技术领域指南编制专家，天府绛溪实验室博士后学术导师，并长期为多家高新技术企业提供技术指导。
     en: |
-      Zhengning Wang, Ph.D., is a Professor at the University of Electronic Science and Technology of China (UESTC), working on image processing, computer vision and artificial intelligence. He graduated from Southwest Jiaotong University. From 2014 to 2015 he was a visiting scholar at the University of Southern California, sponsored by the China Scholarship Council, where he collaborated with Prof. C.-C. Jay Kuo, a world-renowned scholar in signal and image processing. In recent years he has published more than 60 papers in leading journals and conferences and holds more than 30 Chinese invention patents.
+      Zhengning Wang, Ph.D., is a Professor and doctoral supervisor, Deputy Director of the Electromagnetic Space Frontier Research Center at Tianfu Jiangxi Laboratory, and Deputy Secretary-General of the Chengdu Aerospace Industry Alliance. He received his Ph.D. in Computer Application Technology from Southwest Jiaotong University in 2007 (combined master's–doctoral program), was a postdoctoral fellow at the Second Research Institute of the Civil Aviation Administration of China from 2009 to 2011, and from 2014 to 2015 was a visiting scholar at the University of Southern California, sponsored by the China Scholarship Council, working with Prof. C.-C. Jay Kuo, a renowned scholar in signal and image processing. From 2013 to 2014 he served on secondment as Deputy Director of the Science, Technology and Talent Bureau of the Nanjing Economic and Technological Development Zone. His research and teaching cover artificial intelligence, machine learning, embodied intelligence, image processing and multimedia communication.
 
-      As principal investigator, he has led two NSFC General Program projects, one China Postdoctoral Science Foundation project, four Sichuan Key R&D Program projects and one Sichuan Major Science and Technology project. As a key researcher, he has taken part in the subproject "Level-III Airport Integrated Traffic Surveillance and Guidance System" of the National Key Technology R&D Program project "Comprehensive Application Demonstration of China Civil Aviation Collaborative Air Traffic Management Technology"; the NSFC–CAAC Joint Fund key project "Fundamental Theory and Key Technologies of Airport Runway Foreign Object Debris Detection Systems"; the NSFC International Cooperation key project "Key Technologies of Image Processing for Electronic Endoscopy and Wireless Capsule Endoscopy"; the NSFC Young Scientists Fund project "Robust Mixture Regression Models for Visual Mapping"; the CAAC Civil Aviation Science and Technology project "Key Technologies of Augmented-Reality-Based Airport Surface Surveillance Systems"; and several industry–academia collaborations. He reviews for Frontiers in Neuroscience, IEEE TIP, IEEE TMM and the Journal of Image and Graphics, and for international conferences including ICASSIP and ISPACS. He was Local Chair of ISPACS 2010 and VCIP 2016, a member of the ICME 2014 organizing committee, and a paper reviewer for ISCAS 2015, ICASSIP 2014 and VCIP 2016.
+      He has published more than 80 papers in journals such as IEEE TITS, IEEE TCSVT, Pattern Recognition, Medical Image Analysis and Cerebral Cortex and at conferences including CVPR, ICCV, AAAI and ACM MM. He holds more than 40 granted Chinese invention patents (30 as first inventor) and 3 registered software copyrights. As principal investigator he has led two NSFC General Program projects, five provincial R&D projects and a China Postdoctoral Science Foundation project. As a key researcher he has taken part in the subproject "Level-III Airport Integrated Traffic Surveillance and Guidance System" of the National Key Technology R&D Program, the NSFC–CAAC Joint Fund key project on airport runway foreign object debris detection, the NSFC International Cooperation project on image processing for electronic and wireless capsule endoscopy, and more than ten Sichuan major science and technology and key R&D projects.
+
+      He puts strong emphasis on applying research results. The airport panoramic enhanced surveillance system, which he helped develop as one of its main contributors, was China's first panoramic surveillance system for airport surfaces. It fuses video, radar and ADS-B data, has been deployed at airports including Chengdu Shuangliu, Chongqing Jiangbei, Kunming Changshui and Guangzhou Baiyun, and is listed in the CAAC catalogue of new airport technologies. Related runway foreign object detection technology is used at Beijing Daxing, Chengdu Tianfu and Lanzhou Zhongchuan airports; a domestically developed in-flight entertainment system he contributed to is used on the C919 airliner; and his industrial visual inspection algorithms are applied in semiconductor and automotive manufacturing. His awards include a Second Prize of the Civil Aviation Science and Technology Award, a Third Prize of the China Communications and Transportation Association Science and Technology Progress Award and the "Excellence" award of the 2025 Aviation Dexterous Hand Elite Challenge, and he was recognized as a Sichuan High-Level Overseas-Returned Talent.
+
+      He is an editorial board member of APSIPA Transactions on Signal and Information Processing, a guest editor of Frontiers in Neuroscience, a member of the CCF Technical Committee on Multimedia Technology and of the CAA Technical Committee on Fractional-Order Systems and Control, and a reviewer for IEEE TIP, TMM, TCSVT, CVPR, ICCV and ACM MM. He was Local Chair of ISPACS 2010 and VCIP 2016, a member of the ICME 2014 organizing committee, and an Honored Speaker at the 2020 China Multimedia Conference. He also serves as an expert on the Sichuan Provincial Department of Science and Technology committee for the aviation and gas turbine major project, helped draft the province's high-tech R&D guidelines for the 13th and 14th Five-Year Plans, supervises postdoctoral researchers at Tianfu Jiangxi Laboratory, and advises several high-tech companies.
   education:
-    - when: { zh: 2004/3 – 2007/7, en: Mar 2004 – Jul 2007 }
-      what: { zh: 西南交通大学，计算机应用技术，博士, en: "Ph.D., Computer Application Technology, Southwest Jiaotong University" }
-    - when: { zh: 1996/9 – 2000/7, en: Sep 1996 – Jul 2000 }
-      what: { zh: 西南交通大学，计算科学与技术, en: "Computing Science and Technology, Southwest Jiaotong University" }
+    - when: { zh: 2002/9 – 2007/7, en: Sep 2002 – Jul 2007 }
+      what: { zh: 西南交通大学，计算机应用技术，博士（硕博连读）, en: "Ph.D., Computer Application Technology, Southwest Jiaotong University (combined master's–doctoral program)" }
+    - when: { zh: 1996/9 – 2000/6, en: Sep 1996 – Jun 2000 }
+      what: { zh: 西南交通大学，计算机科学与技术，学士, en: "B.Eng., Computer Science and Technology, Southwest Jiaotong University" }
   experience:
     - when: { zh: 2008/9 – 至今, en: Sep 2008 – Present }
-      what: { zh: 电子科技大学电子工程学院, en: "School of Electronic Engineering, UESTC" }
+      what: { zh: 高校任教，历任讲师、副教授、教授, en: "University faculty: Lecturer, Associate Professor, Professor" }
+    - when: { zh: 2024/10 – 至今, en: Oct 2024 – Present }
+      what: { zh: 天府绛溪实验室电磁空间前沿研究中心，副主任, en: "Deputy Director, Electromagnetic Space Frontier Research Center, Tianfu Jiangxi Laboratory" }
     - when: { zh: 2014/10 – 2015/10, en: Oct 2014 – Oct 2015 }
       what: { zh: 美国南加州大学，访问学者, en: "Visiting Scholar, University of Southern California" }
+    - when: { zh: 2013/8 – 2014/8, en: Aug 2013 – Aug 2014 }
+      what: { zh: 南京经济技术开发区科技人才局，副局长（挂职）, en: "Deputy Director (secondment), Science, Technology and Talent Bureau, Nanjing Economic and Technological Development Zone" }
     - when: { zh: 2009/5 – 2011/8, en: May 2009 – Aug 2011 }
       what: { zh: 中国民用航空总局第二研究所，博士后, en: "Postdoctoral Fellow, Second Research Institute of the Civil Aviation Administration of China" }
     - when: { zh: 2007/8 – 2008/9, en: Aug 2007 – Sep 2008 }
-      what: { zh: 西南技术物理研究所, en: Southwest Institute of Technical Physics }
+      what: { zh: 西南技术物理研究所，工程师, en: "Engineer, Southwest Institute of Technical Physics" }
     - when: { zh: 2000/8 – 2002/8, en: Aug 2000 – Aug 2002 }
-      what: { zh: 烟台东方电子信息产业股份有限公司, en: "Yantai Dongfang Electronics Information Industry Co., Ltd." }
+      what: { zh: 东方电子信息产业股份有限公司，助理工程师, en: "Assistant Engineer, Dongfang Electronics Information Industry Co., Ltd." }
+  # 学术与社会兼职（首页导师介绍和团队成员页显示）
+  positions:
+    - when: { zh: 2022 – 2024, en: 2022 – 2024 }
+      what: { zh: APSIPA Transactions on Signal and Information Processing，编委, en: "Editorial Board Member, APSIPA Transactions on Signal and Information Processing" }
+    - when: { zh: 2023 – 2024, en: 2023 – 2024 }
+      what: { zh: Frontiers in Neuroscience，客座编辑, en: "Guest Editor, Frontiers in Neuroscience" }
+    - when: { zh: 2018 – 2023, en: 2018 – 2023 }
+      what: { zh: 中国计算机学会多媒体技术专业委员会，委员, en: "Member, CCF Technical Committee on Multimedia Technology" }
+    - when: { zh: 2019 – 2023, en: 2019 – 2023 }
+      what: { zh: 中国自动化学会分数阶系统与控制专业委员会，委员, en: "Member, CAA Technical Committee on Fractional-Order Systems and Control" }
+    - when: { zh: 2021 – 至今, en: 2021 – Present }
+      what: { zh: 成都市航空航天产业联盟，核心专家、副秘书长, en: "Core Expert and Deputy Secretary-General, Chengdu Aerospace Industry Alliance" }
+    - when: { zh: 2025/4 – 至今, en: Apr 2025 – Present }
+      what: { zh: 天府绛溪实验室博士后科研工作站，博士后学术导师, en: "Postdoctoral Supervisor, Tianfu Jiangxi Laboratory Postdoctoral Workstation" }
+    - when: { zh: 2022, en: "2022" }
+      what: { zh: 四川省科技厅航空与燃机重大科技专项专家委员会，专家, en: "Expert, Sichuan committee for the aviation and gas turbine major science and technology project" }
+    - when: { zh: 2018、2022, en: 2018, 2022 }
+      what: { zh: 四川省科技厅“十三五”“十四五”高新技术领域指南编制专家, en: "Drafting expert, Sichuan high-tech R&D guidelines for the 13th and 14th Five-Year Plans" }
+    - when: { zh: 2024 – 2027, en: 2024 – 2027 }
+      what: { zh: 中国教育发展战略学会人才发展专业委员会，学术桥评审专家库成员, en: "Reviewer pool member, Talent Development Committee, China Society of Educational Development Strategy" }
 
 groups:
   - role: { zh: 博士研究生, en: Ph.D. Students }

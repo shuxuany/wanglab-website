@@ -6,15 +6,15 @@
 # ==============================================================
 
 intro:
-  zh: 课题组长期招收对人工智能、计算机视觉和医学影像分析充满热情的博士、硕士研究生和本科生。你将参与前沿课题，有机会在顶级期刊和会议发表成果，并与国内外高校、医院和企业开展合作。
-  en: We welcome Ph.D., Master's and undergraduate students who are passionate about AI, computer vision and medical image analysis. You will work on frontier problems, publish at top venues, and collaborate with universities, hospitals and companies at home and abroad.
+  zh: 课题组长期招收对人工智能充满热情、希望在强化学习、工业视觉、医学影像或具身智能等方向深入研究的博士、硕士研究生和本科生。你将参与前沿课题，有机会在顶级期刊和会议发表成果，并与国内外高校、医院和企业开展合作。
+  en: We welcome Ph.D., Master's and undergraduate students who are passionate about AI and eager to work on reinforcement learning, industrial vision, medical imaging or embodied intelligence. You will work on frontier problems, publish at top venues, and collaborate with universities, hospitals and companies at home and abroad.
 
 positions:
   - icon: graduation
     title: { zh: 博士研究生, en: Ph.D. Students }
     desc:
-      zh: 面向信息与通信工程、电子信息等专业招收博士研究生，欢迎在计算机视觉、医学影像或多智能体方向有研究基础的同学联系。
-      en: Ph.D. positions in Information & Communication Engineering and Electronic Information. Prior research in vision, medical imaging or multi-agent systems is a plus.
+      zh: 面向信息与通信工程、电子信息等专业招收博士研究生，欢迎在强化学习、计算机视觉、医学影像或具身智能方向有研究基础的同学联系。
+      en: Ph.D. positions in Information & Communication Engineering and Electronic Information. Prior research in reinforcement learning, vision, medical imaging or embodied AI is a plus.
   - icon: sparkles
     title: { zh: 硕士研究生, en: Master's Students }
     desc:

@@ -7,7 +7,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "pack": "node tools/portable/pack.mjs"
+    "pack": "node tools/portable/pack.mjs",
+    "watermark": "node tools/watermark.mjs"
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.3.0",

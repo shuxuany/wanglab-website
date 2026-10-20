@@ -21,7 +21,7 @@ const year = new Date().getFullYear();
           <span>{t(site.short_name, lang)}</span>
         </a>
         {t(site.name, lang) !== t(site.short_name, lang) && <p class="footer-name">{t(site.name, lang)}</p>}
-        <p class="footer-aff">{t(site.affiliation, lang)}</p>
+        {(t(site.affiliation, lang) || t(site.tagline, lang)) && <p class="footer-aff">{t(site.affiliation, lang) || t(site.tagline, lang)}</p>}
       </div>
       <div>
         <h2 class="footer-h">{u.footer.contact}</h2>

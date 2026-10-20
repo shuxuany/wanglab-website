@@ -10,6 +10,9 @@ import newsRaw from '../data/news.yaml?raw';
 import joinRaw from '../data/join.yaml?raw';
 import patentsRaw from '../data/patents.yaml?raw';
 import lifeRaw from '../data/life.yaml?raw';
+import projectsRaw from '../data/projects.yaml?raw';
+import awardsRaw from '../data/awards.yaml?raw';
+import exchangeRaw from '../data/exchange.yaml?raw';
 
 export type Lang = 'zh' | 'en';
 /** 双语文本：可以是普通字符串，也可以是 { zh, en } */
@@ -121,6 +124,32 @@ export function patentUrl(p: Patent, lang: Lang): string {
 }
 
 export const life: any[] = parse(lifeRaw) ?? [];
+
+// ---------- 科研项目、获奖、学术交流 ----------
+
+const projectsData: any = parse(projectsRaw) ?? {};
+const NOW = new Date().toISOString().slice(0, 7);
+/** 科研项目（按开始时间倒序）；ongoing：结束时间晚于当前月份 */
+export const projects: any[] = (projectsData.projects ?? [])
+  .map((p: any) => ({ ...p, start: String(p.start ?? ''), end: String(p.end ?? ''), ongoing: String(p.end ?? '') >= NOW }))
+  .sort((a: any, b: any) => b.start.localeCompare(a.start));
+export const applications: any[] = projectsData.applications ?? [];
+
+export const awards: any[] = ((parse(awardsRaw) ?? []) as any[])
+  .map((a) => ({ ...a, date: String(a.date ?? '') }))
+  .sort((a, b) => b.date.localeCompare(a.date));
+
+const exchangeData: any = parse(exchangeRaw) ?? {};
+const byDate = (a: any, b: any) => String(b.date ?? '').localeCompare(String(a.date ?? ''));
+export const exchange = {
+  reports: ((exchangeData.reports ?? []) as any[]).map((r) => ({ ...r, date: String(r.date ?? '') })).sort(byDate),
+  talks: ((exchangeData.talks ?? []) as any[]).map((r) => ({ ...r, date: String(r.date ?? '') })).sort(byDate),
+  conferences: (exchangeData.conferences ?? []) as any[],
+  visits: (exchangeData.visits ?? []) as any[],
+  service: (exchangeData.service ?? []) as any[],
+};
+/** 学术交流条目总数（显示在科研成果切换标签上） */
+export const exchangeCount = Object.values(exchange).reduce((n, l) => n + l.length, 0);
 
 export const news: any[] = ((parse(newsRaw) ?? []) as any[])
   .map((n) => ({ ...n, date: String(n.date ?? '') }))
@@ -271,7 +300,7 @@ export function directionVenues(id: string, max = 4): string[] {
 
 // ---------- 头像 ----------
 
-// 成电蓝系渐变，少量学校橙色点缀
+// 主题蓝系渐变，少量橙色点缀
 const PALETTES: [string, string][] = [
   ['#2f86de', '#093b6d'],
   ['#0b5eb2', '#062a4f'],

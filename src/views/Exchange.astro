@@ -1,0 +1,156 @@
+---
+// 学术交流：媒体报道与公众号、学术报告、国际会议、访问与考察、学术与社会服务
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import OutputSwitch from '../components/OutputSwitch.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Icon from '../components/Icon.astro';
+import { site, exchange, t, asset, href, formatDate, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const xu = u.exchange;
+const { reports, talks, conferences, visits, service } = exchange;
+// 国际会议按年份分组
+const confYears = [...new Set(conferences.map((c: any) => c.year))].sort((a: any, b: any) => b - a);
+---
+
+<Base lang={lang} title={xu.title} description={t(site.pages?.exchange, lang)}>
+  <PageHero eyebrow="Academic Exchange" title={xu.title} desc={t(site.pages?.exchange, lang)} lang={lang} parent={{ label: u.nav.publications, href: href('publications', lang) }} />
+
+  <div class="container page-body">
+    <OutputSwitch lang={lang} active="exchange" />
+
+    <!-- 媒体报道与公众号 -->
+    <SectionHead title={xu.reports} en={xu.reportsEn} />
+    <ol class="report-list">
+      {
+        reports.map((r: any, i: number) => (
+          <li class="report" data-reveal style={`--d:${(i % 3) * 70}ms`}>
+            <div class="report-side">
+              <span class:list={['report-kind', `is-${r.kind}`]}>
+                <Icon name={r.kind === 'wechat' ? 'chat' : 'external'} size={14} />
+                {r.kind === 'wechat' ? xu.wechat : xu.web}
+              </span>
+              {r.date && <time datetime={r.date}>{formatDate(r.date, lang)}</time>}
+            </div>
+            <div class="report-body">
+              <h3>
+                <a href={r.url} target="_blank" rel="noopener">
+                  {t(r.title, lang)}
+                </a>
+              </h3>
+              <p>{t(r.desc, lang)}</p>
+              <p class="report-source">
+                {t(r.source, lang)}
+                <a href={r.url} target="_blank" rel="noopener">
+                  {xu.read}
+                  <Icon name="arrow-up-right" size={13} />
+                </a>
+              </p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <!-- 学术报告 -->
+    <SectionHead title={xu.talks} en={xu.talksEn} />
+    <ul class="talk-list">
+      {
+        talks.map((tk: any, i: number) => (
+          <li class:list={['talk', { 'has-image': tk.image }]} data-reveal style={`--d:${i * 80}ms`}>
+            {!tk.image && (
+              <div class="talk-image talk-image-empty" aria-hidden="true">
+                <Icon name="mic" size={40} />
+              </div>
+            )}
+            {tk.image && (
+              <button class="talk-image" type="button" data-zoom={asset(tk.image)} data-caption={t(tk.title, lang)}>
+                <img src={asset(tk.image)} alt={t(tk.title, lang)} loading="lazy" />
+              </button>
+            )}
+            <div>
+              <span class="talk-kind">{t(tk.kind, lang)}</span>
+              <span class="talk-date">{formatDate(tk.date, lang)}</span>
+              <h3>{lang === 'zh' ? `《${t(tk.title, lang)}》` : t(tk.title, lang)}</h3>
+              <p>{t(tk.event, lang)}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <!-- 国际会议 -->
+    <SectionHead title={xu.conferences} en={xu.conferencesEn} desc={xu.confNote} />
+    <div class="conf-years" data-reveal>
+      {
+        confYears.map((y: any) => (
+          <div class="conf-year">
+            <span class="conf-y">{y}</span>
+            <ul>
+              {conferences
+                .filter((c: any) => c.year === y)
+                .map((c: any) => (
+                  <li title={c.full}>
+                    <b>{c.name}</b>
+                    {c.role && <em>{t(c.role, lang)}</em>}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- 访问与考察 -->
+    <SectionHead title={xu.visits} en={xu.visitsEn} />
+    <div class="visit-grid">
+      {
+        visits.map((v: any, i: number) => (
+          <article class="visit-card" data-reveal style={`--d:${i * 90}ms`}>
+            <span class="visit-date">{t(v.date, lang)}</span>
+            <h3>{t(v.title, lang)}</h3>
+            <p>{t(v.desc, lang)}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- 学术与社会服务 -->
+    <SectionHead title={xu.service} en={xu.serviceEn} />
+    <div class="service-grid">
+      {
+        service.map((s: any, i: number) => (
+          <article class="service-card" data-reveal style={`--d:${i * 90}ms`}>
+            {s.image && (
+              <button class="service-image" type="button" data-zoom={asset(s.image)} data-caption={t(s.title, lang)}>
+                <img src={asset(s.image)} alt={t(s.title, lang)} loading="lazy" />
+              </button>
+            )}
+            <div class="service-body">
+              <h3>{t(s.title, lang)}</h3>
+              <p>{t(s.desc, lang)}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+
+  <dialog class="lightbox lightbox-single" data-zoom-box data-lenis-prevent>
+    <button class="lb-btn lb-close" type="button" data-zoom-close aria-label={u.awards.close}><Icon name="close" size={22} /></button>
+    <figure class="lb-figure">
+      <img alt="" />
+      <figcaption><span data-zoom-caption></span></figcaption>
+    </figure>
+  </dialog>
+</Base>
+
+<script>
+  import '../scripts/zoom';
+</script>

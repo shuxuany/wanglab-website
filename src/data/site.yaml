@@ -12,22 +12,16 @@ name:
 # 导航栏左上角显示的简称
 short_name:
   zh: 王正宁课题组
-  en: Wang Lab · UESTC
+  en: Zhengning Wang Lab
 
 # 课题组 Logo（可选）：图片放到 public/images/ 下，填写如 images/logo.svg；留空使用默认图标
 logo: ""
 
-affiliation:
-  zh: 电子科技大学 · 信息与通信工程学院
-  en: School of Information and Communication Engineering, UESTC
+# 所属单位（显示在页脚、网页标题中）；2026-10-20 按要求暂不显示，留空即可
+affiliation: ""
 
-# 顶部深蓝条右侧显示的学校名称（链接到学校官网）
-university:
-  name: { zh: 电子科技大学, en: University of Electronic Science and Technology of China }
-  short: UESTC
-  url: https://www.uestc.edu.cn
-  # 学校标志（显示在页面右上角）；文件不存在时显示文字版校名
-  logo: images/uestc-logo.png
+# 刊头右侧的单位标志（可选）：name 为名称，logo 为 public/ 下的图片，url 为链接；不填则不显示
+university: {}
 
 # 刊头大标题下方的英文名
 lab_en: Zhengning Wang Lab
@@ -43,26 +37,32 @@ slides: []
 #    link: ""
 
 tagline:
-  zh: 让机器看懂世界，用智能理解大脑
-  en: Teaching machines to see — and using AI to understand the brain
+  zh: 让机器看得清、看得懂，并在真实世界中行动
+  en: Machines that see clearly, understand deeply and act in the real world
 
 # 首页第二屏的介绍（滚动时逐字点亮）
 intro:
-  zh: 我们是电子科技大学信息与通信工程学院王正宁教授领导的研究团队，从事多媒体通信、图像处理、计算机视觉与人工智能研究。从事件相机到三维点云，从低照度图像到人脑影像，我们让算法在真实世界中看得清、看得懂，并持续学习与进化。
-  en: We are the research group led by Prof. Zhengning Wang at the School of Information and Communication Engineering, UESTC, working on multimedia communication, image processing, computer vision and artificial intelligence. From event cameras to 3D point clouds, from low-light images to human brain scans, we build algorithms that see clearly, understand deeply, and keep learning in the real world.
+  zh: 我们是王正宁教授领导的人工智能研究团队，围绕强化学习、工业视觉检测、工业 AI 软件、医学影像处理、图像增强与恢复和具身智能六个方向开展研究。从产线上的缺陷检测到医院里的脑影像，从暗光图像到会自主决策的智能体，我们既做前沿算法，也推动算法在真实场景中落地。
+  en: We are an AI research group led by Prof. Zhengning Wang, working on six directions — reinforcement learning, industrial visual inspection, industrial AI software, medical image processing, image enhancement and restoration, and embodied intelligence. From defect detection on production lines to brain scans in hospitals, from low-light images to agents that make their own decisions, we develop frontier algorithms and bring them into real-world use.
 
 # 首页数据栏（value 为数字，suffix 为后缀）
+# auto 可选：papers 论文数 / patents 授权发明专利数 / projects 主持项目数 / directions 研究方向数，
+#            填了 auto 时按网站数据自动计数，不用手动改 value
 stats:
-  - value: 76
+  - auto: papers
+    value: 87
     suffix: ""
-    label: { zh: 收录论文, en: Publications }
-  - value: 30
-    suffix: "+"
-    label: { zh: 国家发明专利, en: Patents }
-  - value: 8
+    label: { zh: 学术论文, en: Publications }
+  - auto: patents
+    value: 48
     suffix: ""
-    label: { zh: 主持科研项目, en: Funded projects }
-  - value: 6
+    label: { zh: 授权发明专利, en: Granted patents }
+  - auto: projects
+    value: 17
+    suffix: ""
+    label: { zh: 主持科研项目, en: Projects led }
+  - auto: directions
+    value: 6
     suffix: ""
     label: { zh: 研究方向, en: Research areas }
 
@@ -73,14 +73,14 @@ contact:
   email: zhengning.wang@uestc.edu.cn
   phone: ""
   address:
-    zh: 四川省成都市高新区（西区）西源大道 2006 号 电子科技大学清水河校区 信息与通信工程学院科研楼 KC322，611731
-    en: Room KC322, Research Building, School of Information and Communication Engineering, Qingshuihe Campus, UESTC, 2006 Xiyuan Ave, Chengdu 611731, China
+    zh: 四川省成都市高新区（西区）西源大道 2006 号 科研楼 KC322，611731
+    en: Room KC322, Research Building, 2006 Xiyuan Ave, West Hi-Tech Zone, Chengdu 611731, China
 
 # 各页面顶部的说明文字
 pages:
   research:
-    zh: 课题组围绕以下六个方向开展研究，覆盖医学影像分析、视觉感知、图像复原与智能决策。
-    en: Our research spans six directions — from medical image analysis and visual perception to image restoration and intelligent decision-making.
+    zh: 课题组围绕以下六个方向开展研究，覆盖智能决策、工业视觉与软件、医学影像、图像增强与恢复以及具身智能。
+    en: Our research spans six directions — intelligent decision-making, industrial vision and software, medical imaging, image enhancement and restoration, and embodied intelligence.
   people:
     zh: 一群对人工智能充满热情的人，在这里相遇、合作、成长。
     en: A group of people passionate about AI who meet, collaborate and grow together here.
@@ -93,18 +93,29 @@ pages:
   news:
     zh: 课题组的最新进展、获奖与活动。
     en: Latest updates, awards and events from the group.
+  projects:
+    zh: 课题组承担和参与的国家级、省部级科研项目与企业合作项目，以及科研成果在民航、工业等领域的应用。
+    en: National, provincial and industry projects led or joined by the group, and how our results are applied in civil aviation, industry and beyond.
+  awards:
+    zh: 课题组获得的科技奖励、人才与学术荣誉及教学奖励。点击证书可查看大图。
+    en: Science and technology awards, honors and teaching awards received by the group. Click a certificate to enlarge it.
+  exchange:
+    zh: 媒体报道、学术报告、国际会议、访问考察与社会服务。
+    en: Media coverage, invited talks, conferences, visits and professional service.
   life:
     zh: 科研之外，我们也一起学习、交流、出游与庆祝。
     en: Beyond research, we learn, travel and celebrate together.
 
 # 页脚的外部链接（可增删）
 links:
-  - label: { zh: 电子科技大学, en: UESTC }
-    url: https://www.uestc.edu.cn
-  - label: { zh: 信息与通信工程学院, en: School of ICE }
-    url: https://www.sice.uestc.edu.cn
-  - label: { zh: 王正宁教师主页, en: Faculty profile }
-    url: https://faculty.uestc.edu.cn/wangzhengning/zh_CN/index.htm
+  - label: { zh: DBLP 论文列表, en: DBLP }
+    url: https://dblp.org/pid/09/1064.html
+
+# 图片水印：网站上的照片都带浅色平铺水印（原图保存在 assets/originals/ 中，不对外发布）
+# 修改 text 或 opacity 后运行 npm run watermark 重新生成 public/images/ 下的图片
+watermark:
+  text: AI Lab
+  opacity: 0.16
 
 # 网站备案号（以后放到国内服务器时填写，留空不显示）
 icp: ""

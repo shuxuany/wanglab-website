@@ -1,0 +1,63 @@
+# ==============================================================
+#  获奖证书与荣誉
+#  数据整理自课题组提供的《研究成果详表》《社会荣誉》和获奖证书扫描件（2026-10）。
+#  - category：award 科技奖励 / honor 人才与学术荣誉 / teaching 教学育人
+#  - image：证书照片（放在 assets/originals/images/awards/ 后运行 npm run watermark，会生成到 public/images/awards/）
+#  - 证书上印有单位全称的，按网站统一要求不展示证书照片，只列文字
+# ==============================================================
+
+- title: { zh: 民航科学技术奖二等奖, en: Second Prize, Civil Aviation Science and Technology Award }
+  project: { zh: 机场全景增强监视系统, en: Airport panoramic enhanced surveillance system }
+  issuer: { zh: 中国民用航空局、中国航空运输协会, en: Civil Aviation Administration of China & China Air Transport Association }
+  date: 2018-12
+  category: award
+  image: images/awards/caac-2018.jpg
+
+- title: { zh: 中国交通运输协会科技进步奖三等奖, en: Third Prize, Science and Technology Progress Award of the China Communications and Transportation Association }
+  project: { zh: 基于全景智能协同监视的机坪综合管控系统, en: Apron management and control system based on panoramic intelligent collaborative surveillance }
+  issuer: { zh: 中国交通运输协会, en: China Communications and Transportation Association }
+  date: 2021-03
+  category: award
+  note: { zh: 2020 年度, en: 2020 award year }
+
+- title: { zh: 2025 年航空灵巧手菁英赛“智臻至善奖”, en: '"Excellence" Award, 2025 Aviation Dexterous Hand Elite Challenge' }
+  project: { zh: RoboReach 队（王正宁、刘帅成、冯振宇等）, en: "Team RoboReach (Zhengning Wang, Shuaicheng Liu, Zhenyu Feng et al.)" }
+  issuer: { zh: 国家高端航空装备技术创新中心, en: National High-end Aviation Equipment Technology Innovation Center }
+  date: 2025-09
+  category: award
+  image: images/awards/dexterous-hand-2025.jpg
+
+- title: { zh: 四川省海外高层次留学人才, en: Sichuan High-Level Overseas-Returned Talent }
+  issuer: { zh: 四川省人力资源和社会保障厅, en: Sichuan Department of Human Resources and Social Security }
+  date: 2016-07
+  category: honor
+
+- title: { zh: 江苏省第六批科技镇长团优秀挂职干部, en: Outstanding Member, 6th Jiangsu Science and Technology Deputy Mayor Program }
+  issuer: { zh: 中共江苏省委组织部, en: Organization Department of the CPC Jiangsu Provincial Committee }
+  date: 2014-08
+  category: honor
+
+- title: { zh: 2020 年中国多媒体大会荣誉讲者, en: Honored Speaker, 2020 China Multimedia Conference }
+  issuer: { zh: 中国计算机学会多媒体技术专业委员会, en: CCF Technical Committee on Multimedia Technology }
+  date: 2020-09
+  category: honor
+
+- title: { zh: 校级教学成果奖（本科）一等奖, en: First Prize, University Teaching Achievement Award (Undergraduate) }
+  issuer: { zh: 所在高校（第十届）, en: Home university (10th edition) }
+  date: 2025-03
+  category: teaching
+
+- title: { zh: 优秀硕士学位论文指导教师, en: Outstanding Master's Thesis Supervisor }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2024-06
+  category: teaching
+
+- title: { zh: 2023 年优秀研究生课程, en: Outstanding Graduate Course 2023 }
+  issuer: { zh: 所在高校研究生院, en: Graduate School of the home university }
+  date: 2024-01
+  category: teaching
+
+- title: { zh: 2019 年度“荣耀信通”人才培养优秀业绩奖, en: 2019 Outstanding Achievement Award in Talent Cultivation }
+  issuer: { zh: 所在学院, en: Home school }
+  date: 2020-01
+  category: teaching

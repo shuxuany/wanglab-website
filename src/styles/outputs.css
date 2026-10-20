@@ -1,0 +1,595 @@
+/* ==============================================================
+   科研成果新增子页：科研项目 / 获奖证书 / 学术交流（2026-10-20）
+   在 pages.css 之后、refine.css 之前加载
+   ============================================================== */
+
+/* 五个切换标签：宽屏一行，窄屏换成 3 + 2 两行 */
+@media (max-width: 900px) {
+  .output-switch-5 {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .output-switch-5 .output-tab {
+    justify-content: center;
+    padding: 9px 8px;
+    font-size: 14.5px;
+  }
+
+  .output-switch-5 .output-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .output-switch-5 .output-count {
+    display: none;
+  }
+}
+
+/* 只有一张图的放大弹窗 */
+.lightbox-single[open] {
+  grid-template-columns: 24px minmax(0, 1fr) 24px;
+}
+
+/* ---------- 科研项目 ---------- */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.app-card {
+  display: flex;
+  gap: 16px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, #fff, #f6f9fc);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+  box-shadow: 0 10px 20px -12px rgba(11, 94, 178, 0.8);
+}
+
+.app-card h3 {
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--blue-ink);
+}
+
+.app-card p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-2);
+}
+
+.proj-role,
+.proj-level {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.proj-role.is-lead {
+  color: #fff;
+  background: linear-gradient(135deg, #f7914f, var(--orange-deep));
+}
+
+.proj-role.is-key {
+  color: var(--blue-deep);
+  background: var(--blue-50);
+  border: 1px solid var(--blue-100);
+}
+
+.proj-level {
+  font-weight: 600;
+  color: var(--text-2);
+  background: var(--bg-soft);
+}
+
+.project.is-national .proj-level {
+  color: #b5481b;
+  background: #fff1e8;
+}
+
+.proj-note {
+  margin-top: 6px;
+  font-size: 13.5px;
+  color: var(--text-3);
+}
+
+/* ---------- 获奖证书 ---------- */
+
+.award-section + .award-section {
+  margin-top: 30px;
+}
+
+.award-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.award-grid.has-certs {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.award-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.award-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+.award-cert {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  padding: 14px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: repeating-linear-gradient(135deg, #f7f9fc 0 10px, #f1f5fa 10px 20px);
+  cursor: zoom-in;
+}
+
+.award-cert img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 16px rgba(6, 42, 79, 0.18));
+}
+
+.award-zoom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(9, 59, 109, 0.82);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.award-cert:hover .award-zoom,
+.award-cert:focus-visible .award-zoom {
+  opacity: 1;
+  transform: none;
+}
+
+.award-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 18px 18px;
+}
+
+.award-date {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--orange-deep);
+}
+
+.award-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--blue-ink);
+}
+
+.award-title svg {
+  flex: none;
+  margin-top: 3px;
+  color: var(--orange);
+}
+
+.award-meta {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+
+.award-meta b {
+  margin-right: 8px;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.award-note {
+  color: var(--text-3);
+}
+
+/* ---------- 学术交流 ---------- */
+
+.report-list {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.report {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 20px;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--blue);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.report-side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.report-kind {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.report-kind.is-wechat {
+  color: #13803d;
+  background: #e8f7ee;
+}
+
+.report-kind.is-web {
+  color: var(--blue);
+  background: var(--blue-50);
+}
+
+.report-body h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.report-body h3 a {
+  color: var(--blue-ink);
+}
+
+.report-body h3 a:hover {
+  color: var(--blue);
+}
+
+.report-body > p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-2);
+}
+
+.report-body > p.report-source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.report-source a {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-weight: 600;
+  color: var(--blue);
+}
+
+.talk-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0 0 34px;
+  padding: 0;
+  list-style: none;
+}
+
+.talk {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.talk-image,
+.service-image {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: var(--bg-soft);
+  cursor: zoom-in;
+}
+
+.talk-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: contain;
+}
+
+.talk-kind {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--orange-deep);
+  background: #fff1e8;
+}
+
+.talk-date {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.talk h3 {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--blue-ink);
+}
+
+.talk p {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+
+.conf-years {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 34px;
+  padding: 18px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.conf-year {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.conf-year:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.conf-y {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.conf-year ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.conf-year li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border: 1px solid var(--blue-100);
+  border-radius: 999px;
+  font-size: 13.5px;
+  color: var(--blue-deep);
+  background: var(--blue-50);
+}
+
+.conf-year li em {
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange-deep);
+}
+
+.visit-grid,
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.service-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.visit-card,
+.service-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.visit-card {
+  padding: 20px 22px;
+}
+
+.visit-date {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--orange-deep);
+}
+
+.visit-card h3,
+.service-card h3 {
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--blue-ink);
+}
+
+.visit-card p,
+.service-card p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-2);
+}
+
+.service-image {
+  border-radius: 0;
+}
+
+.service-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease);
+}
+
+.service-image:hover img {
+  transform: scale(1.04);
+}
+
+.service-body {
+  padding: 16px 20px 20px;
+}
+
+@media (max-width: 1000px) {
+  .award-grid,
+  .talk-list,
+  .service-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .app-grid,
+  .award-grid,
+  .award-grid.has-certs,
+  .talk-list,
+  .visit-grid,
+  .service-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .report {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+    padding: 16px;
+  }
+
+  .report-side {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .conf-year {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .app-card {
+    padding: 16px;
+  }
+}
+
+/* 没有照片的条目：同高度的装饰块，和有证书 / 照片的卡片对齐 */
+.award-cert-empty,
+.talk-image-empty {
+  display: grid;
+  place-items: center;
+  color: var(--blue-100);
+  cursor: default;
+}
+
+.award-cert-empty svg,
+.talk-image-empty svg {
+  width: 64px;
+  height: 64px;
+  padding: 14px;
+  border-radius: 50%;
+  color: var(--blue);
+  background: #fff;
+  box-shadow: 0 12px 26px -16px rgba(6, 42, 79, 0.45);
+}
+
+.talk-image-empty {
+  aspect-ratio: 16 / 10;
+  background: repeating-linear-gradient(135deg, #f7f9fc 0 10px, #f1f5fa 10px 20px);
+}
