@@ -70,7 +70,7 @@ conferences:
   - { year: 2024, name: CVPR, full: IEEE/CVF Conference on Computer Vision and Pattern Recognition }
   - { year: 2023, name: ICCV, full: IEEE/CVF International Conference on Computer Vision }
   - { year: 2022, name: AAAI, full: AAAI Conference on Artificial Intelligence }
-  - { year: 2021, name: ICASSP, full: IEEE International Conference on Acoustics, Speech and Signal Processing }
+  - { year: 2021, name: ICASSP, full: "IEEE International Conference on Acoustics, Speech and Signal Processing" }
   - { year: 2021, name: ICIG, full: International Conference on Image and Graphics }
   - { year: 2020, name: MMAsia, full: ACM International Conference on Multimedia in Asia }
   - { year: 2019, name: ICME, full: IEEE International Conference on Multimedia and Expo }
@@ -91,18 +91,18 @@ conferences:
 
 visits:
   - date: { zh: 2014/10 – 2015/10, en: Oct 2014 – Oct 2015 }
-    title: { zh: 美国南加州大学访问学者, en: Visiting scholar, University of Southern California }
+    title: { zh: 美国南加州大学访问学者, en: "Visiting scholar, University of Southern California" }
     desc:
       zh: 由国家留学基金委公派，与信号与图像处理领域著名学者 C.-C. Jay Kuo 教授开展远距离人脸识别等方向的合作研究，合作成果发表于 CVPR Workshops 和 JVCI。
       en: Sponsored by the China Scholarship Council, collaborated with Prof. C.-C. Jay Kuo on long-distance face recognition, with results published at CVPR Workshops and in JVCI.
   - date: { zh: 2017/10 – 2017/11, en: Oct – Nov 2017 }
-    title: { zh: 德国弗劳恩霍夫协会云计算与大数据培训考察, en: Fraunhofer cloud computing and big data program, Germany }
+    title: { zh: 德国弗劳恩霍夫协会云计算与大数据培训考察, en: "Fraunhofer cloud computing and big data program, Germany" }
     desc:
       zh: 在德国多地参加弗劳恩霍夫协会云计算与大数据联盟组织的培训与考察，交流大数据与云计算领域的研究与产业化经验。
       en: Took part in a training and study program run by the Fraunhofer Cloud Computing and Big Data alliances at several locations in Germany, exchanging research and industrialization experience.
 
 service:
-  - title: { zh: 成都市航空航天产业联盟首批智库专家, en: Inaugural think-tank expert, Chengdu Aerospace Industry Alliance }
+  - title: { zh: 成都市航空航天产业联盟首批智库专家, en: "Inaugural think-tank expert, Chengdu Aerospace Industry Alliance" }
     desc:
       zh: 受聘为联盟首批智库专家，后任副秘书长，负责科技成果对接、产业调研、政策建言与科普宣讲，走访对接成都市航空航天领域企业 80 余家。
       en: Appointed to the alliance's first group of think-tank experts and later Deputy Secretary-General, responsible for matching research results with industry, industry surveys, policy advice and outreach; visited more than 80 aerospace companies in Chengdu.

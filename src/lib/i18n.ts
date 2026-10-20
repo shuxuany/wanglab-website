@@ -14,7 +14,7 @@ export const ui = {
     sub: {
       people: [
         ['pi', '课题组负责人'],
-        ['students', '在读研究生'],
+        ['students', '博士后与研究生'],
         ['alumni', '毕业校友'],
       ],
       pubs: [
@@ -66,7 +66,7 @@ export const ui = {
       venuesSub: '国际顶级期刊与会议',
       tickerLabel: '最新动态',
       piLabel: '课题组负责人',
-      piHome: '个人简介',
+      piHome: '详细介绍',
       sideResearch: '研究方向',
       joinTitle: '加入我们',
       joinShort: '课题组长期招收博士、硕士研究生和本科生，欢迎对人工智能充满热情的你加入。',
@@ -109,8 +109,8 @@ export const ui = {
     },
     awards: {
       title: '获奖证书',
-      cats: { award: '科技奖励', honor: '人才与学术荣誉', teaching: '教学育人' },
-      catsEn: { award: 'Science & Technology Awards', honor: 'Honors', teaching: 'Teaching' },
+      cats: { award: '科技奖励', honor: '人才与学术荣誉', teaching: '教学育人', student: '学生获奖' },
+      catsEn: { award: 'Science & Technology Awards', honor: 'Honors', teaching: 'Teaching', student: 'Student Awards' },
       project: '获奖项目',
       issuer: '授予单位',
       view: '查看证书',
@@ -202,7 +202,7 @@ export const ui = {
     sub: {
       people: [
         ['pi', 'Principal Investigator'],
-        ['students', 'Students'],
+        ['students', 'Postdocs & Students'],
         ['alumni', 'Alumni'],
       ],
       pubs: [
@@ -254,7 +254,7 @@ export const ui = {
       venuesSub: 'Leading international journals and conferences',
       tickerLabel: 'Latest',
       piLabel: 'Principal Investigator',
-      piHome: 'Biography',
+      piHome: 'Full profile',
       sideResearch: 'Research Areas',
       joinTitle: 'Join Us',
       joinShort: "We are always recruiting Ph.D., Master's and undergraduate students who are passionate about AI.",
@@ -297,8 +297,8 @@ export const ui = {
     },
     awards: {
       title: 'Awards & Honors',
-      cats: { award: 'Science & Technology Awards', honor: 'Honors', teaching: 'Teaching' },
-      catsEn: { award: '', honor: '', teaching: '' },
+      cats: { award: 'Science & Technology Awards', honor: 'Honors', teaching: 'Teaching', student: 'Student Awards' },
+      catsEn: { award: '', honor: '', teaching: '', student: '' },
       project: 'Project',
       issuer: 'Awarded by',
       view: 'View certificate',

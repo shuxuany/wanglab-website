@@ -1,0 +1,426 @@
+/* ==============================================================
+   导师详细介绍页（/people/wangzhengning/）
+   版式：顶部基本信息卡片；下面每一栏「左栏目名 + 右内容」，栏目间用细线分隔
+   ============================================================== */
+
+.pp-head {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr) 230px;
+  gap: 32px;
+  align-items: start;
+  padding: 28px 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(520px 320px at 100% 0%, rgba(11, 94, 178, 0.08), transparent 70%),
+    linear-gradient(180deg, #fff, #f6f9fc);
+  box-shadow: var(--shadow-sm);
+}
+
+.pp-photo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 5 / 7;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 20px 40px -26px rgba(6, 42, 79, 0.6), 0 0 0 1px var(--line);
+}
+
+.pp-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.pp-name {
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--blue-ink);
+}
+
+.pp-name span {
+  margin-left: 12px;
+  font-family: var(--font-serif);
+  font-size: 0.52em;
+  font-weight: 400;
+  color: var(--text-3);
+}
+
+.pp-title {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.pp-current {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-2);
+}
+
+.pp-contact {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-strong);
+  font-size: 14px;
+}
+
+.pp-contact > div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.pp-contact dt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.pp-contact dd {
+  color: var(--text-2);
+  word-break: break-word;
+}
+
+.pp-contact a {
+  color: var(--blue);
+}
+
+.pp-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.pp-metrics {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.pp-metric {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 16px;
+  border-radius: 12px;
+  color: #fff;
+  background: linear-gradient(140deg, var(--navy-2, #0f3b6e) 0%, var(--navy, #0a2342) 100%);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.pp-metric:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -18px rgba(10, 35, 66, 0.9);
+}
+
+.pp-metric dd {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.pp-metric dt {
+  margin-top: 2px;
+  font-size: 12.5px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.pp-note {
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--text-3);
+  text-align: right;
+}
+
+/* 栏目导航沿用研究方向页的吸顶条 */
+.pp-nav {
+  margin-top: 8px;
+}
+
+.pp {
+  padding-top: 26px;
+}
+
+/* ---------- 分栏 ---------- */
+
+.pp-sec {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 36px;
+  padding: 30px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: calc(var(--nav-h) + 64px);
+}
+
+.pp-sec:first-child {
+  border-top: 0;
+  padding-top: 6px;
+}
+
+.pp-label {
+  position: sticky;
+  top: calc(var(--nav-h) + 72px);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--blue-ink);
+}
+
+.pp-label b {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.pp-label small {
+  font-family: var(--font-display);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+.pp-label::after {
+  content: '';
+  width: 36px;
+  height: 3px;
+  margin-top: 10px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--orange));
+}
+
+.pp-body {
+  min-width: 0;
+}
+
+.pp-body.prose p,
+.pp-lead,
+.pp-plain {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--text-2);
+  text-align: justify;
+}
+
+.pp-body.prose p + p {
+  margin-top: 12px;
+}
+
+.pp-research {
+  margin: 14px 0 6px;
+  padding: 0;
+  list-style: none;
+  counter-reset: pr;
+}
+
+.pp-research li {
+  position: relative;
+  padding: 0 0 16px 46px;
+  counter-increment: pr;
+}
+
+.pp-research li::before {
+  content: counter(pr);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+}
+
+.pp-research h3 {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 30px;
+  color: var(--blue-ink);
+}
+
+.pp-research p {
+  margin-top: 4px;
+  font-size: 14.5px;
+  line-height: 1.9;
+  color: var(--text-2);
+  text-align: justify;
+}
+
+.pp-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 30px;
+}
+
+.pp-sub {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--blue-ink);
+}
+
+.pp-list {
+  margin: 0 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.pp-list li {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 16px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-2);
+}
+
+.pp-list li:last-child {
+  border-bottom: 0;
+}
+
+.pp-when {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue);
+  font-variant-numeric: tabular-nums;
+}
+
+.pp-list b {
+  display: block;
+  font-weight: 700;
+  color: var(--blue-ink);
+}
+
+.pp-list em {
+  display: block;
+  font-style: normal;
+  font-size: 13.5px;
+  color: var(--text-3);
+}
+
+.pp-tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--orange-deep);
+  background: #fff1e8;
+}
+
+.pp-plain {
+  margin-top: 8px;
+}
+
+.pp-cites {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1100px) {
+  .pp-head {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .pp-metrics {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .pp-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    padding: 20px 18px;
+  }
+
+  .pp-photo {
+    width: min(200px, 60vw);
+    justify-self: center;
+  }
+
+  .pp-info {
+    text-align: center;
+  }
+
+  .pp-name span {
+    display: block;
+    margin: 4px 0 0;
+  }
+
+  .pp-contact {
+    text-align: left;
+  }
+
+  .pp-contact > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+
+  .pp-links {
+    justify-content: center;
+  }
+
+  .pp-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pp-sec {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 24px 0;
+  }
+
+  .pp-label {
+    position: static;
+  }
+
+  .pp-two {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+
+  .pp-list li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}
+
+/* 团队成员页导师卡片里的「详细介绍」按钮 */
+.pi-more {
+  margin-top: 16px;
+}

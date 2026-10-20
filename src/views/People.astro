@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Icon from '../components/Icon.astro';
-import { site, pi, groups, alumni, t, list, asset, initials, avatarColors, paragraphs, type Lang } from '../lib/site';
+import { site, pi, groups, alumni, t, list, asset, href, initials, avatarColors, paragraphs, type Lang } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
@@ -13,11 +13,6 @@ const { lang } = Astro.props;
 const u = ui[lang];
 const other: Lang = lang === 'zh' ? 'en' : 'zh';
 const piOther = t(pi.name, other);
-const timelines: [string, string][] = [
-  ['education', u.people.education],
-  ['experience', u.people.work],
-  ['positions', u.people.positions],
-];
 const tile = (name: any) => {
   const [c1, c2] = avatarColors(t(name, 'en'));
   return `--c1:${c1};--c2:${c2}`;
@@ -70,28 +65,12 @@ const tile = (name: any) => {
           )
         }
         <div class="prose">
-          {paragraphs(t(pi.bio, lang)).map((p) => <p>{p}</p>)}
+          <p>{t(pi.summary, lang) || paragraphs(t(pi.bio, lang))[0]}</p>
         </div>
-        <div class="pi-timelines">
-          {
-            timelines.map(
-              ([key, label]) =>
-                (pi[key] ?? []).length > 0 && (
-                  <div>
-                    <h3 class="mini-title">{label}</h3>
-                    <ul class="timeline">
-                      {pi[key].map((e: any) => (
-                        <li>
-                          <span class="when">{t(e.when, lang)}</span>
-                          {t(e.what, lang)}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ),
-            )
-          }
-        </div>
+        <a class="btn btn-primary pi-more" href={href('people/wangzhengning', lang)}>
+          {u.home.piHome}
+          <Icon name="arrow" />
+        </a>
       </div>
     </article>
 

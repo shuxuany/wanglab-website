@@ -3,6 +3,8 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import SectionHead from '../components/SectionHead.astro';
 import NetCanvas from '../components/NetCanvas.astro';
+import Avatar from '../components/Avatar.astro';
+import DirectionArt from '../components/DirectionArt.astro';
 import {
   site,
   research,
@@ -21,6 +23,8 @@ import {
   formatDate,
   dateParts,
   initials,
+  directionById,
+  imageSize,
   avatarColors,
   type Lang,
 } from '../lib/site';
@@ -43,7 +47,22 @@ const autoValue: Record<string, number> = {
   directions: research.length,
 };
 const stats: any[] = (site.stats ?? []).map((s: any) => (s.auto && s.auto in autoValue ? { ...s, value: autoValue[s.auto] } : s));
-const piBio = paragraphs(t(pi.bio, lang));
+// 首页只放简短介绍（members.yaml 的 summary），详细介绍在单独的导师页面
+const piBio = t(pi.summary, lang) || (paragraphs(t(pi.bio, lang))[0] ?? '');
+const piPage = href('people/wangzhengning', lang);
+// 轮播图中的论文（slide，不填时同 featured），按研究方向顺序排列
+const byDirection = (keep: (p: (typeof publications)[number]) => boolean) =>
+  research.flatMap((r) => publications.filter((p) => p.direction === r.id && keep(p)));
+const slidePapers = byDirection((p) => p.slide ?? !!p.featured);
+// 结构图较宽时上下排版，接近方形时左图右文
+const isWide = (path?: string) => {
+  const size = imageSize(path);
+  return size ? size.width / size.height >= 1.6 : true;
+};
+const photoSlides: any[] = site.slides ?? [];
+const slideCount = 1 + photoSlides.length + slidePapers.length;
+// 「阅读论文」：有可公开的 PDF 时直接打开 PDF，否则打开出版社页面
+const readUrl = (p: any) => (p.pdf ? asset(p.pdf) : p.doi ? `https://doi.org/${p.doi}` : href('publications', lang));
 const piOther = t(pi.name, other);
 // 导师的研究兴趣；没填时用课题组的研究方向
 const piInterests = list(pi.interests, lang).length ? list(pi.interests, lang) : research.map((r) => t(r.short, lang));
@@ -96,90 +115,140 @@ const lifeTeaser = life
     </div>
   </section>
 
-  <!-- 导师详细介绍（原首页轮播改为固定展示） -->
-  <section class="home-pi-band" aria-labelledby="home-pi-name">
-    <div class="container home-pi" id="director">
-      <div class="home-pi-side">
-        <div class="home-pi-photo" style={piTile}>
-          {pi.photo ? <img src={asset(pi.photo)} alt={t(pi.name, lang)} /> : <span aria-hidden="true">{initials(pi.name, lang)}</span>}
-        </div>
-        <section class="home-pi-interests">
-          <h3>{u.people.interests}</h3>
-          <ul class="slide-pi-tags">
-            {piInterests.map((x) => (
-              <li>{x}</li>
-            ))}
-          </ul>
-        </section>
-        {
-          (pi.positions ?? []).length > 0 && (
-            <section class="home-pi-positions">
-              <h3>{u.people.positions}</h3>
-              <ul class="pi-timeline">
-                {(pi.positions ?? []).map((e: any) => (
-                  <li>
-                    <span class="pi-when">{t(e.when, lang)}</span>
-                    <span class="pi-what">{t(e.what, lang)}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )
-        }
-      </div>
-
-      <div class="home-pi-main">
-        <p class="slide-eyebrow">{u.home.piSlideEyebrow}</p>
-        <h2 class="home-pi-name" id="home-pi-name">
-          {t(pi.name, lang)}
-          {piOther !== t(pi.name, lang) && <span>{piOther}</span>}
-        </h2>
-        <p class="home-pi-title">{t(pi.title, lang)}</p>
-        <div class="home-pi-bio">
-          {piBio.map((para) => (
-            <p>{para}</p>
-          ))}
-        </div>
-        <div class="home-pi-actions">
-          {
-            pi.email && (
-              <a class="btn btn-primary" href={`mailto:${pi.email}`}>
-                <Icon name="mail" />
-                {pi.email}
+  <!-- 轮播：导师介绍 + 照片 + 各方向代表作 -->
+  <section class="container home-slider">
+    <div class="slider" data-slider data-interval="7000" aria-roledescription="carousel">
+      <div class="slides">
+        <!-- 第一张：导师个人介绍（参考 MCL 打开即见的 Director 页面） -->
+        <article class="slide slide-pi is-active" data-slide aria-label={u.a11y.slide(1)}>
+          <div class="slide-pi-photo" style={piTile}>
+            {pi.photo ? <img src={asset(pi.photo)} alt={t(pi.name, lang)} /> : <span aria-hidden="true">{initials(pi.name, lang)}</span>}
+          </div>
+          <div class="slide-pi-copy">
+            <p class="slide-eyebrow">{u.home.piSlideEyebrow}</p>
+            <h2 class="slide-pi-name">
+              {t(pi.name, lang)}
+              {piOther !== t(pi.name, lang) && <span>{piOther}</span>}
+            </h2>
+            <p class="slide-pi-title">{t(pi.title, lang)}{t(site.affiliation, lang) && ` · ${t(site.affiliation, lang)}`}</p>
+            <p class="slide-pi-bio">{piBio}</p>
+            <p class="slide-pi-interests">
+              <b>{u.home.piInterests}</b>
+              {piInterests.join(lang === 'zh' ? '、' : ', ')}
+            </p>
+            <div class="slide-pi-actions">
+              <a class="btn btn-primary" href={piPage}>
+                {u.home.piHome}
+                <Icon name="arrow" />
               </a>
-            )
-          }
-          {(pi.links ?? []).map((l: any) => (
-            <a class="btn btn-outline" href={l.url} target="_blank" rel="noopener">
-              {t(l.label, lang)}
-              <Icon name="external" size={14} />
-            </a>
-          ))}
-        </div>
+              {
+                pi.email && (
+                  <a class="btn btn-outline" href={`mailto:${pi.email}`}>
+                    <Icon name="mail" />
+                    {pi.email}
+                  </a>
+                )
+              }
+            </div>
+          </div>
+          <!-- 宽屏时右侧显示研究兴趣与链接，填满留白 -->
+          <aside class="slide-pi-aside">
+            <p class="slide-pi-aside-title">
+              {u.people.interests}
+              {lang === 'zh' && <small>Research Interests</small>}
+            </p>
+            <ul class="slide-pi-tags">
+              {piInterests.map((x) => (
+                <li>{x}</li>
+              ))}
+            </ul>
+            {
+              (pi.links ?? []).length > 0 && (
+                <div class="slide-pi-links">
+                  {(pi.links ?? []).map((l: any) => (
+                    <a href={l.url} target="_blank" rel="noopener">
+                      {t(l.label, lang)}
+                      <Icon name="external" size={13} />
+                    </a>
+                  ))}
+                </div>
+              )
+            }
+          </aside>
+        </article>
+
+        {
+          photoSlides.map((s, i) => (
+            <article class="slide slide-photo" data-slide aria-hidden="true" aria-label={u.a11y.slide(i + 2)}>
+              <img src={asset(s.image)} alt={t(s.caption, lang)} loading="lazy" />
+              {s.caption && <p class="slide-photo-caption">{t(s.caption, lang)}</p>}
+            </article>
+          ))
+        }
+
+        {
+          slidePapers.map((p, i) => {
+            const r = directionById(p!.direction)!;
+            return (
+              <article
+                class:list={['slide slide-paper', { 'has-figure': p!.figure, 'figure-wide': p!.figure && isWide(p!.figure) }]}
+                data-slide
+                style={`--c:${r.color}`}
+                aria-hidden="true"
+                aria-label={u.a11y.slide(i + 2 + photoSlides.length)}
+              >
+                {p!.figure ? (
+                  <div class="slide-art slide-figure">
+                    <figure>
+                      <a href={asset(p!.figure)} target="_blank" rel="noopener" tabindex="-1">
+                        <img src={asset(p!.figure)} alt={t(p!.figure_caption, lang) || p!.title} loading="lazy" />
+                      </a>
+                      <figcaption>
+                        {t(p!.figure_caption, lang) ? `${t(p!.figure_caption, lang)} · ${u.home.figZoom}` : u.home.figCaption}
+                      </figcaption>
+                    </figure>
+                  </div>
+                ) : (
+                  <div class="slide-art">
+                    <DirectionArt art={r.art} color={r.color} uid={`s${i}`} />
+                  </div>
+                )}
+                <div class="slide-copy">
+                  <div class="slide-tags">
+                    {p!.short && <span class="cite-venue cite-venue-light">{p!.short}</span>}
+                    <span class="slide-dir">
+                      <i />
+                      {t(r.title, lang)}
+                    </span>
+                  </div>
+                  <h2 class="slide-title">{p!.title}</h2>
+                  <p class="slide-summary">{t(r.summary, lang)}</p>
+                  <a class="btn btn-orange" href={readUrl(p)} target="_blank" rel="noopener" tabindex="-1">
+                    {p!.pdf ? u.home.readPdf : u.home.readPaper}
+                    <Icon name={p!.pdf ? 'doc' : 'arrow'} />
+                  </a>
+                </div>
+              </article>
+            );
+          })
+        }
       </div>
 
-      <aside class="home-pi-facts">
+      <button class="slider-arrow slider-prev" type="button" data-prev aria-label={u.a11y.prev}><Icon name="chevron-left" size={22} /></button>
+      <button class="slider-arrow slider-next" type="button" data-next aria-label={u.a11y.next}><Icon name="chevron-right" size={22} /></button>
+      <div class="slider-dots">
+        <button class="slider-play" type="button" data-play aria-label={u.a11y.pause} data-label-play={u.a11y.play} data-label-pause={u.a11y.pause}>
+          <Icon name="pause" size={14} class="i-pause" />
+          <Icon name="play" size={14} class="i-play" />
+        </button>
         {
-          [
-            [u.people.education, pi.education ?? []],
-            [u.people.work, pi.experience ?? []],
-          ].map(([label, rows]: any) =>
-            rows.length > 0 && (
-              <section>
-                <h3>{label}</h3>
-                <ul class="pi-timeline">
-                  {rows.map((e: any) => (
-                    <li>
-                      <span class="pi-when">{t(e.when, lang)}</span>
-                      <span class="pi-what">{t(e.what, lang)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ),
-          )
+          Array.from({ length: slideCount }, (_, i) => (
+            <button class:list={['slider-dot', { 'is-active': i === 0 }]} type="button" data-dot={i} aria-label={u.a11y.slide(i + 1)}>
+              <span></span>
+            </button>
+          ))
         }
-      </aside>
+      </div>
     </div>
   </section>
 
@@ -248,6 +317,19 @@ const lifeTeaser = life
 
     <aside class="home-side">
       <section class="side-card" data-reveal>
+        <h2 class="side-title">{u.home.piLabel}</h2>
+        <a class="side-pi" href={piPage}>
+          <Avatar name={pi.name} photo={pi.photo} lang={lang} size={72} />
+          <span>
+            <b>{t(pi.name, lang)}</b>
+            <small>{t(pi.title, lang)}</small>
+          </span>
+        </a>
+        <p class="side-pi-bio">{piBio}</p>
+        <a class="sec-more" href={piPage}>{u.home.piHome}<Icon name="arrow" size={15} /></a>
+      </section>
+
+      <section class="side-card" data-reveal style="--d:100ms">
         <h2 class="side-title">{u.home.sideResearch}</h2>
         <ul class="side-dirs">
           {
@@ -265,7 +347,7 @@ const lifeTeaser = life
         </ul>
       </section>
 
-      <section class="side-card side-join" data-reveal style="--d:100ms">
+      <section class="side-card side-join" data-reveal style="--d:200ms">
         <h2 class="side-title">{u.home.joinTitle}</h2>
         <p>{u.home.joinShort}</p>
         <a class="btn btn-orange btn-sm" href={href('join', lang)}>{u.home.joinBtn}<Icon name="arrow" size={16} /></a>

@@ -1,19 +1,19 @@
 # ==============================================================
 #  获奖证书与荣誉
 #  数据整理自课题组提供的《研究成果详表》《社会荣誉》和获奖证书扫描件（2026-10）。
-#  - category：award 科技奖励 / honor 人才与学术荣誉 / teaching 教学育人
+#  - category：award 科技奖励 / honor 人才与学术荣誉 / teaching 教学育人 / student 学生获奖
 #  - image：证书照片（放在 assets/originals/images/awards/ 后运行 npm run watermark，会生成到 public/images/awards/）
 #  - 证书上印有单位全称的，按网站统一要求不展示证书照片，只列文字
 # ==============================================================
 
-- title: { zh: 民航科学技术奖二等奖, en: Second Prize, Civil Aviation Science and Technology Award }
+- title: { zh: 民航科学技术奖二等奖, en: "Second Prize, Civil Aviation Science and Technology Award" }
   project: { zh: 机场全景增强监视系统, en: Airport panoramic enhanced surveillance system }
   issuer: { zh: 中国民用航空局、中国航空运输协会, en: Civil Aviation Administration of China & China Air Transport Association }
   date: 2018-12
   category: award
   image: images/awards/caac-2018.jpg
 
-- title: { zh: 中国交通运输协会科技进步奖三等奖, en: Third Prize, Science and Technology Progress Award of the China Communications and Transportation Association }
+- title: { zh: 中国交通运输协会科技进步奖三等奖, en: "Third Prize, Science and Technology Progress Award of the China Communications and Transportation Association" }
   project: { zh: 基于全景智能协同监视的机坪综合管控系统, en: Apron management and control system based on panoramic intelligent collaborative surveillance }
   issuer: { zh: 中国交通运输协会, en: China Communications and Transportation Association }
   date: 2021-03
@@ -32,17 +32,17 @@
   date: 2016-07
   category: honor
 
-- title: { zh: 江苏省第六批科技镇长团优秀挂职干部, en: Outstanding Member, 6th Jiangsu Science and Technology Deputy Mayor Program }
+- title: { zh: 江苏省第六批科技镇长团优秀挂职干部, en: "Outstanding Member, 6th Jiangsu Science and Technology Deputy Mayor Program" }
   issuer: { zh: 中共江苏省委组织部, en: Organization Department of the CPC Jiangsu Provincial Committee }
   date: 2014-08
   category: honor
 
-- title: { zh: 2020 年中国多媒体大会荣誉讲者, en: Honored Speaker, 2020 China Multimedia Conference }
+- title: { zh: 2020 年中国多媒体大会荣誉讲者, en: "Honored Speaker, 2020 China Multimedia Conference" }
   issuer: { zh: 中国计算机学会多媒体技术专业委员会, en: CCF Technical Committee on Multimedia Technology }
   date: 2020-09
   category: honor
 
-- title: { zh: 校级教学成果奖（本科）一等奖, en: First Prize, University Teaching Achievement Award (Undergraduate) }
+- title: { zh: 校级教学成果奖（本科）一等奖, en: "First Prize, University Teaching Achievement Award (Undergraduate)" }
   issuer: { zh: 所在高校（第十届）, en: Home university (10th edition) }
   date: 2025-03
   category: teaching
@@ -61,3 +61,75 @@
   issuer: { zh: 所在学院, en: Home school }
   date: 2020-01
   category: teaching
+
+# ---------------- 学生获奖（2026-10-20 按「课题组图片/奖状」补充；证书上印有学校全称的只列文字）
+
+- title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 1 二等奖, en: "2nd Prize, Track 1 (Visuotactile Manipulation), ManiSkill-ViTac 2025 Challenge" }
+  project: { zh: 视触觉操作赛道，罗兴隆所在联合团队, en: "Visuotactile manipulation; joint team including Xinglong Luo" }
+  issuer: { zh: ManiSkill-ViTac 2025 视触觉操作技能学习挑战赛, en: ManiSkill-ViTac 2025 Challenge on Manipulation Skill Learning with Vision and Tactile Sensing }
+  date: 2025
+  category: student
+
+- title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 2 二等奖, en: "2nd Prize, Track 2 (Tactile-Vision-Fusion Manipulation), ManiSkill-ViTac 2025 Challenge" }
+  project: { zh: 视触融合操作赛道，罗兴隆所在联合团队, en: "Tactile–vision fusion manipulation; joint team including Xinglong Luo" }
+  issuer: { zh: ManiSkill-ViTac 2025 视触觉操作技能学习挑战赛, en: ManiSkill-ViTac 2025 Challenge on Manipulation Skill Learning with Vision and Tactile Sensing }
+  date: 2025
+  category: student
+
+- title: { zh: “荣耀信通”学术之星, en: '"Honor" Academic Star' }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 所在学院, en: Home school }
+  date: 2026
+  category: student
+
+- title: { zh: 2024 届四川省优秀大学毕业生, en: "Outstanding Graduate of Sichuan Province, Class of 2024" }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 四川省教育厅, en: Sichuan Provincial Department of Education }
+  date: 2024-05
+  category: student
+  image: images/awards/sichuan-graduate-2024.jpg
+
+- title: { zh: 校级优秀硕士学位论文, en: Outstanding Master's Thesis (University Level) }
+  project: { zh: 罗兴隆《基于事件相机的光流估计方法研究》, en: "Xinglong Luo, Optical Flow Estimation with Event Cameras" }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2024-06
+  category: student
+
+- title: { zh: 2024 届校级优秀毕业生, en: "Outstanding Graduate (University Level), Class of 2024" }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2024-05
+  category: student
+
+- title: { zh: 硕士研究生国家奖学金, en: National Scholarship for Master's Students }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 中华人民共和国教育部, en: Ministry of Education of the People's Republic of China }
+  date: 2023-12
+  category: student
+  image: images/awards/national-scholarship-2023.jpg
+
+- title: { zh: 校级优秀研究生, en: Outstanding Graduate Student (University Level) }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2023-11
+  category: student
+
+- title: { zh: 第十三届中兴捧月全球精英挑战赛“神算师”算法赛 决赛优胜奖, en: "Finals Excellence Award, 13th ZTE Global Elite Challenge (Algorithm Track)" }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 中兴通讯人力资源部, en: ZTE Corporation }
+  date: 2023-06
+  category: student
+  image: images/awards/zte-final-2023.jpg
+
+- title: { zh: 第十三届中兴捧月全球精英挑战赛“神算师”算法赛 区域优胜奖, en: "Regional Excellence Award, 13th ZTE Global Elite Challenge (Algorithm Track)" }
+  project: { zh: 罗兴隆, en: Xinglong Luo }
+  issuer: { zh: 中兴通讯人力资源部, en: ZTE Corporation }
+  date: 2023-05
+  category: student
+  image: images/awards/zte-regional-2023.jpg
+
+- title: { zh: 2023 华为软件精英挑战赛 成渝赛区二等奖, en: "Second Prize, Chengdu–Chongqing Region, 2023 Huawei Software Elite Challenge" }
+  project: { zh: 邹帆、雷煜、罗兴隆, en: "Fan Zou, Yu Lei, Xinglong Luo" }
+  issuer: { zh: 华为技术有限公司, en: Huawei Technologies }
+  date: 2023
+  category: student

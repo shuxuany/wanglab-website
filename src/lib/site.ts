@@ -131,7 +131,7 @@ const projectsData: any = parse(projectsRaw) ?? {};
 const NOW = new Date().toISOString().slice(0, 7);
 /** 科研项目（按开始时间倒序）；ongoing：结束时间晚于当前月份 */
 export const projects: any[] = (projectsData.projects ?? [])
-  .map((p: any) => ({ ...p, start: String(p.start ?? ''), end: String(p.end ?? ''), ongoing: String(p.end ?? '') >= NOW }))
+  .map((p: any) => ({ ...p, start: String(p.start ?? ''), end: String(p.end ?? ''), ongoing: !p.end || String(p.end) >= NOW }))
   .sort((a: any, b: any) => b.start.localeCompare(a.start));
 export const applications: any[] = projectsData.applications ?? [];
 

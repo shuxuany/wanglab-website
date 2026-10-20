@@ -27,7 +27,6 @@ const dirs = research.filter((r) => patents.some((p) => p.direction === r.id));
 const stats = [
   { value: granted, label: pu.statGranted },
   { value: pending, label: pu.statPending },
-  { value: years.at(-1) ?? '', label: pu.statSince, plain: true },
 ];
 ---
 

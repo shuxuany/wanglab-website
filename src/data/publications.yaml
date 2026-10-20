@@ -763,3 +763,28 @@
   year: 2005
   volume: "10(12), 1584–1590"
   direction:
+
+# ---------- 2026-10-20 全文检索补充（OpenAlex / Google 学术主页 / Crossref / Semantic Scholar） ----------
+
+- title: "Graphene Terahertz Absorber Driven by Electric Dipole Resonance for Tunable Switching and Sensing"
+  authors: ["H. Q. Yang", "Kele Chen", "Zhengning Wang"]
+  venue: "physica status solidi (RRL) – Rapid Research Letters"
+  short: "pss RRL"
+  year: 2026
+  doi: "10.1002/pssr.70181"
+  direction: 
+
+- title: "Tunable Ultra-Wideband VO2–Graphene Hybrid Metasurface Terahertz Absorption Devices Based on Dual Regulation"
+  authors: ["Kele Chen", "Zhengning Wang", "Meizhang Guan", "Shubo Cheng", "Hongyu Ma", "Zao Yi", "Boxun Li"]
+  venue: "Photonics"
+  year: 2025
+  volume: "12(10), 987"
+  doi: "10.3390/photonics12100987"
+  direction: 
+
+- title: "A Comprehensive Study on Fast Image Dehazing Techniques"
+  authors: ["Elisée A. Kponou", "Zhengning Wang", "Liping Li"]
+  venue: "International Journal of Computer Science and Mobile Computing"
+  year: 2013
+  volume: "2(9), 146–152"
+  direction: restore

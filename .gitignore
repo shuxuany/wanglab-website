@@ -13,3 +13,5 @@ Thumbs.db
 
 # 未加水印的原图（仓库公开，不提交；请自行备份）
 assets/originals/
+# 实验室标志草案（暂缓，不随网站发布）
+tools/brand/

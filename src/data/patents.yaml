@@ -662,7 +662,7 @@
     zh: [王正宁, 刘光辉, 王忠荣, 吴庆波, 曾辽原, 李宏亮]
     en: [Zhengning Wang, Guanghui Liu, Zhongrong Wang, Qingbo Wu, Liaoyuan Zeng, Hongliang Li]
   number: CN103024331B
-  app_no: "2012105740605"
+  app_no: "201210574060.5"
   filed: 2012-12-26
   published: 2013-04-03
   granted: 2015-04-15
@@ -676,7 +676,7 @@
     zh: [王正宁, 许林峰, 熊健, 伍博, 刘光辉, 李宏亮]
     en: [Zhengning Wang, Linfeng Xu, Jian Xiong, Bo Wu, Guanghui Liu, Hongliang Li]
   number: CN103024332B
-  app_no: "2012105741133"
+  app_no: "201210574113.3"
   filed: 2012-12-26
   published: 2013-04-03
   granted: 2015-05-27
@@ -690,7 +690,7 @@
     zh: [刘光辉, 焦晋科, 曾辽原, 王正宁]
     en: [Guanghui Liu, Jinke Jiao, Liaoyuan Zeng, Zhengning Wang]
   number: CN102957641B
-  app_no: "2012105138644"
+  app_no: "201210513864.4"
   filed: 2012-12-05
   published: 2013-03-06
   granted: 2015-04-15
@@ -777,3 +777,18 @@
   granted: 2024-06-14
   status: granted
   direction: 
+
+# ---------- 2026-10-20 按教研室台帐本补充（已授权，后因未缴年费终止） ----------
+
+- title:
+    zh: "一种基于时空多特征的车辆阴影消除方法"
+    en: "Vehicle shadow removal method based on spatio-temporal multiple features"
+  inventors:
+    zh: [王正宁, 柏祁林, 韩明燕, 周阳, 马姗姗]
+    en: [Zhengning Wang, Qilin Bai, Mingyan Han, Yang Zhou, Shanshan Ma]
+  number: CN106373096B
+  app_no: "201610764066.7"
+  filed: 2016-08-30
+  granted: 2019-03-05
+  status: granted
+  direction: restore

@@ -14,7 +14,7 @@ interface Props {
 const { lang } = Astro.props;
 const u = ui[lang];
 const au = u.awards;
-const CATS = ['award', 'honor', 'teaching'] as const;
+const CATS = ['award', 'honor', 'teaching', 'student'] as const;
 const groups = CATS.map((c) => ({ id: c, items: awards.filter((a) => a.category === c) })).filter((g) => g.items.length);
 ---
 
@@ -48,7 +48,7 @@ const groups = CATS.map((c) => ({ id: c, items: awards.filter((a) => a.category 
                 <div class="award-body">
                   <span class="award-date">{formatDate(a.date, lang)}</span>
                   <h3 class="award-title">
-                    <Icon name={g.id === 'teaching' ? 'book' : g.id === 'honor' ? 'star' : 'award'} size={18} />
+                    <Icon name={g.id === 'teaching' ? 'book' : g.id === 'honor' ? 'star' : g.id === 'student' ? 'graduation' : 'award'} size={18} />
                     {t(a.title, lang)}
                   </h3>
                   {a.project && (

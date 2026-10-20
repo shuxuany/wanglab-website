@@ -593,3 +593,10 @@
   aspect-ratio: 16 / 10;
   background: repeating-linear-gradient(135deg, #f7f9fc 0 10px, #f1f5fa 10px 20px);
 }
+
+/* 数据栏按条目数自适应列数（专利页 2 项、项目页 3 项） */
+.pat-stats {
+  grid-template-columns: none;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+}

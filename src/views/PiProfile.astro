@@ -1,0 +1,305 @@
+---
+// 导师详细介绍页：基本信息 + 分栏（个人简介 / 研究内容 / 经历 / 学术服务 / 科研项目 / 获奖荣誉 / 代表性论文 / 学术报告）
+// 版式参考中科院计算所 VIPL 组成员主页：每一栏左侧是栏目名，右侧是内容，栏目之间有明显分隔
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PubItem from '../components/PubItem.astro';
+import Icon from '../components/Icon.astro';
+import { site, pi, publications, patents, projects, awards, exchange, t, list, asset, href, paragraphs, formatDate, initials, avatarColors, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const u = ui[lang];
+const zh = lang === 'zh';
+const other: Lang = zh ? 'en' : 'zh';
+const name = t(pi.name, lang);
+const [c1, c2] = avatarColors(t(pi.name, 'en'));
+const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+const reps = (pi.representative ?? [])
+  .map((title: string) => publications.find((p) => norm(p.title).includes(norm(title))))
+  .filter(Boolean);
+const led = projects.filter((p) => p.role === 'lead' && p.level !== 'industry' && p.level !== 'university');
+const honors = awards.filter((a) => a.category === 'award' || a.category === 'honor');
+const ym = (d: string) => (zh ? d.replace('-', '.') : d);
+const metrics = [
+  { value: publications.length, label: zh ? '学术论文' : 'Publications', href: href('publications', lang) },
+  { value: patents.filter((p) => p.status === 'granted').length, label: zh ? '授权发明专利' : 'Granted patents', href: href('publications/patents', lang) },
+  { value: projects.filter((p) => p.role === 'lead').length, label: zh ? '主持科研项目' : 'Projects led', href: href('publications/projects', lang) },
+  ...(pi.scholar ? [{ value: pi.scholar.citations, label: zh ? `Google 学术引用 · h 指数 ${pi.scholar.h_index}` : `Google Scholar citations · h-index ${pi.scholar.h_index}`, href: (pi.links ?? []).find((l: any) => /scholar\.google/.test(l.url))?.url }] : []),
+];
+// 现任职务：工作经历中「至今」的条目
+const current = (pi.experience ?? []).filter((e: any) => /至今|Present/.test(t(e.when, 'zh') + t(e.when, 'en')));
+const SECTIONS = [
+  ['bio', zh ? '个人简介' : 'Biography', 'Biography'],
+  ['research', zh ? '研究内容' : 'Research', 'Research'],
+  ['experience', zh ? '教育与工作经历' : 'Education & Experience', 'Experience'],
+  ['service', zh ? '学术与社会兼职' : 'Professional Service', 'Service'],
+  ['projects', zh ? '主持科研项目' : 'Projects Led', 'Projects'],
+  ['awards', zh ? '获奖与荣誉' : 'Awards & Honors', 'Awards'],
+  ['papers', zh ? '代表性论文' : 'Selected Publications', 'Publications'],
+  ['talks', zh ? '学术报告' : 'Talks', 'Talks'],
+];
+const sec = (id: string) => SECTIONS.findIndex((s) => s[0] === id);
+const label = (id: string) => {
+  const i = sec(id);
+  return { num: String(i + 1).padStart(2, '0'), title: SECTIONS[i][1], en: SECTIONS[i][2] };
+};
+const more = (path: string, text: string) => ({ href: href(path, lang), text });
+---
+
+<Base lang={lang} title={name} description={t(pi.summary, lang)}>
+  <PageHero eyebrow="Principal Investigator" title={name} lang={lang} parent={{ label: u.nav.people, href: href('people', lang) }} />
+
+  <div class="container page-body pp">
+    <!-- 基本信息 -->
+    <header class="pp-head" data-reveal>
+      <div class="pp-photo" style={`--c1:${c1};--c2:${c2}`}>
+        {pi.photo ? <img src={asset(pi.photo)} alt={name} /> : <span aria-hidden="true">{initials(pi.name, lang)}</span>}
+      </div>
+      <div class="pp-info">
+        <h2 class="pp-name">
+          {name}
+          <span>{t(pi.name, other)}</span>
+        </h2>
+        <p class="pp-title">{t(pi.title, lang)}</p>
+        <ul class="pp-current">
+          {current.filter((e: any) => !/高校|University faculty/.test(t(e.what, lang))).map((e: any) => <li>{t(e.what, lang)}</li>)}
+          {(pi.positions ?? []).filter((e: any) => /副秘书长|Deputy Secretary/.test(t(e.what, lang))).map((e: any) => <li>{t(e.what, lang)}</li>)}
+        </ul>
+        <dl class="pp-contact">
+          {
+            pi.email && (
+              <div>
+                <dt>
+                  <Icon name="mail" size={15} />
+                  {zh ? '邮箱' : 'Email'}
+                </dt>
+                <dd>
+                  <a href={`mailto:${pi.email}`}>{pi.email}</a>
+                </dd>
+              </div>
+            )
+          }
+          {
+            site.contact?.address && (
+              <div>
+                <dt>
+                  <Icon name="pin" size={15} />
+                  {zh ? '地址' : 'Address'}
+                </dt>
+                <dd>{t(site.contact.address, lang)}</dd>
+              </div>
+            )
+          }
+          <div>
+            <dt>
+              <Icon name="sparkles" size={15} />
+              {zh ? '研究方向' : 'Interests'}
+            </dt>
+            <dd>{list(pi.interests, lang).join(zh ? '、' : ', ')}</dd>
+          </div>
+        </dl>
+        <div class="pp-links">
+          {(pi.links ?? []).map((l: any) => (
+            <a class="pill" href={l.url} target="_blank" rel="noopener">
+              {t(l.label, lang)}
+              <Icon name="external" size={13} />
+            </a>
+          ))}
+        </div>
+      </div>
+      <dl class="pp-metrics">
+        {metrics.map((m) => (
+          <a class="pp-metric" href={m.href} target={/^https?:/.test(m.href ?? '') ? '_blank' : undefined} rel="noopener">
+            <dd data-count={m.value}>{m.value}</dd>
+            <dt>{m.label}</dt>
+          </a>
+        ))}
+      </dl>
+    </header>
+    {pi.scholar && <p class="pp-note">{zh ? `Google 学术数据截至 ${pi.scholar.date}。` : `Google Scholar figures as of ${pi.scholar.date}.`}</p>}
+  </div>
+
+  <!-- 栏目导航 -->
+  <nav class="dir-nav pp-nav" aria-label={name}>
+    <div class="container dir-nav-inner">
+      {
+        SECTIONS.map(([id, title], i) => (
+          <a href={`#${id}`}>
+            <i />
+            {String(i + 1).padStart(2, '0')} {title}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <div class="container page-body pp">
+    <!-- 01 个人简介 -->
+    <section class="pp-sec" id="bio">
+      <h2 class="pp-label"><b>{label('bio').num}</b>{label('bio').title}<small>{label('bio').en}</small></h2>
+      <div class="pp-body prose">
+        {paragraphs(t(pi.bio, lang)).map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+
+    <!-- 02 研究内容 -->
+    <section class="pp-sec" id="research">
+      <h2 class="pp-label"><b>{label('research').num}</b>{label('research').title}<small>{label('research').en}</small></h2>
+      <div class="pp-body">
+        <p class="pp-lead">{t(pi.research_intro, lang)}</p>
+        <ol class="pp-research">
+          {(pi.research_content ?? []).map((r: any) => (
+            <li>
+              <h3>{t(r.title, lang)}</h3>
+              <p>{t(r.desc, lang)}</p>
+            </li>
+          ))}
+        </ol>
+        <a class="sec-more" href={href('research', lang)}>
+          {zh ? '查看课题组研究方向' : 'Research directions of the group'}
+          <Icon name="arrow" size={15} />
+        </a>
+      </div>
+    </section>
+
+    <!-- 03 经历 -->
+    <section class="pp-sec" id="experience">
+      <h2 class="pp-label"><b>{label('experience').num}</b>{label('experience').title}<small>{label('experience').en}</small></h2>
+      <div class="pp-body pp-two">
+        {
+          [
+            [u.people.education, pi.education ?? []],
+            [u.people.work, pi.experience ?? []],
+          ].map(([title, rows]: any) => (
+            <div>
+              <h3 class="pp-sub">{title}</h3>
+              <ul class="pi-timeline">
+                {rows.map((e: any) => (
+                  <li>
+                    <span class="pi-when">{t(e.when, lang)}</span>
+                    <span class="pi-what">{t(e.what, lang)}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- 04 学术与社会兼职 -->
+    <section class="pp-sec" id="service">
+      <h2 class="pp-label"><b>{label('service').num}</b>{label('service').title}<small>{label('service').en}</small></h2>
+      <div class="pp-body">
+        <ul class="pp-list">
+          {(pi.positions ?? []).map((e: any) => (
+            <li>
+              <span class="pp-when">{t(e.when, lang)}</span>
+              <span>{t(e.what, lang)}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="pp-plain">
+          {zh
+            ? '担任 IEEE TIP、IEEE TMM、IEEE TCSVT、《计算机学报》《自动化学报》《电子学报》《中国图象图形学报》等期刊，以及 CVPR、ICCV、ACM MM 等会议审稿人；ISPACS 2010、VCIP 2016 国际会议 Local Chair，ICME 2014 组委会成员。'
+            : 'Reviewer for IEEE TIP, IEEE TMM, IEEE TCSVT, Chinese Journal of Computers, Acta Automatica Sinica, Acta Electronica Sinica and Journal of Image and Graphics, and for CVPR, ICCV and ACM MM; Local Chair of ISPACS 2010 and VCIP 2016; member of the ICME 2014 organizing committee.'}
+        </p>
+      </div>
+    </section>
+
+    <!-- 05 主持科研项目 -->
+    <section class="pp-sec" id="projects">
+      <h2 class="pp-label"><b>{label('projects').num}</b>{label('projects').title}<small>{label('projects').en}</small></h2>
+      <div class="pp-body">
+        <ul class="pp-list">
+          {led.map((p) => (
+            <li>
+              <span class="pp-when">
+                {ym(p.start)} – {p.end ? ym(p.end) : zh ? '至今' : 'present'}
+              </span>
+              <span>
+                <b>{t(p.title, lang)}</b>
+                <em>
+                  {t(p.type, lang)}
+                  {p.number && `（${p.number}）`}
+                  {p.ongoing && <span class="pp-tag">{u.projects.ongoing}</span>}
+                </em>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <a class="sec-more" href={href('publications/projects', lang)}>
+          {zh ? `查看全部 ${projects.length} 项科研项目（含企业合作）` : `All ${projects.length} projects, including industry collaborations`}
+          <Icon name="arrow" size={15} />
+        </a>
+      </div>
+    </section>
+
+    <!-- 06 获奖与荣誉 -->
+    <section class="pp-sec" id="awards">
+      <h2 class="pp-label"><b>{label('awards').num}</b>{label('awards').title}<small>{label('awards').en}</small></h2>
+      <div class="pp-body">
+        <ul class="pp-list">
+          {honors.map((a) => (
+            <li>
+              <span class="pp-when">{formatDate(a.date, lang)}</span>
+              <span>
+                <b>{t(a.title, lang)}</b>
+                <em>
+                  {a.project && `${t(a.project, lang)} · `}
+                  {t(a.issuer, lang)}
+                </em>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <a class="sec-more" href={href('publications/awards', lang)}>
+          {zh ? '查看获奖证书' : 'View certificates'}
+          <Icon name="arrow" size={15} />
+        </a>
+      </div>
+    </section>
+
+    <!-- 07 代表性论文 -->
+    <section class="pp-sec" id="papers">
+      <h2 class="pp-label"><b>{label('papers').num}</b>{label('papers').title}<small>{label('papers').en}</small></h2>
+      <div class="pp-body">
+        <ol class="cite-list pp-cites">
+          {reps.map((p: any) => <PubItem pub={p} lang={lang} showDirection={false} />)}
+        </ol>
+        <a class="sec-more" href={href('publications', lang)}>
+          {zh ? `查看全部 ${publications.length} 篇论文` : `All ${publications.length} publications`}
+          <Icon name="arrow" size={15} />
+        </a>
+      </div>
+    </section>
+
+    <!-- 08 学术报告 -->
+    <section class="pp-sec" id="talks">
+      <h2 class="pp-label"><b>{label('talks').num}</b>{label('talks').title}<small>{label('talks').en}</small></h2>
+      <div class="pp-body">
+        <ul class="pp-list">
+          {exchange.talks.map((tk: any) => (
+            <li>
+              <span class="pp-when">{formatDate(tk.date, lang)}</span>
+              <span>
+                <b>{zh ? `《${t(tk.title, lang)}》` : t(tk.title, lang)}</b>
+                <em>
+                  {t(tk.kind, lang)} · {t(tk.event, lang)}
+                </em>
+              </span>
+            </li>
+          ))}
+        </ul>
+        <a class="sec-more" href={href('publications/exchange', lang)}>
+          {zh ? '查看学术交流与媒体报道' : 'Academic exchange and media coverage'}
+          <Icon name="arrow" size={15} />
+        </a>
+      </div>
+    </section>
+  </div>
+</Base>

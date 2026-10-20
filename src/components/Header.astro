@@ -23,7 +23,7 @@ const mastImg = inPublic(site.masthead_image) ? asset(site.masthead_image) : '';
 // 下拉菜单
 const subs: Partial<Record<NavKey, { label: string; href: string; color?: string; sep?: boolean }[]>> = {
   research: research.map((r) => ({ label: t(r.short, lang), href: `${href('research', lang)}#${r.id}`, color: r.color })),
-  people: u.sub.people.map(([id, label]) => ({ label, href: `${href('people', lang)}#${id}` })),
+  people: u.sub.people.map(([id, label]) => ({ label, href: id === 'pi' ? href('people/wangzhengning', lang) : `${href('people', lang)}#${id}` })),
   publications: [
     ...u.sub.pubs.map(([id, label]) => ({ label, href: `${href('publications', lang)}?type=${id}` })),
     { label: u.sub.patents, href: href('publications/patents', lang), sep: true },

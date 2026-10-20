@@ -1,7 +1,6 @@
 # ==============================================================
 #  团队成员
 #  - PI 简介、教育与工作经历、研究兴趣、学术兼职由课题组提供（2026-10，2026-10-20 按个人简历更新）
-#  - 硕士生目前仍是占位示例，请替换为真实成员
 #  - photo：照片放在 public/images/members/ 下，填写如 images/members/wangzhengning.jpg
 #           建议使用正方形照片（至少 400×400）；留空则显示姓名头像
 #  - aliases：该成员在论文作者列表中的其他写法，论文页会自动加粗
@@ -16,6 +15,8 @@ pi:
   photo: images/members/wangzhengning.jpg
   email: zhengning.wang@uestc.edu.cn
   links:
+    - label: { zh: Google 学术, en: Google Scholar }
+      url: https://scholar.google.com/citations?user=REpmDZMAAAAJ
     - label: DBLP
       url: https://dblp.org/pid/09/1064.html
     - label: { zh: 航空航天产业联盟专家介绍, en: Expert profile (Chengdu Aerospace Industry Alliance) }
@@ -24,6 +25,10 @@ pi:
   interests:
     zh: [人工智能, 机器学习, 具身智能, 计算机视觉, 图像处理, 多媒体通信, 智能交通与空管技术]
     en: [Artificial intelligence, Machine learning, Embodied intelligence, Computer vision, Image processing, Multimedia communication, Intelligent transportation & ATM]
+  # 简短介绍：显示在首页轮播第一张和侧栏卡片中（详细介绍见导师页面 /people/wangzhengning/）
+  summary:
+    zh: 王正宁，博士，教授、博士生导师，天府绛溪实验室电磁空间前沿研究中心副主任，成都市航空航天产业联盟副秘书长。长期从事人工智能、机器学习、具身智能、图像处理与多媒体通信研究，发表学术论文 80 余篇，获授权国家发明专利 40 余项，研究成果应用于民航机场监视、工业视觉检测等领域。
+    en: Zhengning Wang, Ph.D., is a Professor and doctoral supervisor, Deputy Director of the Electromagnetic Space Frontier Research Center at Tianfu Jiangxi Laboratory, and Deputy Secretary-General of the Chengdu Aerospace Industry Alliance. He works on artificial intelligence, machine learning, embodied intelligence, image processing and multimedia communication, has published more than 80 papers and holds more than 40 granted Chinese invention patents, with results applied in airport surveillance and industrial visual inspection.
   # 简介：2026-10-20 根据课题组提供的个人简历（2025-09 版）、研究成果详表和成都市航空航天产业联盟专家介绍整理
   bio:
     zh: |
@@ -78,42 +83,104 @@ pi:
       what: { zh: 天府绛溪实验室博士后科研工作站，博士后学术导师, en: "Postdoctoral Supervisor, Tianfu Jiangxi Laboratory Postdoctoral Workstation" }
     - when: { zh: 2022, en: "2022" }
       what: { zh: 四川省科技厅航空与燃机重大科技专项专家委员会，专家, en: "Expert, Sichuan committee for the aviation and gas turbine major science and technology project" }
-    - when: { zh: 2018、2022, en: 2018, 2022 }
+    - when: { zh: 2018、2022, en: "2018, 2022" }
       what: { zh: 四川省科技厅“十三五”“十四五”高新技术领域指南编制专家, en: "Drafting expert, Sichuan high-tech R&D guidelines for the 13th and 14th Five-Year Plans" }
     - when: { zh: 2024 – 2027, en: 2024 – 2027 }
       what: { zh: 中国教育发展战略学会人才发展专业委员会，学术桥评审专家库成员, en: "Reviewer pool member, Talent Development Committee, China Society of Educational Development Strategy" }
+  # ---------------- 以下用于导师详细介绍页（/people/wangzhengning/）
+  # 研究内容：每项一个加粗标题 + 一段详细说明（参考中科院计算所 VIPL 组主页的写法）
+  research_intro:
+    zh: 围绕“让机器看得清、看得懂，并在真实世界中行动”，从视觉感知、理解到智能决策开展研究，并推动成果在民航、工业和医疗等领域落地。主要研究内容包括：
+    en: "Guided by the goal of machines that see clearly, understand deeply and act in the real world, the group works from visual perception and understanding to intelligent decision-making, and brings its results into civil aviation, industry and healthcare. Main research topics:"
+  research_content:
+    - title: { zh: 强化学习与智能决策, en: Reinforcement learning and intelligent decision-making }
+      desc:
+        zh: 研究多智能体强化学习中的信用分配、训练稳定性与可解释性，提出基于锚定超图的信用分配方法 HySTAR；基于时空图卷积和双重注意力开展飞行器 4D 航迹预测（MTDA-STGCN）；探索与世界模型结合的强化学习，让智能体在“想象”中预演和规划，服务于无人系统协同与低空交通管理等复杂决策场景。
+        en: Credit assignment, training stability and explainability in multi-agent reinforcement learning, including HySTAR, an anchored-hypergraph credit assignment method; 4D aircraft trajectory prediction with spatiotemporal graph convolution and dual attention (MTDA-STGCN); and reinforcement learning with world models that rehearse and plan in imagination, for cooperative unmanned systems and low-altitude traffic management.
+    - title: { zh: 工业视觉检测, en: Industrial visual inspection }
+      desc:
+        zh: 面向半导体、汽车等制造业的质量检测需求，研究缺陷样本稀缺条件下的无监督缺陷检测与定位（自监督重构、自适应对齐与差异增强），以及旋转鲁棒的特征点检测与描述、异源图像配准和图像拼接等高精度视觉测量技术，相关算法已在企业产线落地应用。
+        en: Quality inspection for semiconductor, automotive and other manufacturing — unsupervised defect detection and localization when defect samples are scarce (self-supervised reconstruction, adaptive alignment and difference enhancement), rotation-robust keypoint detection and description, multi-source image registration and image stitching. The algorithms are deployed on production lines.
+    - title: { zh: 工业 AI 软件与软硬件协同, en: Industrial AI software and hardware–software co-design }
+      desc:
+        zh: 研究模型压缩、量化与推理加速，面向边缘设备和嵌入式平台的部署，以及数据采集、标注、训练和版本管理的一体化工具链；与芯片设计团队合作研究高并行目标检测后处理引擎和超低功耗环境声音识别处理器，推动 AI 算法从实验室走向工业现场。
+        en: Model compression, quantization and inference acceleration, deployment on edge and embedded platforms, and integrated toolchains for data collection, labelling, training and versioning; with chip designers, a high-parallel detection post-processing engine and an ultra-low-energy sound recognition processor — taking AI from the lab to the factory floor.
+    - title: { zh: 医学影像处理, en: Medical image processing }
+      desc:
+        zh: 基于结构 MRI、静息态功能 MRI 和弥散成像构建个体化脑网络，用图神经网络、注意力机制与交叉注意力融合多模态特征，开展精神分裂症、孤独症、抑郁症和阿尔茨海默病的辅助诊断、脑龄预测与纹状体精细分区，并将模型学到的脑区权重与基因表达、细胞类型转录组特征关联，寻找可解释的影像标志物。
+        en: Individual brain networks built from structural MRI, resting-state fMRI and diffusion imaging, with graph neural networks, attention and cross-attention fusing multimodal features for diagnosing schizophrenia, autism, depression and Alzheimer's disease, predicting brain age and parcellating the striatum; learned regional weights are related to gene expression and cell-type transcriptomic features to find interpretable imaging biomarkers.
+    - title: { zh: 图像增强与恢复, en: Image enhancement and restoration }
+      desc:
+        zh: 面向低照度、雾霾、压缩失真、反光和屏下成像等退化场景，研究分数阶 Retinex 变分框架、极低照度感知细节生成对抗网络、压缩视频重建流增强、暗光压缩图像增强与屏下摄像头复原，以及可信的无参考图像质量评价；早期研究成果包括机场雾天实时增强监视系统。
+        en: Restoration of images degraded by low light, haze, compression, reflections and under-display optics — a fractional-order variational Retinex framework, a perceptual-details GAN for extremely low light, reconstruction-flow enhancement of compressed video, enhancement of compressed dark images and under-display camera restoration — plus trustworthy blind image quality assessment. Earlier work includes a real-time enhanced surveillance system for airports in fog.
+    - title: { zh: 具身智能与空地协同感知, en: Embodied intelligence and air–ground perception }
+      desc:
+        zh: 研究点云三维目标检测（SVGA-Net）、双目与激光雷达融合检测、事件相机光流与网格流估计、带宽受限条件下的空中边缘感知与可通行性建图，以及基于自监督视觉表征的世界模型，打通从感知、预测到控制的链路，服务于无人系统与低空智能。
+        en: 3D object detection from point clouds (SVGA-Net), stereo–LiDAR fusion, optical flow and meshflow estimation from event cameras, bandwidth-constrained aerial edge perception and traversability mapping, and world models built on self-supervised visual representations — linking perception, prediction and control for unmanned systems and low-altitude intelligence.
+  # 代表性论文（按标题匹配 publications.yaml；取自个人简历「近 5 年代表性论文」）
+  representative:
+    - "MTDA-STGCN: Modern Temporal and Dual-Attention-Based Spatiotemporal Graph Convolutional Network for 4D Trajectory Prediction"
+    - "LPUDC: A Laplacian pyramid neural network for restoring images from under-display cameras"
+    - "Investigating the relationship between brain age and Alzheimer's disease"
+    - "Reconstruction flow recurrent network for compressed video quality enhancement"
+    - "Efficient Meshflow and Optical Flow Estimation from Event Cameras"
+    - "Comprehensive exploration of multi-modal and multi-branch imaging markers for autism diagnosis"
+    - "Learning Optical Flow from Event Camera with Rendered Dataset"
+    - "Stereo RGB and Deeper LIDAR-Based Network for 3D Object Detection in Autonomous Driving"
+    - "Brain age prediction using the graph neural network based on resting-state functional MRI"
+    - "Brain functional activity-based classification of autism spectrum disorder"
+    - "DeepOIS: Gyroscope-Guided Deep Optical Image Stabilizer Compensation"
+    - "SVGA-Net: Sparse Voxel-Graph Attention Network for 3D Object Detection from Point Clouds"
+    - "OAENet: Oriented attention ensemble for accurate facial expression recognition"
+  # Google 学术数据（截图日期 2025-08，更新时改这里）
+  scholar: { citations: 958, h_index: 16, i10: 27, date: 2025-08 }
 
 groups:
+  # 2026-10-20 按「课题组图片/个人图片」更新：照片与研究方向来自文件名；入学年份待补充（填 since: 2023 这样的年份即可）
+  - role: { zh: 博士后, en: Postdoctoral Researchers }
+    members:
+      - name: { zh: 李聪聪, en: Congcong Li }
+        topic: { zh: 计算机视觉, en: Computer Vision }
+        photo: images/members/licongcong.jpg
+      - name: { zh: 陈克乐, en: Kele Chen }
+        topic: { zh: 智能感知与先进控制, en: Intelligent Sensing & Advanced Control }
+        photo: images/members/chenkele.jpg
+      - name: { zh: 黄周, en: Zhou Huang }
+        topic: { zh: 具身智能, en: Embodied Intelligence }
+        photo: images/members/huangzhou.jpg
+
   - role: { zh: 博士研究生, en: Ph.D. Students }
     members:
-      # 研究方向根据各自第一作者论文总结（2026-10）；入学年份待补充（填 since: 2023 这样的年份即可）
       - name: { zh: 匡育衡, en: Yuheng Kuang }
         topic: { zh: 可解释人工智能, en: Explainable AI }
         photo: images/members/kuangyuheng.jpg
       - name: { zh: 曾珍妮, en: Zhenni Zeng }
-        topic: { zh: 视觉问答, en: Visual Question Answering }
+        topic: { zh: 可信人工智能, en: Trustworthy AI }
         photo: images/members/zengzhenni.jpg
       - name: { zh: 罗兴隆, en: Xinglong Luo }
-        topic: { zh: 事件光流, en: Event-based Optical Flow }
+        topic: { zh: 计算机视觉, en: Computer Vision }
         photo: images/members/luoxinglong.jpg
       - name: { zh: 袁澍翾, en: Shuxuan Yuan }
         topic: { zh: 智能交通, en: Intelligent Transportation }
         photo: images/members/yuanshuxuan.jpg
+      - name: { zh: 方志祥, en: Zhixiang Fang }
+        topic: { zh: AI 工业检测, en: AI for Industrial Inspection }
+        photo: images/members/fangzhixiang.jpg
 
   - role: { zh: 硕士研究生, en: Master's Students }
     members:
-      - name: { zh: 姓名 D, en: Name D }
-        since: 2024
-        topic: { zh: 图像复原, en: Image Restoration }
-        photo: ""
-      - name: { zh: 姓名 E, en: Name E }
-        since: 2025
-        topic: { zh: 三维感知, en: 3D Perception }
-        photo: ""
-      - name: { zh: 姓名 F, en: Name F }
-        since: 2025
-        topic: { zh: 持续学习, en: Lifelong Learning }
-        photo: ""
+      - { name: { zh: 冯毅冉, en: Yiran Feng }, photo: images/members/fengyiran.jpg }
+      - { name: { zh: 冷槟全, en: Binquan Leng }, photo: images/members/lengbinquan.jpg }
+      - { name: { zh: 宋文达, en: Wenda Song }, photo: images/members/songwenda.jpg }
+      - { name: { zh: 王嘉伟, en: Jiawei Wang }, photo: images/members/wangjiawei.jpg }
+      - { name: { zh: 王家一, en: Jiayi Wang }, photo: images/members/wangjiayi.jpg }
+      - { name: { zh: 王浦成, en: Pucheng Wang }, photo: images/members/wangpucheng.jpg }
+      - { name: { zh: 田浩楠, en: Haonan Tian }, photo: images/members/tianhaonan.jpg }
+      - { name: { zh: 穆佳欣, en: Jiaxin Mu }, photo: images/members/mujiaxin.jpg }
+      - { name: { zh: 管世杰, en: Shijie Guan }, photo: images/members/guanshijie.jpg }
+      - { name: { zh: 郑灏洋, en: Haoyang Zheng }, photo: images/members/zhenghaoyang.jpg }
+      - { name: { zh: 马浩然, en: Haoran Ma }, photo: images/members/mahaoran.jpg }
+      - { name: { zh: 鲁端阳, en: Duanyang Lu }, photo: images/members/luduanyang.jpg }
 
 alumni:
   - name: { zh: 姓名 G, en: Name G }

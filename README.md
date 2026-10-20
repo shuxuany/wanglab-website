@@ -49,7 +49,7 @@ npm run dev
 |---|---|
 | `site.yaml` | 课题组名称、简介、首页数据、联系方式、页脚链接、图片水印文字 |
 | `research.yaml` | 六个研究方向 |
-| `members.yaml` | 导师与学生信息（首页顶部的导师详细介绍也取自这里） |
+| `members.yaml` | 导师与学生信息：summary 为首页轮播中的简短介绍，bio / research_content / representative 等用于导师详细介绍页 `/people/wangzhengning/` |
 | `publications.yaml` | 论文列表 |
 | `patents.yaml` | 相关专利 |
 | `projects.yaml` | 科研项目与成果应用（科研成果 → 科研项目） |

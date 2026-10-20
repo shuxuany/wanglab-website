@@ -140,7 +140,7 @@ const ym = (d: string) => (lang === 'zh' ? d.replace('-', '.') : d);
                       <div>
                         <dt>{lang === 'zh' ? '起止时间' : 'Period'}</dt>
                         <dd>
-                          {ym(p.start)} – {ym(p.end)}
+                          {ym(p.start)} – {p.end ? ym(p.end) : lang === 'zh' ? '至今' : 'present'}
                         </dd>
                       </div>
                     </dl>

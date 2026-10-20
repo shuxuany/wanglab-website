@@ -5,7 +5,7 @@
 #  - 不公开经费金额和企业委托方名称；横向项目只写项目名称与类型
 #  - role：lead 主持 / key 主研（参与）
 #  - level：national 国家级 / provincial 省部级 / municipal 市厅级 / university 校级 / industry 横向（企业委托）
-#  - start / end：YYYY-MM；end 晚于当前日期时自动显示为「在研」
+#  - start / end：YYYY-MM；end 晚于当前日期或不填时显示为「在研」
 # ==============================================================
 
 applications:
@@ -31,6 +31,18 @@ applications:
       en: High-precision defect detection and quality control algorithms for semiconductor, automotive and other manufacturing, deployed in production and markedly improving inspection efficiency and product quality.
 
 projects:
+  # ---------------- 2026 年新增（起止月份待补充）
+  - title: { zh: 智能 Agent 在航空 APU 智慧运维场景中的示范推广应用, en: Demonstration and promotion of intelligent agents for smart operation and maintenance of aviation APUs }
+    type: { zh: 科技领域重大场景示范推广应用, en: Major Science and Technology Scenario Demonstration Program }
+    level: provincial
+    start: "2026"
+    role: lead
+  - title: { zh: 航空发动机全生命周期智能健康管理成套装备研制与应用, en: Development and application of intelligent full-lifecycle health management equipment for aero engines }
+    type: { zh: 重大科技专项攻关, en: Major Science and Technology Project }
+    level: provincial
+    start: "2026"
+    role: key
+
   # ---------------- 主持
   - title: { zh: 远距离人脸识别中低质图像增强关键理论研究, en: Key theories of low-quality image enhancement for long-distance face recognition }
     type: { zh: 国家自然科学基金面上项目, en: NSFC General Program }
