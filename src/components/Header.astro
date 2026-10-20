@@ -19,6 +19,9 @@ const uni = site.university ?? {};
 const inPublic = (p?: string) => !!p && existsSync(join(process.cwd(), 'public', p));
 const uniLogo = inPublic(uni.logo) ? asset(uni.logo) : '';
 const mastImg = inPublic(site.masthead_image) ? asset(site.masthead_image) : '';
+// 实验室标志图片：刊头用完整标志（已含中英文全称），导航栏用简版
+const hasFull = inPublic(site.logo?.full);
+const hasCompact = inPublic(site.logo?.compact);
 
 // 下拉菜单
 const subs: Partial<Record<NavKey, { label: string; href: string; color?: string; sep?: boolean }[]>> = {
@@ -34,29 +37,35 @@ const subs: Partial<Record<NavKey, { label: string; href: string; color?: string
 };
 ---
 
-<div class:list={['masthead', { 'has-photo': mastImg }]} style={mastImg ? `--mast-img:url('${mastImg}')` : undefined}>
+<div class:list={['masthead', { 'has-photo': mastImg, 'has-logo': hasFull }]} style={mastImg ? `--mast-img:url('${mastImg}')` : undefined}>
   <div class="container masthead-inner">
-    <a class="wordmark" href={href('', lang)}>
-      <Logo size={64} id="wm-logo" />
-      <span class="wordmark-text">
-        {
-          lang === 'zh' ? (
-            <>
-              <span class="wm-main">{t(site.name, 'zh')}</span>
-              <span class="wm-sub">
-                {uni.short && <b>{uni.short}</b>} {site.lab_en}
-              </span>
-            </>
-          ) : (
-            <>
-              <span class="wm-main wm-main-en">
-                {uni.short && <b>{uni.short}</b>} {site.lab_en}
-              </span>
-              <span class="wm-sub">{t(site.affiliation, 'en') || t(site.name, 'zh')}</span>
-            </>
-          )
-        }
-      </span>
+    <a class:list={['wordmark', { 'has-logo': hasFull }]} href={href('', lang)}>
+      {
+        hasFull ? (
+          <Logo variant="full" size={132} />
+        ) : (
+          <>
+            <Logo size={64} id="wm-logo" />
+            <span class="wordmark-text">
+              {lang === 'zh' ? (
+                <>
+                  <span class="wm-main">{t(site.name, 'zh')}</span>
+                  <span class="wm-sub">
+                    {uni.short && <b>{uni.short}</b>} {site.lab_en}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span class="wm-main wm-main-en">
+                    {uni.short && <b>{uni.short}</b>} {site.lab_en}
+                  </span>
+                  <span class="wm-sub">{t(site.affiliation, 'en') || t(site.name, 'zh')}</span>
+                </>
+              )}
+            </span>
+          </>
+        )
+      }
     </a>
     {
       uniLogo ? (
@@ -83,8 +92,16 @@ const subs: Partial<Record<NavKey, { label: string; href: string; color?: string
       )
     }
     <a class="navbar-brand" href={href('', lang)} tabindex="-1" aria-hidden="true">
-      <Logo size={28} id="nb-logo" />
-      <span>{t(site.short_name, lang)}</span>
+      {
+        hasCompact ? (
+          <Logo variant="compact" size={34} lang={lang} />
+        ) : (
+          <>
+            <Logo size={28} id="nb-logo" />
+            <span>{t(site.short_name, lang)}</span>
+          </>
+        )
+      }
     </a>
     <ul class="nav" id="site-nav" data-nav data-lenis-prevent>
       {

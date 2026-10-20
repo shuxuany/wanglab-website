@@ -6,16 +6,23 @@
 # ==============================================================
 
 name:
-  zh: 王正宁课题组
-  en: Zhengning Wang Lab
+  zh: 视觉计算与智能决策实验室
+  en: Visual Computing and Intelligent Decision Lab
 
 # 导航栏左上角显示的简称
 short_name:
-  zh: 王正宁课题组
-  en: Zhengning Wang Lab
+  zh: VCID Lab
+  en: VCID Lab
 
-# 课题组 Logo（可选）：图片放到 public/images/ 下，填写如 images/logo.svg；留空使用默认图标
-logo: ""
+# 实验室标志（透明底图片，放在 public/images/brand/）
+#  - full：完整标志（图形 + VCID Lab + 中英文全称），用于刊头
+#  - compact：简版（图形 + VCID Lab），用于吸顶导航栏
+#  - white：深色背景用的反白简版，用于页脚
+#  都留空时使用默认的「神经元」图标 + 文字
+logo:
+  full: images/brand/vcid-logo-full.webp
+  compact: images/brand/vcid-logo.webp
+  white: images/brand/vcid-logo-white.webp
 
 # 所属单位（显示在页脚、网页标题中）；2026-10-20 按要求暂不显示，留空即可
 affiliation: ""
@@ -24,7 +31,7 @@ affiliation: ""
 university: {}
 
 # 刊头大标题下方的英文名
-lab_en: Zhengning Wang Lab
+lab_en: Visual Computing and Intelligent Decision Lab
 
 # 刊头背景照片（校园风景，横幅比例最佳，如 1900×384）；文件不存在时显示浅色渐变
 masthead_image: images/campus.jpg
@@ -42,8 +49,8 @@ tagline:
 
 # 首页第二屏的介绍（滚动时逐字点亮）
 intro:
-  zh: 我们是王正宁教授领导的人工智能研究团队，围绕强化学习、工业视觉检测、工业 AI 软件、医学影像处理、图像增强与恢复和具身智能六个方向开展研究。从产线上的缺陷检测到医院里的脑影像，从暗光图像到会自主决策的智能体，我们既做前沿算法，也推动算法在真实场景中落地。
-  en: We are an AI research group led by Prof. Zhengning Wang, working on six directions — reinforcement learning, industrial visual inspection, industrial AI software, medical image processing, image enhancement and restoration, and embodied intelligence. From defect detection on production lines to brain scans in hospitals, from low-light images to agents that make their own decisions, we develop frontier algorithms and bring them into real-world use.
+  zh: 视觉计算与智能决策实验室（VCID Lab）是王正宁教授领导的人工智能研究团队，围绕强化学习、工业视觉检测、工业 AI 软件、医学影像处理、图像增强与恢复和具身智能六个方向开展研究。从产线上的缺陷检测到医院里的脑影像，从暗光图像到会自主决策的智能体，我们既做前沿算法，也推动算法在真实场景中落地。
+  en: The Visual Computing and Intelligent Decision Lab (VCID Lab) is an AI research group led by Prof. Zhengning Wang, working on six directions — reinforcement learning, industrial visual inspection, industrial AI software, medical image processing, image enhancement and restoration, and embodied intelligence. From defect detection on production lines to brain scans in hospitals, from low-light images to agents that make their own decisions, we develop frontier algorithms and bring them into real-world use.
 
 # 首页数据栏（value 为数字，suffix 为后缀）
 # auto 可选：papers 论文数 / patents 授权发明专利数 / projects 主持项目数 / directions 研究方向数，
@@ -114,7 +121,7 @@ links:
 # 图片水印：网站上的照片都带浅色平铺水印（原图保存在 assets/originals/ 中，不对外发布）
 # 修改 text 或 opacity 后运行 npm run watermark 重新生成 public/images/ 下的图片
 watermark:
-  text: AI Lab
+  text: VCID Lab
   opacity: 0.16
 
 # 网站备案号（以后放到国内服务器时填写，留空不显示）

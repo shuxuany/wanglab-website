@@ -172,12 +172,15 @@ groups:
       - { name: { zh: 冯毅冉, en: Yiran Feng }, photo: images/members/fengyiran.jpg }
       - { name: { zh: 冷槟全, en: Binquan Leng }, photo: images/members/lengbinquan.jpg }
       - { name: { zh: 宋文达, en: Wenda Song }, photo: images/members/songwenda.jpg }
+      - { name: { zh: 朱越, en: Yue Zhu }, photo: images/members/zhuyue.jpg }
+      - { name: { zh: 李尚蔚, en: Shangwei Li }, photo: images/members/lishangwei.jpg }
       - { name: { zh: 王嘉伟, en: Jiawei Wang }, photo: images/members/wangjiawei.jpg }
       - { name: { zh: 王家一, en: Jiayi Wang }, photo: images/members/wangjiayi.jpg }
       - { name: { zh: 王浦成, en: Pucheng Wang }, photo: images/members/wangpucheng.jpg }
       - { name: { zh: 田浩楠, en: Haonan Tian }, photo: images/members/tianhaonan.jpg }
       - { name: { zh: 穆佳欣, en: Jiaxin Mu }, photo: images/members/mujiaxin.jpg }
       - { name: { zh: 管世杰, en: Shijie Guan }, photo: images/members/guanshijie.jpg }
+      - { name: { zh: 许铭洋, en: Mingyang Xu }, photo: images/members/xumingyang.jpg }
       - { name: { zh: 郑灏洋, en: Haoyang Zheng }, photo: images/members/zhenghaoyang.jpg }
       - { name: { zh: 马浩然, en: Haoran Ma }, photo: images/members/mahaoran.jpg }
       - { name: { zh: 鲁端阳, en: Duanyang Lu }, photo: images/members/luduanyang.jpg }

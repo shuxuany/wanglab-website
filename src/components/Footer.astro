@@ -17,8 +17,16 @@ const year = new Date().getFullYear();
     <div class="footer-grid">
       <div>
         <a class="brand" href={href('', lang)}>
-          <Logo size={34} id="ft-logo" />
-          <span>{t(site.short_name, lang)}</span>
+          {
+            site.logo?.white || site.logo?.compact ? (
+              <Logo variant="white" size={44} lang={lang} />
+            ) : (
+              <>
+                <Logo size={34} id="ft-logo" />
+                <span>{t(site.short_name, lang)}</span>
+              </>
+            )
+          }
         </a>
         {t(site.name, lang) !== t(site.short_name, lang) && <p class="footer-name">{t(site.name, lang)}</p>}
         {(t(site.affiliation, lang) || t(site.tagline, lang)) && <p class="footer-aff">{t(site.affiliation, lang) || t(site.tagline, lang)}</p>}

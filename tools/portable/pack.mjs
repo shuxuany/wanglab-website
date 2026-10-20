@@ -1,4 +1,4 @@
-// 生成可以拷贝到其他电脑、离线打开的网站压缩包：release/王正宁课题组网站.zip
+// 生成可以拷贝到其他电脑、离线打开的网站压缩包：release/VCID-Lab网站.zip
 // 用法：npm run pack   （加 -- --no-build 可跳过重新构建）
 import { execSync } from 'node:child_process';
 import { mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
@@ -9,7 +9,7 @@ import { deflateRawSync } from 'node:zlib';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..', '..');
 const dist = join(root, 'dist');
-const outFile = join(root, 'release', '王正宁课题组网站.zip');
+const outFile = join(root, 'release', 'VCID-Lab网站.zip');
 // 压缩包内只用英文路径，避免不同系统解压后文件名乱码
 const top = 'WangLab-Website';
 

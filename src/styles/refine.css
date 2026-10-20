@@ -415,3 +415,64 @@
   font-size: 14px;
   letter-spacing: -0.01em;
 }
+
+/* ---------- 实验室标志（图片版，site.yaml 的 logo） ---------- */
+
+/* 刊头：完整标志已含中英文全称，按高度缩放 */
+.wordmark.has-logo .logo-full {
+  display: block;
+  width: auto;
+  height: clamp(104px, 8.4vw, 132px);
+}
+
+.wordmark.has-logo:hover .logo {
+  transform: none;
+}
+
+.masthead.has-logo.has-photo .masthead-inner {
+  padding-block: clamp(22px, 2.2vw, 40px);
+}
+
+/* 标志比文字版宽：白色渐变区加宽，照片略向右移 */
+@media (min-width: 761px) {
+  .masthead.has-logo.has-photo::before {
+    background-position: 30% 44%;
+  }
+
+  .masthead.has-logo.has-photo::after {
+    background:
+      radial-gradient(clamp(260px, 26vw, 420px) 140px at calc(100% - clamp(120px, 12vw, 260px)) 50%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 70%),
+      linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.96) 30%, rgba(255, 255, 255, 0.7) 40%, rgba(255, 255, 255, 0.15) 54%, rgba(255, 255, 255, 0) 66%),
+      linear-gradient(0deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 45%);
+  }
+}
+
+@media (max-width: 760px) {
+  .wordmark.has-logo .logo-full {
+    width: min(290px, 100%);
+    height: auto;
+  }
+
+  .masthead.has-logo .masthead-inner {
+    padding-block: 14px;
+  }
+
+  .masthead.has-logo.has-photo::after {
+    background: linear-gradient(90deg, #fff 0%, rgba(255, 255, 255, 0.94) 65%, rgba(255, 255, 255, 0.72) 100%);
+  }
+}
+
+/* 吸顶导航栏左侧的简版标志 */
+.navbar-brand .logo-compact {
+  display: block;
+  flex: none;
+  width: auto;
+  height: 34px;
+}
+
+/* 页脚（深色背景）的反白标志 */
+.site-footer .brand .logo-white {
+  display: block;
+  width: auto;
+  height: 44px;
+}

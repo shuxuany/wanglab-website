@@ -1,17 +1,24 @@
 ---
-// 课题组标志：site.yaml 中设置了 logo 时使用图片，否则使用默认的「神经元」图形（主题蓝 + 橙色）
-import { site, asset } from '../lib/site';
+// 实验室标志：site.yaml 的 logo 中填了图片时使用图片，否则使用默认的「神经元」图形（主题蓝 + 橙色）
+// - variant：full 完整标志 / compact 简版 / white 深色背景用的反白简版
+// - size：图片的显示高度；默认图形的边长
+import { site, asset, t, type Lang } from '../lib/site';
 
 interface Props {
   size?: number;
   id?: string;
+  variant?: 'full' | 'compact' | 'white';
+  lang?: Lang;
 }
-const { size = 32, id = 'logo' } = Astro.props;
+const { size = 32, id = 'logo', variant = 'compact', lang = 'zh' } = Astro.props;
+const logo = site.logo && typeof site.logo === 'object' ? site.logo : {};
+const src: string = logo[variant] || (variant === 'white' ? logo.compact : '') || '';
+const alt = variant === 'full' ? `${t(site.name, 'zh')} ${t(site.name, 'en')}` : t(site.short_name, lang);
 ---
 
 {
-  site.logo ? (
-    <img class="logo" src={asset(site.logo)} alt="" width={size} height={size} />
+  src ? (
+    <img class:list={['logo', `logo-${variant}`]} src={asset(src)} alt={alt} height={size} />
   ) : (
     <svg class="logo" width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
       <defs>

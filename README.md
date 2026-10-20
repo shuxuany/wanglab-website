@@ -1,6 +1,6 @@
-# 王正宁课题组网站
+# 视觉计算与智能决策实验室（VCID Lab）网站
 
-王正宁课题组的中英双语网站，用 [Astro](https://astro.build) 生成纯静态网页，可以放到 GitHub Pages 或自己的服务器上。
+王正宁教授领导的视觉计算与智能决策实验室（Visual Computing and Intelligent Decision Lab，简称 VCID Lab）的中英双语网站，用 [Astro](https://astro.build) 生成纯静态网页，可以放到 GitHub Pages 或自己的服务器上。
 
 ## 发布到 GitHub Pages
 
@@ -47,7 +47,7 @@ npm run dev
 
 | 文件 | 内容 |
 |---|---|
-| `site.yaml` | 课题组名称、简介、首页数据、联系方式、页脚链接、图片水印文字 |
+| `site.yaml` | 实验室名称、标志图片、简介、首页数据、联系方式、页脚链接、图片水印文字 |
 | `research.yaml` | 六个研究方向 |
 | `members.yaml` | 导师与学生信息：summary 为首页轮播中的简短介绍，bio / research_content / representative 等用于导师详细介绍页 `/people/wangzhengning/` |
 | `publications.yaml` | 论文列表 |
@@ -69,7 +69,9 @@ npm run dev
 | `public/images/news/` | 新闻缩略图 |
 | `public/images/` | 刊头背景照片 `campus.jpg` |
 
-图片水印：`public/images/` 下的照片都带浅色「AI Lab」平铺水印，由 `npm run watermark` 从 `assets/originals/`（未加水印的原图，不提交到 Git）生成。新增或替换照片时，把原图放进 `assets/originals/` 的对应位置再运行该命令；要换水印文字，改 `site.yaml` 里的 `watermark.text` 后重新运行。
+实验室标志：透明底图片在 `public/images/brand/`（`vcid-logo-full.webp` 完整标志用于刊头，`vcid-logo.webp` 简版用于导航栏，`vcid-logo-white.webp` 反白版用于页脚），网站图标为 `public/favicon-*.png` 和 `apple-touch-icon.png`；路径在 `site.yaml` 的 `logo` 中设置。
+
+图片水印：`public/images/` 下的照片都带浅色「VCID Lab」平铺水印，由 `npm run watermark` 从 `assets/originals/`（未加水印的原图，不提交到 Git）生成。新增或替换照片时，把原图放进 `assets/originals/` 的对应位置再运行该命令；要换水印文字，改 `site.yaml` 里的 `watermark.text` 后重新运行。
 
 其他：
 
@@ -82,7 +84,7 @@ npm run dev
 npm run pack
 ```
 
-会生成 `release/王正宁课题组网站.zip`。拷到其他电脑解压后，双击 `Open-Website.bat` 即可离线打开（Windows 不用安装任何软件；Mac 用 `Open-Website-Mac.command`）。压缩包里的 `README.txt` 有详细说明。
+会生成 `release/VCID-Lab网站.zip`。拷到其他电脑解压后，双击 `Open-Website.bat` 即可离线打开（Windows 不用安装任何软件；Mac 用 `Open-Website-Mac.command`）。压缩包里的 `README.txt` 有详细说明。
 
 ## 发布到其他服务器
 
