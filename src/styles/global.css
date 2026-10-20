@@ -170,6 +170,20 @@ main {
   }
 }
 
+/* 手机和平板上关闭页面切换动效：过渡期间浏览器不响应点击，部分手机浏览器给很长的页面截图时还会卡住，
+   表现为进入子页面后点不动、无法再跳转 */
+@media (max-width: 960px), (hover: none) {
+  @view-transition {
+    navigation: none;
+  }
+
+  .masthead,
+  .navbar,
+  main {
+    view-transition-name: none;
+  }
+}
+
 /* ---------- 按钮与小部件 ---------- */
 
 .btn {
