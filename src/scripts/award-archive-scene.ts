@@ -905,7 +905,8 @@ export function mount(root: HTMLElement) {
         const q = project(anchor.set(laneX + 1, H + 0.3, laneZ(r) + W / 2));
         p = project(anchor.set(laneX + need / Math.max(1, q.x - p.x), H + 0.3, laneZ(r) + W / 2));
       }
-      el.style.transform = `translate3d(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px, 0)`;
+      // 标签右端对齐锚点、上下居中（偏移写在 transform 里：单独的 CSS translate 属性会被生产构建的压缩合并掉）
+      el.style.transform = `translate3d(${p.x.toFixed(1)}px, ${p.y.toFixed(1)}px, 0) translate(-100%, -50%)`;
       const left = p.x - labelW[r];
       const underCard = p.x > bx0 - 6 && left < bx1 + 6 && p.y > by0 - 10 && p.y < by1 + 10;
       const underTag = p.x > call.x - 6 && left < call.x + tw + 6 && p.y > call.y - 10 && p.y < call.y + th + 10;
