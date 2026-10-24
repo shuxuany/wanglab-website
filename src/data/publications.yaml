@@ -9,6 +9,8 @@
 #  - direction：对应 research.yaml 中的 id（rl / inspection / software / medical / restore / embodied），
 #               留空表示不归入任何方向（仍会显示在论文页）。2026-10-20 研究方向调整后按论文主题重新归类，请 PI 核对
 #  - featured：代表作标记（目前首页不再单独展示）
+#  - impact：期刊影响因子（JCR 2025，2026 年 6 月发布；数值来自 BioxBio 汇总，正式数值以 Clarivate JCR 为准）
+#            论文页最前面的「高影响因子论文」自动取 impact 最高的 5 篇（同分时较新的在前）；每年 JCR 更新后改这里的数字即可
 #  - badge：可选标签，如 封面文章 / Oral / Best Paper
 #  - figure：论文核心结构图，放在 public/images/papers/ 下；figure_caption 为图注（首页轮播已改为导师详细介绍，暂未使用）
 #  - doi / pdf / code：都可以留空
@@ -38,6 +40,7 @@
   venue: "Medical Image Analysis"
   short: "MedIA"
   year: 2026
+  impact: 14.0
   volume: "113, 104218"
   doi: "10.1016/j.media.2026.104218"
   direction: medical
@@ -58,6 +61,7 @@
   venue: "IEEE Transactions on Multimedia"
   short: "IEEE TMM"
   year: 2026
+  impact: 9.9
   doi: "10.1109/tmm.2026.3724696"
   direction: 
 
@@ -66,6 +70,7 @@
   venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence"
   short: "IEEE TPAMI"
   year: 2025
+  impact: 20.4
   volume: "48(2), 1355–1372"
   doi: "10.1109/tpami.2025.3615144"
   pdf: https://arxiv.org/pdf/2510.04111
@@ -81,6 +86,7 @@
   venue: "IEEE Transactions on Intelligent Transportation Systems"
   short: "IEEE TITS"
   year: 2025
+  impact: 9.1
   volume: "26(12), 21809–21823"
   doi: "10.1109/tits.2025.3605670"
   direction: 
@@ -95,6 +101,7 @@
   venue: "Neurocomputing"
   short: "Neurocomputing"
   year: 2025
+  impact: 6.7
   volume: "655, 131442"
   doi: "10.1016/j.neucom.2025.131442"
   direction: restore
@@ -147,6 +154,7 @@
   venue: "Neuroscience Bulletin"
   short: "Neurosci. Bull."
   year: 2025
+  impact: 6.8
   volume: "41(6), 933–950"
   doi: "10.1007/s12264-025-01385-5"
   direction: medical
@@ -156,6 +164,7 @@
   venue: "Medical Image Analysis"
   short: "MedIA"
   year: 2025
+  impact: 14.0
   volume: "101, 103482"
   doi: "10.1016/j.media.2025.103482"
   direction: medical
@@ -182,6 +191,7 @@
   venue: "Pattern Recognition"
   short: "Pattern Recognition"
   year: 2024
+  impact: 9.1
   volume: "155, 110638"
   doi: "10.1016/j.patcog.2024.110638"
   direction: restore
@@ -196,6 +206,7 @@
   venue: "Schizophrenia Bulletin"
   short: "Schizophr. Bull."
   year: 2024
+  impact: 5.7
   volume: "51(1), 217–235"
   doi: "10.1093/schbul/sbae069"
   direction: medical
@@ -261,6 +272,7 @@
   venue: "IEEE Transactions on Intelligent Transportation Systems"
   short: "IEEE TITS"
   year: 2022
+  impact: 9.1
   volume: "24(1), 152–162"
   doi: "10.1109/tits.2022.3215766"
   direction: embodied
@@ -308,6 +320,7 @@
   venue: "IEEE Transactions on Circuits and Systems for Video Technology"
   short: "IEEE TCSVT"
   year: 2021
+  impact: 10.8
   volume: "32(5), 2856–2867"
   doi: "10.1109/tcsvt.2021.3103281"
   direction: 
@@ -348,6 +361,7 @@
   venue: "Pattern Recognition"
   short: "Pattern Recognition"
   year: 2020
+  impact: 9.1
   volume: "112, 107694"
   doi: "10.1016/j.patcog.2020.107694"
   direction: 
@@ -371,6 +385,7 @@
   venue: "IEEE Journal of Biomedical and Health Informatics"
   short: "IEEE JBHI"
   year: 2019
+  impact: 7.7
   volume: "24(3), 636–648"
   doi: "10.1109/jbhi.2019.2912708"
   direction: medical
@@ -389,6 +404,7 @@
   venue: "IEEE Transactions on Image Processing"
   short: "IEEE TIP"
   year: 2017
+  impact: 15.3
   volume: "27(3), 1214–1229"
   doi: "10.1109/tip.2017.2779601"
   direction: restore

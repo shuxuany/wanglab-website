@@ -1,7 +1,7 @@
 # ==============================================================
 #  获奖证书与荣誉
 #  数据整理自课题组提供的《研究成果详表》《社会荣誉》和获奖证书扫描件（2026-10）。
-#  - category：award 科技奖励 / honor 人才与学术荣誉 / teaching 教学育人 / student 学生获奖
+#  - category：award 科技奖励 / honor 人才与学术荣誉 / teaching 教学育人 / student 学生获奖（学生获奖的字段见下方说明）
 #  - image：证书照片（放在 assets/originals/images/awards/ 后运行 npm run watermark，会生成到 public/images/awards/）
 #  - 证书上印有单位全称的，按网站统一要求不展示证书照片，只列文字
 # ==============================================================
@@ -62,74 +62,201 @@
   date: 2020-01
   category: teaching
 
-# ---------------- 学生获奖（2026-10-20 按「课题组图片/奖状」补充；证书上印有学校全称的只列文字）
+# ---------------- 学生获奖（2026-10-22 按「课题组图片/奖状」更新）
+#  获奖证书页顶部的「三维档案阵列」展示这一部分：不同等级排成不同横排，左上角统计各等级数量
+#  - level 等级：international 国际级 / national 国家级 / provincial 省部级 / industry 企业竞赛 / university 校级 / school 院级
+#  - kind 类别：competition 竞赛 / scholarship 奖学金 / honor 荣誉称号 / thesis 学位论文
+#  - featured: true 的奖项在阵列右上角「高等级奖状」中展示，无人操作时自动轮播
+#  - 不写获奖人姓名；证书照片上的姓名已用遮挡条盖住（未遮挡的原件在「课题组图片/奖状」）
+#  - image：证书照片（处理后的原图放在 assets/originals/images/awards/，三维贴图放在其中的 tex/ 子目录，运行 npm run watermark）
+#  - 证书上印有我校全称的不展示照片，三维阵列中显示为文字卡片
 
-- title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 1 二等奖, en: "2nd Prize, Track 1 (Visuotactile Manipulation), ManiSkill-ViTac 2025 Challenge" }
-  project: { zh: 视触觉操作赛道，罗兴隆所在联合团队, en: "Visuotactile manipulation; joint team including Xinglong Luo" }
+- title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 1 二等奖, en: "2nd Prize, Track 1, ManiSkill-ViTac 2025 Challenge" }
+  note: { zh: 视触觉操作赛道（联合团队）, en: Visuotactile manipulation track (joint team) }
   issuer: { zh: ManiSkill-ViTac 2025 视触觉操作技能学习挑战赛, en: ManiSkill-ViTac 2025 Challenge on Manipulation Skill Learning with Vision and Tactile Sensing }
   date: 2025
   category: student
+  level: international
+  kind: competition
+  featured: true
 
-- title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 2 二等奖, en: "2nd Prize, Track 2 (Tactile-Vision-Fusion Manipulation), ManiSkill-ViTac 2025 Challenge" }
-  project: { zh: 视触融合操作赛道，罗兴隆所在联合团队, en: "Tactile–vision fusion manipulation; joint team including Xinglong Luo" }
+- title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 2 二等奖, en: "2nd Prize, Track 2, ManiSkill-ViTac 2025 Challenge" }
+  note: { zh: 视触融合操作赛道（联合团队）, en: Tactile–vision fusion manipulation track (joint team) }
   issuer: { zh: ManiSkill-ViTac 2025 视触觉操作技能学习挑战赛, en: ManiSkill-ViTac 2025 Challenge on Manipulation Skill Learning with Vision and Tactile Sensing }
   date: 2025
   category: student
+  level: international
+  kind: competition
+  featured: true
 
-- title: { zh: “荣耀信通”学术之星, en: '"Honor" Academic Star' }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
-  issuer: { zh: 所在学院, en: Home school }
-  date: 2026
+- title: { zh: 本科生国家奖学金, en: National Scholarship for Undergraduates }
+  issuer: { zh: 中华人民共和国教育部, en: Ministry of Education of the People's Republic of China }
+  date: 2024
   category: student
-
-- title: { zh: 2024 届四川省优秀大学毕业生, en: "Outstanding Graduate of Sichuan Province, Class of 2024" }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
-  issuer: { zh: 四川省教育厅, en: Sichuan Provincial Department of Education }
-  date: 2024-05
-  category: student
-  image: images/awards/sichuan-graduate-2024.jpg
-
-- title: { zh: 校级优秀硕士学位论文, en: Outstanding Master's Thesis (University Level) }
-  project: { zh: 罗兴隆《基于事件相机的光流估计方法研究》, en: "Xinglong Luo, Optical Flow Estimation with Event Cameras" }
-  issuer: { zh: 所在高校, en: Home university }
-  date: 2024-06
-  category: student
-
-- title: { zh: 2024 届校级优秀毕业生, en: "Outstanding Graduate (University Level), Class of 2024" }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
-  issuer: { zh: 所在高校, en: Home university }
-  date: 2024-05
-  category: student
+  level: national
+  kind: scholarship
+  featured: true
 
 - title: { zh: 硕士研究生国家奖学金, en: National Scholarship for Master's Students }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
   issuer: { zh: 中华人民共和国教育部, en: Ministry of Education of the People's Republic of China }
   date: 2023-12
   category: student
+  level: national
+  kind: scholarship
   image: images/awards/national-scholarship-2023.jpg
+  featured: true
 
-- title: { zh: 校级优秀研究生, en: Outstanding Graduate Student (University Level) }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
-  issuer: { zh: 所在高校, en: Home university }
-  date: 2023-11
+- title: { zh: 2025 届浙江省优秀毕业生, en: "Outstanding Graduate of Zhejiang Province, Class of 2025" }
+  issuer: { zh: 浙江省教育厅, en: Zhejiang Provincial Department of Education }
+  date: 2025-02
   category: student
+  level: provincial
+  kind: honor
+
+- title: { zh: 2024 届四川省优秀大学毕业生, en: "Outstanding Graduate of Sichuan Province, Class of 2024" }
+  issuer: { zh: 四川省教育厅, en: Sichuan Provincial Department of Education }
+  date: 2024-05
+  category: student
+  level: provincial
+  kind: honor
+  image: images/awards/sichuan-graduate-2024.jpg
+  featured: true
+
+- title: { zh: 2022–2023 学年浙江省政府奖学金, en: "Zhejiang Provincial Government Scholarship, 2022–2023" }
+  issuer: { zh: 浙江省教育厅, en: Zhejiang Provincial Department of Education }
+  date: 2023-12
+  category: student
+  level: provincial
+  kind: scholarship
+  image: images/awards/zj-scholarship-2023.jpg
+
+- title: { zh: 2021–2022 学年浙江省政府奖学金, en: "Zhejiang Provincial Government Scholarship, 2021–2022" }
+  issuer: { zh: 浙江省教育厅, en: Zhejiang Provincial Department of Education }
+  date: 2022-12
+  category: student
+  level: provincial
+  kind: scholarship
+  image: images/awards/zj-scholarship-2022.jpg
 
 - title: { zh: 第十三届中兴捧月全球精英挑战赛“神算师”算法赛 决赛优胜奖, en: "Finals Excellence Award, 13th ZTE Global Elite Challenge (Algorithm Track)" }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
   issuer: { zh: 中兴通讯人力资源部, en: ZTE Corporation }
   date: 2023-06
   category: student
+  level: industry
+  kind: competition
   image: images/awards/zte-final-2023.jpg
 
 - title: { zh: 第十三届中兴捧月全球精英挑战赛“神算师”算法赛 区域优胜奖, en: "Regional Excellence Award, 13th ZTE Global Elite Challenge (Algorithm Track)" }
-  project: { zh: 罗兴隆, en: Xinglong Luo }
   issuer: { zh: 中兴通讯人力资源部, en: ZTE Corporation }
   date: 2023-05
   category: student
+  level: industry
+  kind: competition
   image: images/awards/zte-regional-2023.jpg
 
 - title: { zh: 2023 华为软件精英挑战赛 成渝赛区二等奖, en: "Second Prize, Chengdu–Chongqing Region, 2023 Huawei Software Elite Challenge" }
-  project: { zh: 邹帆、雷煜、罗兴隆, en: "Fan Zou, Yu Lei, Xinglong Luo" }
   issuer: { zh: 华为技术有限公司, en: Huawei Technologies }
   date: 2023
   category: student
+  level: industry
+  kind: competition
+
+- title: { zh: 校级优秀硕士学位论文, en: Outstanding Master's Thesis (University Level) }
+  note: { zh: 《基于事件相机的光流估计方法研究》, en: Optical Flow Estimation with Event Cameras }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2024-06
+  category: student
+  level: university
+  kind: thesis
+
+- title: { zh: 2024 届校级优秀毕业生, en: "Outstanding Graduate (University Level), Class of 2024" }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2024-05
+  category: student
+  level: university
+  kind: honor
+
+- title: { zh: 2023–2024 学年第二学期校一等奖学金, en: "First-Class University Scholarship, Spring 2024" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2024
+  category: student
+  level: university
+  kind: scholarship
+
+- title: { zh: 2023–2024 学年第一学期创新创业奖, en: "Innovation & Entrepreneurship Award, Fall 2023" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2024-04
+  category: student
+  level: university
+  kind: scholarship
+  image: images/awards/innovation-2024.jpg
+
+- title: { zh: 2023–2024 学年第一学期校一等奖学金, en: "First-Class University Scholarship, Fall 2023" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2024-04
+  category: student
+  level: university
+  kind: scholarship
+  image: images/awards/first-2024a.jpg
+
+- title: { zh: 校级优秀研究生, en: Outstanding Graduate Student (University Level) }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2023-11
+  category: student
+  level: university
+  kind: honor
+
+- title: { zh: 2022–2023 学年三好学生, en: "Merit Student, 2022–2023" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2023-11
+  category: student
+  level: university
+  kind: honor
+  image: images/awards/merit-2023.jpg
+
+- title: { zh: 2022–2023 学年第二学期校一等奖学金, en: "First-Class University Scholarship, Spring 2023" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2023-10
+  category: student
+  level: university
+  kind: scholarship
+  image: images/awards/first-2023b.jpg
+
+- title: { zh: 2022–2023 学年第一学期校一等奖学金, en: "First-Class University Scholarship, Fall 2022" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2023-05
+  category: student
+  level: university
+  kind: scholarship
+  image: images/awards/first-2023a.jpg
+
+- title: { zh: 2021–2022 学年第二学期校一等奖学金, en: "First-Class University Scholarship, Spring 2022" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2022-10
+  category: student
+  level: university
+  kind: scholarship
+  image: images/awards/first-2022b.jpg
+
+- title: { zh: 2021–2022 学年第一学期校一等奖学金, en: "First-Class University Scholarship, Fall 2021" }
+  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
+  date: 2022-05
+  category: student
+  level: university
+  kind: scholarship
+  image: images/awards/first-2022a.jpg
+
+- title: { zh: “荣耀信通”学术之星, en: '"Honor" Academic Star' }
+  issuer: { zh: 所在学院, en: Home school }
+  date: 2026
+  category: student
+  level: school
+  kind: honor
+
+- title: { zh: 2023–2024 学年院十佳大学生, en: "Top Ten Students of the School, 2023–2024" }
+  issuer: { zh: 杭州电子科技大学通信工程学院, en: "School of Communication Engineering, Hangzhou Dianzi University" }
+  date: 2024-05
+  category: student
+  level: school
+  kind: honor
+  image: images/awards/topten-2024.jpg

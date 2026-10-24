@@ -42,6 +42,8 @@ export interface Publication {
   code?: string;
   direction?: string;
   featured?: boolean;
+  /** 期刊影响因子（JCR），论文页最前面的「高影响因子论文」取最高的 5 篇 */
+  impact?: number;
   badge?: Text;
   /** journal / conference / preprint；不填时根据 venue 自动判断 */
   type?: string;

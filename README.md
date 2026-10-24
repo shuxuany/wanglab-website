@@ -50,10 +50,10 @@ npm run dev
 | `site.yaml` | 实验室名称、标志图片、简介、首页数据、联系方式、页脚链接、图片水印文字 |
 | `research.yaml` | 六个研究方向 |
 | `members.yaml` | 导师与学生信息：summary 为首页轮播中的简短介绍，bio / research_content / representative 等用于导师详细介绍页 `/people/wangzhengning/` |
-| `publications.yaml` | 论文列表 |
+| `publications.yaml` | 论文列表；`impact` 为期刊影响因子（JCR），论文页「全部方向」最前面自动列出影响因子最高的 5 篇，每年 JCR 更新后改数字即可 |
 | `patents.yaml` | 相关专利 |
 | `projects.yaml` | 科研项目与成果应用（科研成果 → 科研项目） |
-| `awards.yaml` | 获奖证书与荣誉（证书照片放在 `assets/originals/images/awards/`） |
+| `awards.yaml` | 获奖证书与荣誉（证书照片放在 `assets/originals/images/awards/`）。学生获奖（`category: student`）在获奖证书页顶部显示为三维档案阵列：`level` 决定所在横排（国际级 / 国家级 / 省部级 / 企业竞赛 / 校级 / 院级），`kind` 为类别，`featured: true` 的进入右上角「高等级奖状」；不写获奖人姓名，证书照片上的姓名需先遮挡，三维贴图另存一份到 `awards/tex/` |
 | `exchange.yaml` | 学术交流：媒体报道与公众号、学术报告、国际会议、访问考察、学术与社会服务 |
 | `news.yaml` | 新闻动态，只放学术相关内容（首页显示最新 6 条） |
 | `life.yaml` | 团队生活相册（首页展示前 5 个） |
@@ -63,13 +63,16 @@ npm run dev
 
 | 文件夹 | 内容 |
 |---|---|
-| `public/images/members/` | 成员照片 |
+| `public/images/members/` | 成员照片（640×800 竖版，硕士按姓氏拼音排序） |
+| `public/images/awards/` | 证书照片；`tex/` 子目录为三维档案阵列用的小图 |
 | `public/images/papers/` | 论文结构图 |
 | `public/images/life/` | 团队生活照片，每个相册一个文件夹 |
 | `public/images/news/` | 新闻缩略图 |
 | `public/images/` | 刊头背景照片 `campus.jpg` |
 
 实验室标志：透明底图片在 `public/images/brand/`（`vcid-logo-full.webp` 完整标志用于刊头，`vcid-logo.webp` 简版用于导航栏，`vcid-logo-white.webp` 反白版用于页脚），网站图标为 `public/favicon-*.png` 和 `apple-touch-icon.png`；路径在 `site.yaml` 的 `logo` 中设置。
+
+学生获奖三维档案阵列：`src/components/AwardArchive.astro`（界面与数据）、`src/scripts/award-archive-scene.ts`（three.js 场景）、`src/styles/archive.css`。交互参考《明日方舟》特别映像「莱茵生命：访问」及其开源复刻 LBEILC/RhineLabUI（MIT），卡片、灯光与动效为本站自行实现，未使用原作的名称、标志、模型和素材；只在该页滚动到附近时加载，不支持 WebGL 的浏览器显示文字列表。
 
 图片水印：`public/images/` 下的照片都带浅色「VCID Lab」平铺水印，由 `npm run watermark` 从 `assets/originals/`（未加水印的原图，不提交到 Git）生成。新增或替换照片时，把原图放进 `assets/originals/` 的对应位置再运行该命令；要换水印文字，改 `site.yaml` 里的 `watermark.text` 后重新运行。
 

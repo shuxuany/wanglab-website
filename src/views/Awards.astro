@@ -1,10 +1,11 @@
 ---
-// 获奖证书：科技奖励 / 人才与学术荣誉 / 教学育人；有证书照片的可点击放大
+// 获奖证书：顶部为学生获奖的三维档案阵列（AwardArchive），下面是科技奖励 / 人才与学术荣誉 / 教学育人；有证书照片的可点击放大
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import OutputSwitch from '../components/OutputSwitch.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Icon from '../components/Icon.astro';
+import AwardArchive from '../components/AwardArchive.astro';
 import { site, awards, t, asset, href, formatDate, type Lang } from '../lib/site';
 import { ui } from '../lib/i18n';
 
@@ -14,7 +15,8 @@ interface Props {
 const { lang } = Astro.props;
 const u = ui[lang];
 const au = u.awards;
-const CATS = ['award', 'honor', 'teaching', 'student'] as const;
+const CATS = ['award', 'honor', 'teaching'] as const;
+const student = awards.filter((a) => a.category === 'student');
 const groups = CATS.map((c) => ({ id: c, items: awards.filter((a) => a.category === c) })).filter((g) => g.items.length);
 ---
 
@@ -23,6 +25,8 @@ const groups = CATS.map((c) => ({ id: c, items: awards.filter((a) => a.category 
 
   <div class="container page-body">
     <OutputSwitch lang={lang} active="awards" />
+
+    {student.length > 0 && <AwardArchive lang={lang} items={student} />}
 
     {
       groups.map((g) => (

@@ -1,5 +1,6 @@
 ---
 // 论文条目（学术引用格式）：作者, "标题," 期刊, 卷期页码, 年份.
+// impact：显示影响因子标签；filterable=false 时不带筛选用的 data 属性（论文页顶部「高影响因子论文」用，不参与筛选和计数）
 import { t, asset, displayAuthors, directionColor, directionById, pubType, type Lang, type Publication } from '../lib/site';
 
 interface Props {
@@ -8,8 +9,10 @@ interface Props {
   reveal?: boolean;
   delay?: number;
   showDirection?: boolean;
+  impact?: number;
+  filterable?: boolean;
 }
-const { pub, lang, reveal = false, delay = 0, showDirection = true } = Astro.props;
+const { pub, lang, reveal = false, delay = 0, showDirection = true, impact, filterable = true } = Astro.props;
 
 const authors = displayAuthors(pub.authors);
 const doiUrl = pub.doi ? (/^https?:/.test(pub.doi) ? pub.doi : `https://doi.org/${pub.doi}`) : '';
@@ -22,15 +25,16 @@ const search = [pub.title, ...(pub.authors ?? []), pub.venue, pub.short, pub.yea
 <li
   class="cite"
   style={`--c:${directionColor(pub.direction)};${reveal ? `--d:${delay}ms` : ''}`}
-  data-pub
-  data-year={pub.year}
-  data-type={type}
-  data-direction={pub.direction ?? ''}
-  data-search={search}
+  data-pub={filterable ? '' : undefined}
+  data-year={filterable ? pub.year : undefined}
+  data-type={filterable ? type : undefined}
+  data-direction={filterable ? (pub.direction ?? '') : undefined}
+  data-search={filterable ? search : undefined}
   data-reveal={reveal ? '' : undefined}
 >
   <div class="cite-tags">
     {pub.short && <span class="cite-venue">{pub.short}</span>}
+    {impact !== undefined && <span class="cite-if">IF {impact.toFixed(1)}</span>}
     {showDirection && dir && <span class="cite-dir"><i></i>{t(dir.short, lang)}</span>}
     {pub.badge && <span class="cite-badge">{t(pub.badge, lang)}</span>}
   </div>

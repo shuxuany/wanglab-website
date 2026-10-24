@@ -15,6 +15,11 @@ const u = ui[lang];
 const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
 const countOf = (type: string) => publications.filter((p) => type === 'all' || pubType(p) === type).length;
 const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string, string][])];
+// 影响因子最高的 5 篇（publications.yaml 中的 impact，同分时较新的在前），放在「全部方向」列表最前面
+const top = publications
+  .filter((p) => typeof p.impact === 'number')
+  .sort((a, b) => b.impact! - a.impact! || b.year - a.year)
+  .slice(0, 5);
 ---
 
 <Base lang={lang} title={u.nav.publications} description={t(site.pages?.publications, lang)}>
@@ -58,6 +63,22 @@ const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string
     </div>
 
     <p class="pub-count" data-pub-count data-template={u.pubs.count}>{u.pubs.count.replace('{n}', String(publications.length))}</p>
+
+    {
+      top.length > 0 && (
+        <section class="pub-top" data-pub-top>
+          <h2 class="year-label pub-top-label">
+            {u.pubs.top}
+            <small>{u.pubs.topNote}</small>
+          </h2>
+          <ol class="cite-list cite-top">
+            {top.map((p) => (
+              <PubItem pub={p} lang={lang} impact={p.impact} filterable={false} />
+            ))}
+          </ol>
+        </section>
+      )
+    }
 
     <div class="pub-results">
       {

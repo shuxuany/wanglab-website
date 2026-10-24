@@ -166,24 +166,41 @@ groups:
       - name: { zh: 方志祥, en: Zhixiang Fang }
         topic: { zh: AI 工业检测, en: AI for Industrial Inspection }
         photo: images/members/fangzhixiang.jpg
+      - name: { zh: 李思辰, en: Sichen Li }
+        topic: { zh: 多智能体, en: Multi-Agent Systems }
+        photo: images/members/lisichen.jpg
+      - name: { zh: 袁少钦, en: Shaoqin Yuan }
+        topic: { zh: 光电探测与对抗, en: Optoelectronic Detection & Countermeasures }
+        photo: images/members/yuanshaoqin.jpg
 
   - role: { zh: 硕士研究生, en: Master's Students }
+    # 按姓氏拼音排序
     members:
       - { name: { zh: 冯毅冉, en: Yiran Feng }, photo: images/members/fengyiran.jpg }
-      - { name: { zh: 冷槟全, en: Binquan Leng }, photo: images/members/lengbinquan.jpg }
-      - { name: { zh: 宋文达, en: Wenda Song }, photo: images/members/songwenda.jpg }
-      - { name: { zh: 朱越, en: Yue Zhu }, photo: images/members/zhuyue.jpg }
-      - { name: { zh: 李尚蔚, en: Shangwei Li }, photo: images/members/lishangwei.jpg }
-      - { name: { zh: 王嘉伟, en: Jiawei Wang }, photo: images/members/wangjiawei.jpg }
-      - { name: { zh: 王家一, en: Jiayi Wang }, photo: images/members/wangjiayi.jpg }
-      - { name: { zh: 王浦成, en: Pucheng Wang }, photo: images/members/wangpucheng.jpg }
-      - { name: { zh: 田浩楠, en: Haonan Tian }, photo: images/members/tianhaonan.jpg }
-      - { name: { zh: 穆佳欣, en: Jiaxin Mu }, photo: images/members/mujiaxin.jpg }
       - { name: { zh: 管世杰, en: Shijie Guan }, photo: images/members/guanshijie.jpg }
+      - { name: { zh: 冷槟全, en: Binquan Leng }, topic: { zh: 水下图像增强, en: "Underwater Image Enhancement" }, photo: images/members/lengbinquan.jpg }
+      - { name: { zh: 李尚蔚, en: Shangwei Li }, photo: images/members/lishangwei.jpg }
+      - { name: { zh: 梁巍凡, en: Weifan Liang }, photo: images/members/liangweifan.jpg }
+      - { name: { zh: 廖振宇, en: Zhenyu Liao }, photo: images/members/liaozhenyu.jpg }
+      - { name: { zh: 刘傲然, en: Aoran Liu }, photo: images/members/liuaoran.jpg }
+      - { name: { zh: 鲁端阳, en: Duanyang Lu }, topic: { zh: 堆叠物体分拣, en: "Robotic Sorting of Stacked Objects" }, photo: images/members/luduanyang.jpg }
+      - { name: { zh: 马浩然, en: Haoran Ma }, topic: { zh: 计算机视觉与大模型应用, en: "Computer Vision & Large-Model Applications" }, photo: images/members/mahaoran.jpg }
+      - { name: { zh: 毛骏波, en: Junbo Mao }, photo: images/members/maojunbo.jpg }
+      - { name: { zh: 穆佳欣, en: Jiaxin Mu }, photo: images/members/mujiaxin.jpg }
+      - { name: { zh: 宁一丁, en: Yiding Ning }, photo: images/members/ningyiding.jpg }
+      - { name: { zh: 曲唐祺, en: Tangqi Qu }, topic: { zh: 可解释人工智能, en: "Explainable AI" }, photo: images/members/qutangqi.jpg }
+      - { name: { zh: 宋文达, en: Wenda Song }, photo: images/members/songwenda.jpg }
+      - { name: { zh: 田浩楠, en: Haonan Tian }, topic: { zh: 人工智能, en: "Artificial Intelligence" }, photo: images/members/tianhaonan.jpg }
+      - { name: { zh: 王嘉伟, en: Jiawei Wang }, photo: images/members/wangjiawei.jpg }
+      - { name: { zh: 王家一, en: Jiayi Wang }, topic: { zh: 认知神经科学, en: "Cognitive Neuroscience" }, photo: images/members/wangjiayi.jpg }
+      - { name: { zh: 王浦成, en: Pucheng Wang }, photo: images/members/wangpucheng.jpg }
+      - { name: { zh: 吴杰, en: Jie Wu }, topic: { zh: 医学影像处理, en: "Medical Image Processing" }, photo: images/members/wujie.jpg }
+      - { name: { zh: 吴文豪, en: Wenhao Wu }, photo: images/members/wuwenhao.jpg }
       - { name: { zh: 许铭洋, en: Mingyang Xu }, photo: images/members/xumingyang.jpg }
+      - { name: { zh: 张宁钥, en: Ningyue Zhang }, photo: images/members/zhangningyue.jpg }
       - { name: { zh: 郑灏洋, en: Haoyang Zheng }, photo: images/members/zhenghaoyang.jpg }
-      - { name: { zh: 马浩然, en: Haoran Ma }, photo: images/members/mahaoran.jpg }
-      - { name: { zh: 鲁端阳, en: Duanyang Lu }, photo: images/members/luduanyang.jpg }
+      - { name: { zh: 朱越, en: Yue Zhu }, photo: images/members/zhuyue.jpg }
+      - { name: { zh: 庄子建, en: Zijian Zhuang }, photo: images/members/zhuangzijian.jpg }
 
 alumni:
   - name: { zh: 姓名 G, en: Name G }

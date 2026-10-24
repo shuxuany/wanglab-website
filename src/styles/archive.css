@@ -1,0 +1,934 @@
+/* ==========================================================
+   学生获奖「三维档案阵列」
+   暖灰白底、近黑正文、细线分隔与紧凑排字，琥珀色为选中信号
+   桌面端：说明文字叠在三维画面上；手机端：画面在上，说明、统计依次排在下方
+   ========================================================== */
+
+.rl {
+  --rl-bg: #ebe6e0;
+  --rl-ink: #0e0d0b;
+  --rl-ink-2: #6c675e;
+  --rl-ink-3: #9a948a;
+  --rl-line: rgba(14, 13, 11, 0.3);
+  --rl-line-2: rgba(14, 13, 11, 0.12);
+  --rl-amber: #9b6b34;
+  --rl-amber-2: #d29a50;
+  --rl-pad: clamp(20px, 2.6vw, 48px);
+  position: relative;
+  width: 100vw;
+  height: clamp(640px, 90vh, 960px);
+  margin: 4px calc(50% - 50vw) 72px;
+  overflow: hidden;
+  isolation: isolate;
+  border-block: 1px solid #d8d1c6;
+  color: var(--rl-ink);
+  background: var(--rl-bg);
+}
+
+/* 只清掉默认外边距，不压过下面各元素自己的间距 */
+:where(.rl) :where(p, h3, ol, ul) {
+  margin: 0;
+}
+
+.rl button {
+  font: inherit;
+  color: inherit;
+}
+
+/* 小标签：英文大写字距 + 中文 */
+.rl-k {
+  font: 600 11px/1.4 var(--font-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rl-ink-2);
+}
+
+.rl-k i {
+  margin-left: 8px;
+  font-style: normal;
+  color: var(--rl-ink-3);
+}
+
+/* ---------- 三维画面 ---------- */
+
+.rl-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  outline: none;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+
+.rl-stage:focus-visible {
+  box-shadow: inset 0 0 0 2px var(--rl-amber-2);
+}
+
+.rl-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.rl.is-ready .rl-canvas {
+  opacity: 1;
+}
+
+/* 四周的浅色遮罩，让叠在画面上的文字清楚 */
+.rl-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(235, 230, 224, 0.92) 0%, rgba(235, 230, 224, 0.55) 17%, rgba(235, 230, 224, 0) 30%),
+    linear-gradient(270deg, rgba(235, 230, 224, 0.96) 0%, rgba(235, 230, 224, 0.9) 24%, rgba(235, 230, 224, 0) 40%),
+    linear-gradient(180deg, rgba(235, 230, 224, 0.8) 0%, rgba(235, 230, 224, 0) 14%, rgba(235, 230, 224, 0) 82%, rgba(235, 230, 224, 0.9) 100%);
+}
+
+.rl-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 14px;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+
+.rl.is-ready .rl-loading {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.rl-loading-bar {
+  position: relative;
+  width: 168px;
+  height: 1px;
+  overflow: hidden;
+  background: var(--rl-line-2);
+}
+
+.rl-loading-bar i {
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: var(--rl-ink);
+  animation: rl-load 1.4s cubic-bezier(0.6, 0, 0.3, 1) infinite;
+}
+
+@keyframes rl-load {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+
+/* 每排左端的等级标签 */
+.rl-labels {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s 0.6s;
+}
+
+.rl.is-ready .rl-labels {
+  opacity: 1;
+}
+
+.rl-lane {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  translate: -100% -50%;
+  font: 600 12px/1 var(--font-display);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  color: var(--rl-ink-2);
+  text-shadow: 0 0 6px var(--rl-bg), 0 0 3px var(--rl-bg), 0 0 1px var(--rl-bg);
+  transform: translate3d(-400px, -400px, 0);
+  transition: color 0.3s, opacity 0.3s;
+}
+
+.rl-lane b {
+  font-weight: 700;
+  color: var(--rl-ink);
+}
+
+.rl-lane i {
+  font-style: normal;
+  color: var(--rl-ink-3);
+}
+
+.rl-lane.is-active,
+.rl-lane.is-active b {
+  color: var(--rl-amber);
+}
+
+/* 从奖状指向说明框的引线 */
+.rl-leader {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.rl-leader path {
+  fill: none;
+  stroke: var(--rl-ink);
+  stroke-width: 1;
+}
+
+.rl-leader circle {
+  fill: var(--rl-amber-2);
+  stroke: var(--rl-ink);
+  stroke-width: 1;
+}
+
+/* 选中奖状旁边的名称标签 */
+.rl-tag {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  max-width: 380px;
+  padding: 7px 12px 8px;
+  border: 1px solid var(--rl-ink);
+  background: rgba(244, 240, 233, 0.92);
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+
+.rl-tag b {
+  flex: none;
+  font: 700 12px/1 var(--font-display);
+  letter-spacing: 0.06em;
+}
+
+.rl-tag span {
+  min-width: 0;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rl-tag i {
+  flex: none;
+  padding-left: 10px;
+  border-left: 1px solid var(--rl-line);
+  font: 600 11px/1 var(--font-display);
+  font-style: normal;
+  letter-spacing: 0.1em;
+  color: var(--rl-amber);
+}
+
+/* ---------- 叠在画面上的界面 ---------- */
+
+.rl-brand,
+.rl-stats,
+.rl-feat,
+.rl-info,
+.rl-select,
+.rl-rowctl,
+.rl-hint {
+  position: absolute;
+  z-index: 2;
+}
+
+.rl-brand {
+  left: var(--rl-pad);
+  top: clamp(22px, 3.4vh, 40px);
+  pointer-events: none;
+}
+
+.rl-brand-1 {
+  font: 700 clamp(30px, 2.4vw, 40px) / 0.95 var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.rl-brand-2 {
+  margin-top: 7px;
+  font: 700 11.5px/1.2 var(--font-display);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.rl-brand-3 {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+}
+
+.rl-brand-3 span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--rl-ink-3);
+}
+
+/* 左上：各等级数量 */
+.rl-stats {
+  left: var(--rl-pad);
+  top: clamp(150px, 19vh, 188px);
+  width: 262px;
+}
+
+.rl-stats ol {
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rl-line);
+}
+
+.rl-stat {
+  display: grid;
+  grid-template-columns: 24px 1fr 58px 34px;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid var(--rl-line-2);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.rl-stat-no {
+  font: 600 11px/1 var(--font-display);
+  color: var(--rl-ink-3);
+  transition: color 0.3s;
+}
+
+.rl-stat-name {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.rl-stat-name i {
+  display: block;
+  margin-top: 3px;
+  font: 600 9.5px/1 var(--font-display);
+  font-style: normal;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--rl-ink-3);
+}
+
+.rl-stat-bar {
+  position: relative;
+  height: 2px;
+  background: var(--rl-line-2);
+}
+
+.rl-stat-bar i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--w) * 100%);
+  background: var(--rl-ink);
+  transition: background 0.3s;
+}
+
+.rl-stat-num {
+  font: 700 22px/1 var(--font-display);
+  text-align: right;
+}
+
+.rl-stat:hover .rl-stat-no,
+.rl-stat.is-active .rl-stat-no,
+.rl-stat.is-active .rl-stat-num {
+  color: var(--rl-amber);
+}
+
+.rl-stat:hover .rl-stat-bar i,
+.rl-stat.is-active .rl-stat-bar i {
+  background: var(--rl-amber-2);
+}
+
+.rl-total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-top: 10px;
+  font: 600 11px/1.4 var(--font-display);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--rl-ink-2);
+}
+
+.rl-total i {
+  margin-left: 8px;
+  font-style: normal;
+  color: var(--rl-ink-3);
+}
+
+.rl-total b {
+  font: 700 30px/1 var(--font-display);
+  letter-spacing: 0.02em;
+  color: var(--rl-ink);
+}
+
+/* 右上：高等级奖状 */
+.rl-feat {
+  right: var(--rl-pad);
+  top: clamp(22px, 3.4vh, 40px);
+  width: 296px;
+}
+
+.rl-feat ol {
+  margin-top: 10px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--rl-line);
+}
+
+.rl-feat-item {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 10px;
+  width: 100%;
+  padding: 8px 0;
+  border: 0;
+  border-bottom: 1px solid var(--rl-line-2);
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: padding 0.4s var(--ease), box-shadow 0.3s;
+}
+
+.rl-feat-no {
+  font: 700 12px/1.3 var(--font-display);
+  letter-spacing: 0.06em;
+  transition: color 0.3s;
+}
+
+.rl-feat-title {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.rl-feat-lv {
+  font: 500 11px/1.3 var(--font-display);
+  letter-spacing: 0.04em;
+  color: var(--rl-ink-3);
+}
+
+.rl-feat-item:hover .rl-feat-no,
+.rl-feat-item.is-active .rl-feat-no {
+  color: var(--rl-amber);
+}
+
+.rl-feat-item.is-active {
+  padding-left: 12px;
+  box-shadow: inset 2px 0 0 var(--rl-amber-2);
+}
+
+/* 右侧：当前奖状的档案信息 */
+.rl-info {
+  right: var(--rl-pad);
+  top: clamp(268px, 37%, 340px);
+  width: 330px;
+}
+
+.rl-c-path {
+  display: flex;
+  gap: 8px;
+  font: 600 11px/1.4 var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--rl-ink-2);
+}
+
+.rl-c-no {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font: 700 25px/1.1 var(--font-display);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.rl-c-rule {
+  position: relative;
+  display: block;
+  height: 1px;
+  margin: 13px 0 14px 18px;
+  background: var(--rl-ink);
+}
+
+.rl-c-rule::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: -3px;
+  width: 7px;
+  height: 7px;
+  background: var(--rl-ink);
+}
+
+.rl-c-title {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.rl-c-note {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--rl-ink-2);
+}
+
+.rl-c-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  font: 600 12px/1.4 var(--font-display);
+  letter-spacing: 0.08em;
+  color: var(--rl-ink-2);
+}
+
+.rl-c-meta span + span::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-right: 12px;
+  vertical-align: 2px;
+  background: var(--rl-amber-2);
+}
+
+.rl-c-issuer {
+  margin-top: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--rl-ink-2);
+}
+
+.rl-c-body.is-swap {
+  animation: rl-swap 0.46s var(--ease) both;
+}
+
+@keyframes rl-swap {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.rl-c-open {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  margin-top: 16px;
+  padding: 0 16px;
+  border: 1px solid var(--rl-amber);
+  background: rgba(235, 230, 224, 0.7);
+  font: 600 12.5px/1 var(--font-display) !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.rl-c-open:hover,
+.rl-c-open:focus-visible {
+  border-color: var(--rl-ink);
+  color: #f4efe8;
+  background: var(--rl-ink);
+}
+
+.rl-c-open svg {
+  transition: transform 0.3s var(--ease);
+}
+
+.rl-c-open:hover svg {
+  transform: translateX(4px);
+}
+
+.rl-c-withheld {
+  margin-top: 16px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--rl-line);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--rl-ink-3);
+}
+
+.rl [hidden] {
+  display: none !important;
+}
+
+/* 左下：当前等级内的序号与刻度 */
+.rl-select {
+  left: var(--rl-pad);
+  bottom: clamp(20px, 3.2vh, 38px);
+}
+
+.rl-sel-num {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.rl-sel-num b {
+  font: 500 46px/1 var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.rl-sel-num > span {
+  font: 500 18px/1 var(--font-display);
+  color: var(--rl-ink-2);
+}
+
+.rl-sel-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.rl-arrow {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+
+.rl-arrow:hover {
+  color: var(--rl-amber);
+}
+
+.rl-arrow[data-rl-step='-1'] svg {
+  transform: rotate(180deg);
+}
+
+.rl-arrow[data-rl-rowstep='-1'] svg {
+  transform: rotate(-90deg);
+}
+
+.rl-arrow[data-rl-rowstep='1'] svg {
+  transform: rotate(90deg);
+}
+
+.rl-ticks {
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  height: 26px;
+}
+
+.rl-ticks i {
+  width: 1.5px;
+  height: 11px;
+  background: var(--rl-ink-3);
+  transition: height 0.4s var(--ease), background 0.3s;
+}
+
+.rl-ticks i.is-on {
+  width: 2px;
+  height: 26px;
+  background: var(--rl-ink);
+}
+
+/* 右下：切换等级 */
+.rl-rowctl {
+  right: var(--rl-pad);
+  bottom: clamp(20px, 3.2vh, 38px);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rl-rowctl-text {
+  min-width: 112px;
+  text-align: right;
+}
+
+.rl-rowctl-name {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.rl-hint {
+  left: 50%;
+  bottom: clamp(20px, 3vh, 34px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  translate: -50% 0;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--rl-ink-2);
+  pointer-events: none;
+}
+
+.rl-hint i {
+  width: 6px;
+  height: 6px;
+  background: var(--rl-ink);
+}
+
+/* ---------- 不支持三维时的列表 ---------- */
+
+.js .rl-fallback {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.rl.is-fallback,
+html:not(.js) .rl {
+  height: auto;
+}
+
+.rl.is-fallback .rl-stage,
+.rl.is-fallback .rl-info,
+.rl.is-fallback .rl-select,
+.rl.is-fallback .rl-rowctl,
+.rl.is-fallback .rl-hint,
+html:not(.js) .rl-stage,
+html:not(.js) .rl-info,
+html:not(.js) .rl-select,
+html:not(.js) .rl-rowctl,
+html:not(.js) .rl-hint {
+  display: none;
+}
+
+.rl.is-fallback .rl-brand,
+.rl.is-fallback .rl-stats,
+.rl.is-fallback .rl-feat,
+html:not(.js) .rl-brand,
+html:not(.js) .rl-stats,
+html:not(.js) .rl-feat {
+  position: static;
+  width: auto;
+  margin: 28px var(--rl-pad) 0;
+}
+
+.rl.is-fallback .rl-stats,
+html:not(.js) .rl-stats {
+  max-width: 520px;
+}
+
+.rl.is-fallback .rl-feat,
+.rl.is-fallback .rl-fallback,
+html:not(.js) .rl-feat,
+html:not(.js) .rl-fallback {
+  max-width: 860px;
+}
+
+.rl.is-fallback .rl-fallback,
+html:not(.js) .rl-fallback {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 28px var(--rl-pad) 36px;
+  clip: auto;
+  white-space: normal;
+}
+
+.rl-fallback section + section {
+  margin-top: 20px;
+}
+
+.rl-fallback h3 {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rl-line);
+  font-size: 16px;
+}
+
+.rl-fallback h3 span,
+.rl-fallback li span {
+  font-size: 12px;
+  color: var(--rl-ink-3);
+}
+
+.rl-fallback ul {
+  padding: 0;
+  list-style: none;
+}
+
+.rl-fallback li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rl-line-2);
+  font-size: 14px;
+}
+
+/* ---------- 中等宽度 ---------- */
+
+@media (max-width: 1180px) {
+  .rl-hint {
+    display: none;
+  }
+
+  .rl-feat {
+    width: 250px;
+  }
+
+  .rl-stats {
+    width: 232px;
+  }
+
+  .rl-info {
+    width: 290px;
+  }
+}
+
+/* ---------- 手机：画面在上，其余依次往下排 ---------- */
+
+@media (max-width: 760px) {
+  .rl {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .rl-stage {
+    position: relative;
+    inset: auto;
+    order: 1;
+    height: min(62vh, 470px);
+    min-height: 340px;
+    cursor: default;
+  }
+
+  .rl-stage::after {
+    background: linear-gradient(180deg, rgba(235, 230, 224, 0.9) 0%, rgba(235, 230, 224, 0) 26%, rgba(235, 230, 224, 0) 84%, rgba(235, 230, 224, 0.9) 100%);
+  }
+
+  .rl-brand {
+    left: 16px;
+    top: 14px;
+  }
+
+  .rl-brand-1 {
+    font-size: 24px;
+  }
+
+  .rl-brand-3 span {
+    display: none;
+  }
+
+  .rl-hint,
+  .rl-info,
+  .rl-select,
+  .rl-rowctl,
+  .rl-stats,
+  .rl-feat {
+    position: static;
+    width: auto;
+    margin-inline: 16px;
+    translate: none;
+  }
+
+  .rl-hint {
+    display: flex;
+    order: 2;
+    margin-top: 12px;
+    white-space: normal;
+  }
+
+  .rl-info {
+    order: 3;
+    margin-top: 18px;
+  }
+
+  .rl-c-no {
+    font-size: 21px;
+  }
+
+  .rl-c-title {
+    font-size: 18px;
+  }
+
+  .rl-select {
+    order: 4;
+    margin-top: 22px;
+  }
+
+  .rl-sel-num b {
+    font-size: 36px;
+  }
+
+  .rl-rowctl {
+    order: 5;
+    justify-content: space-between;
+    margin-top: 6px;
+    padding-top: 10px;
+    border-top: 1px solid var(--rl-line-2);
+  }
+
+  .rl-rowctl-text {
+    text-align: center;
+  }
+
+  .rl-stats {
+    order: 6;
+    margin-top: 26px;
+  }
+
+  .rl-feat {
+    order: 7;
+    margin-block: 26px 30px;
+  }
+
+  .rl-leader,
+  .rl-labels,
+  .rl-tag {
+    display: none;
+  }
+}

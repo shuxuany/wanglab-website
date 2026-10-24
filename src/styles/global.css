@@ -1707,6 +1707,62 @@ main {
   line-height: 1.7;
 }
 
+/* 影响因子标签 */
+.cite-if {
+  padding: 0 8px;
+  border: 1px solid rgba(245, 124, 64, 0.45);
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+  color: var(--orange-deep);
+  background: #fff5ef;
+}
+
+/* 论文页顶部：高影响因子论文（单独编号 01–05，不影响下方按年份的编号） */
+.pub-top {
+  margin-top: 26px;
+}
+
+.pub-top-label small {
+  order: 2;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-3);
+}
+
+.pub-top-label::after {
+  order: 3;
+}
+
+.cite-top {
+  counter-reset: top;
+}
+
+.cite-top .cite {
+  counter-increment: top;
+}
+
+.cite-top .cite::before {
+  content: counter(top, decimal-leading-zero);
+  color: var(--orange);
+}
+
+@media (max-width: 760px) {
+  .pub-top-label {
+    flex-wrap: wrap;
+    row-gap: 2px;
+  }
+
+  .pub-top-label small {
+    flex-basis: 100%;
+    order: 4;
+  }
+}
+
 .cite-authors {
   color: var(--text-2);
 }

@@ -1,0 +1,234 @@
+---
+// 学生获奖「三维档案阵列」
+// 交互参考《明日方舟》特别映像「莱茵生命：访问」中的档案终端：象牙色档案卡排成阵列，随鼠标位置起伏，
+// 选中的奖状抬起成为波峰并在旁边显示奖项名称。只借鉴交互与排版气质，未使用原作的名称、标志、模型和素材。
+// - 不同等级排成不同横排（国际级在最后一排，依次到院级在最前排）；左上角统计各等级数量
+// - 右上角展示 featured 的高等级奖状，无人操作时自动轮播
+// - 不显示获奖人姓名；证书照片上的姓名已遮挡；印有我校全称的证书显示为文字卡片
+// - 三维场景见 src/scripts/award-archive-scene.ts；不支持 WebGL 时显示下方列表
+import Icon from './Icon.astro';
+import { t, asset, formatDate, type Lang } from '../lib/site';
+import { ui } from '../lib/i18n';
+import '../styles/archive.css';
+
+interface Props {
+  lang: Lang;
+  items: any[];
+}
+const { lang, items } = Astro.props;
+const au = ui[lang].awards;
+const ar = au.archive;
+const LEVELS = ['international', 'national', 'provincial', 'industry', 'university', 'school'] as const;
+type Level = (typeof LEVELS)[number];
+
+const rows = LEVELS.map((id) => ({ id, items: items.filter((a) => a.level === id) })).filter((r) => r.items.length);
+let n = 0;
+const data = rows.flatMap((r, ri) =>
+  r.items.map((a, i) => ({
+    no: `A-${String(++n).padStart(3, '0')}`,
+    row: ri,
+    col: i,
+    level: r.id as Level,
+    title: t(a.title, lang),
+    note: a.note ? t(a.note, lang) : '',
+    issuer: t(a.issuer, lang),
+    date: formatDate(a.date, lang),
+    kind: (au.kinds as Record<string, string>)[a.kind] ?? '',
+    image: a.image ? asset(a.image) : '',
+    tex: a.image ? asset(String(a.image).replace('images/awards/', 'images/awards/tex/')) : '',
+    featured: !!a.featured,
+  })),
+);
+const featured = data.filter((d) => d.featured);
+const first = featured.find((d) => d.image) ?? featured[0] ?? data[0];
+const firstRow = rows[first.row];
+const pad = (k: number) => String(k).padStart(2, '0');
+const maxCount = Math.max(...rows.map((r) => r.items.length));
+const payload = {
+  lang,
+  start: data.indexOf(first),
+  rows: rows.map((r) => ({ id: r.id, name: au.levels[r.id], en: au.levelsEn[r.id], count: r.items.length })),
+  items: data,
+  text: { hintTouch: ar.hintTouch },
+};
+// 写进 <script type="application/json">，转义 < 避免提前结束标签
+const json = JSON.stringify(payload).replace(/</g, '\\u003c');
+---
+
+<section class="rl" data-rl aria-labelledby="rl-title">
+  <h2 id="rl-title" class="sr-only">{au.cats.student}</h2>
+
+  <div class="rl-stage" data-rl-stage tabindex="0" aria-label={ar.hint}>
+    <canvas class="rl-canvas" data-rl-canvas aria-hidden="true"></canvas>
+    <div class="rl-loading" data-rl-loading aria-hidden="true">
+      <span class="rl-loading-bar"><i></i></span>
+      <span class="rl-k">{ar.loading}</span>
+    </div>
+    <div class="rl-labels" data-rl-labels aria-hidden="true">
+      {
+        rows.map((r, i) => (
+          <span class="rl-lane" data-rl-lane={i}>
+            <b>{pad(i + 1)}</b>
+            {au.levels[r.id]}
+            <i>{pad(r.items.length)}</i>
+          </span>
+        ))
+      }
+    </div>
+    <svg class="rl-leader" data-rl-leader aria-hidden="true"><path d="M0 0"></path><circle r="3.5" cx="0" cy="0"></circle></svg>
+    <div class="rl-tag" data-rl-tag aria-hidden="true">
+      <b data-rl-f="tagno">{first.no}</b>
+      <span data-rl-f="tagtitle">{first.title}</span>
+      <i data-rl-f="taglevel">{au.levels[first.level]}</i>
+    </div>
+  </div>
+
+  <div class="rl-brand">
+    <p class="rl-brand-1">VCID LAB</p>
+    <p class="rl-brand-2">Student Award Archive</p>
+    <p class="rl-brand-3">
+      {lang === 'zh' && ar.brand}
+      <span>{ar.sub}</span>
+    </p>
+  </div>
+
+  <div class="rl-stats">
+    <p class="rl-k">
+      {ar.stats}
+      {lang === 'zh' && <i>Level index</i>}
+    </p>
+    <ol>
+      {
+        rows.map((r, i) => (
+          <li>
+            <button type="button" class="rl-stat" data-rl-row={i}>
+              <span class="rl-stat-no">{pad(i + 1)}</span>
+              <span class="rl-stat-name">
+                {au.levels[r.id]}
+                {lang === 'zh' && <i>{au.levelsEn[r.id]}</i>}
+              </span>
+              <span class="rl-stat-bar" style={`--w:${(r.items.length / maxCount).toFixed(3)}`} aria-hidden="true">
+                <i />
+              </span>
+              <b class="rl-stat-num">{pad(r.items.length)}</b>
+            </button>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="rl-total">
+      <span>
+        {ar.total}
+        {lang === 'zh' && <i>Total</i>}
+      </span>
+      <b>{pad(data.length)}</b>
+    </p>
+  </div>
+
+  <div class="rl-feat">
+    <p class="rl-k">
+      {ar.featured}
+      {lang === 'zh' && <i>Top awards</i>}
+    </p>
+    <ol>
+      {
+        featured.map((d) => (
+          <li>
+            <button type="button" class="rl-feat-item" data-rl-pick={data.indexOf(d)} title={d.title}>
+              <span class="rl-feat-no">{d.no}</span>
+              <span class="rl-feat-title">{d.title}</span>
+              <span class="rl-feat-lv">{au.levels[d.level]}</span>
+            </button>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+
+  <div class="rl-info" data-rl-info aria-live="polite">
+    <p class="rl-c-path">
+      {ar.path}
+      <span aria-hidden="true">/</span>
+      <span data-rl-f="level">{au.levels[first.level]}</span>
+    </p>
+    <p class="rl-c-no">
+      File number: <b data-rl-f="no">{first.no}</b>
+      <Icon name="external" size={18} />
+    </p>
+    <span class="rl-c-rule" aria-hidden="true"></span>
+    <div class="rl-c-body" data-rl-body>
+      <h3 class="rl-c-title" data-rl-f="title">{first.title}</h3>
+      <p class="rl-c-note" data-rl-f="note" hidden={!first.note}>{first.note}</p>
+      <p class="rl-c-meta">
+        <span data-rl-f="date">{first.date}</span>
+        <span data-rl-f="kind">{first.kind}</span>
+      </p>
+      <p class="rl-c-issuer" data-rl-f="issuer">{first.issuer}</p>
+    </div>
+    <button type="button" class="rl-c-open" data-rl-open data-zoom={first.image} data-caption={first.title} hidden={!first.image}>
+      <span>{ar.open}</span>
+      <Icon name="arrow" size={18} />
+    </button>
+    <p class="rl-c-withheld" data-rl-withheld hidden={!!first.image}>{ar.textOnly}</p>
+  </div>
+
+  <div class="rl-select">
+    <p class="rl-k">
+      {ar.select}<i data-rl-f="rowen">{au.levelsEn[firstRow.id]}</i>
+    </p>
+    <p class="rl-sel-num">
+      <b data-rl-f="col">{pad(first.col + 1)}</b>
+      <span>/ <span data-rl-f="cols">{pad(firstRow.items.length)}</span></span>
+    </p>
+    <div class="rl-sel-nav">
+      <button type="button" class="rl-arrow" data-rl-step="-1" aria-label={ar.prev}><Icon name="arrow" size={20} /></button>
+      <span class="rl-ticks" data-rl-ticks aria-hidden="true">
+        {firstRow.items.map((_, i) => <i class:list={{ 'is-on': i === first.col }} />)}
+      </span>
+      <button type="button" class="rl-arrow" data-rl-step="1" aria-label={ar.next}><Icon name="arrow" size={20} /></button>
+    </div>
+  </div>
+
+  <div class="rl-rowctl">
+    <button type="button" class="rl-arrow rl-arrow-v" data-rl-rowstep="-1" aria-label={ar.up}><Icon name="arrow" size={20} /></button>
+    <div class="rl-rowctl-text">
+      <p class="rl-k">
+        {ar.row} <span data-rl-f="rowno">{pad(first.row + 1)}</span> / {pad(rows.length)}
+      </p>
+      <p class="rl-rowctl-name" data-rl-f="rowname">{au.levels[firstRow.id]}</p>
+    </div>
+    <button type="button" class="rl-arrow rl-arrow-v" data-rl-rowstep="1" aria-label={ar.down}><Icon name="arrow" size={20} /></button>
+  </div>
+
+  <p class="rl-hint"><i aria-hidden="true"></i><span data-rl-hint>{ar.hint}</span></p>
+
+  <div class="rl-fallback">
+    <p class="rl-k">{ar.list}</p>
+    {
+      rows.map((r) => (
+        <section>
+          <h3>
+            {au.levels[r.id]}
+            <span>{r.items.length}</span>
+          </h3>
+          <ul>
+            {r.items.map((a) => (
+              <li>
+                {t(a.title, lang)}
+                <span>
+                  {formatDate(a.date, lang)} · {t(a.issuer, lang)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <script type="application/json" data-rl-data set:html={json} />
+</section>
+
+<script>
+  import '../scripts/award-archive';
+</script>

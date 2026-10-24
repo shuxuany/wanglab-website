@@ -11,6 +11,8 @@ if (root) {
   const items = [...root.querySelectorAll<HTMLElement>('[data-pub]')];
   const groups = [...root.querySelectorAll<HTMLElement>('[data-year-group]')];
   const empty = root.querySelector<HTMLElement>('[data-pub-empty]')!;
+  // 论文页顶部的「高影响因子论文」：只在全部方向、未按年份 / 关键词筛选、且不是只看会议或预印本时显示
+  const top = root.querySelector<HTMLElement>('[data-pub-top]');
   const count = root.querySelector<HTMLElement>('[data-pub-count]')!;
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -50,6 +52,7 @@ if (root) {
       if (ok) shown.push(it);
     }
     for (const g of groups) g.hidden = !g.querySelector('[data-pub]:not([hidden])');
+    if (top) top.hidden = !(dir === 'all' && (type === 'all' || type === 'journal') && year === 'all' && !q);
     tabs.forEach((t) => {
       const on = t.dataset.typeTab === type;
       t.classList.toggle('is-active', on);

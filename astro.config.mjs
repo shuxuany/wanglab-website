@@ -7,4 +7,6 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
   site: process.env.SITE_URL || 'https://example.github.io',
   base: process.env.BASE_PATH || '/',
+  // 获奖证书页的三维档案阵列单独打包了 three.js（约 550 KB，gzip 后约 140 KB），只在该页按需加载
+  vite: { build: { chunkSizeWarningLimit: 700 } },
 });
