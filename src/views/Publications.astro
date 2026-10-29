@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import PubItem from '../components/PubItem.astro';
 import OutputSwitch from '../components/OutputSwitch.astro';
 import Icon from '../components/Icon.astro';
-import { site, publications, papersSince, isLabLed, categoriesOf, t, type Lang } from '../lib/site';
+import { site, publications, papersSince, isLabLed, categoriesOf, pubType, t, type Lang, type Publication } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
@@ -17,11 +17,18 @@ const shown = publications.filter((p) => !papersSince || p.year >= papersSince);
 const hasOlder = shown.length < publications.length;
 const years = [...new Set(shown.map((p) => p.year))].sort((a, b) => b - a);
 const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string, string][])];
-// 课题组主导的论文中影响因子最高的 10 篇（publications.yaml 中的 impact，同分时较新的在前），放在「全部方向」列表最前面
-const top = shown
-  .filter((p) => typeof p.impact === 'number' && isLabLed(p))
+// 「高影响因子论文」：课题组主导的论文中影响因子最高的 10 篇期刊论文，加上 CCF-A / B 类会议论文，放在列表最前面；
+// 依次为 CCF-A 期刊和会议 → 其余期刊（影响因子从高到低）→ CCF-B 会议，同等级内较新的在前
+const labLed = shown.filter((p) => isLabLed(p));
+const topJournals = labLed
+  .filter((p) => typeof p.impact === 'number')
   .sort((a, b) => b.impact! - a.impact! || b.year - a.year)
   .slice(0, 10);
+const topConfs = labLed.filter((p) => pubType(p) === 'conference' && (p.ccf === 'A' || p.ccf === 'B'));
+const tier = (p: Publication) => (p.ccf === 'A' ? 0 : pubType(p) === 'conference' ? 2 : 1);
+const top = [...topJournals, ...topConfs].sort(
+  (a, b) => tier(a) - tier(b) || (b.impact ?? 0) - (a.impact ?? 0) || b.year - a.year,
+);
 ---
 
 <Base lang={lang} title={u.nav.publications} description={t(site.pages?.publications, lang)}>
@@ -75,7 +82,7 @@ const top = shown
           </h2>
           <ol class="cite-list cite-top">
             {top.map((p) => (
-              <PubItem pub={p} lang={lang} impact={p.impact} filterable={false} />
+              <PubItem pub={p} lang={lang} impact={p.impact} ccf={pubType(p) === 'conference' ? p.ccf : undefined} filterable={false} />
             ))}
           </ol>
         </section>

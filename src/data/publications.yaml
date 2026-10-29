@@ -15,8 +15,10 @@
 #  - slide: true：出现在首页轮播（导师介绍之后），按 impact 从高到低排列；summary 为轮播中显示的一句话简介（zh / en）
 #             轮播只选课题组主导的论文（见下面的 lab_lead）
 #  - impact：期刊影响因子（JCR 2025，2026 年 6 月发布；数值来自 BioxBio 汇总，正式数值以 Clarivate JCR 为准）
-#            论文页最前面的「高影响因子论文」自动从课题组主导的论文中取 impact 最高的 10 篇（同分时较新的在前）；
 #            每年 JCR 更新后改这里的数字即可
+#  - ccf：CCF 推荐目录等级 A / B / C（以课题组《研究成果详表》为准），会议论文填写，CCF-A 期刊（TPAMI、TIP）也填 A
+#    论文页最前面的「高影响因子论文」= 课题组主导的论文中 impact 最高的 10 篇期刊论文 + 全部 CCF-A / B 类会议论文，
+#    依次为 CCF-A 期刊和会议 → 其余期刊（按 impact 从高到低）→ CCF-B 会议，同等级内较新的在前
 #  - lab_lead：是否为课题组主导的论文，一般不用填，按作者自动判断：课题组同学（members.yaml 中的在读成员和毕业校友）
 #              是第一或第二作者且王老师在作者中，或王老师是第一作者；个别需要例外处理的论文填 lab_lead: true / false
 #  - badge：可选标签，如 封面文章 / Oral / Best Paper
@@ -108,6 +110,7 @@
   year: 2025
   topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
   category: motion
+  ccf: A
   impact: 20.4
   volume: "48(2), 1355–1372"
   doi: "10.1109/tpami.2025.3615144"
@@ -252,6 +255,7 @@
   year: 2024
   topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
   category: motion
+  ccf: A
   doi: "10.1109/cvpr52733.2024.01816"
   direction: 
 
@@ -321,6 +325,7 @@
   year: 2023
   topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
   category: motion
+  ccf: A
   doi: "10.1109/iccv51070.2023.00903"
   direction: 
 
@@ -374,6 +379,7 @@
   year: 2022
   topic: { zh: "三维目标检测", en: "3D object detection" }
   category: detection
+  ccf: A
   volume: "36(1), 870–878"
   doi: "10.1609/aaai.v36i1.19969"
   pdf: https://ojs.aaai.org/index.php/AAAI/article/download/19969/19728
@@ -440,6 +446,7 @@
   year: 2021
   topic: { zh: "低光照图像增强", en: "Low-light enhancement" }
   category: enhance
+  ccf: B
   doi: "10.1109/icassp39728.2021.9413433"
   direction: restore
 
@@ -449,15 +456,18 @@
   year: 2021
   topic: { zh: "低光照图像增强", en: "Low-light enhancement" }
   category: enhance
+  ccf: C
   doi: "10.1145/3444685.3446319"
   direction: restore
 
 - title: "A Detection and Tracking Combined Network for Long-Term Tracking"
   authors: ["Hao Zeng", "Zhengning Wang", "Deming Zhao", "Yijun Liu", "Yi Zeng"]
-  venue: "Lecture Notes in Computer Science"
+  venue: "International Conference on Image and Graphics (ICIG)"
+  short: "ICIG"
   year: 2021
   topic: { zh: "长时目标跟踪", en: "Long-term tracking" }
   category: detection
+  ccf: B
   doi: "10.1007/978-3-030-87361-5_47"
   direction: 
 
@@ -485,6 +495,7 @@
   year: 2019
   topic: { zh: "人脸关键点检测", en: "Facial landmark detection" }
   category: face
+  ccf: B
   volume: "238, 314–319"
   doi: "10.1109/icme.2019.00062"
   direction: 
@@ -519,6 +530,7 @@
   year: 2017
   topic: { zh: "分数阶 Retinex 增强", en: "Fractional-order Retinex" }
   category: enhance
+  ccf: A
   impact: 15.3
   volume: "27(3), 1214–1229"
   doi: "10.1109/tip.2017.2779601"
@@ -545,19 +557,23 @@
 
 - title: "Long-Distance/Environment Face Image Enhancement Method for Recognition"
   authors: ["Zhengning Wang", "Shanshan Ma", "Mingyan Han", "Guang Hu", "Shuaicheng Liu"]
-  venue: "Lecture Notes in Computer Science"
+  venue: "International Conference on Image and Graphics (ICIG)"
+  short: "ICIG"
   year: 2017
   topic: { zh: "人脸图像增强", en: "Face image enhancement" }
   category: face
+  ccf: B
   doi: "10.1007/978-3-319-71607-7_44"
   direction: restore
 
 - title: "Uncertain Region Identification for Stereoscopic Foreground Cutout"
   authors: ["Taotao Yang", "Shuaicheng Liu", "Chao Sun", "Zhengning Wang", "Bing Zeng"]
-  venue: "Lecture Notes in Computer Science"
+  venue: "International Conference on Image and Graphics (ICIG)"
+  short: "ICIG"
   year: 2017
   topic: { zh: "立体图像前景抠图", en: "Stereo foreground cutout" }
   category: detection
+  ccf: B
   doi: "10.1007/978-3-319-71598-8_35"
   direction: 
 
@@ -568,6 +584,7 @@
   year: 2016
   topic: { zh: "反光去除", en: "Reflection removal" }
   category: enhance
+  ccf: A
   doi: "10.1145/2964284.2967264"
   direction: restore
 

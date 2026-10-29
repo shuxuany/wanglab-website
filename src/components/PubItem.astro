@@ -1,6 +1,7 @@
 ---
 // 论文条目（学术引用格式）：作者, "标题," 期刊, 卷期页码, 年份.
-// impact：显示影响因子标签；filterable=false 时不带筛选用的 data 属性（论文页顶部「高影响因子论文」用，不参与筛选和计数）
+// impact：显示影响因子标签；ccf：显示会议的 CCF 等级标签；
+// filterable=false 时不带筛选用的 data 属性（论文页顶部「高影响因子论文」用，不参与筛选和计数）
 import { t, asset, displayAuthors, categoryById, categoryColor, pubType, type Lang, type Publication } from '../lib/site';
 
 interface Props {
@@ -10,9 +11,10 @@ interface Props {
   delay?: number;
   showTopic?: boolean;
   impact?: number;
+  ccf?: string;
   filterable?: boolean;
 }
-const { pub, lang, reveal = false, delay = 0, showTopic = true, impact, filterable = true } = Astro.props;
+const { pub, lang, reveal = false, delay = 0, showTopic = true, impact, ccf, filterable = true } = Astro.props;
 
 const authors = displayAuthors(pub.authors);
 const doiUrl = pub.doi ? (/^https?:/.test(pub.doi) ? pub.doi : `https://doi.org/${pub.doi}`) : '';
@@ -37,6 +39,7 @@ const search = [pub.title, ...(pub.authors ?? []), pub.venue, pub.short, pub.yea
   <div class="cite-tags">
     {pub.short && <span class="cite-venue">{pub.short}</span>}
     {impact !== undefined && <span class="cite-if">IF {impact.toFixed(1)}</span>}
+    {ccf && <span class="cite-if">CCF-{ccf}</span>}
     {/* 分类标签：显示论文的具体研究主题（topic），圆点颜色和悬停提示为所属大类 */}
     {showTopic && (pub.topic || cat) && <span class="cite-dir" title={t(cat?.name, lang)}><i></i>{t(pub.topic, lang) || t(cat?.name, lang)}</span>}
     {pub.badge && <span class="cite-badge">{t(pub.badge, lang)}</span>}
