@@ -17,11 +17,11 @@ const shown = publications.filter((p) => !papersSince || p.year >= papersSince);
 const hasOlder = shown.length < publications.length;
 const years = [...new Set(shown.map((p) => p.year))].sort((a, b) => b - a);
 const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string, string][])];
-// 课题组主导的论文中影响因子最高的 5 篇（publications.yaml 中的 impact，同分时较新的在前），放在「全部方向」列表最前面
+// 课题组主导的论文中影响因子最高的 10 篇（publications.yaml 中的 impact，同分时较新的在前），放在「全部方向」列表最前面
 const top = shown
   .filter((p) => typeof p.impact === 'number' && isLabLed(p))
   .sort((a, b) => b.impact! - a.impact! || b.year - a.year)
-  .slice(0, 5);
+  .slice(0, 10);
 ---
 
 <Base lang={lang} title={u.nav.publications} description={t(site.pages?.publications, lang)}>

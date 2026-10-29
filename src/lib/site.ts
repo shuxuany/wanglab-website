@@ -48,7 +48,7 @@ export interface Publication {
   /** 具体研究主题，显示为论文条目上的分类标签 */
   topic?: Text;
   featured?: boolean;
-  /** 期刊影响因子（JCR），论文页最前面的「高影响因子论文」从课题组主导的论文中取最高的 5 篇 */
+  /** 期刊影响因子（JCR），论文页最前面的「高影响因子论文」从课题组主导的论文中取最高的 10 篇 */
   impact?: number;
   badge?: Text;
   /** journal / conference / preprint；不填时根据 venue 自动判断 */

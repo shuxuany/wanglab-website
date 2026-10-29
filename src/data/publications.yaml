@@ -15,7 +15,7 @@
 #  - slide: true：出现在首页轮播（导师介绍之后），按 impact 从高到低排列；summary 为轮播中显示的一句话简介（zh / en）
 #             轮播只选课题组主导的论文（见下面的 lab_lead）
 #  - impact：期刊影响因子（JCR 2025，2026 年 6 月发布；数值来自 BioxBio 汇总，正式数值以 Clarivate JCR 为准）
-#            论文页最前面的「高影响因子论文」自动从课题组主导的论文中取 impact 最高的 5 篇（同分时较新的在前）；
+#            论文页最前面的「高影响因子论文」自动从课题组主导的论文中取 impact 最高的 10 篇（同分时较新的在前）；
 #            每年 JCR 更新后改这里的数字即可
 #  - lab_lead：是否为课题组主导的论文，一般不用填，按作者自动判断：课题组同学（members.yaml 中的在读成员和毕业校友）
 #              是第一或第二作者且王老师在作者中，或王老师是第一作者；个别需要例外处理的论文填 lab_lead: true / false
@@ -173,6 +173,7 @@
   year: 2025
   topic: { zh: "脑龄预测", en: "Brain age prediction" }
   category: medical
+  impact: 5.7
   volume: "109, 107926"
   doi: "10.1016/j.bspc.2025.107926"
   direction: medical
