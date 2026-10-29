@@ -3,6 +3,7 @@
 #  以下为根据研究方向拟写的草稿，请按学院当年招生政策修改。
 #  - intro 同时显示在首页底部的招生卡片中
 #  - positions 的 icon 可选：sparkles / graduation / book / users / flask / brain
+#  - message 显示在「我们希望你」开头，requirements 为下面的要点
 # ==============================================================
 
 intro:
@@ -25,6 +26,25 @@ positions:
     desc:
       zh: 欢迎本科生进组参与科研训练、大创项目、毕业设计和学科竞赛，表现优秀者可优先推荐读研。
       en: Undergraduates can join for research training, innovation projects, theses and competitions; strong performers get priority for graduate admission.
+
+# 「我们希望你」开头的寄语（2026-10-29 课题组定稿），空行分段
+message:
+  zh: |
+    如果你最终加入视觉计算与智能决策实验室（VCID Lab），我们之间便不只是师生，你也会成为这个团队真正的一员。这是一支年轻、对科研充满热情的队伍，在强化学习、工业视觉、医学影像和具身智能等方向都有扎实积累；系统的科研训练与真实的项目历练，会让你的学术能力在这里加速成长。
+
+    不过，成长能有多快，终究取决于你自己。比起天赋，我们更看重你做研究的动机、态度与投入。愿你始终保有好奇心，既敢于大胆假设，也习惯于小心求证；愿你尊重权威而不迷信权威，在独立思考中找到自己的方向，并有耐心把一个想法打磨到极致。
+
+    论文只是思考落脚的地方。它真正的价值不在数量，而在于你是否为这个领域添了一块砖，让后来者能站得更高、走得更远。
+
+    我们期待与你并肩，让好奇心一步步长成成果。
+  en: |
+    If you join the Visual Computing and Intelligent Decision Lab (VCID Lab), we will be more than teacher and student — you will become a true member of this team. We are a young group with a real passion for research and solid experience in reinforcement learning, industrial vision, medical imaging and embodied intelligence. Systematic research training and hands-on work on real projects will help your academic abilities grow quickly here.
+
+    How fast you grow, though, is ultimately up to you. More than talent, we value your motivation, attitude and commitment to research. May you always stay curious — bold in forming hypotheses and careful in testing them. May you respect authority without blindly following it, find your own direction through independent thinking, and have the patience to refine an idea until it is truly polished.
+
+    A paper is simply where your thinking comes to rest. Its real value lies not in numbers, but in whether you have laid a brick for the field, helping those who come after you stand higher and go further.
+
+    We look forward to working side by side with you, turning curiosity, step by step, into results.
 
 requirements:
   zh:

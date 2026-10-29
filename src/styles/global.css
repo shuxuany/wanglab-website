@@ -2531,6 +2531,27 @@ a.cite-title:hover {
   }
 }
 
+/* 「我们希望你」开头的寄语 */
+.join-letter {
+  margin-bottom: 24px;
+  padding: 22px 26px;
+  border-left: 3px solid var(--orange);
+  border-radius: 0 12px 12px 0;
+  font-size: 15.5px;
+  line-height: 1.9;
+  color: var(--text-2);
+  background: var(--blue-50);
+}
+
+.join-letter p + p {
+  margin-top: 0.9em;
+}
+
+.join-letter p:last-child {
+  font-weight: 600;
+  color: var(--blue-deep);
+}
+
 .checklist,
 .steps {
   margin: 0;
