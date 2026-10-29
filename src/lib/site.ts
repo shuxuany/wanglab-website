@@ -48,9 +48,9 @@ export interface Publication {
   /** 具体研究主题，显示为论文条目上的分类标签 */
   topic?: Text;
   featured?: boolean;
-  /** 期刊影响因子（JCR），论文页最前面的「高影响因子论文」取课题组主导的论文中最高的 10 篇期刊论文 */
+  /** 期刊影响因子（JCR），用于论文页最前面「高影响因子论文」（共 10 篇）的排序 */
   impact?: number;
-  /** CCF 推荐目录等级；CCF-A / B 类会议论文也列入「高影响因子论文」 */
+  /** CCF 推荐目录等级；CCF-A / B 类会议论文也参与「高影响因子论文」的排序 */
   ccf?: 'A' | 'B' | 'C';
   badge?: Text;
   /** journal / conference / preprint；不填时根据 venue 自动判断 */

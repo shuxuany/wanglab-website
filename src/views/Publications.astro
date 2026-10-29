@@ -17,18 +17,15 @@ const shown = publications.filter((p) => !papersSince || p.year >= papersSince);
 const hasOlder = shown.length < publications.length;
 const years = [...new Set(shown.map((p) => p.year))].sort((a, b) => b - a);
 const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string, string][])];
-// 「高影响因子论文」：课题组主导的论文中影响因子最高的 10 篇期刊论文，加上 CCF-A / B 类会议论文，放在列表最前面；
+// 「高影响因子论文」：课题组主导的期刊论文（有影响因子）和 CCF-A / B 类会议论文一起排序，取前 10 篇放在列表最前面；
 // 依次为 CCF-A 期刊和会议 → 其余期刊（影响因子从高到低）→ CCF-B 会议，同等级内较新的在前
-const labLed = shown.filter((p) => isLabLed(p));
-const topJournals = labLed
-  .filter((p) => typeof p.impact === 'number')
-  .sort((a, b) => b.impact! - a.impact! || b.year - a.year)
-  .slice(0, 10);
-const topConfs = labLed.filter((p) => pubType(p) === 'conference' && (p.ccf === 'A' || p.ccf === 'B'));
 const tier = (p: Publication) => (p.ccf === 'A' ? 0 : pubType(p) === 'conference' ? 2 : 1);
-const top = [...topJournals, ...topConfs].sort(
-  (a, b) => tier(a) - tier(b) || (b.impact ?? 0) - (a.impact ?? 0) || b.year - a.year,
-);
+const top = shown
+  .filter(
+    (p) => isLabLed(p) && (typeof p.impact === 'number' || (pubType(p) === 'conference' && (p.ccf === 'A' || p.ccf === 'B'))),
+  )
+  .sort((a, b) => tier(a) - tier(b) || (b.impact ?? 0) - (a.impact ?? 0) || b.year - a.year)
+  .slice(0, 10);
 ---
 
 <Base lang={lang} title={u.nav.publications} description={t(site.pages?.publications, lang)}>
