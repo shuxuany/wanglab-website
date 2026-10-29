@@ -6,6 +6,7 @@
 #  - page 可选：站内页面，例如 publications 表示「科研成果」页面
 #  - image 可选：缩略图；没有图片时显示 tag 文字（如期刊简称）
 #  - 论文类条目根据近期发表的论文自动生成（日期为 OpenAlex 记录的发表日期），请继续补充获奖、学术会议等真实动态
+#  - 论文类条目只写正式发表的期刊、会议论文，arXiv 预印本不写进新闻动态
 # ==============================================================
 
 # 尚无 DOI，暂时链接到「科研成果」页；有 DOI 后可改为 link: "https://doi.org/..."
@@ -15,13 +16,6 @@
     en: "Paper published in IEEE TITS: L-DSTNet: Link-Level Dual-Pathway Spatio-Temporal Network for Sparse Urban Traffic Prediction"
   tag: "IEEE TITS"
   page: publications
-
-- date: 2026-09-25
-  title:
-    zh: "论文发表于 arXiv：HySTAR: Anchored Hypergraphs for Stable Credit Assignment in Cooperative Multi-Agent Reinforcement Learning"
-    en: "Paper published on arXiv: HySTAR: Anchored Hypergraphs for Stable Credit Assignment in Cooperative Multi-Agent Reinforcement Learning"
-  tag: "arXiv"
-  link: "https://arxiv.org/abs/2609.31531"
 
 - date: 2026-08-28
   title:
@@ -43,13 +37,6 @@
     en: "Paper published in pss RRL: Graphene Terahertz Absorber Driven by Electric Dipole Resonance for Tunable Switching and Sensing"
   tag: "pss RRL"
   link: "https://doi.org/10.1002/pssr.70181"
-
-- date: 2026-02-26
-  title:
-    zh: "论文发表于 arXiv：DMAligner: Enhancing Image Alignment via Diffusion Model Based View Synthesis"
-    en: "Paper published on arXiv: DMAligner: Enhancing Image Alignment via Diffusion Model Based View Synthesis"
-  tag: "arXiv"
-  link: "https://arxiv.org/abs/2602.23022"
 
 - date: 2026-01-01
   title:
