@@ -38,7 +38,7 @@ const u = ui[lang];
 const other: Lang = lang === 'zh' ? 'en' : 'zh';
 const pad = (n: number) => String(n).padStart(2, '0');
 
-const latest = news.slice(0, 6);
+const latest = news.slice(0, 7);
 // 首页数据栏：填了 auto 的项目按网站数据自动计数，保证与各页面列表一致
 const autoValue: Record<string, number> = {
   papers: publications.length,
