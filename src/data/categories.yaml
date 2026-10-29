@@ -1,0 +1,67 @@
+# ==============================================================
+#  论文和专利的分类（大类）：2026-10-29 按论文、专利的实际内容整理，不再套用课题组的六个研究方向
+#  - 论文页、专利页的分类筛选按钮按这里的顺序排列，只显示有条目的分类
+#  - publications.yaml / patents.yaml 中每一条用 category 填这里的 id；
+#    条目上显示的小标签是各自的 topic（具体研究主题），圆点颜色取所属大类的 color
+#  - 新增分类按同样格式添加即可
+# ==============================================================
+
+- id: medical
+  name: { zh: 医学影像与生理信号, en: Medical imaging & biosignals }
+  color: "#c2417a"
+
+- id: enhance
+  name: { zh: 图像增强与质量评价, en: Image enhancement & quality }
+  color: "#5a5fd6"
+
+- id: motion
+  name: { zh: 运动估计与图像配准, en: Motion estimation & registration }
+  color: "#0e8fb5"
+
+- id: detection
+  name: { zh: 目标检测、分割与跟踪, en: "Detection, segmentation & tracking" }
+  color: "#1f8f5f"
+
+- id: face
+  name: { zh: 人脸与行为分析, en: Face & action analysis }
+  color: "#8250c4"
+
+- id: transport
+  name: { zh: 智能交通与空管, en: Transportation & air traffic }
+  color: "#c98a1b"
+
+- id: unmanned
+  name: { zh: 无人系统与智能决策, en: Unmanned systems & decision-making }
+  color: "#e07a2f"
+
+- id: multimodal
+  name: { zh: 多模态理解与生成, en: Multimodal understanding & generation }
+  color: "#2f6fde"
+
+- id: defect
+  name: { zh: 工业缺陷检测, en: Industrial defect detection }
+  color: "#6b8e23"
+
+- id: coding
+  name: { zh: 图像与视频编码, en: Image & video coding }
+  color: "#8a7560"
+
+- id: reconstruction
+  name: { zh: 三维重建, en: 3D reconstruction }
+  color: "#5f7a8a"
+
+- id: signal
+  name: { zh: 通信与信号处理, en: Communications & signal processing }
+  color: "#2b9a8f"
+
+- id: hardware
+  name: { zh: 芯片与硬件设计, en: Chips & hardware design }
+  color: "#4c5a6b"
+
+- id: terahertz
+  name: { zh: 太赫兹器件, en: Terahertz devices }
+  color: "#c92a2a"
+
+- id: data
+  name: { zh: 数据分析与预测, en: Data analytics & prediction }
+  color: "#9a3f8e"

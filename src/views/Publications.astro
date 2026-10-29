@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import PubItem from '../components/PubItem.astro';
 import OutputSwitch from '../components/OutputSwitch.astro';
 import Icon from '../components/Icon.astro';
-import { site, research, publications, pubType, t, type Lang } from '../lib/site';
+import { site, publications, papersSince, isLabLed, categoriesOf, t, type Lang } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
@@ -12,12 +12,14 @@ interface Props {
 }
 const { lang } = Astro.props;
 const u = ui[lang];
-const years = [...new Set(publications.map((p) => p.year))].sort((a, b) => b - a);
-const countOf = (type: string) => publications.filter((p) => type === 'all' || pubType(p) === type).length;
+// 只展示近十年（site.yaml 的 papers_since 及以后）的论文，更早的以省略号表示
+const shown = publications.filter((p) => !papersSince || p.year >= papersSince);
+const hasOlder = shown.length < publications.length;
+const years = [...new Set(shown.map((p) => p.year))].sort((a, b) => b - a);
 const tabs: [string, string][] = [['all', u.pubs.all], ...(u.sub.pubs as [string, string][])];
-// 影响因子最高的 5 篇（publications.yaml 中的 impact，同分时较新的在前），放在「全部方向」列表最前面
-const top = publications
-  .filter((p) => typeof p.impact === 'number')
+// 课题组主导的论文中影响因子最高的 5 篇（publications.yaml 中的 impact，同分时较新的在前），放在「全部方向」列表最前面
+const top = shown
+  .filter((p) => typeof p.impact === 'number' && isLabLed(p))
   .sort((a, b) => b.impact! - a.impact! || b.year - a.year)
   .slice(0, 5);
 ---
@@ -33,7 +35,6 @@ const top = publications
           tabs.map(([id, label]) => (
             <button class:list={['tab', { 'is-active': id === 'all' }]} type="button" role="tab" aria-selected={id === 'all' ? 'true' : 'false'} data-type-tab={id}>
               {label}
-              <span class="tab-count">{countOf(id)}</span>
             </button>
           ))
         }
@@ -49,20 +50,21 @@ const top = publications
           {years.map((y) => <option value={y}>{y}</option>)}
         </select>
       </div>
-      <div class="chips" role="group" aria-label={u.nav.research}>
-        <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{u.pubs.allDirections}</button>
+      <div class="chips" role="group" aria-label={u.pubs.byCategory}>
+        <button class="chip is-active" type="button" data-cat-chip="all" aria-pressed="true">{u.pubs.allCategories}</button>
         {
-          research.filter((r) => publications.some((p) => p.direction === r.id)).map((r) => (
-            <button class="chip" type="button" data-dir-chip={r.id} aria-pressed="false" style={`--c:${r.color}`}>
+          categoriesOf(shown).map((c) => (
+            <button class="chip" type="button" data-cat-chip={c.id} aria-pressed="false" style={`--c:${c.color}`}>
               <i />
-              {t(r.short, lang)}
+              {t(c.name, lang)}
             </button>
           ))
         }
       </div>
     </div>
 
-    <p class="pub-count" data-pub-count data-template={u.pubs.count}>{u.pubs.count.replace('{n}', String(publications.length))}</p>
+    <!-- 只在筛选或搜索时显示条数 -->
+    <p class="pub-count" data-pub-count data-hide-unfiltered data-template={u.pubs.count} hidden>{u.pubs.count.replace('{n}', String(shown.length))}</p>
 
     {
       top.length > 0 && (
@@ -80,13 +82,15 @@ const top = publications
       )
     }
 
-    <div class="pub-results">
+    <h2 class="year-label pub-section-label">{u.pubs.decade}</h2>
+
+    <div class="pub-results no-num">
       {
         years.map((y) => (
           <section class="year-group" data-year-group>
             <h2 class="year-label">{y}</h2>
             <ol class="cite-list">
-              {publications
+              {shown
                 .filter((p) => p.year === y)
                 .map((p) => (
                   <PubItem pub={p} lang={lang} />
@@ -96,6 +100,13 @@ const top = publications
         ))
       }
     </div>
+    {
+      hasOlder && (
+        <p class="pub-more" data-pub-more aria-label={u.pubs.older}>
+          ……
+        </p>
+      )
+    }
     <p class="pub-empty" data-pub-empty hidden>{u.pubs.empty}</p>
   </div>
 </Base>

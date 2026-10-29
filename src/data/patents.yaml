@@ -1,12 +1,39 @@
 # ==============================================================
-#  相关专利（国家发明专利）
+#  相关专利（国家发明专利；另有 1 项实用新型，标 kind: utility，不计入「授权发明专利」）
 #  - 数据整理自国家知识产权局公开信息（2026-10 经 Google Patents 检索，发明人 王正宁），并按课题组 2026-08-19 的团队专利清单补充核对
-#  - 只列出已授权和仍在审查中的申请；已驳回、视为撤回的申请未列出
-#  - status：granted 已授权 / examining 实质审查中 / published 已公开
+#  - 只列出已授权、仍在审查中以及已受理（尚未公开）的申请；已驳回、视为撤回的申请未列出
+#  - status：granted 已授权 / examining 实质审查中 / published 已公开 / accepted 已受理（尚未公开，没有公开号 number）
+#  - kind：专利类型，不写为发明专利；utility 为实用新型。expired：保护期届满日期（已期满的专利仍保留）
 #  - number：授权公告号（B）或申请公布号（A）；app_no：申请号（授权后专利号即 ZL + 申请号）
-#  - direction：对应 research.yaml 中的研究方向，可留空
+#  - category：专利所属的大类，填 categories.yaml 中的 id（按专利实际内容划分，不套用课题组的六个研究方向），
+#              用于专利页的分类筛选
+#  - topic：专利的具体技术主题（zh / en），显示为专利条目上的分类标签，圆点颜色取所属大类的颜色
 #  - 新增专利按同样格式添加即可，页面会自动按申请年份分组、统计数量
 # ==============================================================
+
+- title:
+    zh: "一种数字气囊生成方法及避障方法"
+    en: "Digital airbag generation method and obstacle avoidance method"
+  inventors:
+    zh: [王正宁, 匡育衡]
+    en: [Zhengning Wang, Yuheng Kuang]
+  app_no: "202512041855.X"
+  filed: 2025-12-31
+  status: accepted
+  topic: { zh: "无人机避障", en: "UAV obstacle avoidance" }
+  category: unmanned
+
+- title:
+    zh: "用于无人机博弈的可解释强化学习方法"
+    en: "Explainable reinforcement learning method for UAV games"
+  inventors:
+    zh: [王正宁, 石镇瑜, 匡育衡, 张毓丁, 曲唐祺, 廖振宇]
+    en: [Zhengning Wang, Zhenyu Shi, Yuheng Kuang, Yuding Zhang, Tangqi Qu, Zhenyu Liao]
+  app_no: "202510554246.1"
+  filed: 2025-04-29
+  status: accepted
+  topic: { zh: "可解释强化学习", en: "Explainable RL" }
+  category: unmanned
 
 - title:
     zh: "基于特征解耦与图神经网络的跨模态结构-功能连接映射方法"
@@ -19,7 +46,8 @@
   filed: 2026-03-26
   published: 2026-08-04
   status: examining
-  direction: medical
+  topic: { zh: "脑结构-功能连接映射", en: "Brain connectivity mapping" }
+  category: medical
 
 - title:
     zh: "一种基于自适应对齐与差异增强的缺陷检测方法"
@@ -32,7 +60,8 @@
   filed: 2025-12-31
   published: 2026-04-14
   status: examining
-  direction: inspection
+  topic: { zh: "表面缺陷检测", en: "Surface defect detection" }
+  category: defect
 
 - title:
     zh: "一种基于自监督重构与多尺度特征融合的无对比缺陷检测方法"
@@ -45,7 +74,8 @@
   filed: 2025-12-31
   published: 2026-04-28
   status: examining
-  direction: inspection
+  topic: { zh: "无监督缺陷检测", en: "Unsupervised defect detection" }
+  category: defect
 
 - title:
     zh: "一种基于双阶段图神经网络的神经影像辅助处理方法及系统"
@@ -58,7 +88,8 @@
   filed: 2025-09-30
   published: 2025-12-26
   status: examining
-  direction: medical
+  topic: { zh: "神经影像分析", en: "Neuroimaging analysis" }
+  category: medical
 
 - title:
     zh: "基于时空特征与多智能体强化学习的多机智能博弈方法"
@@ -71,7 +102,8 @@
   filed: 2025-04-29
   published: 2025-08-22
   status: examining
-  direction: rl
+  topic: { zh: "多智能体强化学习", en: "Multi-agent RL" }
+  category: unmanned
 
 - title:
     zh: "基于可解释强化学习的空中对抗博弈方法"
@@ -84,7 +116,8 @@
   filed: 2025-04-28
   published: 2025-08-22
   status: examining
-  direction: rl
+  topic: { zh: "可解释强化学习", en: "Explainable RL" }
+  category: unmanned
 
 - title:
     zh: "基于双注意力时空图卷积的飞行器4D轨迹预测方法及系统"
@@ -98,7 +131,8 @@
   published: 2025-04-04
   granted: 2025-10-10
   status: granted
-  direction: 
+  topic: { zh: "飞行器航迹预测", en: "Aircraft trajectory prediction" }
+  category: transport
 
 - title:
     zh: "一种阵元误差情况下的空时自适应处理方法和系统"
@@ -112,6 +146,8 @@
   published: 2024-11-15
   granted: 2024-12-17
   status: granted
+  topic: { zh: "雷达空时自适应处理", en: "Radar space–time adaptive processing" }
+  category: signal
 
 - title:
     zh: "基于图神经网络的多模态医学影像预测方法、设备、介质及产品"
@@ -125,7 +161,8 @@
   published: 2026-04-24
   granted: 2026-04-24
   status: granted
-  direction: medical
+  topic: { zh: "多模态医学影像分析", en: "Multimodal medical imaging" }
+  category: medical
 
 - title:
     zh: "一种匹配真实运动的事件相机数据集成方法及系统"
@@ -139,7 +176,8 @@
   published: 2026-06-19
   granted: 2026-06-19
   status: granted
-  direction: 
+  topic: { zh: "事件相机数据集", en: "Event-camera datasets" }
+  category: motion
 
 - title:
     zh: "基于事件相机计算光流的方法及系统、设备、介质"
@@ -153,7 +191,8 @@
   published: 2024-04-09
   granted: 2026-05-19
   status: granted
-  direction: 
+  topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
+  category: motion
 
 - title:
     zh: "栅格化光流数据集合成的方法及系统、电子设备、介质"
@@ -166,7 +205,8 @@
   filed: 2024-01-09
   published: 2024-04-05
   status: examining
-  direction: 
+  topic: { zh: "光流数据集合成", en: "Optical-flow dataset synthesis" }
+  category: motion
 
 - title:
     zh: "一种基于注意力机制的低照度图像去噪增强方法"
@@ -179,7 +219,8 @@
   filed: 2023-03-30
   published: 2023-07-14
   status: examining
-  direction: restore
+  topic: { zh: "低光照图像增强", en: "Low-light enhancement" }
+  category: enhance
 
 - title:
     zh: "一种基于重建流场的压缩视频质量增强方法"
@@ -193,7 +234,8 @@
   published: 2025-05-13
   granted: 2025-05-13
   status: granted
-  direction: restore
+  topic: { zh: "压缩视频增强", en: "Compressed video enhancement" }
+  category: enhance
 
 - title:
     zh: "一种基于全局特征和引导信息的特征点检测与描述方法"
@@ -207,7 +249,8 @@
   published: 2022-12-16
   granted: 2025-08-19
   status: granted
-  direction: inspection
+  topic: { zh: "特征点检测与描述", en: "Keypoint detection & description" }
+  category: motion
 
 - title:
     zh: "一种端到端旋转鲁棒的特征点检测与描述方法"
@@ -221,7 +264,8 @@
   published: 2023-01-10
   granted: 2026-03-27
   status: granted
-  direction: inspection
+  topic: { zh: "特征点检测与描述", en: "Keypoint detection & description" }
+  category: motion
 
 - title:
     zh: "一种基于推理的两阶段浓雾图像去雾方法"
@@ -235,7 +279,8 @@
   published: 2022-10-14
   granted: 2025-09-12
   status: granted
-  direction: restore
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
 
 - title:
     zh: "一种半参考的图像去雾算法评估方法"
@@ -249,7 +294,8 @@
   published: 2022-10-14
   granted: 2026-02-17
   status: granted
-  direction: restore
+  topic: { zh: "去雾质量评价", en: "Dehazing quality assessment" }
+  category: enhance
 
 - title:
     zh: "基于图神经网络和自注意力的磁共振影像辅助处理系统"
@@ -263,7 +309,8 @@
   published: 2023-04-25
   granted: 2023-04-25
   status: granted
-  direction: medical
+  topic: { zh: "磁共振影像分析", en: "MRI analysis" }
+  category: medical
 
 - title:
     zh: "基于图神经网络和对比学习的磁共振影像辅助处理系统"
@@ -277,11 +324,12 @@
   published: 2023-04-07
   granted: 2023-04-07
   status: granted
-  direction: medical
+  topic: { zh: "磁共振影像分析", en: "MRI analysis" }
+  category: medical
 
 - title:
-    zh: "用于互联网金融风控的异常数据筛选方法"
-    en: "Anomalous data screening method for Internet financial risk control"
+    zh: "异常数据的识别剔除方法"
+    en: "Method for identifying and removing anomalous data"
   inventors:
     zh: [李开恒, 岳钧, 王子凡, 赵文宇, 赵灿阳, 涂俊, 王正宁]
     en: [Kaiheng Li, Jun Yue, Zifan Wang, Wenyu Zhao, Canyang Zhao, Jun Tu, Zhengning Wang]
@@ -291,6 +339,8 @@
   published: 2022-05-17
   granted: 2023-12-15
   status: granted
+  topic: { zh: "信贷数据异常检测", en: "Credit-data anomaly detection" }
+  category: data
 
 - title:
     zh: "一种端到端抗块效应低照度图像增强方法"
@@ -304,7 +354,8 @@
   published: 2021-05-18
   granted: 2022-05-03
   status: granted
-  direction: restore
+  topic: { zh: "低光照图像增强", en: "Low-light enhancement" }
+  category: enhance
 
 - title:
     zh: "一种基于多方向全变分的图像去噪方法"
@@ -318,7 +369,8 @@
   published: 2021-03-16
   granted: 2023-07-21
   status: granted
-  direction: restore
+  topic: { zh: "图像去噪", en: "Image denoising" }
+  category: enhance
 
 - title:
     zh: "一种针对VVC帧内编码单元划分的快速决策方法"
@@ -332,7 +384,8 @@
   published: 2021-02-05
   granted: 2021-02-05
   status: granted
-  direction: 
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
 
 - title:
     zh: "一种基于先验信息和卷积神经网络的视频去噪方法"
@@ -346,7 +399,8 @@
   published: 2021-02-05
   granted: 2021-02-05
   status: granted
-  direction: restore
+  topic: { zh: "视频去噪", en: "Video denoising" }
+  category: enhance
 
 - title:
     zh: "一种抗块效应的图像视频增强方法"
@@ -360,7 +414,8 @@
   published: 2021-01-12
   granted: 2023-03-14
   status: granted
-  direction: restore
+  topic: { zh: "压缩图像增强", en: "Compressed image enhancement" }
+  category: enhance
 
 - title:
     zh: "一种全局多阶段目标跟踪方法"
@@ -374,7 +429,8 @@
   published: 2022-03-15
   granted: 2022-03-15
   status: granted
-  direction: 
+  topic: { zh: "目标跟踪", en: "Object tracking" }
+  category: detection
 
 - title:
     zh: "一种利用时序信息的目标跟踪方法"
@@ -388,7 +444,8 @@
   published: 2022-05-03
   granted: 2022-05-03
   status: granted
-  direction: 
+  topic: { zh: "目标跟踪", en: "Object tracking" }
+  category: detection
 
 - title:
     zh: "一种基于编解码结构的目标跟踪方法"
@@ -402,7 +459,8 @@
   published: 2020-09-22
   granted: 2023-06-16
   status: granted
-  direction: 
+  topic: { zh: "目标跟踪", en: "Object tracking" }
+  category: detection
 
 - title:
     zh: "一种基于多层特征混合与注意力机制的目标跟踪方法"
@@ -416,7 +474,8 @@
   published: 2022-08-02
   granted: 2022-08-02
   status: granted
-  direction: 
+  topic: { zh: "目标跟踪", en: "Object tracking" }
+  category: detection
 
 - title:
     zh: "基于色彩空间转换的马赛克图像压缩方法"
@@ -430,7 +489,8 @@
   published: 2022-11-11
   granted: 2022-11-11
   status: granted
-  direction: 
+  topic: { zh: "CFA 图像压缩", en: "CFA image compression" }
+  category: coding
 
 - title:
     zh: "一种3D目标检测方法"
@@ -444,7 +504,8 @@
   published: 2022-07-26
   granted: 2022-07-26
   status: granted
-  direction: embodied
+  topic: { zh: "三维目标检测", en: "3D object detection" }
+  category: detection
 
 - title:
     zh: "一种基于数据融合的3D目标检测方法"
@@ -458,7 +519,8 @@
   published: 2022-03-15
   granted: 2022-03-15
   status: granted
-  direction: embodied
+  topic: { zh: "三维目标检测", en: "3D object detection" }
+  category: detection
 
 - title:
     zh: "一种基于时空约束的长时目标跟踪方法"
@@ -472,7 +534,8 @@
   published: 2022-07-01
   granted: 2022-07-01
   status: granted
-  direction: 
+  topic: { zh: "长时目标跟踪", en: "Long-term tracking" }
+  category: detection
 
 - title:
     zh: "一种面向航拍影像的目标跟踪方法"
@@ -486,7 +549,8 @@
   published: 2023-04-07
   granted: 2023-04-07
   status: granted
-  direction: 
+  topic: { zh: "航拍目标跟踪", en: "Aerial object tracking" }
+  category: detection
 
 - title:
     zh: "一种复杂环境交通信号灯候选区域提取及识别方法"
@@ -500,7 +564,8 @@
   published: 2019-05-03
   granted: 2022-03-15
   status: granted
-  direction: 
+  topic: { zh: "交通信号灯识别", en: "Traffic light recognition" }
+  category: transport
 
 - title:
     zh: "一种3D的道路车辆跟踪方法"
@@ -514,7 +579,8 @@
   published: 2019-01-29
   granted: 2021-09-24
   status: granted
-  direction: embodied
+  topic: { zh: "车辆跟踪", en: "Vehicle tracking" }
+  category: transport
 
 - title:
     zh: "一种道路车辆跟踪方法"
@@ -528,7 +594,8 @@
   published: 2021-09-24
   granted: 2021-09-24
   status: granted
-  direction: 
+  topic: { zh: "车辆跟踪", en: "Vehicle tracking" }
+  category: transport
 
 - title:
     zh: "一种基于区域划分和渐变映射的异源图像配准优化方法"
@@ -542,7 +609,8 @@
   published: 2021-10-22
   granted: 2021-10-22
   status: granted
-  direction: inspection
+  topic: { zh: "异源图像配准", en: "Multimodal image registration" }
+  category: motion
 
 - title:
     zh: "一种面向识别的远距离人脸图像增强方法"
@@ -556,7 +624,8 @@
   published: 2017-12-26
   granted: 2020-06-16
   status: granted
-  direction: restore
+  topic: { zh: "人脸图像增强", en: "Face image enhancement" }
+  category: face
 
 - title:
     zh: "多相机网络时空模型的候选目标提取方法"
@@ -570,7 +639,8 @@
   published: 2020-08-11
   granted: 2020-08-11
   status: granted
-  direction: 
+  topic: { zh: "跨相机车辆跟踪", en: "Cross-camera vehicle tracking" }
+  category: transport
 
 - title:
     zh: "一种违章变道检测方法"
@@ -584,7 +654,8 @@
   published: 2020-06-16
   granted: 2020-06-16
   status: granted
-  direction: 
+  topic: { zh: "违章变道检测", en: "Illegal lane-change detection" }
+  category: transport
 
 - title:
     zh: "一种光场图像压缩方法"
@@ -598,7 +669,8 @@
   published: 2018-12-18
   granted: 2018-12-18
   status: granted
-  direction: 
+  topic: { zh: "光场图像压缩", en: "Light-field image compression" }
+  category: coding
 
 - title:
     zh: "一种多特征权值自适应的阴影消除方法"
@@ -612,7 +684,8 @@
   published: 2017-02-01
   granted: 2019-03-05
   status: granted
-  direction: restore
+  topic: { zh: "车辆阴影消除", en: "Vehicle shadow removal" }
+  category: transport
 
 - title:
     zh: "一种基于相关高斯过程回归的面部年龄估计方法"
@@ -626,7 +699,8 @@
   published: 2016-03-23
   granted: 2019-06-21
   status: granted
-  direction: 
+  topic: { zh: "人脸年龄估计", en: "Facial age estimation" }
+  category: face
 
 - title:
     zh: "一种基于图像特征点的最优投影柱面半径确定方法"
@@ -640,6 +714,8 @@
   published: 2015-11-18
   granted: 2019-02-22
   status: granted
+  topic: { zh: "柱面全景拼接", en: "Panoramic stitching" }
+  category: motion
 
 - title:
     zh: "一种基于亮度自适应配准的图像拼接方法"
@@ -653,7 +729,8 @@
   published: 2017-12-15
   granted: 2017-12-15
   status: granted
-  direction: inspection
+  topic: { zh: "图像拼接", en: "Image stitching" }
+  category: motion
 
 - title:
     zh: "一种基于边缘检测的视频去隔行方法"
@@ -667,7 +744,8 @@
   published: 2013-04-03
   granted: 2015-04-15
   status: granted
-  direction: restore
+  topic: { zh: "视频去隔行", en: "Video deinterlacing" }
+  category: enhance
 
 - title:
     zh: "一种基于边缘和运动检测的视频去隔行方法"
@@ -681,7 +759,8 @@
   published: 2013-04-03
   granted: 2015-05-27
   status: granted
-  direction: restore
+  topic: { zh: "视频去隔行", en: "Video deinterlacing" }
+  category: enhance
 
 - title:
     zh: "一种用于TDS-OFDM系统的信道估计方法"
@@ -695,6 +774,8 @@
   published: 2013-03-06
   granted: 2015-04-15
   status: granted
+  topic: { zh: "OFDM 信道估计", en: "OFDM channel estimation" }
+  category: signal
 
 - title:
     zh: "一种基于暗通道信息的图像去雾方法"
@@ -708,7 +789,8 @@
   published: 2016-01-13
   granted: 2016-01-13
   status: granted
-  direction: restore
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
 
 - title:
     zh: "一种基于纹理的自适应图像去雾方法"
@@ -722,7 +804,8 @@
   published: 2015-08-19
   granted: 2015-08-19
   status: granted
-  direction: restore
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
 
 # ---------- 2026-10-20 按课题组提供的团队专利清单补充（王正宁为非第一发明人，专利权人不是本单位，此前检索未覆盖） ----------
 
@@ -737,7 +820,8 @@
   filed: 2023-09-14
   granted: 2023-12-08
   status: granted
-  direction: embodied
+  topic: { zh: "无人机编队控制", en: "UAV formation control" }
+  category: unmanned
 
 - title:
     zh: "一种大数据信息采集方法及系统"
@@ -750,11 +834,12 @@
   filed: 2023-04-04
   granted: 2023-07-04
   status: granted
-  direction: software
+  topic: { zh: "农机协同数据采集", en: "Farm-machinery data collection" }
+  category: data
 
 - title:
-    zh: "基于集成学习的互联网金融风控预测方法"
-    en: "Ensemble-learning-based risk control prediction method for Internet finance"
+    zh: "基于集成学习的风控预测方法"
+    en: "Ensemble-learning-based risk-control prediction method"
   inventors:
     zh: [岳钧, 李开恒, 王正宁, 周钊聿, 周乐瑶]
     en: [Jun Yue, Kaiheng Li, Zhengning Wang, Zhaoyu Zhou, Leyao Zhou]
@@ -763,7 +848,8 @@
   filed: 2022-03-22
   granted: 2024-04-30
   status: granted
-  direction: 
+  topic: { zh: "信贷违约预测", en: "Credit default prediction" }
+  category: data
 
 - title:
     zh: "一种多级软硬件交叉互控可调过流保护系统及方法"
@@ -776,19 +862,24 @@
   filed: 2021-07-19
   granted: 2024-06-14
   status: granted
-  direction: 
+  topic: { zh: "过流保护电路", en: "Overcurrent protection" }
+  category: hardware
 
 # ---------- 2026-10-20 按教研室台帐本补充（已授权，后因未缴年费终止） ----------
 
 - title:
-    zh: "一种基于时空多特征的车辆阴影消除方法"
-    en: "Vehicle shadow removal method based on spatio-temporal multiple features"
+    zh: "一种双门限场面运动目标检测系统"
+    en: "Dual-threshold moving-target detection system for airport surface surveillance"
   inventors:
-    zh: [王正宁, 柏祁林, 韩明燕, 周阳, 马姗姗]
-    en: [Zhengning Wang, Qilin Bai, Mingyan Han, Yang Zhou, Shanshan Ma]
-  number: CN106373096B
-  app_no: "201610764066.7"
-  filed: 2016-08-30
-  granted: 2019-03-05
+    zh: [王正宁, 刘昌忠, 王娟, 吴敏]
+    en: [Zhengning Wang, Changzhong Liu, Juan Wang, Min Wu]
+  # 实用新型，专利权人为中国民用航空局第二研究所；同名发明专利申请 CN102129692A 已于 2013 年驳回，未列出
+  number: CN202043209U
+  app_no: "201120089757.4"
+  filed: 2011-03-31
+  granted: 2011-11-16
   status: granted
-  direction: restore
+  topic: { zh: "机场场面监视", en: "Airport surface surveillance" }
+  category: transport
+  kind: utility
+  expired: 2021-03-31

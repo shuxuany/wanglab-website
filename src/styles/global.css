@@ -384,13 +384,38 @@ main {
 .chip i,
 .dir-nav i,
 .cite-dir i,
-.subnav i,
-.slide-dir i {
+.subnav i {
   flex: none;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--c);
+}
+
+/* 手机：分类较多时筛选按钮排成一行左右滑动（-22px 抵消筛选卡片的内边距），两端渐隐提示还有更多 */
+@media (max-width: 640px) {
+  .chips {
+    flex-wrap: nowrap;
+    margin: 0 -22px;
+    padding: 0 22px 2px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    mask-image: linear-gradient(90deg, transparent, #000 22px, #000 calc(100% - 36px), transparent);
+  }
+
+  .chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chips::after {
+    flex: none;
+    width: 14px;
+    content: '';
+  }
+
+  .chip {
+    flex: none;
+  }
 }
 
 /* ---------- 刊头 ---------- */
@@ -1220,7 +1245,7 @@ main {
   font-variant-numeric: tabular-nums;
 }
 
-.about-stat:nth-child(2) dd {
+.about-stat.is-accent dd {
   color: var(--orange);
 }
 
@@ -1721,7 +1746,28 @@ main {
   background: #fff5ef;
 }
 
-/* 论文页顶部：高影响因子论文（单独编号 01–05，不影响下方按年份的编号） */
+/* 科研成果页：近十年论文列表不显示 [n] 编号；末尾省略号表示更早的论文从略 */
+.pub-results.no-num .cite {
+  padding-left: 16px;
+}
+
+.pub-results.no-num .cite::before {
+  content: none;
+}
+
+.pub-section-label {
+  margin-top: 40px;
+}
+
+.pub-more {
+  padding: 22px 0 4px;
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  text-align: center;
+  color: var(--text-3);
+}
+
+/* 论文页顶部：高影响因子论文（单独编号 01–05） */
 .pub-top {
   margin-top: 26px;
 }
@@ -2305,44 +2351,58 @@ a.cite-title:hover {
   word-break: break-all;
 }
 
-.alumni-list {
+.alumni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+  gap: 28px 12px;
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--line);
 }
 
-.alumni-list li {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr);
-  gap: 16px;
-  padding: 14px 6px;
-  border-bottom: 1px solid var(--line);
+.alumnus {
+  text-align: center;
+}
+
+.alumnus-avatar {
+  display: block;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 4px #fff, 0 6px 16px rgba(9, 59, 109, 0.12);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.alumnus:hover .alumnus-avatar {
+  box-shadow: 0 0 0 4px #fff, var(--shadow);
+  transform: translateY(-4px);
+}
+
+.alumnus-name {
+  margin-top: 12px;
   font-size: 15px;
-  transition: background 0.2s;
-}
-
-.alumni-list li:hover {
-  background: var(--blue-50);
-}
-
-.alumni-name {
   font-weight: 600;
   color: var(--blue-deep);
 }
 
-.alumni-degree {
+.alumnus-meta,
+.alumnus-now {
+  margin-top: 2px;
+  font-size: 12.5px;
   color: var(--text-3);
 }
 
-.alumni-now {
-  color: var(--text-2);
-}
-
 @media (max-width: 640px) {
-  .alumni-list li {
-    grid-template-columns: 1fr;
-    gap: 2px;
+  .alumni-grid {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+    gap: 22px 8px;
+  }
+
+  .alumnus-avatar {
+    width: 68px;
+    height: 68px;
   }
 }
 

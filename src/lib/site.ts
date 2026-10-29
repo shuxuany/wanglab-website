@@ -9,6 +9,7 @@ import publicationsRaw from '../data/publications.yaml?raw';
 import newsRaw from '../data/news.yaml?raw';
 import joinRaw from '../data/join.yaml?raw';
 import patentsRaw from '../data/patents.yaml?raw';
+import categoriesRaw from '../data/categories.yaml?raw';
 import lifeRaw from '../data/life.yaml?raw';
 import projectsRaw from '../data/projects.yaml?raw';
 import awardsRaw from '../data/awards.yaml?raw';
@@ -40,9 +41,14 @@ export interface Publication {
   url?: string;
   pdf?: string;
   code?: string;
+  /** 可选：「研究方向」页「相关论文」列表用的研究方向 id */
   direction?: string;
+  /** 大类：categories.yaml 中的 id，按论文实际内容划分，用于论文页的分类筛选 */
+  category?: string;
+  /** 具体研究主题，显示为论文条目上的分类标签 */
+  topic?: Text;
   featured?: boolean;
-  /** 期刊影响因子（JCR），论文页最前面的「高影响因子论文」取最高的 5 篇 */
+  /** 期刊影响因子（JCR），论文页最前面的「高影响因子论文」从课题组主导的论文中取最高的 5 篇 */
   impact?: number;
   badge?: Text;
   /** journal / conference / preprint；不填时根据 venue 自动判断 */
@@ -50,22 +56,33 @@ export interface Publication {
   /** 论文的核心结构图（显示在首页轮播图中） */
   figure?: string;
   figure_caption?: Text;
-  /** 是否出现在首页轮播图中；不填时与 featured 相同 */
+  /** slide: true 时出现在首页轮播图中（按 impact 从高到低） */
   slide?: boolean;
+  /** 轮播图中显示的一句话简介 */
+  summary?: Text;
+  /** 是否为课题组主导的论文；不填时按作者自动判断（见 isLabLed） */
+  lab_lead?: boolean;
 }
 
 export interface Patent {
   title: Text;
   inventors?: TextList;
-  /** 授权公告号（B）或申请公布号（A） */
-  number: string;
+  /** 授权公告号（B）或申请公布号（A）；已受理尚未公开的申请没有 */
+  number?: string;
   /** 申请号；授权后专利号为 ZL + 申请号 */
   app_no?: string;
   filed: string;
   published?: string;
   granted?: string;
-  status: 'granted' | 'examining' | 'published';
-  direction?: string;
+  status: 'granted' | 'examining' | 'published' | 'accepted';
+  /** 专利类型：不写为发明专利；utility 为实用新型（不计入「授权发明专利」） */
+  kind?: 'invention' | 'utility';
+  /** 保护期届满日期 */
+  expired?: string;
+  /** 大类：categories.yaml 中的 id，按专利实际内容划分，用于专利页的分类筛选 */
+  category?: string;
+  /** 具体技术主题，显示为专利条目上的分类标签 */
+  topic?: Text;
   url?: string;
 }
 
@@ -104,6 +121,8 @@ export function pubType(p: Publication): 'journal' | 'conference' | 'preprint' {
 
 export const site: any = parse(siteRaw) ?? {};
 export const research: any[] = parse(researchRaw) ?? [];
+/** 论文和专利的分类（大类） */
+export const categories: any[] = parse(categoriesRaw) ?? [];
 export const members: any = parse(membersRaw) ?? {};
 export const join: any = parse(joinRaw) ?? {};
 
@@ -111,18 +130,32 @@ export const publications: Publication[] = ((parse(publicationsRaw) ?? []) as Pu
   .map((p) => ({ ...p, year: Number(p.year) }))
   .sort((a, b) => b.year - a.year);
 
+/** 各处显示的「学术论文」数量（site.yaml 的 papers_total；不填时为论文列表条数） */
+export const papersTotal = {
+  value: Number(site.papers_total?.value ?? publications.length),
+  suffix: String(site.papers_total?.suffix ?? ''),
+};
+export const papersLabel = `${papersTotal.value}${papersTotal.suffix}`;
+/** 科研成果页只展示这一年及以后的论文（site.yaml 的 papers_since） */
+export const papersSince = Number(site.papers_since ?? 0);
+
 export const patents: Patent[] = ((parse(patentsRaw) ?? []) as Patent[])
   .map((p) => ({
     ...p,
     filed: String(p.filed ?? ''),
     published: p.published ? String(p.published) : '',
     granted: p.granted ? String(p.granted) : '',
+    expired: p.expired ? String(p.expired) : '',
   }))
   .sort((a, b) => b.filed.localeCompare(a.filed));
 
-/** 专利详情页链接（默认指向 Google Patents） */
+/** 已授权的发明专利（首页、导师页、专利页的「授权发明专利」统计都用它） */
+export const grantedInventions = patents.filter((p) => p.status === 'granted' && p.kind !== 'utility');
+
+/** 专利详情页链接（默认指向 Google Patents）；尚未公开的申请没有链接 */
 export function patentUrl(p: Patent, lang: Lang): string {
-  return p.url || `https://patents.google.com/patent/${p.number}/${lang === 'zh' ? 'zh' : 'en'}`;
+  if (p.url) return p.url;
+  return p.number ? `https://patents.google.com/patent/${p.number}/${lang === 'zh' ? 'zh' : 'en'}` : '';
 }
 
 export const life: any[] = parse(lifeRaw) ?? [];
@@ -136,6 +169,8 @@ export const projects: any[] = (projectsData.projects ?? [])
   .map((p: any) => ({ ...p, start: String(p.start ?? ''), end: String(p.end ?? ''), ongoing: !p.end || String(p.end) >= NOW }))
   .sort((a: any, b: any) => b.start.localeCompare(a.start));
 export const applications: any[] = projectsData.applications ?? [];
+/** 累计主持科研项目数（site.yaml 的 projects_led_total；不填时为「科研项目」页中主持的项目数） */
+export const projectsLedTotal = Number(site.projects_led_total ?? projects.filter((p) => p.role === 'lead').length);
 
 export const awards: any[] = ((parse(awardsRaw) ?? []) as any[])
   .map((a) => ({ ...a, date: String(a.date ?? '') }))
@@ -251,13 +286,14 @@ export function currentPeople(): Person[] {
   return [pi, ...groups.flatMap((g) => g.members)];
 }
 
-const memberNames = new Set<string>();
-for (const p of [...currentPeople(), ...alumni]) {
-  const name = p.name;
-  if (typeof name === 'string') memberNames.add(name);
-  else if (name) [name.en, name.zh].forEach((n) => n && memberNames.add(n));
-  (p.aliases ?? []).forEach((a: string) => memberNames.add(a));
+/** 成员在论文作者列表中可能出现的写法：中英文名和 aliases */
+function namesOf(p: Person): string[] {
+  const name: any = p.name;
+  const base = typeof name === 'string' ? [name] : name ? [name.en, name.zh] : [];
+  return [...base, ...(p.aliases ?? [])].filter(Boolean);
 }
+const memberNames = new Set<string>([...currentPeople(), ...alumni].flatMap(namesOf));
+const piNames = new Set<string>(namesOf(pi));
 
 /** 解析作者：去掉 * / # 标记，并判断是否为课题组成员 */
 export function splitAuthor(raw: string) {
@@ -268,6 +304,18 @@ export function splitAuthor(raw: string) {
 }
 
 export type Author = ReturnType<typeof splitAuthor>;
+
+/**
+ * 课题组主导的论文：同学（成员名单中除王老师以外的人）是第一或第二作者且王老师在作者中，或王老师是第一作者。
+ * 同学包括 members.yaml 中的毕业校友；个别例外可在 publications.yaml 中用 lab_lead 手动指定
+ */
+export function isLabLed(p: Publication): boolean {
+  if (typeof p.lab_lead === 'boolean') return p.lab_lead;
+  const authors = (p.authors ?? []).map(splitAuthor);
+  const isPi = (a: Author) => piNames.has(a.name);
+  if (authors.length && isPi(authors[0])) return true;
+  return authors.slice(0, 2).some((a) => a.member && !isPi(a)) && authors.some(isPi);
+}
 
 /** 作者太多时只显示前几位，并保留排在后面的课题组成员 */
 export function displayAuthors(raw: string[] = [], max = 8): (Author | '…')[] {
@@ -286,8 +334,19 @@ export function directionById(id?: string) {
   return research.find((r) => r.id === id);
 }
 
-export function directionColor(id?: string): string {
-  return directionById(id)?.color ?? '#5b7bff';
+// ---------- 论文、专利分类 ----------
+
+export function categoryById(id?: string) {
+  return categories.find((c) => c.id === id);
+}
+
+export function categoryColor(id?: string): string {
+  return categoryById(id)?.color ?? '#5b7bff';
+}
+
+/** 这些条目用到的分类（按 categories.yaml 的顺序），用于分类筛选按钮 */
+export function categoriesOf(items: { category?: string }[]) {
+  return categories.filter((c) => items.some((p) => p.category === c.id));
 }
 
 /** 某个方向下发表过的代表性期刊/会议简称 */

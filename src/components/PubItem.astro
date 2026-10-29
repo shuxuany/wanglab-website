@@ -1,41 +1,44 @@
 ---
 // 论文条目（学术引用格式）：作者, "标题," 期刊, 卷期页码, 年份.
 // impact：显示影响因子标签；filterable=false 时不带筛选用的 data 属性（论文页顶部「高影响因子论文」用，不参与筛选和计数）
-import { t, asset, displayAuthors, directionColor, directionById, pubType, type Lang, type Publication } from '../lib/site';
+import { t, asset, displayAuthors, categoryById, categoryColor, pubType, type Lang, type Publication } from '../lib/site';
 
 interface Props {
   pub: Publication;
   lang: Lang;
   reveal?: boolean;
   delay?: number;
-  showDirection?: boolean;
+  showTopic?: boolean;
   impact?: number;
   filterable?: boolean;
 }
-const { pub, lang, reveal = false, delay = 0, showDirection = true, impact, filterable = true } = Astro.props;
+const { pub, lang, reveal = false, delay = 0, showTopic = true, impact, filterable = true } = Astro.props;
 
 const authors = displayAuthors(pub.authors);
 const doiUrl = pub.doi ? (/^https?:/.test(pub.doi) ? pub.doi : `https://doi.org/${pub.doi}`) : '';
 const titleHref = pub.url || doiUrl || asset(pub.pdf);
-const dir = directionById(pub.direction);
+const cat = categoryById(pub.category);
 const type = pubType(pub);
-const search = [pub.title, ...(pub.authors ?? []), pub.venue, pub.short, pub.year].join(' ').toLowerCase();
+const search = [pub.title, ...(pub.authors ?? []), pub.venue, pub.short, pub.year, t(pub.topic, 'zh'), t(pub.topic, 'en'), t(cat?.name, 'zh'), t(cat?.name, 'en')]
+  .join(' ')
+  .toLowerCase();
 ---
 
 <li
   class="cite"
-  style={`--c:${directionColor(pub.direction)};${reveal ? `--d:${delay}ms` : ''}`}
+  style={`--c:${categoryColor(pub.category)};${reveal ? `--d:${delay}ms` : ''}`}
   data-pub={filterable ? '' : undefined}
   data-year={filterable ? pub.year : undefined}
   data-type={filterable ? type : undefined}
-  data-direction={filterable ? (pub.direction ?? '') : undefined}
+  data-category={filterable ? (pub.category ?? '') : undefined}
   data-search={filterable ? search : undefined}
   data-reveal={reveal ? '' : undefined}
 >
   <div class="cite-tags">
     {pub.short && <span class="cite-venue">{pub.short}</span>}
     {impact !== undefined && <span class="cite-if">IF {impact.toFixed(1)}</span>}
-    {showDirection && dir && <span class="cite-dir"><i></i>{t(dir.short, lang)}</span>}
+    {/* 分类标签：显示论文的具体研究主题（topic），圆点颜色和悬停提示为所属大类 */}
+    {showTopic && (pub.topic || cat) && <span class="cite-dir" title={t(cat?.name, lang)}><i></i>{t(pub.topic, lang) || t(cat?.name, lang)}</span>}
     {pub.badge && <span class="cite-badge">{t(pub.badge, lang)}</span>}
   </div>
   <p class="cite-text">

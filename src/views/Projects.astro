@@ -90,10 +90,10 @@ const ym = (d: string) => (lang === 'zh' ? d.replace('-', '.') : d);
         </select>
       </div>
       <div class="chips" role="group">
-        <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{pu.all}</button>
+        <button class="chip is-active" type="button" data-cat-chip="all" aria-pressed="true">{pu.all}</button>
         {
           levels.map((l) => (
-            <button class="chip" type="button" data-dir-chip={l} aria-pressed="false">
+            <button class="chip" type="button" data-cat-chip={l} aria-pressed="false">
               {pu.levels[l]}
             </button>
           ))
@@ -117,7 +117,7 @@ const ym = (d: string) => (lang === 'zh' ? d.replace('-', '.') : d);
                     data-pub
                     data-year={y}
                     data-type={p.role}
-                    data-direction={p.level}
+                    data-category={p.level}
                     data-search={[t(p.title, 'zh'), t(p.title, 'en'), t(p.type, 'zh'), t(p.type, 'en'), p.number ?? ''].join(' ').toLowerCase()}
                   >
                     <div class="cite-tags">

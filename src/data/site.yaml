@@ -55,19 +55,32 @@ intro:
 # 首页数据栏（value 为数字，suffix 为后缀）
 # auto 可选：papers 论文数 / patents 授权发明专利数 / projects 主持项目数 / directions 研究方向数，
 #            填了 auto 时按网站数据自动计数，不用手动改 value
+# 学术论文数量：论文列表只收录了近十年的部分论文，首页数据栏、科研成果标签、导师页的「学术论文」统一显示这个数
+papers_total:
+  value: 100
+  suffix: "+"
+# 科研成果页的论文列表只展示这一年及以后的论文（近十年），更早的以省略号表示
+papers_since: 2016
+# 累计主持科研项目数：「科研项目」页只列出可公开的部分，首页和导师页显示累计数量
+# （课题组《研究成果详表》2025-09 统计主持 34 项，另加 2026 年新增主持 1 项）
+projects_led_total: 35
+
 stats:
+  # accent: true 的数字显示为橙色
   - auto: papers
     value: 87
     suffix: ""
     label: { zh: 学术论文, en: Publications }
+    accent: true
   - auto: patents
     value: 48
     suffix: ""
     label: { zh: 授权发明专利, en: Granted patents }
+    accent: true
   - auto: projects
     value: 17
     suffix: ""
-    label: { zh: 主持科研项目, en: Projects led }
+    label: { zh: 累计主持科研项目, en: Projects led in total }
   - auto: directions
     value: 6
     suffix: ""
@@ -95,8 +108,8 @@ pages:
     zh: 课题组发表的学术论文。加粗为课题组成员，* 为通讯作者，# 为共同第一作者。
     en: "Papers published by the group. Group members in bold, * corresponding author, # equal contribution."
   patents:
-    zh: 课题组获得授权和正在审查中的国家发明专利。加粗为课题组成员。
-    en: Chinese invention patents granted to or filed by the group. Group members in bold.
+    zh: 课题组获得授权和正在审查中的国家发明专利，以及一项早期的实用新型专利。加粗为课题组成员。
+    en: Chinese invention patents granted to or filed by the group, plus one earlier utility model. Group members in bold.
   news:
     zh: 课题组的最新进展、获奖与活动。
     en: Latest updates, awards and events from the group.

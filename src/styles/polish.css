@@ -237,7 +237,7 @@
   color: transparent;
 }
 
-.about-stat:nth-child(2) dd {
+.about-stat.is-accent dd {
   background: var(--grad-warm);
   -webkit-background-clip: text;
   background-clip: text;

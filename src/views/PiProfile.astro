@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import PubItem from '../components/PubItem.astro';
 import Icon from '../components/Icon.astro';
-import { site, pi, publications, patents, projects, awards, exchange, t, list, asset, href, paragraphs, formatDate, initials, avatarColors, type Lang } from '../lib/site';
+import { site, pi, publications, papersTotal, projectsLedTotal, grantedInventions, projects, awards, exchange, t, list, asset, href, paragraphs, formatDate, initials, avatarColors, type Lang } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
@@ -25,9 +25,9 @@ const led = projects.filter((p) => p.role === 'lead' && p.level !== 'industry' &
 const honors = awards.filter((a) => a.category === 'award' || a.category === 'honor');
 const ym = (d: string) => (zh ? d.replace('-', '.') : d);
 const metrics = [
-  { value: publications.length, label: zh ? '学术论文' : 'Publications', href: href('publications', lang) },
-  { value: patents.filter((p) => p.status === 'granted').length, label: zh ? '授权发明专利' : 'Granted patents', href: href('publications/patents', lang) },
-  { value: projects.filter((p) => p.role === 'lead').length, label: zh ? '主持科研项目' : 'Projects led', href: href('publications/projects', lang) },
+  { value: papersTotal.value, suffix: papersTotal.suffix, label: zh ? '学术论文' : 'Publications', href: href('publications', lang) },
+  { value: grantedInventions.length, label: zh ? '授权发明专利' : 'Granted patents', href: href('publications/patents', lang) },
+  { value: projectsLedTotal, label: zh ? '累计主持科研项目' : 'Projects led in total', href: href('publications/projects', lang) },
   ...(pi.scholar ? [{ value: pi.scholar.citations, label: zh ? `Google 学术引用 · h 指数 ${pi.scholar.h_index}` : `Google Scholar citations · h-index ${pi.scholar.h_index}`, href: (pi.links ?? []).find((l: any) => /scholar\.google/.test(l.url))?.url }] : []),
 ];
 // 现任职务：工作经历中「至今」的条目
@@ -114,7 +114,10 @@ const more = (path: string, text: string) => ({ href: href(path, lang), text });
       <dl class="pp-metrics">
         {metrics.map((m) => (
           <a class="pp-metric" href={m.href} target={/^https?:/.test(m.href ?? '') ? '_blank' : undefined} rel="noopener">
-            <dd data-count={m.value}>{m.value}</dd>
+            <dd data-count={m.value} data-suffix={m.suffix ?? ''}>
+              {m.value}
+              {m.suffix}
+            </dd>
             <dt>{m.label}</dt>
           </a>
         ))}
@@ -269,10 +272,10 @@ const more = (path: string, text: string) => ({ href: href(path, lang), text });
       <h2 class="pp-label"><b>{label('papers').num}</b>{label('papers').title}<small>{label('papers').en}</small></h2>
       <div class="pp-body">
         <ol class="cite-list pp-cites">
-          {reps.map((p: any) => <PubItem pub={p} lang={lang} showDirection={false} />)}
+          {reps.map((p: any) => <PubItem pub={p} lang={lang} showTopic={false} />)}
         </ol>
         <a class="sec-more" href={href('publications', lang)}>
-          {zh ? `查看全部 ${publications.length} 篇论文` : `All ${publications.length} publications`}
+          {zh ? '查看更多论文' : 'More publications'}
           <Icon name="arrow" size={15} />
         </a>
       </div>

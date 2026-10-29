@@ -193,6 +193,27 @@
   background: #fff1e8;
 }
 
+.pat-status.is-accepted {
+  color: var(--blue);
+  background: var(--blue-50);
+}
+
+/* 尚未公开的申请没有详情链接，标题用正文颜色 */
+.pat-title span.cite-title {
+  color: var(--text);
+}
+
+/* 专利类型 / 期满标签（如实用新型、保护期已满） */
+.pat-kind {
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--text-2);
+}
+
 .pat-title {
   font-size: 16px;
   line-height: 1.6;

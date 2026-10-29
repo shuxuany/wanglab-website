@@ -6,52 +6,87 @@
 #  - authors：作者列表；通讯作者在名字后加 *，共同第一作者加 #
 #             与 members.yaml 中英文名或 aliases 一致的作者会自动加粗
 #  - short：期刊/会议简称，显示为醒目标签
-#  - direction：对应 research.yaml 中的 id（rl / inspection / software / medical / restore / embodied），
-#               留空表示不归入任何方向（仍会显示在论文页）。2026-10-20 研究方向调整后按论文主题重新归类，请 PI 核对
-#  - featured：代表作标记（目前首页不再单独展示）
+#  - category：论文所属的大类，填 categories.yaml 中的 id（按论文实际内容划分，不套用课题组的六个研究方向），
+#              用于论文页的分类筛选
+#  - topic：论文的具体研究主题（zh / en），显示为论文条目上的分类标签，圆点颜色取所属大类的颜色
+#  - direction：可选，填 research.yaml 中的 id（rl / inspection / software / medical / restore / embodied），
+#               只用于「研究方向」页各方向下的「相关论文」列表，只填确实属于该方向的论文
+#  - featured：代表作标记
+#  - slide: true：出现在首页轮播（导师介绍之后），按 impact 从高到低排列；summary 为轮播中显示的一句话简介（zh / en）
+#             轮播只选课题组主导的论文（见下面的 lab_lead）
 #  - impact：期刊影响因子（JCR 2025，2026 年 6 月发布；数值来自 BioxBio 汇总，正式数值以 Clarivate JCR 为准）
-#            论文页最前面的「高影响因子论文」自动取 impact 最高的 5 篇（同分时较新的在前）；每年 JCR 更新后改这里的数字即可
+#            论文页最前面的「高影响因子论文」自动从课题组主导的论文中取 impact 最高的 5 篇（同分时较新的在前）；
+#            每年 JCR 更新后改这里的数字即可
+#  - lab_lead：是否为课题组主导的论文，一般不用填，按作者自动判断：课题组同学（members.yaml 中的在读成员和毕业校友）
+#              是第一或第二作者且王老师在作者中，或王老师是第一作者；个别需要例外处理的论文填 lab_lead: true / false
 #  - badge：可选标签，如 封面文章 / Oral / Best Paper
-#  - figure：论文核心结构图，放在 public/images/papers/ 下；figure_caption 为图注（首页轮播已改为导师详细介绍，暂未使用）
+#  - figure：论文核心结构图，显示在首页轮播左侧；原图放在 assets/originals/images/papers/，运行 npm run watermark
+#            生成 public/images/papers/ 下带水印的图片；figure_caption 为图注
 #  - doi / pdf / code：都可以留空
 #    注意：pdf 只能填可以合法公开的版本（arXiv、开放获取、作者录用稿），
 #    Elsevier / IEEE 等出版社的正式版 PDF 不允许放在公开网站上
 # ==============================================================
+
+# 2026-10 已被 IEEE TITS 录用，正式发表后补充卷期、页码和 DOI，并去掉「已录用」标签
+- title: "L-DSTNet: Link-Level Dual-Pathway Spatio-Temporal Network for Sparse Urban Traffic Prediction"
+  authors: ["Shuxuan Yuan", "Yuheng Kuang", "Zhenni Zeng", "Zhou Huang", "Zhengning Wang"]
+  venue: "IEEE Transactions on Intelligent Transportation Systems"
+  short: "IEEE TITS"
+  year: 2026
+  topic: { zh: "城市交通预测", en: "Urban traffic prediction" }
+  category: transport
+  impact: 9.1
+  badge: { zh: 已录用, en: Accepted }
 
 - title: "HySTAR: Anchored Hypergraphs for Stable Credit Assignment in Cooperative Multi-Agent Reinforcement Learning"
   authors: ["Xinglong Luo", "Yuding Zhang", "Yuheng Kuang", "Shuxuan Yuan", "Zhenni Zeng", "Weiqiang Zhu", "Zhenhai Ji", "Zhengning Wang"]
   venue: "arXiv preprint"
   short: "arXiv"
   year: 2026
+  topic: { zh: "多智能体强化学习", en: "Multi-agent RL" }
+  category: unmanned
   doi: "10.48550/arxiv.2609.31531"
   direction: rl
   badge: { zh: 预印本, en: Preprint }
 
 - title: "Bandwidth-Constrained Aerial Edge Perception for Ground Traversability Mapping over Digital Links"
-  authors: ["Ziheng Liu", "Yao Li", "Yong Qiang JIA", "Fanqiang Lin", "Zhengning Wang", "shaoqin Yuan"]
+  authors: ["Ziheng Liu", "Yao Li", "Yongqiang Jia", "Fanqiang Lin", "Zhengning Wang", "Shaoqin Yuan"]
   venue: "Electronics"
   year: 2026
+  topic: { zh: "空地协同感知", en: "Air–ground perception" }
+  category: unmanned
   volume: "15(17), 3893"
   doi: "10.3390/electronics15173893"
   direction: embodied
 
 - title: "Enhanced multimodal MRI classification of schizophrenia through cross-attention graph neural networks"
-  authors: ["Jiahui Gao", "Jie Wu", "Maomin Qian", "Zhengning Wang", "Yanling Li", "Na Luo", "Xin Dai", "Weiyang Shi", "Peng Li", "Jun Chen", "Yunchun Chen", "Huaning Wang", "Wenming Liu", "Zhigang Li", "Yongfeng Yang", "Hua Guo", "Ping Wan", "Luxian Lv", "Lin Lu", "Jun Yan", "Yuqing Song", "Huiling Wang", "Hongxing Zhang", "Yuhui Du", "Yuqi Cheng", "Jian Xu", "Xiufeng Xu", "Dai Zhang", "Tianzi Jiang"]
+  authors: ["Jingjing Gao", "Jie Wu", "Maomin Qian", "Zhengning Wang", "Yanling Li", "Na Luo", "Xin Dai", "Weiyang Shi", "Peng Li", "Jun Chen", "Yunchun Chen", "Huaning Wang", "Wenming Liu", "Zhigang Li", "Yongfeng Yang", "Hua Guo", "Ping Wan", "Luxian Lv", "Lin Lu", "Jun Yan", "Yuqing Song", "Huiling Wang", "Hongxing Zhang", "Yuhui Du", "Yuqi Cheng", "Jian Xu", "Xiufeng Xu", "Dai Zhang", "Tianzi Jiang"]
   venue: "Medical Image Analysis"
   short: "MedIA"
   year: 2026
+  topic: { zh: "精神分裂症影像诊断", en: "Schizophrenia diagnosis" }
+  category: medical
   impact: 14.0
   volume: "113, 104218"
   doi: "10.1016/j.media.2026.104218"
   direction: medical
   featured: true
-  slide: false
+  figure: images/papers/tbgcan-arch.jpg
+  figure_caption:
+    zh: 研究整体流程示意图（论文 Fig. 1）
+    en: "Schematic of the overall research process (Fig. 1)"
+  slide: true
+  summary:
+    zh: "提出三分支交叉注意力图神经网络 TB-GCAN，融合结构像、功能像与弥散张量成像，在七个中心 1191 例样本的留一中心验证中取得 84.63% 的精神分裂症分类准确率，并给出可解释的脑区标志。"
+    en: "TB-GCAN, a tri-branch cross-attention graph network, fuses sMRI, fMRI and DTI and reaches 84.63% accuracy in seven-site leave-one-site-out schizophrenia classification."
 
 - title: "DMAligner: Enhancing Image Alignment via Diffusion Model Based View Synthesis"
   authors: ["Xinglong Luo", "Ao Luo", "Zhengning Wang", "Yueqi Yang", "Chaoyu Feng", "Lei Lei", "Bing Zeng", "Shuaicheng Liu"]
   venue: "arXiv preprint"
   short: "arXiv"
   year: 2026
+  topic: { zh: "图像对齐", en: "Image alignment" }
+  category: motion
   doi: "10.48550/arxiv.2602.23022"
   direction: 
   badge: { zh: 预印本, en: Preprint }
@@ -61,6 +96,8 @@
   venue: "IEEE Transactions on Multimedia"
   short: "IEEE TMM"
   year: 2026
+  topic: { zh: "终身概念学习", en: "Lifelong concept learning" }
+  category: multimodal
   impact: 9.9
   doi: "10.1109/tmm.2026.3724696"
   direction: 
@@ -70,6 +107,8 @@
   venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence"
   short: "IEEE TPAMI"
   year: 2025
+  topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
+  category: motion
   impact: 20.4
   volume: "48(2), 1355–1372"
   doi: "10.1109/tpami.2025.3615144"
@@ -80,12 +119,18 @@
   figure_caption:
     zh: EEMFlow 网络结构（论文 Fig. 6，来源：arXiv:2510.04111）
     en: "EEMFlow network architecture (Fig. 6, from arXiv:2510.04111)"
+  slide: true
+  summary:
+    zh: "首次提出基于事件相机的网格流（meshflow）估计任务，构建高分辨率事件网格流数据集 HREM，并设计轻量的 EEMFlow 网络，在性能领先的同时比此前最优的光流方法快约 30 倍。"
+    en: "Introduces event-based meshflow estimation, the HREM dataset and the lightweight EEMFlow network, which leads in accuracy and runs about 30× faster than the previous best method."
 
 - title: "MTDA-STGCN: Modern Temporal and Dual-Attention-Based Spatiotemporal Graph Convolutional Network for 4D Trajectory Prediction"
   authors: ["Yuheng Kuang", "Shuxuan Yuan", "Xiang Zou", "Jianping Zhang", "Zhenyu Shi", "Yuding Zhang", "Fanman Meng", "Zhengning Wang"]
   venue: "IEEE Transactions on Intelligent Transportation Systems"
   short: "IEEE TITS"
   year: 2025
+  topic: { zh: "飞行器航迹预测", en: "Aircraft trajectory prediction" }
+  category: transport
   impact: 9.1
   volume: "26(12), 21809–21823"
   doi: "10.1109/tits.2025.3605670"
@@ -95,12 +140,18 @@
   figure_caption:
     zh: MTDA-STGCN 模型整体框架（论文 Fig. 2）
     en: "Overall framework of MTDA-STGCN (Fig. 2)"
+  slide: true
+  summary:
+    zh: "面向空中交通管理的四维航迹预测：用自注意力动态重构飞行器之间的关联，结合图注意力与现代时序预测网络，在真实 ADS-B 数据上的预测精度优于现有方法。"
+    en: "MTDA-STGCN predicts 4D aircraft trajectories with dual attention over a dynamic aircraft graph and a modern temporal network, outperforming prior methods on real ADS-B data."
 
 - title: "LPUDC: A Laplacian pyramid neural network for restoring images from under-display cameras"
-  authors: ["Zichao Ding", "Zhixiang Fang", "Zhengning Wang", "Lehan Ding", "Zhenni Zeng", "Xinglong Luo", "Shaoqin Yuan", "Haoran Ma", "Binquan Len"]
+  authors: ["Zhenyan Ding", "Zhixiang Fang", "Zhengning Wang", "Lehan Ding", "Zhenni Zeng", "Xinglong Luo", "Shaoqin Yuan", "Haoran Ma", "Binquan Leng"]
   venue: "Neurocomputing"
   short: "Neurocomputing"
   year: 2025
+  topic: { zh: "屏下摄像头图像复原", en: "Under-display camera restoration" }
+  category: enhance
   impact: 6.7
   volume: "655, 131442"
   doi: "10.1016/j.neucom.2025.131442"
@@ -111,6 +162,8 @@
   venue: "IEEE International Geoscience and Remote Sensing Symposium (IGARSS)"
   short: "IGARSS"
   year: 2025
+  topic: { zh: "遥感视觉问答", en: "Remote sensing VQA" }
+  category: multimodal
   doi: "10.1109/igarss55030.2025.11243610"
   direction: 
 
@@ -119,6 +172,8 @@
   venue: "Biomedical Signal Processing and Control"
   short: "BSPC"
   year: 2025
+  topic: { zh: "脑龄预测", en: "Brain age prediction" }
+  category: medical
   volume: "109, 107926"
   doi: "10.1016/j.bspc.2025.107926"
   direction: medical
@@ -128,6 +183,8 @@
   venue: "IEEE Transactions on Very Large Scale Integration (VLSI) Systems"
   short: "IEEE TVLSI"
   year: 2025
+  topic: { zh: "目标检测硬件加速", en: "Detection hardware acceleration" }
+  category: hardware
   volume: "33(7), 2064–2068"
   doi: "10.1109/tvlsi.2025.3559389"
   direction: software
@@ -137,6 +194,8 @@
   venue: "IEEE Custom Integrated Circuits Conference (CICC)"
   short: "CICC"
   year: 2025
+  topic: { zh: "声音识别芯片", en: "Sound recognition processor" }
+  category: hardware
   doi: "10.1109/cicc63670.2025.10983875"
   direction: software
 
@@ -145,6 +204,8 @@
   venue: "Displays"
   short: "Displays"
   year: 2025
+  topic: { zh: "图像质量评价", en: "Image quality assessment" }
+  category: enhance
   volume: "88, 103046"
   doi: "10.1016/j.displa.2025.103046"
   direction: restore
@@ -154,16 +215,20 @@
   venue: "Neuroscience Bulletin"
   short: "Neurosci. Bull."
   year: 2025
+  topic: { zh: "精神分裂症影像诊断", en: "Schizophrenia diagnosis" }
+  category: medical
   impact: 6.8
   volume: "41(6), 933–950"
   doi: "10.1007/s12264-025-01385-5"
   direction: medical
 
 - title: "Fine-scale striatal parcellation using diffusion MRI tractography and graph neural networks"
-  authors: ["Jiahui Gao", "Mingqi Liu", "Maomin Qian", "Heping Tang", "Junyi Wang", "Liang Ma", "Yanling Li", "Xin Dai", "Zhengning Wang", "Fengmei Lu", "Fan Zhang"]
+  authors: ["Jingjing Gao", "Mingqi Liu", "Maomin Qian", "Heping Tang", "Junyi Wang", "Liang Ma", "Yanling Li", "Xin Dai", "Zhengning Wang", "Fengmei Lu", "Fan Zhang"]
   venue: "Medical Image Analysis"
   short: "MedIA"
   year: 2025
+  topic: { zh: "纹状体精细分区", en: "Striatal parcellation" }
+  category: medical
   impact: 14.0
   volume: "101, 103482"
   doi: "10.1016/j.media.2025.103482"
@@ -174,6 +239,8 @@
   venue: "Displays"
   short: "Displays"
   year: 2025
+  topic: { zh: "图像质量评价", en: "Image quality assessment" }
+  category: enhance
   volume: "87, 102955"
   doi: "10.1016/j.displa.2024.102955"
   direction: restore
@@ -183,14 +250,18 @@
   venue: "IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
   short: "CVPR"
   year: 2024
+  topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
+  category: motion
   doi: "10.1109/cvpr52733.2024.01816"
   direction: 
 
 - title: "Reconstruction flow recurrent network for compressed video quality enhancement"
-  authors: ["Zhengning Wang", "X. Y. Liu", "Chuan Wang", "Ting Jiang", "Tianjiao Zeng", "Zhenni Zeng", "Guoqing Wang", "Shuaicheng Liu"]
+  authors: ["Zhengning Wang", "Xuhang Liu", "Chuan Wang", "Ting Jiang", "Tianjiao Zeng", "Zhenni Zeng", "Guoqing Wang", "Shuaicheng Liu"]
   venue: "Pattern Recognition"
   short: "Pattern Recognition"
   year: 2024
+  topic: { zh: "压缩视频增强", en: "Compressed video enhancement" }
+  category: enhance
   impact: 9.1
   volume: "155, 110638"
   doi: "10.1016/j.patcog.2024.110638"
@@ -200,12 +271,18 @@
   figure_caption:
     zh: 重建流循环网络整体结构（论文 Fig. 2）
     en: "Overview of the reconstruction-flow recurrent network (Fig. 2)"
+  slide: true
+  summary:
+    zh: "把视频帧估计的光流与码流中自带的块运动矢量融合为「重建流」，在循环网络中对齐相邻帧特征，再以空间可变核注意力重建画面，有效抑制压缩视频的块效应与模糊，在 MFQE2.0 数据集上优于现有方法。"
+    en: "Merges optical flow with bitstream motion vectors into a 'reconstruction flow' that aligns neighboring frames in a recurrent network, outperforming prior methods on MFQE2.0."
 
 - title: "Exploring Schizophrenia Classification Through Multimodal MRI and Deep Graph Neural Networks: Unveiling Brain Region-Specific Weight Discrepancies and Their Association With Cell-Type Specific Transcriptomic Features"
   authors: ["Jingjing Gao", "Maomin Qian", "Zhengning Wang", "Yanling Li", "Na Luo", "Sangma Xie", "Weiyang Shi", "Peng Li", "Jun Chen", "Yunchun Chen", "Huaning Wang", "Wenming Liu", "Zhigang Li", "Yongfeng Yang", "Hua Guo", "Ping Wan", "Luxian Lv", "Lin Lü", "Jun Yan", "Yuqing Song", "Huiling Wang", "Hongxing Zhang", "Huawang Wu", "Yuping Ning", "Yuhui Du", "Yuqi Cheng", "Jian Xu", "Xiufeng Xu", "Dai Zhang", "Tianzai Jiang"]
   venue: "Schizophrenia Bulletin"
   short: "Schizophr. Bull."
   year: 2024
+  topic: { zh: "精神分裂症影像诊断", en: "Schizophrenia diagnosis" }
+  category: medical
   impact: 5.7
   volume: "51(1), 217–235"
   doi: "10.1093/schbul/sbae069"
@@ -216,6 +293,8 @@
   venue: "arXiv preprint"
   short: "arXiv"
   year: 2024
+  topic: { zh: "暗光压缩图像增强", en: "Compressed low-light enhancement" }
+  category: enhance
   doi: "10.48550/arxiv.2403.07622"
   direction: restore
   badge: { zh: 预印本, en: Preprint }
@@ -225,10 +304,11 @@
   venue: "Cerebral Cortex"
   short: "Cerebral Cortex"
   year: 2024
+  topic: { zh: "孤独症影像诊断", en: "Autism diagnosis" }
+  category: medical
   volume: "34(2)"
   doi: "10.1093/cercor/bhad521"
   direction: medical
-  slide: true
   figure: images/papers/asd-arch.jpg
   figure_caption:
     zh: 双分支图神经网络与扰动模型、神经-转录组联合分析框架
@@ -239,6 +319,8 @@
   venue: "IEEE/CVF International Conference on Computer Vision (ICCV)"
   short: "ICCV"
   year: 2023
+  topic: { zh: "事件相机光流", en: "Event-camera optical flow" }
+  category: motion
   doi: "10.1109/iccv51070.2023.00903"
   direction: 
 
@@ -246,6 +328,8 @@
   authors: ["Xu Zhu", "Jiangtao Huang", "Sheng Zhang", "Zhengning Wang"]
   venue: "Chinese Control Conference (CCC)"
   year: 2023
+  topic: { zh: "无人机编队控制", en: "UAV formation control" }
+  category: unmanned
   doi: "10.23919/ccc58697.2023.10240020"
   direction: embodied
 
@@ -254,6 +338,8 @@
   venue: "Frontiers in Neuroscience"
   short: "Front. Neurosci."
   year: 2023
+  topic: { zh: "脑龄预测", en: "Brain age prediction" }
+  category: medical
   volume: "17, 1222751"
   doi: "10.3389/fnins.2023.1222751"
   direction: medical
@@ -263,6 +349,8 @@
   venue: "Cerebral Cortex"
   short: "Cerebral Cortex"
   year: 2022
+  topic: { zh: "孤独症影像诊断", en: "Autism diagnosis" }
+  category: medical
   volume: "33(10), 6407–6419"
   doi: "10.1093/cercor/bhac513"
   direction: medical
@@ -272,6 +360,8 @@
   venue: "IEEE Transactions on Intelligent Transportation Systems"
   short: "IEEE TITS"
   year: 2022
+  topic: { zh: "三维目标检测", en: "3D object detection" }
+  category: detection
   impact: 9.1
   volume: "24(1), 152–162"
   doi: "10.1109/tits.2022.3215766"
@@ -282,6 +372,8 @@
   venue: "AAAI Conference on Artificial Intelligence (AAAI)"
   short: "AAAI"
   year: 2022
+  topic: { zh: "三维目标检测", en: "3D object detection" }
+  category: detection
   volume: "36(1), 870–878"
   doi: "10.1609/aaai.v36i1.19969"
   pdf: https://ojs.aaai.org/index.php/AAAI/article/download/19969/19728
@@ -297,10 +389,11 @@
   venue: "Cerebral Cortex"
   short: "Cerebral Cortex"
   year: 2022
+  topic: { zh: "抑郁症影像诊断", en: "Depression diagnosis" }
+  category: medical
   volume: "33(6), 2415–2425"
   doi: "10.1093/cercor/bhac217"
   direction: medical
-  slide: false
   figure: images/papers/mdd-arch.jpg
   figure_caption:
     zh: 注意力引导的统一深度卷积网络与个体结构协变网络
@@ -311,6 +404,8 @@
   venue: "Frontiers in Neuroscience"
   short: "Front. Neurosci."
   year: 2021
+  topic: { zh: "孤独症影像诊断", en: "Autism diagnosis" }
+  category: medical
   volume: "15, 756868"
   doi: "10.3389/fnins.2021.756868"
   direction: medical
@@ -320,6 +415,8 @@
   venue: "IEEE Transactions on Circuits and Systems for Video Technology"
   short: "IEEE TCSVT"
   year: 2021
+  topic: { zh: "光学防抖", en: "Optical image stabilization" }
+  category: motion
   impact: 10.8
   volume: "32(5), 2856–2867"
   doi: "10.1109/tcsvt.2021.3103281"
@@ -330,6 +427,8 @@
   venue: "Journal of Lightwave Technology"
   short: "JLT"
   year: 2021
+  topic: { zh: "光纤分布式声波传感", en: "Distributed acoustic sensing" }
+  category: signal
   volume: "39(20), 6606–6616"
   doi: "10.1109/jlt.2021.3102265"
   direction: 
@@ -339,6 +438,8 @@
   venue: "IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)"
   short: "ICASSP"
   year: 2021
+  topic: { zh: "低光照图像增强", en: "Low-light enhancement" }
+  category: enhance
   doi: "10.1109/icassp39728.2021.9413433"
   direction: restore
 
@@ -346,6 +447,8 @@
   authors: ["Yijun Liu", "Zhengning Wang", "Ruixu Geng", "Hao Zeng", "Yi Zeng"]
   venue: "ACM International Conference on Multimedia in Asia (MMAsia)"
   year: 2021
+  topic: { zh: "低光照图像增强", en: "Low-light enhancement" }
+  category: enhance
   doi: "10.1145/3444685.3446319"
   direction: restore
 
@@ -353,6 +456,8 @@
   authors: ["Hao Zeng", "Zhengning Wang", "Deming Zhao", "Yijun Liu", "Yi Zeng"]
   venue: "Lecture Notes in Computer Science"
   year: 2021
+  topic: { zh: "长时目标跟踪", en: "Long-term tracking" }
+  category: detection
   doi: "10.1007/978-3-030-87361-5_47"
   direction: 
 
@@ -361,6 +466,8 @@
   venue: "Pattern Recognition"
   short: "Pattern Recognition"
   year: 2020
+  topic: { zh: "人脸表情识别", en: "Facial expression recognition" }
+  category: face
   impact: 9.1
   volume: "112, 107694"
   doi: "10.1016/j.patcog.2020.107694"
@@ -376,6 +483,8 @@
   venue: "IEEE International Conference on Multimedia and Expo (ICME)"
   short: "ICME"
   year: 2019
+  topic: { zh: "人脸关键点检测", en: "Facial landmark detection" }
+  category: face
   volume: "238, 314–319"
   doi: "10.1109/icme.2019.00062"
   direction: 
@@ -385,6 +494,8 @@
   venue: "IEEE Journal of Biomedical and Health Informatics"
   short: "IEEE JBHI"
   year: 2019
+  topic: { zh: "PPG 心率监测", en: "PPG heart-rate monitoring" }
+  category: medical
   impact: 7.7
   volume: "24(3), 636–648"
   doi: "10.1109/jbhi.2019.2912708"
@@ -395,6 +506,8 @@
   venue: "IEEE Intelligent Transportation Systems Magazine"
   short: "IEEE ITS Mag."
   year: 2019
+  topic: { zh: "交通图像对比度增强", en: "Traffic image enhancement" }
+  category: enhance
   volume: "13(1), 149–159"
   doi: "10.1109/mits.2018.2889706"
   direction: restore
@@ -404,6 +517,8 @@
   venue: "IEEE Transactions on Image Processing"
   short: "IEEE TIP"
   year: 2017
+  topic: { zh: "分数阶 Retinex 增强", en: "Fractional-order Retinex" }
+  category: enhance
   impact: 15.3
   volume: "27(3), 1214–1229"
   doi: "10.1109/tip.2017.2779601"
@@ -413,6 +528,8 @@
   authors: ["Elisee A Kponou", "Zhengning Wang", "Ping Wei", "Min Hua Wu"]
   venue: "IEEE International Conference on Communication Technology (ICCT)"
   year: 2017
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
   doi: "10.1109/icct.2017.8359905"
   direction: restore
 
@@ -420,6 +537,8 @@
   authors: ["Elisee A Kponou", "Zhengning Wang", "Ping Wei"]
   venue: "IEEE International Conference on Signal and Image Processing (ICSIP)"
   year: 2017
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
   volume: "33, 106–110"
   doi: "10.1109/siprocess.2017.8124515"
   direction: restore
@@ -428,6 +547,8 @@
   authors: ["Zhengning Wang", "Shanshan Ma", "Mingyan Han", "Guang Hu", "Shuaicheng Liu"]
   venue: "Lecture Notes in Computer Science"
   year: 2017
+  topic: { zh: "人脸图像增强", en: "Face image enhancement" }
+  category: face
   doi: "10.1007/978-3-319-71607-7_44"
   direction: restore
 
@@ -435,6 +556,8 @@
   authors: ["Taotao Yang", "Shuaicheng Liu", "Chao Sun", "Zhengning Wang", "Bing Zeng"]
   venue: "Lecture Notes in Computer Science"
   year: 2017
+  topic: { zh: "立体图像前景抠图", en: "Stereo foreground cutout" }
+  category: detection
   doi: "10.1007/978-3-319-71598-8_35"
   direction: 
 
@@ -443,6 +566,8 @@
   venue: "ACM International Conference on Multimedia (ACM MM)"
   short: "ACM MM"
   year: 2016
+  topic: { zh: "反光去除", en: "Reflection removal" }
+  category: enhance
   doi: "10.1145/2964284.2967264"
   direction: restore
 
@@ -450,6 +575,8 @@
   authors: ["Chun-Ting Huang", "Zhengning Wang", "C.-C. Jay Kuo"]
   venue: "Journal of Visual Communication and Image Representation"
   year: 2016
+  topic: { zh: "远距离人脸识别", en: "Long-distance face recognition" }
+  category: face
   volume: "41, 140–153"
   doi: "10.1016/j.jvcir.2016.09.012"
   direction: 
@@ -458,6 +585,8 @@
   authors: ["Xiaolong Ni", "Zhengning Wang", "Yan Jiang"]
   venue: "IEEE International Conference on Software Engineering and Service Science (ICSESS)"
   year: 2015
+  topic: { zh: "柱面全景拼接", en: "Panoramic mosaicking" }
+  category: motion
   volume: "97 2, 1007–1009"
   doi: "10.1109/icsess.2015.7339224"
   direction: 
@@ -467,6 +596,8 @@
   venue: "IEEE Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)"
   short: "CVPRW"
   year: 2015
+  topic: { zh: "远距离人脸识别", en: "Long-distance face recognition" }
+  category: face
   volume: "33, 1–8"
   doi: "10.1109/cvprw.2015.7301313"
   direction: 
@@ -475,6 +606,8 @@
   authors: ["Elisee A Kponou", "Zhengning Wang", "Ping Wei", "Yan Jiang", "Xiaolong Ni", "Mamadou Hady Bah"]
   venue: "International Congress on Image and Signal Processing (CISP)"
   year: 2014
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
   volume: "33, 184–189"
   doi: "10.1109/cisp.2014.7003774"
   direction: restore
@@ -484,6 +617,8 @@
   venue: "IEEE Transactions on Broadcasting"
   short: "IEEE TBC"
   year: 2014
+  topic: { zh: "OFDM 信道估计", en: "OFDM channel estimation" }
+  category: signal
   volume: "60(3), 486–498"
   doi: "10.1109/tbc.2014.2328271"
   direction: 
@@ -492,6 +627,8 @@
   authors: ["Zhengning Wang", "Elisee A Kponou", "Weidong Liu", "Liping Li"]
   venue: "WIT Transactions on Information and Communication Technologies"
   year: 2014
+  topic: { zh: "GPU 视频增强", en: "GPU video enhancement" }
+  category: enhance
   volume: "1, 1433–1442"
   doi: "10.2495/icct131602"
   direction: restore
@@ -500,6 +637,8 @@
   authors: ["Yurui Xie", "Lingfeng Xu", "Zhengning Wang"]
   venue: "Signal Image and Video Processing"
   year: 2013
+  topic: { zh: "超像素分割", en: "Superpixel segmentation" }
+  category: detection
   volume: "8(4), 753–763"
   doi: "10.1007/s11760-013-0589-0"
   direction: 
@@ -508,6 +647,8 @@
   authors: ["Qingbo Wu", "Jian Xiong", "Bing Luo", "Zhengning Wang"]
   venue: "Circuits Systems and Signal Processing"
   year: 2013
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "33(3), 939–957"
   doi: "10.1007/s00034-013-9675-3"
   direction: 
@@ -516,6 +657,8 @@
   authors: ["Guanghui Liu", "Liaoyuan Zeng", "Hongliang Li", "Linfeng Xu", "Zhengning Wang"]
   venue: "Journal of Communications and Networks"
   year: 2013
+  topic: { zh: "OFDM 信道估计", en: "OFDM channel estimation" }
+  category: signal
   volume: "15(5), 496–503"
   doi: "10.1109/jcn.2013.000089"
   direction: 
@@ -524,6 +667,8 @@
   authors: ["Linfeng Xu", "Liaoyuan Zeng", "Zhengning Wang"]
   venue: "Signal Image and Video Processing"
   year: 2013
+  topic: { zh: "超像素分割", en: "Superpixel segmentation" }
+  category: detection
   volume: "8(1), 181–190"
   doi: "10.1007/s11760-013-0520-8"
   direction: 
@@ -532,6 +677,8 @@
   authors: ["Linfeng Xu", "Hongliang Li", "Liaoyuan Zeng", "Zhengning Wang", "Guanghui Liu"]
   venue: "IEEE International Symposium on Circuits and Systems (ISCAS)"
   year: 2013
+  topic: { zh: "显著性检测", en: "Saliency detection" }
+  category: detection
   volume: "19, 945–949"
   doi: "10.1109/iscas.2013.6572004"
   direction: 
@@ -540,6 +687,8 @@
   authors: ["Bo Wu", "Linfeng Xu", "Liaoyuan Zeng", "Zhengning Wang", "Yan Wang"]
   venue: "EURASIP Journal on Image and Video Processing"
   year: 2013
+  topic: { zh: "显著性检测", en: "Saliency detection" }
+  category: detection
   volume: "2013(1)"
   doi: "10.1186/1687-5281-2013-16"
   direction: 
@@ -548,6 +697,8 @@
   authors: ["Linfeng Xu", "Liaoyuan Zeng", "Zhengning Wang"]
   venue: "IEICE Transactions on Information and Systems"
   year: 2013
+  topic: { zh: "注视点预测", en: "Fixation prediction" }
+  category: detection
   volume: "E96.D(10), 2294–2297"
   doi: "10.1587/transinf.e96.d.2294"
   direction: 
@@ -556,6 +707,8 @@
   authors: ["Qingbo Wu", "Linfeng Xu", "Zhengning Wang"]
   venue: "IEICE Transactions on Information and Systems"
   year: 2013
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "E96.D(4), 980–983"
   doi: "10.1587/transinf.e96.d.980"
   direction: 
@@ -564,6 +717,8 @@
   authors: ["Guanghui Liu", "Liaoyuan Zeng", "Hongliang Li", "Zhengning Wang"]
   venue: "IEEE International Conference on Computer and Information Technology (CIT)"
   year: 2012
+  topic: { zh: "OFDM 信道估计", en: "OFDM channel estimation" }
+  category: signal
   doi: "10.1109/cit.2012.138"
   direction: 
 
@@ -572,6 +727,8 @@
   venue: "IEEE Transactions on Broadcasting"
   short: "IEEE TBC"
   year: 2012
+  topic: { zh: "OFDM 信道均衡", en: "OFDM equalization" }
+  category: signal
   volume: "58(3), 390–400"
   doi: "10.1109/tbc.2012.2200793"
   direction: 
@@ -580,6 +737,8 @@
   authors: ["Linfeng Xu", "Hongliang Li", "Zhengning Wang"]
   venue: "IEEE International Symposium on Circuits and Systems (ISCAS)"
   year: 2012
+  topic: { zh: "显著性检测", en: "Saliency detection" }
+  category: detection
   volume: "19, 2673–2676"
   doi: "10.1109/iscas.2012.6271857"
   direction: 
@@ -588,6 +747,8 @@
   authors: ["Yu Lu", "Changzhong Liu", "Zhengning Wang", "Zili Xu"]
   venue: "International Conference on Electronics and Optoelectronics (ICEOE)"
   year: 2011
+  topic: { zh: "机场场面监视", en: "Airport surface surveillance" }
+  category: transport
   doi: "10.1109/iceoe.2011.6013061"
   direction: 
 
@@ -595,6 +756,8 @@
   authors: ["Yu Lu", "Changzhong Liu", "Zhengning Wang", "Zili Xu"]
   venue: "International Conference on Fuzzy Systems and Knowledge Discovery (FSKD)"
   year: 2011
+  topic: { zh: "机场场面监视", en: "Airport surface surveillance" }
+  category: transport
   volume: "1, 554–558"
   doi: "10.1109/fskd.2011.6019471"
   direction: 
@@ -604,6 +767,8 @@
   venue: "IEEE Transactions on Broadcasting"
   short: "IEEE TBC"
   year: 2011
+  topic: { zh: "数字电视抗干扰", en: "DTTB interference rejection" }
+  category: signal
   volume: "57(2), 270–276"
   doi: "10.1109/tbc.2011.2113750"
   direction: 
@@ -612,6 +777,8 @@
   authors: ["Ping Zhang", "Ping Wei", "Hongyang Yu", "Zhengning Wang"]
   venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
   year: 2010
+  topic: { zh: "运动估计", en: "Motion estimation" }
+  category: coding
   volume: "4, 1–4"
   doi: "10.1109/ispacs.2010.5704780"
   direction: 
@@ -620,6 +787,8 @@
   authors: ["Guanghui Liu", "Tailiang Ju", "Zhengning Wang", "Wei Chen", "Linfeng Xu"]
   venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
   year: 2010
+  topic: { zh: "OFDM 信道均衡", en: "OFDM equalization" }
+  category: signal
   doi: "10.1109/ispacs.2010.5704697"
   direction: 
 
@@ -627,6 +796,8 @@
   authors: ["Yu Lu", "Changzhong Liu", "Zhengning Wang", "Honggang Wu"]
   venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
   year: 2010
+  topic: { zh: "机场场面监视", en: "Airport surface surveillance" }
+  category: transport
   doi: "10.1109/ispacs.2010.5704728"
   direction: 
 
@@ -634,6 +805,8 @@
   authors: ["Guanghui Liu", "Zhengning Wang", "Tailiang Ju", "Mingzhen Wang"]
   venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
   year: 2010
+  topic: { zh: "数字电视抗干扰", en: "DTTB interference rejection" }
+  category: signal
   doi: "10.1109/ispacs.2010.5704696"
   direction: 
 
@@ -641,6 +814,8 @@
   authors: ["Xipeng Cui", "Zhengning Wang", "Tiantang Chen"]
   venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
   year: 2010
+  topic: { zh: "特定目标分割", en: "Object segmentation" }
+  category: detection
   volume: "3, 1–4"
   doi: "10.1109/ispacs.2010.5704620"
   direction: 
@@ -649,6 +824,8 @@
   authors: ["Jun Yang", "Zhengning Wang", "Changqian Zhu", "Qiang Peng"]
   venue: "Communications in Computer and Information Science"
   year: 2008
+  topic: { zh: "三维曲面重建", en: "Surface reconstruction" }
+  category: reconstruction
   doi: "10.1007/978-3-540-89682-1_1"
   direction: 
 
@@ -656,6 +833,8 @@
   authors: ["Zhengning Wang", "Jun Yang", "Qiang Peng", "Changqian Zhu"]
   venue: "International Conference on Image and Graphics (ICIG)"
   year: 2007
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "6, 259–262"
   doi: "10.1109/icig.2007.30"
   direction: 
@@ -665,6 +844,8 @@
   venue: "IEEE International Conference on Multimedia and Expo (ICME)"
   short: "ICME"
   year: 2007
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "15, 1563–1566"
   doi: "10.1109/icme.2007.4284962"
   direction: 
@@ -673,6 +854,8 @@
   authors: ["Jun Yang", "Zhengning Wang", "Changqian Zhu", "Qiang Peng"]
   venue: "Lecture Notes in Computer Science"
   year: 2007
+  topic: { zh: "三维曲面重建", en: "Surface reconstruction" }
+  category: reconstruction
   doi: "10.1007/978-3-540-72586-2_8"
   direction: 
 
@@ -680,6 +863,8 @@
   authors: ["Zhengning Wang", "Qiang Peng", "Yong Gang Zeng"]
   venue: "International Conference on Parallel and Distributed Computing, Applications and Technologies (PDCAT)"
   year: 2005
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   doi: "10.1109/pdcat.2005.207"
   direction: 
 
@@ -687,6 +872,8 @@
   authors: ["王正宁", "诸昌钤", "赵晋华"]
   venue: "计算机应用"
   year: 2005
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "25(6), 1313–1315"
   direction: 
 
@@ -694,6 +881,8 @@
   authors: ["王正宁", "彭强", "诸昌钤"]
   venue: "计算机应用"
   year: 2004
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "24(9), 91–93"
   direction: 
 
@@ -704,14 +893,18 @@
   venue: "arXiv preprint"
   short: "arXiv"
   year: 2025
+  topic: { zh: "飞行器航迹预测", en: "Aircraft trajectory prediction" }
+  category: transport
   doi: "10.48550/arXiv.2503.04823"
-  direction:
+  direction: 
   badge: { zh: 预印本, en: Preprint }
 
 - title: "一种基于2D和3D联合信息的改进MDP跟踪算法"
   authors: ["王正宁", "周阳", "吕侠", "曾凡伟", "张翔", "张锋军"]
   venue: "计算机科学"
   year: 2019
+  topic: { zh: "多目标跟踪", en: "Multi-object tracking" }
+  category: detection
   volume: "46(3), 97–102"
   direction:
 
@@ -719,6 +912,8 @@
   authors: ["Elisée A. Kponou*", "Zhengning Wang", "Liping Li"]
   venue: "International Conference on Computer, Network Security and Communication Engineering (CNSCE)"
   year: 2014
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
   volume: "182–186"
   direction: restore
 
@@ -726,6 +921,8 @@
   authors: ["Guanghui Liu*", "Liaoyuan Zeng", "Hongliang Li", "Linfeng Xu", "Zhengning Wang"]
   venue: "ETRI Journal"
   year: 2013
+  topic: { zh: "OFDM 频偏估计", en: "OFDM CFO estimation" }
+  category: signal
   volume: "35(4), 706–709"
   doi: "10.4218/etrij.13.0212.0431"
   direction:
@@ -734,6 +931,8 @@
   authors: ["唐勇*", "胡明华*", "吴洪刚", "王正宁", "徐自励", "何东林"]
   venue: "江苏大学学报（自然科学版）"
   year: 2013
+  topic: { zh: "机场场面监视", en: "Airport surface surveillance" }
+  category: transport
   volume: "34(6), 681–686"
   direction:
 
@@ -741,6 +940,8 @@
   authors: ["杨军", "曹静", "张正孝", "王正宁"]
   venue: "计算机工程与科学"
   year: 2012
+  topic: { zh: "GPU 视频增强", en: "GPU video enhancement" }
+  category: enhance
   volume: "34(4), 37–42"
   direction: restore
 
@@ -748,6 +949,8 @@
   authors: ["Guosong Zhou*", "Hongliang Li", "Zhengning Wang", "Guanghui Liu"]
   venue: "International Conference on Computational Problem-Solving (ICCP)"
   year: 2010
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "413–415"
   direction:
 
@@ -755,6 +958,8 @@
   authors: ["Yaohui Qin*", "Hongliang Li", "Guanghui Liu", "Zhengning Wang"]
   venue: "International Conference on Computational Problem-Solving (ICCP)"
   year: 2010
+  topic: { zh: "人体行为识别", en: "Action recognition" }
+  category: face
   volume: "323–325"
   direction:
 
@@ -762,6 +967,8 @@
   authors: ["Zhengning Wang*", "Changzhong Liu", "Yu Lu", "Min Wu", "Ping Zhang"]
   venue: "International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS)"
   year: 2010
+  topic: { zh: "GPU 图像增强", en: "GPU image enhancement" }
+  category: enhance
   volume: "1–4"
   doi: "10.1109/ispacs.2010.5704755"
   direction: restore
@@ -770,6 +977,8 @@
   authors: ["王正宁*", "彭强", "诸昌钤"]
   venue: "西南交通大学学报"
   year: 2007
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "42(3), 345–351"
   direction:
 
@@ -777,6 +986,8 @@
   authors: ["王正宁", "彭强", "诸昌钤"]
   venue: "中国图象图形学报"
   year: 2005
+  topic: { zh: "视频编码", en: "Video coding" }
+  category: coding
   volume: "10(12), 1584–1590"
   direction:
 
@@ -787,6 +998,8 @@
   venue: "physica status solidi (RRL) – Rapid Research Letters"
   short: "pss RRL"
   year: 2026
+  topic: { zh: "太赫兹吸收器", en: "Terahertz absorber" }
+  category: terahertz
   doi: "10.1002/pssr.70181"
   direction: 
 
@@ -794,6 +1007,8 @@
   authors: ["Kele Chen", "Zhengning Wang", "Meizhang Guan", "Shubo Cheng", "Hongyu Ma", "Zao Yi", "Boxun Li"]
   venue: "Photonics"
   year: 2025
+  topic: { zh: "太赫兹吸收器", en: "Terahertz absorber" }
+  category: terahertz
   volume: "12(10), 987"
   doi: "10.3390/photonics12100987"
   direction: 
@@ -802,5 +1017,7 @@
   authors: ["Elisée A. Kponou", "Zhengning Wang", "Liping Li"]
   venue: "International Journal of Computer Science and Mobile Computing"
   year: 2013
+  topic: { zh: "图像去雾", en: "Image dehazing" }
+  category: enhance
   volume: "2(9), 146–152"
   direction: restore

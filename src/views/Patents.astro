@@ -4,7 +4,7 @@ import PageHero from '../components/PageHero.astro';
 import OutputSwitch from '../components/OutputSwitch.astro';
 import PatentItem from '../components/PatentItem.astro';
 import Icon from '../components/Icon.astro';
-import { site, research, patents, t, href, type Lang } from '../lib/site';
+import { site, patents, grantedInventions, categoriesOf, t, href, type Lang } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
@@ -22,11 +22,14 @@ const tabs: [string, string, number][] = [
   ['granted', pu.granted, granted],
   ['pending', pu.pending, pending],
 ];
-// 只显示有专利的研究方向
-const dirs = research.filter((r) => patents.some((p) => p.direction === r.id));
+// 只显示有专利的分类
+const cats = categoriesOf(patents);
+// 「授权发明专利」只计发明专利；实用新型单独列一项
+const utility = patents.filter((p) => p.kind === 'utility' && p.status === 'granted').length;
 const stats = [
-  { value: granted, label: pu.statGranted },
+  { value: grantedInventions.length, label: pu.statGranted },
   { value: pending, label: pu.statPending },
+  ...(utility ? [{ value: utility, label: pu.statUtility }] : []),
 ];
 ---
 
@@ -69,13 +72,13 @@ const stats = [
           {years.map((y) => <option value={y}>{y}</option>)}
         </select>
       </div>
-      <div class="chips" role="group" aria-label={u.nav.research}>
-        <button class="chip is-active" type="button" data-dir-chip="all" aria-pressed="true">{u.pubs.allDirections}</button>
+      <div class="chips" role="group" aria-label={u.pubs.byCategory}>
+        <button class="chip is-active" type="button" data-cat-chip="all" aria-pressed="true">{u.pubs.allCategories}</button>
         {
-          dirs.map((r) => (
-            <button class="chip" type="button" data-dir-chip={r.id} aria-pressed="false" style={`--c:${r.color}`}>
+          cats.map((c) => (
+            <button class="chip" type="button" data-cat-chip={c.id} aria-pressed="false" style={`--c:${c.color}`}>
               <i />
-              {t(r.short, lang)}
+              {t(c.name, lang)}
             </button>
           ))
         }

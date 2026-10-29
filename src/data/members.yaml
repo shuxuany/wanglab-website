@@ -27,14 +27,14 @@ pi:
     en: [Artificial intelligence, Machine learning, Embodied intelligence, Computer vision, Image processing, Multimedia communication, Intelligent transportation & ATM]
   # 简短介绍：显示在首页轮播第一张和侧栏卡片中（详细介绍见导师页面 /people/wangzhengning/）
   summary:
-    zh: 王正宁，博士，教授、博士生导师，天府绛溪实验室电磁空间前沿研究中心副主任，成都市航空航天产业联盟副秘书长。长期从事人工智能、机器学习、具身智能、图像处理与多媒体通信研究，发表学术论文 80 余篇，获授权国家发明专利 40 余项，研究成果应用于民航机场监视、工业视觉检测等领域。
-    en: Zhengning Wang, Ph.D., is a Professor and doctoral supervisor, Deputy Director of the Electromagnetic Space Frontier Research Center at Tianfu Jiangxi Laboratory, and Deputy Secretary-General of the Chengdu Aerospace Industry Alliance. He works on artificial intelligence, machine learning, embodied intelligence, image processing and multimedia communication, has published more than 80 papers and holds more than 40 granted Chinese invention patents, with results applied in airport surveillance and industrial visual inspection.
+    zh: 王正宁，博士，教授、博士生导师，天府绛溪实验室电磁空间前沿研究中心副主任，成都市航空航天产业联盟副秘书长。长期从事人工智能、机器学习、具身智能、图像处理与多媒体通信研究，发表学术论文 100 余篇，获授权国家发明专利 40 余项，研究成果应用于民航机场监视、工业视觉检测等领域。
+    en: Zhengning Wang, Ph.D., is a Professor and doctoral supervisor, Deputy Director of the Electromagnetic Space Frontier Research Center at Tianfu Jiangxi Laboratory, and Deputy Secretary-General of the Chengdu Aerospace Industry Alliance. He works on artificial intelligence, machine learning, embodied intelligence, image processing and multimedia communication, has published more than 100 papers and holds more than 40 granted Chinese invention patents, with results applied in airport surveillance and industrial visual inspection.
   # 简介：2026-10-20 根据课题组提供的个人简历（2025-09 版）、研究成果详表和成都市航空航天产业联盟专家介绍整理
   bio:
     zh: |
       王正宁，博士，教授、博士生导师，天府绛溪实验室电磁空间前沿研究中心副主任，成都市航空航天产业联盟副秘书长。2007 年于西南交通大学获计算机应用技术博士学位（硕博连读），2009–2011 年在中国民用航空总局第二研究所从事博士后研究，2014–2015 年由国家留学基金委公派赴美国南加州大学访问，与信号与图像处理领域著名学者 C.-C. Jay Kuo 教授开展合作研究；2013–2014 年曾挂职南京经济技术开发区科技人才局副局长。长期从事人工智能、机器学习、具身智能、图像处理与多媒体通信等领域的科研与教学。
 
-      在 IEEE TITS、IEEE TCSVT、Pattern Recognition、Medical Image Analysis、Cerebral Cortex 等期刊和 CVPR、ICCV、AAAI、ACM MM 等会议发表学术论文 80 余篇，获授权国家发明专利 40 余项（其中第一发明人 30 项），登记软件著作权 3 项。作为项目负责人主持国家自然科学基金面上项目 2 项、省部级科技研发计划项目 5 项，以及中国博士后科学基金项目等；作为主要研究人员参与国家科技支撑计划项目课题“机场 III 级综合交通监视与引导系统”、国家自然科学基金民航联合基金重点项目“机场跑道异物监测系统基础理论与关键技术研究”、国家自然科学基金国际（地区）合作与交流项目“电子内镜和无线胶囊内镜图像处理关键技术研究”，以及四川省重大科技专项、重点研发计划等省部级项目十余项。
+      在 IEEE TITS、IEEE TCSVT、Pattern Recognition、Medical Image Analysis、Cerebral Cortex 等期刊和 CVPR、ICCV、AAAI、ACM MM 等会议发表学术论文 100 余篇，获授权国家发明专利 40 余项（其中第一发明人 30 项），登记软件著作权 3 项。作为项目负责人主持国家自然科学基金面上项目 2 项、省部级科技研发计划项目 5 项，以及中国博士后科学基金项目等；作为主要研究人员参与国家科技支撑计划项目课题“机场 III 级综合交通监视与引导系统”、国家自然科学基金民航联合基金重点项目“机场跑道异物监测系统基础理论与关键技术研究”、国家自然科学基金国际（地区）合作与交流项目“电子内镜和无线胶囊内镜图像处理关键技术研究”，以及四川省重大科技专项、重点研发计划等省部级项目十余项。
 
       注重科研成果的转化应用。作为主要完成人之一研制的机场全景增强监视系统是国内首套机场场面全景增强监视系统，融合视频、雷达与 ADS-B 数据，已部署于成都双流、重庆江北、昆明长水、广州白云等多个机场，并列入民航局机场新技术名录；跑道异物检测相关技术应用于北京大兴、成都天府、兰州中川等机场；参与的国产化机载娱乐系统应用于 C919 大型客机；工业视觉检测算法已应用于半导体、汽车等制造领域。获民航科学技术奖二等奖、中国交通运输协会科技进步奖三等奖、2025 年航空灵巧手菁英赛“智臻至善奖”等，入选四川省海外高层次留学人才。
 
@@ -42,7 +42,7 @@ pi:
     en: |
       Zhengning Wang, Ph.D., is a Professor and doctoral supervisor, Deputy Director of the Electromagnetic Space Frontier Research Center at Tianfu Jiangxi Laboratory, and Deputy Secretary-General of the Chengdu Aerospace Industry Alliance. He received his Ph.D. in Computer Application Technology from Southwest Jiaotong University in 2007 (combined master's–doctoral program), was a postdoctoral fellow at the Second Research Institute of the Civil Aviation Administration of China from 2009 to 2011, and from 2014 to 2015 was a visiting scholar at the University of Southern California, sponsored by the China Scholarship Council, working with Prof. C.-C. Jay Kuo, a renowned scholar in signal and image processing. From 2013 to 2014 he served on secondment as Deputy Director of the Science, Technology and Talent Bureau of the Nanjing Economic and Technological Development Zone. His research and teaching cover artificial intelligence, machine learning, embodied intelligence, image processing and multimedia communication.
 
-      He has published more than 80 papers in journals such as IEEE TITS, IEEE TCSVT, Pattern Recognition, Medical Image Analysis and Cerebral Cortex and at conferences including CVPR, ICCV, AAAI and ACM MM. He holds more than 40 granted Chinese invention patents (30 as first inventor) and 3 registered software copyrights. As principal investigator he has led two NSFC General Program projects, five provincial R&D projects and a China Postdoctoral Science Foundation project. As a key researcher he has taken part in the subproject "Level-III Airport Integrated Traffic Surveillance and Guidance System" of the National Key Technology R&D Program, the NSFC–CAAC Joint Fund key project on airport runway foreign object debris detection, the NSFC International Cooperation project on image processing for electronic and wireless capsule endoscopy, and more than ten Sichuan major science and technology and key R&D projects.
+      He has published more than 100 papers in journals such as IEEE TITS, IEEE TCSVT, Pattern Recognition, Medical Image Analysis and Cerebral Cortex and at conferences including CVPR, ICCV, AAAI and ACM MM. He holds more than 40 granted Chinese invention patents (30 as first inventor) and 3 registered software copyrights. As principal investigator he has led two NSFC General Program projects, five provincial R&D projects and a China Postdoctoral Science Foundation project. As a key researcher he has taken part in the subproject "Level-III Airport Integrated Traffic Surveillance and Guidance System" of the National Key Technology R&D Program, the NSFC–CAAC Joint Fund key project on airport runway foreign object debris detection, the NSFC International Cooperation project on image processing for electronic and wireless capsule endoscopy, and more than ten Sichuan major science and technology and key R&D projects.
 
       He puts strong emphasis on applying research results. The airport panoramic enhanced surveillance system, which he helped develop as one of its main contributors, was China's first panoramic surveillance system for airport surfaces. It fuses video, radar and ADS-B data, has been deployed at airports including Chengdu Shuangliu, Chongqing Jiangbei, Kunming Changshui and Guangzhou Baiyun, and is listed in the CAAC catalogue of new airport technologies. Related runway foreign object detection technology is used at Beijing Daxing, Chengdu Tianfu and Lanzhou Zhongchuan airports; a domestically developed in-flight entertainment system he contributed to is used on the C919 airliner; and his industrial visual inspection algorithms are applied in semiconductor and automotive manufacturing. His awards include a Second Prize of the Civil Aviation Science and Technology Award, a Third Prize of the China Communications and Transportation Association Science and Technology Progress Award and the "Excellence" award of the 2025 Aviation Dexterous Hand Elite Challenge, and he was recognized as a Sichuan High-Level Overseas-Returned Talent.
 
@@ -177,7 +177,7 @@ groups:
     # 按姓氏拼音排序
     members:
       - { name: { zh: 冯毅冉, en: Yiran Feng }, photo: images/members/fengyiran.jpg }
-      - { name: { zh: 管世杰, en: Shijie Guan }, photo: images/members/guanshijie.jpg }
+      - { name: { zh: 官世杰, en: Shijie Guan }, photo: images/members/guanshijie.jpg }
       - { name: { zh: 冷槟全, en: Binquan Leng }, topic: { zh: 水下图像增强, en: "Underwater Image Enhancement" }, photo: images/members/lengbinquan.jpg }
       - { name: { zh: 李尚蔚, en: Shangwei Li }, photo: images/members/lishangwei.jpg }
       - { name: { zh: 梁巍凡, en: Weifan Liang }, photo: images/members/liangweifan.jpg }
@@ -186,23 +186,61 @@ groups:
       - { name: { zh: 鲁端阳, en: Duanyang Lu }, topic: { zh: 堆叠物体分拣, en: "Robotic Sorting of Stacked Objects" }, photo: images/members/luduanyang.jpg }
       - { name: { zh: 马浩然, en: Haoran Ma }, topic: { zh: 计算机视觉与大模型应用, en: "Computer Vision & Large-Model Applications" }, photo: images/members/mahaoran.jpg }
       - { name: { zh: 毛骏波, en: Junbo Mao }, photo: images/members/maojunbo.jpg }
-      - { name: { zh: 穆佳欣, en: Jiaxin Mu }, photo: images/members/mujiaxin.jpg }
-      - { name: { zh: 宁一丁, en: Yiding Ning }, photo: images/members/ningyiding.jpg }
+      - { name: { zh: 穆佳欣, en: Jiaxin Mu }, topic: { zh: 反无人机, en: "Counter-UAV" }, photo: images/members/mujiaxin.jpg }
+      - { name: { zh: 宁一丁, en: Yiding Ning }, topic: { zh: 工业缺陷检测, en: "Industrial Defect Detection" }, photo: images/members/ningyiding.jpg }
       - { name: { zh: 曲唐祺, en: Tangqi Qu }, topic: { zh: 可解释人工智能, en: "Explainable AI" }, photo: images/members/qutangqi.jpg }
-      - { name: { zh: 宋文达, en: Wenda Song }, photo: images/members/songwenda.jpg }
+      - { name: { zh: 宋文达, en: Wenda Song }, topic: { zh: 具身智能, en: "Embodied Intelligence" }, photo: images/members/songwenda.jpg }
       - { name: { zh: 田浩楠, en: Haonan Tian }, topic: { zh: 人工智能, en: "Artificial Intelligence" }, photo: images/members/tianhaonan.jpg }
       - { name: { zh: 王嘉伟, en: Jiawei Wang }, photo: images/members/wangjiawei.jpg }
       - { name: { zh: 王家一, en: Jiayi Wang }, topic: { zh: 认知神经科学, en: "Cognitive Neuroscience" }, photo: images/members/wangjiayi.jpg }
-      - { name: { zh: 王浦成, en: Pucheng Wang }, photo: images/members/wangpucheng.jpg }
-      - { name: { zh: 吴杰, en: Jie Wu }, topic: { zh: 医学影像处理, en: "Medical Image Processing" }, photo: images/members/wujie.jpg }
+      - { name: { zh: 王浦臣, en: Puchen Wang }, photo: images/members/wangpucheng.jpg }
+      - { name: { zh: 吴杰, en: Jie Wu }, topic: { zh: 医学影像分析, en: "Medical Image Analysis" }, photo: images/members/wujie.jpg }
       - { name: { zh: 吴文豪, en: Wenhao Wu }, photo: images/members/wuwenhao.jpg }
-      - { name: { zh: 许铭洋, en: Mingyang Xu }, photo: images/members/xumingyang.jpg }
-      - { name: { zh: 张宁钥, en: Ningyue Zhang }, photo: images/members/zhangningyue.jpg }
+      - { name: { zh: 许铭洋, en: Mingyang Xu }, topic: { zh: 医学影像分析, en: "Medical Image Analysis" }, photo: images/members/xumingyang.jpg }
+      - { name: { zh: 张宁玥, en: Ningyue Zhang }, photo: images/members/zhangningyue.jpg }
       - { name: { zh: 郑灏洋, en: Haoyang Zheng }, photo: images/members/zhenghaoyang.jpg }
       - { name: { zh: 朱越, en: Yue Zhu }, photo: images/members/zhuyue.jpg }
       - { name: { zh: 庄子建, en: Zijian Zhuang }, photo: images/members/zhuangzijian.jpg }
 
+# 毕业校友：2026-10-27 按研究生系统导出的《导师所带学生》名单整理（学籍状态为「毕业」；放弃入学、硕博连读的未列入），
+# 硕士毕业后留在组里读博的同学只列在「博士研究生」中。按入学年份从新到旧、同年按姓氏拼音排列
+#  - year：入学年份（年级），网页显示为「2023 级硕士」；degree：master / phd
+#  - gender：m / f，决定卡通头像（男 / 女），不填时显示中性头像；有照片时填 photo，会替换卡通头像
+#            2026-10-29 暂按姓名猜测填写，请核对后修改
+#  - now：毕业去向（可选）；aliases：论文、专利中的其他英文写法（论文页会自动加粗）
 alumni:
-  - name: { zh: 姓名 G, en: Name G }
-    degree: { zh: 20XX 届博士, en: Ph.D. 20XX }
-    now: { zh: 去向单位, en: Current position }
+  - { name: { zh: 陈芳, en: Fang Chen }, degree: master, year: 2023, gender: f }
+  - { name: { zh: 李东升, en: Dongsheng Li }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 刘名琦, en: Mingqi Liu }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 石镇瑜, en: Zhenyu Shi }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 王释龙, en: Shilong Wang }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 谢联强, en: Lianqiang Xie }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 张毓丁, en: Yuding Zhang }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 丁桢炎, en: Zhenyan Ding }, degree: master, year: 2022, gender: m }
+  - { name: { zh: 韩竞丹, en: Jingdan Han }, degree: master, year: 2022, gender: f }
+  - { name: { zh: 刘佳昕, en: Jiaxin Liu }, degree: master, year: 2022, gender: f }
+  - { name: { zh: 周鑫, en: Xin Zhou }, degree: master, year: 2022, gender: m }
+  - { name: { zh: 刘旭航, en: Xuhang Liu }, degree: master, year: 2021, gender: m }
+  - { name: { zh: 徐宇航, en: Yuhang Xu }, degree: master, year: 2021, gender: m }
+  - { name: { zh: 朱许, en: Xu Zhu }, degree: master, year: 2021, gender: m }
+  - { name: { zh: 冯妤婕, en: Yujie Feng }, degree: master, year: 2020, gender: f }
+  - { name: { zh: 彭大伟, en: Dawei Peng }, degree: master, year: 2020, gender: m }
+  - { name: { zh: 商勇彬, en: Yongbin Shang }, degree: master, year: 2020, gender: m }
+  - { name: { zh: 奚伟航, en: Weihang Xi }, degree: master, year: 2020, gender: m }
+  - { name: { zh: 胥鹏, en: Peng Xu }, degree: master, year: 2020, gender: m }
+  - { name: { zh: 李开恒, en: Kaiheng Li }, degree: master, year: 2019, gender: m }
+  - { name: { zh: 刘怡君, en: Yijun Liu }, degree: master, year: 2019, gender: f }
+  - { name: { zh: 曾浩, en: Hao Zeng }, degree: master, year: 2019, gender: m }
+  - { name: { zh: 曾仪, en: Yi Zeng }, degree: master, year: 2019, gender: f }
+  - { name: { zh: 何庆东, en: Qingdong He }, degree: master, year: 2018, gender: m }
+  - { name: { zh: 赵德明, en: Deming Zhao }, degree: master, year: 2018, gender: m }
+  - { name: { zh: 蓝先迪, en: Xiandi Lan }, degree: master, year: 2017, gender: m }
+  - { name: { zh: 吕侠, en: Xia Lv }, aliases: [Xia Lyu], degree: master, year: 2017, gender: m }
+  - { name: { zh: 曾凡伟, en: Fanwei Zeng }, degree: master, year: 2017, gender: m }
+  - { name: { zh: 张翔, en: Xiang Zhang }, degree: master, year: 2017, gender: m }
+  - { name: { zh: 马姗姗, en: Shanshan Ma }, degree: master, year: 2015, gender: f }
+  - { name: { zh: 周阳, en: Yang Zhou }, degree: master, year: 2015, gender: m }
+  - { name: { zh: 柏祁林, en: Qilin Bai }, degree: master, year: 2014, gender: m }
+  - { name: { zh: 韩明燕, en: Mingyan Han }, degree: master, year: 2014, gender: f }
+  - { name: { zh: 蒋妍, en: Yan Jiang }, degree: master, year: 2013, gender: f }
+  - { name: { zh: 倪霄龙, en: Xiaolong Ni }, degree: master, year: 2013, gender: m }

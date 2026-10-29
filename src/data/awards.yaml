@@ -89,13 +89,20 @@
   kind: competition
   featured: true
 
+- title: { zh: 研究生国家奖学金, en: National Scholarship for Graduate Students }
+  issuer: { zh: 中华人民共和国教育部, en: Ministry of Education of the People's Republic of China }
+  date: 2026
+  category: student
+  level: national
+  kind: scholarship
+  featured: true
+
 - title: { zh: 本科生国家奖学金, en: National Scholarship for Undergraduates }
   issuer: { zh: 中华人民共和国教育部, en: Ministry of Education of the People's Republic of China }
   date: 2024
   category: student
   level: national
   kind: scholarship
-  featured: true
 
 - title: { zh: 硕士研究生国家奖学金, en: National Scholarship for Master's Students }
   issuer: { zh: 中华人民共和国教育部, en: Ministry of Education of the People's Republic of China }
@@ -161,6 +168,20 @@
   level: industry
   kind: competition
 
+- title: { zh: 学业一等奖学金, en: First-Class Academic Scholarship }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2026
+  category: student
+  level: university
+  kind: scholarship
+
+- title: { zh: 学业一等奖学金（入学奖学金）, en: First-Class Academic Scholarship (Entrance) }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2024
+  category: student
+  level: university
+  kind: scholarship
+
 - title: { zh: 校级优秀硕士学位论文, en: Outstanding Master's Thesis (University Level) }
   note: { zh: 《基于事件相机的光流估计方法研究》, en: Optical Flow Estimation with Event Cameras }
   issuer: { zh: 所在高校, en: Home university }
@@ -176,29 +197,6 @@
   level: university
   kind: honor
 
-- title: { zh: 2023–2024 学年第二学期校一等奖学金, en: "First-Class University Scholarship, Spring 2024" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2024
-  category: student
-  level: university
-  kind: scholarship
-
-- title: { zh: 2023–2024 学年第一学期创新创业奖, en: "Innovation & Entrepreneurship Award, Fall 2023" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2024-04
-  category: student
-  level: university
-  kind: scholarship
-  image: images/awards/innovation-2024.jpg
-
-- title: { zh: 2023–2024 学年第一学期校一等奖学金, en: "First-Class University Scholarship, Fall 2023" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2024-04
-  category: student
-  level: university
-  kind: scholarship
-  image: images/awards/first-2024a.jpg
-
 - title: { zh: 校级优秀研究生, en: Outstanding Graduate Student (University Level) }
   issuer: { zh: 所在高校, en: Home university }
   date: 2023-11
@@ -206,57 +204,9 @@
   level: university
   kind: honor
 
-- title: { zh: 2022–2023 学年三好学生, en: "Merit Student, 2022–2023" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2023-11
-  category: student
-  level: university
-  kind: honor
-  image: images/awards/merit-2023.jpg
-
-- title: { zh: 2022–2023 学年第二学期校一等奖学金, en: "First-Class University Scholarship, Spring 2023" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2023-10
-  category: student
-  level: university
-  kind: scholarship
-  image: images/awards/first-2023b.jpg
-
-- title: { zh: 2022–2023 学年第一学期校一等奖学金, en: "First-Class University Scholarship, Fall 2022" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2023-05
-  category: student
-  level: university
-  kind: scholarship
-  image: images/awards/first-2023a.jpg
-
-- title: { zh: 2021–2022 学年第二学期校一等奖学金, en: "First-Class University Scholarship, Spring 2022" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2022-10
-  category: student
-  level: university
-  kind: scholarship
-  image: images/awards/first-2022b.jpg
-
-- title: { zh: 2021–2022 学年第一学期校一等奖学金, en: "First-Class University Scholarship, Fall 2021" }
-  issuer: { zh: 杭州电子科技大学, en: Hangzhou Dianzi University }
-  date: 2022-05
-  category: student
-  level: university
-  kind: scholarship
-  image: images/awards/first-2022a.jpg
-
 - title: { zh: “荣耀信通”学术之星, en: '"Honor" Academic Star' }
   issuer: { zh: 所在学院, en: Home school }
   date: 2026
   category: student
   level: school
   kind: honor
-
-- title: { zh: 2023–2024 学年院十佳大学生, en: "Top Ten Students of the School, 2023–2024" }
-  issuer: { zh: 杭州电子科技大学通信工程学院, en: "School of Communication Engineering, Hangzhou Dianzi University" }
-  date: 2024-05
-  category: student
-  level: school
-  kind: honor
-  image: images/awards/topten-2024.jpg

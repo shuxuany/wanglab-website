@@ -1,6 +1,6 @@
 ---
-// 专利条目：状态、方向 / 名称 / 发明人 / 专利号、日期
-import { t, list, splitAuthor, directionById, directionColor, formatDate, patentUrl, type Lang, type Patent } from '../lib/site';
+// 专利条目：状态、分类 / 名称 / 发明人 / 专利号、日期
+import { t, list, splitAuthor, categoryById, categoryColor, formatDate, patentUrl, type Lang, type Patent } from '../lib/site';
 import { ui } from '../lib/i18n';
 
 interface Props {
@@ -10,11 +10,24 @@ interface Props {
 const { patent: p, lang } = Astro.props;
 const u = ui[lang].patents;
 const inventors = list(p.inventors, lang).map(splitAuthor);
-const dir = directionById(p.direction);
+const cat = categoryById(p.category);
 const granted = p.status === 'granted';
+const url = patentUrl(p, lang);
 // 授权后专利号为 ZL + 申请号
 const patentNo = granted && p.app_no ? `ZL${p.app_no}` : '';
-const search = [t(p.title, 'zh'), t(p.title, 'en'), ...list(p.inventors, 'zh'), ...list(p.inventors, 'en'), p.number, p.app_no, patentNo]
+const search = [
+  t(p.title, 'zh'),
+  t(p.title, 'en'),
+  ...list(p.inventors, 'zh'),
+  ...list(p.inventors, 'en'),
+  p.number,
+  p.app_no,
+  patentNo,
+  t(p.topic, 'zh'),
+  t(p.topic, 'en'),
+  t(cat?.name, 'zh'),
+  t(cat?.name, 'en'),
+]
   .join(' ')
   .toLowerCase();
 const meta = [
@@ -27,19 +40,27 @@ const meta = [
 
 <li
   class="cite patent"
-  style={`--c:${directionColor(p.direction)}`}
+  style={`--c:${categoryColor(p.category)}`}
   data-pub
   data-year={p.filed.slice(0, 4)}
   data-type={granted ? 'granted' : 'pending'}
-  data-direction={p.direction ?? ''}
+  data-category={p.category ?? ''}
   data-search={search}
 >
   <div class="cite-tags">
     <span class:list={['pat-status', `is-${p.status}`]}>{u.status[p.status]}</span>
-    {dir && <span class="cite-dir"><i></i>{t(dir.short, lang)}</span>}
+    {p.kind === 'utility' && <span class="pat-kind">{u.utility}</span>}
+    {p.expired && <span class="pat-kind">{u.expired}</span>}
+    {(p.topic || cat) && <span class="cite-dir" title={t(cat?.name, lang)}><i></i>{t(p.topic, lang) || t(cat?.name, lang)}</span>}
   </div>
   <p class="pat-title">
-    <a class="cite-title" href={patentUrl(p, lang)} target="_blank" rel="noopener">{t(p.title, lang)}</a>
+    {url ? (
+      <a class="cite-title" href={url} target="_blank" rel="noopener">
+        {t(p.title, lang)}
+      </a>
+    ) : (
+      <span class="cite-title">{t(p.title, lang)}</span>
+    )}
   </p>
   <p class="pat-inventors cite-authors">
     {

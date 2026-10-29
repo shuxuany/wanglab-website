@@ -83,8 +83,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
                     </li>
                   ))}
                 </ul>
-                <a class="sec-more" href={`${href('publications', lang)}?direction=${r.id}`}>
-                  {u.pubs.inDirection(all.length)}
+                <a class="sec-more" href={href('publications', lang)}>
+                  {u.research.more}
                   <Icon name="arrow" size={15} />
                 </a>
               </div>

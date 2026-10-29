@@ -17,6 +17,8 @@ const tile = (name: any) => {
   const [c1, c2] = avatarColors(t(name, 'en'));
   return `--c1:${c1};--c2:${c2}`;
 };
+// 毕业校友没有照片时用卡通头像：members.yaml 中 gender 为 m / f 时分男女，不填时为中性头像
+const avatarOf = (a: any) => `images/avatars/${a.gender === 'm' ? 'male' : a.gender === 'f' ? 'female' : 'default'}.svg`;
 ---
 
 <Base lang={lang} title={u.nav.people} description={t(site.pages?.people, lang)}>
@@ -104,13 +106,14 @@ const tile = (name: any) => {
     {
       alumni.length > 0 && (
         <section class="people-group" id="alumni">
-          <SectionHead title={u.people.alumni} en="Alumni" />
-          <ul class="alumni-list" data-reveal>
-            {alumni.map((a) => (
-              <li>
-                <span class="alumni-name">{t(a.name, lang)}</span>
-                <span class="alumni-degree">{t(a.degree, lang)}</span>
-                <span class="alumni-now">{t(a.now, lang)}</span>
+          <SectionHead title={u.people.alumni} en={ui[other].people.alumni} />
+          <ul class="alumni-grid">
+            {alumni.map((a, i) => (
+              <li class="alumnus" data-reveal style={`--d:${(i % 6) * 60}ms`}>
+                <img class="alumnus-avatar" src={asset(a.photo || avatarOf(a))} alt={a.photo ? t(a.name, lang) : ''} loading="lazy" />
+                <p class="alumnus-name">{t(a.name, lang)}</p>
+                <p class="alumnus-meta">{u.people.cohort(a.year, a.degree)}</p>
+                {a.now && <p class="alumnus-now">{t(a.now, lang)}</p>}
               </li>
             ))}
           </ul>

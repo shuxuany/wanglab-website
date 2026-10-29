@@ -11,8 +11,9 @@ import {
   news,
   life,
   publications,
-  patents,
-  projects,
+  papersTotal,
+  projectsLedTotal,
+  grantedInventions,
   newsLink,
   pi,
   t,
@@ -24,7 +25,6 @@ import {
   dateParts,
   initials,
   directionById,
-  imageSize,
   avatarColors,
   type Lang,
 } from '../lib/site';
@@ -42,23 +42,18 @@ const latest = news.slice(0, 6);
 // 首页数据栏：填了 auto 的项目按网站数据自动计数，保证与各页面列表一致
 const autoValue: Record<string, number> = {
   papers: publications.length,
-  patents: patents.filter((p) => p.status === 'granted').length,
-  projects: projects.filter((p) => p.role === 'lead').length,
+  patents: grantedInventions.length,
+  projects: projectsLedTotal,
   directions: research.length,
 };
-const stats: any[] = (site.stats ?? []).map((s: any) => (s.auto && s.auto in autoValue ? { ...s, value: autoValue[s.auto] } : s));
+const stats: any[] = (site.stats ?? []).map((s: any) =>
+  s.auto === 'papers' ? { ...s, ...papersTotal } : s.auto && s.auto in autoValue ? { ...s, value: autoValue[s.auto] } : s,
+);
 // 首页只放简短介绍（members.yaml 的 summary），详细介绍在单独的导师页面
 const piBio = t(pi.summary, lang) || (paragraphs(t(pi.bio, lang))[0] ?? '');
 const piPage = href('people/wangzhengning', lang);
-// 轮播图中的论文（slide，不填时同 featured），按研究方向顺序排列
-const byDirection = (keep: (p: (typeof publications)[number]) => boolean) =>
-  research.flatMap((r) => publications.filter((p) => p.direction === r.id && keep(p)));
-const slidePapers = byDirection((p) => p.slide ?? !!p.featured);
-// 结构图较宽时上下排版，接近方形时左图右文
-const isWide = (path?: string) => {
-  const size = imageSize(path);
-  return size ? size.width / size.height >= 1.6 : true;
-};
+// 轮播图中的论文：publications.yaml 中 slide: true 的论文，按影响因子从高到低排列
+const slidePapers = publications.filter((p) => p.slide === true).sort((a, b) => (b.impact ?? 0) - (a.impact ?? 0) || b.year - a.year);
 const photoSlides: any[] = site.slides ?? [];
 const slideCount = 1 + photoSlides.length + slidePapers.length;
 // 「阅读论文」：有可公开的 PDF 时直接打开 PDF，否则打开出版社页面
@@ -188,12 +183,13 @@ const lifeTeaser = life
 
         {
           slidePapers.map((p, i) => {
-            const r = directionById(p!.direction)!;
+            // 轮播不显示方向标签，只用方向的颜色作点缀；未归入研究方向的论文用主题蓝
+            const r = directionById(p!.direction);
             return (
               <article
-                class:list={['slide slide-paper', { 'has-figure': p!.figure, 'figure-wide': p!.figure && isWide(p!.figure) }]}
+                class:list={['slide slide-paper', { 'has-figure': p!.figure }]}
                 data-slide
-                style={`--c:${r.color}`}
+                style={`--c:${r?.color ?? '#0b5eb2'}`}
                 aria-hidden="true"
                 aria-label={u.a11y.slide(i + 2 + photoSlides.length)}
               >
@@ -209,20 +205,19 @@ const lifeTeaser = life
                     </figure>
                   </div>
                 ) : (
-                  <div class="slide-art">
-                    <DirectionArt art={r.art} color={r.color} uid={`s${i}`} />
-                  </div>
+                  r && (
+                    <div class="slide-art">
+                      <DirectionArt art={r.art} color={r.color} uid={`s${i}`} />
+                    </div>
+                  )
                 )}
                 <div class="slide-copy">
                   <div class="slide-tags">
                     {p!.short && <span class="cite-venue cite-venue-light">{p!.short}</span>}
-                    <span class="slide-dir">
-                      <i />
-                      {t(r.title, lang)}
-                    </span>
+                    {p!.impact && <span class="cite-if">IF {p!.impact.toFixed(1)}</span>}
                   </div>
                   <h2 class="slide-title">{p!.title}</h2>
-                  <p class="slide-summary">{t(r.summary, lang)}</p>
+                  <p class="slide-summary">{t(p!.summary, lang) || (r ? t(r.summary, lang) : '')}</p>
                   <a class="btn btn-orange" href={readUrl(p)} target="_blank" rel="noopener" tabindex="-1">
                     {p!.pdf ? u.home.readPdf : u.home.readPaper}
                     <Icon name={p!.pdf ? 'doc' : 'arrow'} />
@@ -261,7 +256,7 @@ const lifeTeaser = life
     <dl class="about-stats">
       {
         stats.map((s, i) => (
-          <div class="about-stat" data-reveal style={`--d:${i * 90}ms`}>
+          <div class:list={['about-stat', { 'is-accent': s.accent }]} data-reveal style={`--d:${i * 90}ms`}>
             <dd data-count={s.value} data-suffix={s.suffix ?? ''}>
               {s.value}
               {s.suffix}
