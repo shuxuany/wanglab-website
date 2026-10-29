@@ -27,7 +27,7 @@
 #    Elsevier / IEEE 等出版社的正式版 PDF 不允许放在公开网站上
 # ==============================================================
 
-# 2026-10 已被 IEEE TITS 录用，正式发表后补充卷期、页码和 DOI，并去掉「已录用」标签
+# 2026-10 被 IEEE TITS 录用，网站按已发表展示；正式出版后补充卷期、页码和 DOI
 - title: "L-DSTNet: Link-Level Dual-Pathway Spatio-Temporal Network for Sparse Urban Traffic Prediction"
   authors: ["Shuxuan Yuan", "Yuheng Kuang", "Zhenni Zeng", "Zhou Huang", "Zhengning Wang"]
   venue: "IEEE Transactions on Intelligent Transportation Systems"
@@ -36,7 +36,6 @@
   topic: { zh: "城市交通预测", en: "Urban traffic prediction" }
   category: transport
   impact: 9.1
-  badge: { zh: 已录用, en: Accepted }
 
 - title: "HySTAR: Anchored Hypergraphs for Stable Credit Assignment in Cooperative Multi-Agent Reinforcement Learning"
   authors: ["Xinglong Luo", "Yuding Zhang", "Yuheng Kuang", "Shuxuan Yuan", "Zhenni Zeng", "Weiqiang Zhu", "Zhenhai Ji", "Zhengning Wang"]
