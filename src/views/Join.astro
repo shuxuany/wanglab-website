@@ -48,18 +48,20 @@ const colors = ['#0b5eb2', '#f57c40', '#1f8f5f'];
             </div>
           )
         }
-        <ul class="checklist" data-reveal>
-          {
-            list(join.requirements, lang).map((r) => (
-              <li>
-                <span class="check">
-                  <Icon name="check" size={14} />
-                </span>
-                {r}
-              </li>
-            ))
-          }
-        </ul>
+        {
+          list(join.requirements, lang).length > 0 && (
+            <ul class="checklist" data-reveal>
+              {list(join.requirements, lang).map((r) => (
+                <li>
+                  <span class="check">
+                    <Icon name="check" size={14} />
+                  </span>
+                  {r}
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </section>
       <section>
         <SectionHead title={u.join.apply} en="How to Apply" />

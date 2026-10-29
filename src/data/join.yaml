@@ -3,7 +3,7 @@
 #  以下为根据研究方向拟写的草稿，请按学院当年招生政策修改。
 #  - intro 同时显示在首页底部的招生卡片中
 #  - positions 的 icon 可选：sparkles / graduation / book / users / flask / brain
-#  - message 显示在「我们希望你」开头，requirements 为下面的要点
+#  - message：「我们希望你」一栏的寄语（空行分段）；如需在寄语下方列出要点，可再加 requirements 列表（zh / en）
 # ==============================================================
 
 intro:
@@ -27,7 +27,7 @@ positions:
       zh: 欢迎本科生进组参与科研训练、大创项目、毕业设计和学科竞赛，表现优秀者可优先推荐读研。
       en: Undergraduates can join for research training, innovation projects, theses and competitions; strong performers get priority for graduate admission.
 
-# 「我们希望你」开头的寄语（2026-10-29 课题组定稿），空行分段
+# 「我们希望你」一栏的寄语（2026-10-29 课题组定稿），空行分段
 message:
   zh: |
     如果你最终加入视觉计算与智能决策实验室（VCID Lab），我们之间便不只是师生，你也会成为这个团队真正的一员。这是一支年轻、对科研充满热情的队伍，在强化学习、工业视觉、医学影像和具身智能等方向都有扎实积累；系统的科研训练与真实的项目历练，会让你的学术能力在这里加速成长。
@@ -45,18 +45,6 @@ message:
     A paper is simply where your thinking comes to rest. Its real value lies not in numbers, but in whether you have laid a brick for the field, helping those who come after you stand higher and go further.
 
     We look forward to working side by side with you, turning curiosity, step by step, into results.
-
-requirements:
-  zh:
-    - 对人工智能研究有热情，具备良好的自驱力和好奇心
-    - 扎实的数学基础（线性代数、概率统计、最优化）
-    - 熟悉 Python，有 PyTorch 等深度学习框架使用经验者优先
-    - 良好的英文文献阅读与写作能力，乐于沟通和团队合作
-  en:
-    - Genuine passion for AI research, curiosity and self-motivation
-    - Solid math foundations (linear algebra, probability, optimization)
-    - Fluency in Python; experience with PyTorch or similar is a plus
-    - Good English reading and writing, and a collaborative spirit
 
 apply:
   zh:
