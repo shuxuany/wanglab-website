@@ -52,6 +52,8 @@ export interface Publication {
   impact?: number;
   /** CCF 推荐目录等级；CCF-A / B 类会议论文也参与「高影响因子论文」的排序 */
   ccf?: 'A' | 'B' | 'C';
+  /** 在「高影响因子论文」中排在最后（按课题组要求） */
+  top_last?: boolean;
   badge?: Text;
   /** journal / conference / preprint；不填时根据 venue 自动判断 */
   type?: string;

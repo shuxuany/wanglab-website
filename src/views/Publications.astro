@@ -25,7 +25,9 @@ const top = shown
     (p) => isLabLed(p) && (typeof p.impact === 'number' || (pubType(p) === 'conference' && (p.ccf === 'A' || p.ccf === 'B'))),
   )
   .sort((a, b) => tier(a) - tier(b) || (b.impact ?? 0) - (a.impact ?? 0) || b.year - a.year)
-  .slice(0, 10);
+  .slice(0, 10)
+  // publications.yaml 中标了 top_last 的论文排在最后（按课题组要求）
+  .sort((a, b) => Number(a.top_last === true) - Number(b.top_last === true));
 ---
 
 <Base lang={lang} title={u.nav.publications} description={t(site.pages?.publications, lang)}>
@@ -73,10 +75,7 @@ const top = shown
     {
       top.length > 0 && (
         <section class="pub-top" data-pub-top>
-          <h2 class="year-label pub-top-label">
-            {u.pubs.top}
-            <small>{u.pubs.topNote}</small>
-          </h2>
+          <h2 class="year-label">{u.pubs.top}</h2>
           <ol class="cite-list cite-top">
             {top.map((p) => (
               <PubItem pub={p} lang={lang} impact={p.impact} ccf={pubType(p) === 'conference' ? p.ccf : undefined} filterable={false} />

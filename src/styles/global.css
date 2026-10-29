@@ -1767,21 +1767,9 @@ main {
   color: var(--text-3);
 }
 
-/* 论文页顶部：高影响因子论文（单独编号 01–05） */
+/* 论文页顶部：高影响因子论文（单独编号 01–10） */
 .pub-top {
   margin-top: 26px;
-}
-
-.pub-top-label small {
-  order: 2;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-3);
-}
-
-.pub-top-label::after {
-  order: 3;
 }
 
 .cite-top {
@@ -1795,18 +1783,6 @@ main {
 .cite-top .cite::before {
   content: counter(top, decimal-leading-zero);
   color: var(--orange);
-}
-
-@media (max-width: 760px) {
-  .pub-top-label {
-    flex-wrap: wrap;
-    row-gap: 2px;
-  }
-
-  .pub-top-label small {
-    flex-basis: 100%;
-    order: 4;
-  }
 }
 
 .cite-authors {
