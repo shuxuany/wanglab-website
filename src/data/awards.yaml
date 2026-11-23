@@ -71,6 +71,15 @@
 #  - image：证书照片（处理后的原图放在 assets/originals/images/awards/，三维贴图放在其中的 tex/ 子目录，运行 npm run watermark）
 #  - 证书上印有我校全称的不展示照片，三维阵列中显示为文字卡片
 
+# 证书印有我校全称，只列文字
+- title: { zh: CVPR 2026 GigaBrain 挑战赛 RoboTwin 赛道第一名, en: "1st Place, RoboTwin Track, GigaBrain Challenge at CVPR 2026" }
+  issuer: { zh: CVPR 2026 Workshop GigaBrain Challenge（美国丹佛）, en: "GigaBrain Challenge, CVPR 2026 Workshop (Denver, USA)" }
+  date: 2026-06
+  category: student
+  level: international
+  kind: competition
+  featured: true
+
 - title: { zh: ManiSkill-ViTac 2025 挑战赛 Track 1 二等奖, en: "2nd Prize, Track 1, ManiSkill-ViTac 2025 Challenge" }
   note: { zh: 视触觉操作赛道（联合团队）, en: Visuotactile manipulation track (joint team) }
   issuer: { zh: ManiSkill-ViTac 2025 视触觉操作技能学习挑战赛, en: ManiSkill-ViTac 2025 Challenge on Manipulation Skill Learning with Vision and Tactile Sensing }
@@ -167,6 +176,14 @@
   category: student
   level: industry
   kind: competition
+
+# 2026 年学业一等奖学金：两位同学分别获得，所以有两条（暂无证书）
+- title: { zh: 学业一等奖学金, en: First-Class Academic Scholarship }
+  issuer: { zh: 所在高校, en: Home university }
+  date: 2026
+  category: student
+  level: university
+  kind: scholarship
 
 - title: { zh: 学业一等奖学金, en: First-Class Academic Scholarship }
   issuer: { zh: 所在高校, en: Home university }

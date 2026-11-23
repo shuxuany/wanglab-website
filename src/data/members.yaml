@@ -213,13 +213,13 @@ alumni:
   - { name: { zh: 李东升, en: Dongsheng Li }, degree: master, year: 2023, gender: m }
   - { name: { zh: 刘名琦, en: Mingqi Liu }, degree: master, year: 2023, gender: m }
   - { name: { zh: 石镇瑜, en: Zhenyu Shi }, degree: master, year: 2023, gender: m }
-  - { name: { zh: 王释龙, en: Shilong Wang }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 王释龙, en: Shilong Wang }, degree: master, year: 2023, gender: m, now: { zh: 成都腾讯, en: "Tencent, Chengdu" }, photo: images/alumni/wangshilong.jpg }
   - { name: { zh: 谢联强, en: Lianqiang Xie }, degree: master, year: 2023, gender: m }
-  - { name: { zh: 张毓丁, en: Yuding Zhang }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 张毓丁, en: Yuding Zhang }, degree: master, year: 2023, gender: m, now: { zh: 成都京东, en: "JD.com, Chengdu" }, photo: images/alumni/zhangyuding.jpg }
   - { name: { zh: 丁桢炎, en: Zhenyan Ding }, degree: master, year: 2022, gender: m }
   - { name: { zh: 韩竞丹, en: Jingdan Han }, degree: master, year: 2022, gender: f }
   - { name: { zh: 刘佳昕, en: Jiaxin Liu }, degree: master, year: 2022, gender: f }
-  - { name: { zh: 周鑫, en: Xin Zhou }, degree: master, year: 2022, gender: m }
+  - { name: { zh: 周鑫, en: Xin Zhou }, degree: master, year: 2022, gender: m, now: { zh: 深圳智元, en: "Zhiyuan, Shenzhen" }, photo: images/alumni/zhouxin.jpg }
   - { name: { zh: 刘旭航, en: Xuhang Liu }, degree: master, year: 2021, gender: m }
   - { name: { zh: 徐宇航, en: Yuhang Xu }, degree: master, year: 2021, gender: m }
   - { name: { zh: 朱许, en: Xu Zhu }, degree: master, year: 2021, gender: m }
