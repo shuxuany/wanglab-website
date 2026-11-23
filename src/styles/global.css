@@ -2327,61 +2327,6 @@ a.cite-title:hover {
   word-break: break-all;
 }
 
-.alumni-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
-  gap: 28px 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.alumnus {
-  text-align: center;
-}
-
-.alumnus-avatar {
-  display: block;
-  width: 84px;
-  height: 84px;
-  margin: 0 auto;
-  border-radius: 50%;
-  object-fit: cover;
-  box-shadow: 0 0 0 4px #fff, 0 6px 16px rgba(9, 59, 109, 0.12);
-  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
-}
-
-.alumnus:hover .alumnus-avatar {
-  box-shadow: 0 0 0 4px #fff, var(--shadow);
-  transform: translateY(-4px);
-}
-
-.alumnus-name {
-  margin-top: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--blue-deep);
-}
-
-.alumnus-meta,
-.alumnus-now {
-  margin-top: 2px;
-  font-size: 12.5px;
-  color: var(--text-3);
-}
-
-@media (max-width: 640px) {
-  .alumni-grid {
-    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-    gap: 22px 8px;
-  }
-
-  .alumnus-avatar {
-    width: 68px;
-    height: 68px;
-  }
-}
-
 /* ---------- 论文页 ---------- */
 
 .pub-controls {
