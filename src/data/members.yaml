@@ -209,12 +209,12 @@ groups:
 #            2026-10-29 暂按姓名猜测填写，请核对后修改
 #  - now：毕业去向（可选）；aliases：论文、专利中的其他英文写法（论文页会自动加粗）
 alumni:
-  - { name: { zh: 陈芳, en: Fang Chen }, degree: master, year: 2023, gender: f }
-  - { name: { zh: 李东升, en: Dongsheng Li }, degree: master, year: 2023, gender: m }
-  - { name: { zh: 刘名琦, en: Mingqi Liu }, degree: master, year: 2023, gender: m }
-  - { name: { zh: 石镇瑜, en: Zhenyu Shi }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 陈芳, en: Fang Chen }, degree: master, year: 2023, gender: f, now: { zh: 东莞华为, en: "Huawei, Dongguan" }, photo: images/alumni/chenfang.jpg }
+  - { name: { zh: 李东升, en: Dongsheng Li }, degree: master, year: 2023, gender: m, now: { zh: 深圳精锋医疗, en: "Edge Medical, Shenzhen" }, photo: images/alumni/lidongsheng.jpg }
+  - { name: { zh: 刘名琦, en: Mingqi Liu }, degree: master, year: 2023, gender: m, now: { zh: 北京快手, en: "Kuaishou, Beijing" }, photo: images/alumni/liumingqi.jpg }
+  - { name: { zh: 石镇瑜, en: Zhenyu Shi }, degree: master, year: 2023, gender: m, now: { zh: 上海华为, en: "Huawei, Shanghai" }, photo: images/alumni/shizhenyu.jpg }
   - { name: { zh: 王释龙, en: Shilong Wang }, degree: master, year: 2023, gender: m, now: { zh: 成都腾讯, en: "Tencent, Chengdu" }, photo: images/alumni/wangshilong.jpg }
-  - { name: { zh: 谢联强, en: Lianqiang Xie }, degree: master, year: 2023, gender: m }
+  - { name: { zh: 谢联强, en: Lianqiang Xie }, degree: master, year: 2023, gender: m, now: { zh: 成都北森云计算, en: "Beisen, Chengdu" }, photo: images/alumni/xielianqiang.jpg }
   - { name: { zh: 张毓丁, en: Yuding Zhang }, degree: master, year: 2023, gender: m, now: { zh: 成都京东, en: "JD.com, Chengdu" }, photo: images/alumni/zhangyuding.jpg }
   - { name: { zh: 丁桢炎, en: Zhenyan Ding }, degree: master, year: 2022, gender: m }
   - { name: { zh: 韩竞丹, en: Jingdan Han }, degree: master, year: 2022, gender: f }
